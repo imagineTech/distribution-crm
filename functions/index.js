@@ -17,8 +17,7 @@ exports.userCreation = functions.https.onRequest((req, res) => {
     return docRef.add({
       Name: formData.Name,
       Email: formData.Email,
-      Password: formData.Password,
-      Age: formData.Age
+      Password: formData.Password
     })
   })
 });
