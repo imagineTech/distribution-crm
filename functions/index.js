@@ -6,10 +6,6 @@ admin.initializeApp(functions.config().firebase);
 
 var db = admin.firestore();
 
-exports.testingFunc = functions.https.onRequest((req, res) => {
-  res.status(200).send('Hi everybody');
-});
-
 exports.userCreation = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     var formData = req.body;

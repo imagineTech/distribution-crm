@@ -4,10 +4,6 @@ import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } fro
 
 class SignUp extends Component {
 
-  state = {
-    radioChecked: ''
-  }
-
   //Making Email and Password it's own group due to Authentication with fb
   handleEmailAndPasswordChange = e => {
     this.props.setEmailAndPassword(e.target.name, e.target.value);
@@ -23,44 +19,19 @@ class SignUp extends Component {
     // console.log(typeof this.props.emailAndPassword);
   };
 
-  handleRadioChange = e => {
-    this.setState({
-      radioChecked: e.target.name
-    })
-    console.log(this.state.radioChecked);
-  }
-
   render() {
     return (
       <div>
-      <h1>Sign-up</h1>
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name: </label>
-        <input type="text" id="name" name="Name" onChange={this.handleChange}/>
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
-        <label htmlFor="signup_password">Password: </label>
-        <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
-        <label>What do you serve as? : </label>
-        <div>
-        <label htmlFor="buyer">Buyer </label>
-          <input
-            type="radio"
-            id="buyer"
-            name="Seller"
-            onChange={this.handleRadioChange}
-            checked={this.state.radioChecked === "Seller"}/>
-        <label htmlFor="seller">Seller </label>
-          <input
-            type="radio"
-            id="seller"
-            name="Buyer"
-            onChange={this.handleRadioChange}
-            checked={this.state.radioChecked === "Buyer"}/>
-        </div>
-        {this.state.radioChecked === "Buyer" ? (<p>Hi everyone</p>) : (<p>Bye yall</p>)}
-        <button>Signup</button>
-      </form>
+        <h1>Sign-up</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name">Name: </label>
+          <input type="text" id="name" name="Name" onChange={this.handleChange}/>
+          <label htmlFor="email">Email: </label>
+          <input type="email" id="email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
+          <label htmlFor="signup_password">Password: </label>
+          <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
+          <button>Signup</button>
+        </form>
       </div>
     );
   }
