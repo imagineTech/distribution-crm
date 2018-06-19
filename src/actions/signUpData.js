@@ -1,5 +1,6 @@
-import { auth } from '.././config_firebase';
+import { auth, db } from '../firebase/index';
 import axios from 'axios';
+
 export function emailAndPasswordSuccess(EPName, EPValue) {
   return {
     type: "EMAIL_AND_PASSWORD_SUCCESS",
@@ -24,14 +25,7 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-    auth.createUserWithEmailAndPassword(EPData.Email, EPData.Password).catch(e => console.log("Error: " + e));
-    axios.post(`https://us-central1-distribution-crm.cloudfunctions.net/userCreation`, finalDataObj, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-      }
-      })
+    db.addingEntry('Buyer', finalDataObj);
+    auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).catch(e => console.log("Error: " + e));
   }
 }
