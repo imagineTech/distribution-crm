@@ -1,5 +1,4 @@
 import { auth, db } from '../firebase/index';
-import axios from 'axios';
 
 export function emailAndPasswordSuccess(EPName, EPValue) {
   return {
@@ -25,7 +24,7 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-    db.addingEntry('Buyer', finalDataObj);
+    db.addingEntry(finalDataObj);
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).catch(e => console.log("Error: " + e));
   }
 }
