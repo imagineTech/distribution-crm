@@ -1,4 +1,5 @@
 import { auth, db } from '../firebase/index';
+import * as routes from '../constants/routes';
 
 export function emailAndPasswordSuccess(EPName, EPValue) {
   return {
@@ -24,7 +25,10 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
+    const { history } = this.props;
     db.addingEntry(finalDataObj);
-    auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).catch(e => console.log("Error: " + e));
+    auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
+      history.push(routes.CRM)
+    });
   }
 }
