@@ -28,6 +28,9 @@ export function emailPasswordFormAuth(EPData, formData) {
   return dispatch => {
     db.addingEntry(finalDataObj);
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
+      //instead of history obj with .push()
+      //we use a push() function through the use
+      //of redux-thunk (dispatch)
       dispatch(push(routes.CRM))
     });
   }

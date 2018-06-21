@@ -21,7 +21,7 @@ class App extends Component {
         <Route exact path={routes.LANDING} component={() => <Landing />} />
         <Route exact path={routes.CRM} component={() => <Crm />}  />
       </div>
-  )
+    )
   }
 }
 

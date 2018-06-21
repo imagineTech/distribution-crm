@@ -9,6 +9,10 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './containers/App_signUp';
 
+
+//Had to combine my config_store file with this index file
+//just because i needed the history obj to work with
+//my redux action calls.
 const initialState = {};
 const history = createBrowserHistory();
 const store = createStore(
@@ -22,6 +26,9 @@ const store = createStore(
   ),
 );
 
+//I couldnt find a way to bring in 'history'
+//in a way that would work seperatly without two
+//instances of 'history'
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
