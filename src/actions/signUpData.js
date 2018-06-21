@@ -1,4 +1,5 @@
 import { auth, db } from '../firebase/index';
+import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
 
 export function emailAndPasswordSuccess(EPName, EPValue) {
@@ -25,10 +26,9 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-    const { history } = this.props;
     db.addingEntry(finalDataObj);
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
-      history.push(routes.CRM)
+      dispatch(push(routes.CRM))
     });
   }
 }
