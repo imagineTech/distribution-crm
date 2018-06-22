@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { dataToLoginWith, loginWithEmailAndPassword } from '../actions/loginAuth';
 
 class Login extends Component {
 
-  handleChange = e => {}
+  handleChange = e => {
+    this.props.emailAndPasswordChange(e.target.name, e.target.value);
+  }
 
-  handleSubmit = e => {}
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.emailAndPasswordLogin(this.props.emailAndPassword.login_email, this.props.emailAndPassword.login_password);
+  }
 
   render() {
     return (
@@ -24,11 +30,16 @@ class Login extends Component {
 };
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    emailAndPassword: state.emailAndPasswordToState
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
+    emailAndPasswordLogin: (email, password) => dispatch(loginWithEmailAndPassword(email, password))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
