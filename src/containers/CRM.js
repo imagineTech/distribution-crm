@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOutAuth } from '../actions/signOut';
+import * as routes from '../constants/routes';
 
 class Crm extends Component {
 
@@ -12,8 +14,9 @@ class Crm extends Component {
     return (
       <div>
         <h1>Welcome to our Crm</h1>
+        <Link to={routes.PROFILE}>Profile</Link>
         <button onClick={this.handleSignOut}>Sign Out</button>
-      </div>
+    </div>
     );
   };
 }
