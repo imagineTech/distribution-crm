@@ -16,7 +16,7 @@ class Crm extends Component {
         <h1>Welcome to our Crm</h1>
         <Link to={routes.PROFILE}>Profile</Link>
         <button onClick={this.handleSignOut}>Sign Out</button>
-    </div>
+      </div>
     );
   };
 }
