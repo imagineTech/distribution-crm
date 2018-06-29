@@ -11,11 +11,13 @@ class Crm extends Component {
   }
 
   render() {
+    const { authUser } = this.props;
     return (
       <div>
         <h1>Welcome to our Crm</h1>
         <Link to={routes.PROFILE}>Profile</Link>
         <button onClick={this.handleSignOut}>Sign Out</button>
+        {console.log(authUser)}
       </div>
     );
   };
