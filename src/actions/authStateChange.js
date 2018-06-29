@@ -12,8 +12,6 @@ export function detectedAuthStateChange() {
     firebase.auth.onAuthStateChanged(user => {
       if (user) {
         dispatch(authStateData(user));
-      } else {
-        return null;
       }
     })
   }

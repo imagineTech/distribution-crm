@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { detectedAuthStateChange } from '../actions/authStateChange';
 import Crm from './CRM';
 import Landing from '../components/Landing';
 import Profile from '../components/Profile';
 import * as routes from '../constants/routes';
+import { firebase } from '../firebase/index';
 
 class App extends Component {
 
+  state = {
+    authUser: null
+  }
+
   componentDidMount() {
-    this.props.onAuthChange();
+    firebase.auth.onAuthStateChanged(user => {
+      if(user) {
+        this.setState(() => ({ authUser: user }))
+      } else {
+        this.setState(() => ({ authUser: null }))
+      }
+    });
   }
 
   render() {
@@ -18,7 +27,7 @@ class App extends Component {
         <div>
           <Route
             exact path={routes.CRM}
-            component={() => <Crm authUser={this.props.user}/>}
+            component={() => <Crm authUser={this.state.authUser}/>}
             />
           <Route
             exact path={routes.LANDING}
@@ -33,16 +42,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.authToState
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onAuthChange: () => dispatch(detectedAuthStateChange())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
