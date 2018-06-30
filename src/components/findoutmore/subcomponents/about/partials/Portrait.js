@@ -1,5 +1,6 @@
 import Styled from 'styled-components';
 
+//This contains the image next to the about content.
 const Portrait = Styled.div`
   background: url(${process.env.PUBLIC_URL}/sample-pics/img9.jpg) no-repeat;
   background-size: cover;

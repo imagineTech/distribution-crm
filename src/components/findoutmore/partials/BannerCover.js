@@ -1,5 +1,7 @@
+//Core imports
 import styled from 'styled-components';
 
+//Styling for the fintout more landing page banner
 const BannerCover = styled.div`
   background: url(${process.env.PUBLIC_URL}/sample-pics/group1.jpg) no-repeat;
   background-size: cover;

@@ -1,5 +1,6 @@
 import Styled from 'styled-components';
 
+//Contains the image of people shaking hands that goes along with the about form fields
 const Portrait = Styled.div`
   background: url(${process.env.PUBLIC_URL}/sample-pics/shake1.jpg)no-repeat;
   background-size: cover;

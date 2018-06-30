@@ -1,5 +1,7 @@
+//core imports
 import styled from 'styled-components';
 
+//Landing page wrapper
  const Wrapper = styled.div`
   background: url(${process.env.PUBLIC_URL}/imgs/beauty1.jpg) no-repeat;
   background-size: cover;
