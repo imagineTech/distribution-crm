@@ -11,6 +11,7 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
+import Profile from '../components/Profile.js';
 import * as routes from '../constants/routes';
 
 
@@ -25,7 +26,8 @@ class App extends Component {
             <Route exact path={routes.CONTACT} component={() => <Contact />} />
             <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
             <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-            <Route exact path={routes.MEMBER_PORTAL} componen={() => <Crm />} />
+            <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm />} />
+            <Route exact path={routes.PROFILE} component={() => <Profile />} />
         </div>
     );
   }

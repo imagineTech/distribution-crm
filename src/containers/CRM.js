@@ -20,7 +20,6 @@ class Crm extends Component {
   }
 
   render() {
-    const { authUser } = this.props;
     return (
       <div>
         <h1>Welcome to our Crm</h1>
