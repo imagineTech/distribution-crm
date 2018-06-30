@@ -7,6 +7,7 @@ import Content from './partials/Content';
 import KupidoLogo from '../../../landing/partials/KupidoLogo';
 
 
+//This is the about main component. Contains every component related to about.
 const About = () => {
   return(
     <AboutContainer>

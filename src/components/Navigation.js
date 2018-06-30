@@ -6,15 +6,17 @@ import { SecondButton } from './CSS/Button';
 
 
 
+//All routes
+import * as routes from '../constants/routes';
 
-import * as routes from '../routes/routes';
-
+//Links for the landing page
 const LandingLinks = () =>
   <div>
     <Link to={routes.MEMBER_PORTAL}><Button primary>Member Portal</Button></Link>
     <Link to="/findoutmore"><Button primary>Find Out More</Button></Link>
   </div>
 
+//links for the find out page
 const FindoutLinks = () =>
   <LinksNav>
     <Link to={routes.HOME}><SecondButton >Home</SecondButton></Link>

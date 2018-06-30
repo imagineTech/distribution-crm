@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+//Main Button
  const Button = styled.button`
   background-color: ${props => (props.primary ? '#222': '#008CBA')};
   border: 2px solid white;
@@ -16,18 +18,13 @@ import styled from 'styled-components';
   margin: 10px;
 `;
 
+//temp component for testing
 const InputOne = styled.input`
 
 `;
 
-// export const TomatoButton = Button.extend`
-//   background: #222;
-//   color: white;
-//   border-radius: 20px;
-//   border: 2px solid white;
-//   opacity: .7;
-// `
 
+//Smaller secondary button
 const SecondButton = styled.button`
 background-color: ${props => (props.primary ? '#222': '#FB9638')};
 border: 3px solid white;

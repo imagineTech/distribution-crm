@@ -1,3 +1,10 @@
+/*
+  Here is our page for Routes, rather
+  than using just strings. We are exporting
+  them as constants and then attaching them
+  to a object for later use
+*/
+
 //LANDING SECTION
 export const FIND_OUT_MORE = '/findoutmore';
 export const LANDING = '/';

@@ -1,3 +1,10 @@
+/*
+  This file is for login action redux calls,
+  first one calls to store data into a reducer,
+  second is for firebase and logging in a user
+  to then be redirected into the CRM app
+*/
+
 import { auth } from '../firebase/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
