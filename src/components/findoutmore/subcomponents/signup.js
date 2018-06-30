@@ -1,6 +1,12 @@
+/*
+  The SignUp component, state management is holding
+  the email, password and rest of form fields.
+  This is done because of firebase and firestore
+*/
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../actions/signUpData';
+import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../actions/signUpData';
 
 class SignUp extends Component {
 
@@ -16,7 +22,6 @@ class SignUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.authEmailPasswordForm(this.props.emailAndPassword, this.props.signUpData);
-    // console.log(typeof this.props.emailAndPassword);
   };
 
   render() {
