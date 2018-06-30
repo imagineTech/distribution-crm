@@ -1,3 +1,12 @@
+/*
+  This container file will be our CRM holder
+  more components will be added as we go along.
+
+  Currently this file is in testing for user
+  protected routes. Will update comments once
+  testing is complete. 
+*/
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
