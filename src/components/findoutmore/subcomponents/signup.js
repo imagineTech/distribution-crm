@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../actions/signUpData';
+import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../actions/signUpData';
 
 class SignUp extends Component {
 

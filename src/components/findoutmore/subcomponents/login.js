@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dataToLoginWith, loginWithEmailAndPassword } from '../actions/loginAuth';
+import { dataToLoginWith, loginWithEmailAndPassword } from '../../../actions/loginAuth';
 
 class Login extends Component {
 
