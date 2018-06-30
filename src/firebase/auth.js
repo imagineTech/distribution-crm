@@ -1,3 +1,12 @@
+/*
+  For firebase, we are exporting the pre-defined
+  auth method calls to our own functions
+  So far we only have these for:
+    - creating a user with email and password
+    - logging in a user with email and password
+    - sigining out a user 
+*/
+
 import { auth } from './config_firebase';
 
 export const doCreateUserWithEmailAndPassword = (email, password) => {

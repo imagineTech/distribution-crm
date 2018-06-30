@@ -1,3 +1,10 @@
+/*
+  Like the rest of the signup state in redux
+  we have to seperate the email and password from
+  the rest of the form during signup due to
+  firebase's methods
+*/
+
 export function emailAndPasswordData(state = {}, action) {
   switch(action.type) {
     case "EMAIL_AND_PASSWORD_SUCCESS":
