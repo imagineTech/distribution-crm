@@ -1,3 +1,9 @@
+/*
+  The Login component, uses redux for state management
+  on email and password, and action calls for sending it
+  to firebase
+*/
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { dataToLoginWith, loginWithEmailAndPassword } from '../actions/loginAuth';
