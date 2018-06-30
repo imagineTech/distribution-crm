@@ -19,3 +19,4 @@ export const CONTACT = '/contact';
 //MEMBER PORTAL
 export const SIGN_IN = '/signin';
 export const MEMBER_PORTAL = '/memberportal';
+export const PROFILE = '/profile';

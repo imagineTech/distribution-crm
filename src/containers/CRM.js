@@ -4,7 +4,7 @@
 
   Currently this file is in testing for user
   protected routes. Will update comments once
-  testing is complete. 
+  testing is complete.
 */
 
 import React, { Component } from 'react';
@@ -23,29 +23,12 @@ class Crm extends Component {
     const { authUser } = this.props;
     return (
       <div>
-        {
-          authUser ?
-          <AuthSection /> :
-          <NonAuthSection />
-        }
-
-    </div>
+        <h1>Welcome to our Crm</h1>
+        <Link to={routes.PROFILE}>Profile</Link>
+        <button onClick={this.handleSignOut}>Sign Out</button>
+      </div>
     );
   };
-}
-
-const AuthSection = () => {
-  return (
-    <section>
-      <h1>Welcome to our Crm</h1>
-      <Link to={routes.PROFILE}>Profile</Link>
-      <button onClick={this.handleSignOut}>Sign Out</button>
-    </section>
-  );
-}
-
-const NonAuthSection = () => {
-  return <p>Nah son, login</p>
 }
 
 const mapStateToProps = state => {

@@ -12,8 +12,8 @@ import * as routes from '../constants/routes';
 //Links for the landing page
 const LandingLinks = () =>
   <div>
-    <Link to={routes.MEMBER_PORTAL}><Button primary>Member Portal</Button></Link>
-    <Link to="/findoutmore"><Button primary>Find Out More</Button></Link>
+    <Link to={routes.SIGN_IN}><Button primary>Member Portal</Button></Link>
+    <Link to={routes.FIND_OUT_MORE}><Button primary>Find Out More</Button></Link>
   </div>
 
 //links for the find out page
