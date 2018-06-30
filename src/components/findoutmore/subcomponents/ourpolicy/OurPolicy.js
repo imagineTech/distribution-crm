@@ -3,6 +3,7 @@ import React from 'react';
 //partials
 import OurPolicyContainer from './partials/OurPolicyContainer';
 
+//Main OurPolicy component. Contains all components related to our policy. 
 const OurPolicy = () => {
   return(
     <OurPolicyContainer>

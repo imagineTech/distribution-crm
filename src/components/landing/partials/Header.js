@@ -2,12 +2,10 @@ import React from 'react';
 import KupidoLogo from './KupidoLogo';
 import Button from '../../CSS/Button';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import FindoutLink from '../../Navigation';
 import { LandingLinks } from '../../Navigation';
-// import * as routes from '../../routes/routes';
 
 
-
+//Contains the content inside the landing page. 
 const Header = () =>
   <Router>
     <header>
