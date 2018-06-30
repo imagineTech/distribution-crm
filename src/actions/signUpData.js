@@ -1,3 +1,16 @@
+/*
+  This file had to be split up into two
+  action calls, one for just email and password
+  and the other for the rest of the fields
+  this is because firebase auth only require email
+  and password but we also need to store this new
+  user into a db. That is why we store the rest of the info
+  and push it all together into firebase's firestore
+
+  We use another instance of redirecting of submitting
+  the form
+*/
+
 import { auth, db } from '../firebase/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';

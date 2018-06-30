@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
-import App from './containers/App_signUp';
+import App from './containers/App';
 
 
 //Had to combine my config_store file with this index file
