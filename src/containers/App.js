@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../App.css'
+import { firebase } from '../firebase/index';
+import '../App.css';
 
 //Custom components
 import { Route } from 'react-router-dom';
@@ -16,7 +17,23 @@ import * as routes from '../constants/routes';
 
 
 class App extends Component {
+
+  state = {
+    authUser: null
+  }
+
+  componentDidMount() {
+    firebase.auth.onAuthStateChanged(user => {
+      if(user) {
+        this.setState({ authUser: user })
+      } else {
+        this.setState({ authUser: null })
+      }
+    })
+  }
+
   render() {
+    const { authUser } = this.state;
     return (
         <div id="main-container">
             <Route exact path={routes.HOME} component={() => <Landing />}  />
@@ -26,8 +43,14 @@ class App extends Component {
             <Route exact path={routes.CONTACT} component={() => <Contact />} />
             <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
             <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-            <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm />} />
-            <Route exact path={routes.PROFILE} component={() => <Profile />} />
+            {
+              authUser &&
+              <div>
+                <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm/>} />
+                <Route exact path={routes.PROFILE} component={() => <Profile />} />
+              </div>
+            }
+
         </div>
     );
   }
