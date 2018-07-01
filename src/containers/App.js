@@ -43,6 +43,11 @@ class App extends Component {
             <Route exact path={routes.CONTACT} component={() => <Contact />} />
             <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
             <Route exact path={routes.SIGN_IN} component={() => <Login />} />
+            {/*
+              This section below had to be setup because we have different
+              commponents that need to be protected. Using local state right now,
+              user is being given to us through firebase
+              */}
             {
               authUser &&
               <div>
