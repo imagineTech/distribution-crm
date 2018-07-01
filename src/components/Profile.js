@@ -5,8 +5,20 @@
 */
 
 import React, { Component } from 'react';
+import { db } from '../firebase/index';
 
 class Profile extends Component {
+
+  state = {
+    userInfo: null
+  }
+
+  componentDidMount() {
+    db.getUserData().then(doc => {
+      console.log(doc);
+    })
+  }
+
   render() {
     return(
       <div>

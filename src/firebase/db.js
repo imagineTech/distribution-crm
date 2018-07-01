@@ -16,3 +16,7 @@ export const addingEntry = (dbData) => {
     Password: dbData.Password
   })
 }
+
+export const getUserData = () => {
+  return db.collection('Buyer').get();
+}
