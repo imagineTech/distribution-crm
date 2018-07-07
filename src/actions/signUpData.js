@@ -44,7 +44,7 @@ export function emailPasswordFormAuth(EPData, formData) {
       //instead of history obj with .push()
       //we use a push() function through the use
       //of redux-thunk (dispatch)
-      dispatch(push(routes.CRM))
+      dispatch(push(routes.MEMBER_PORTAL))
     });
   }
 }
