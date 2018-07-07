@@ -8,23 +8,43 @@ class ProductUpload extends React.Component {
       value: '',
       takeAll: false
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    // handles change for all text boxes
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
+    this.handleUnitsChange = this.handleUnitsChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    // handles change for check box...box does not check
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    // handles submission of product
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
-  handleChange(e) {
+  // handles changes for text boxes
+  handleTitleChange(e) {
     this.setState({value: e.target.value});
   }
 
-  handleInputChange(e) {
+  handlePriceChange(e) {
+    this.setState({value: e.target.value});
+  }
+
+  handleUnitsChange(e) {
+    this.setState({value: e.target.value});
+  }
+
+  handleDescriptionChange(e) {
+    this.setState({value: e.target.value});
+  }
+
+  // handles change for check box...box does not check
+  handleCheckboxChange(e) {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
   }
 
+  // handles submission of product
   handleSubmit(e) {
     alert('A product was submitted: ' + this.state.value);
     e.preventDefault();
@@ -32,10 +52,12 @@ class ProductUpload extends React.Component {
     console.log('handle uploading-', this.state.file);
   }
 
+  // renders preview of chosen photo
   _handleImageChange(e) {
     e.preventDefault();
 
     let reader = new FileReader();
+    // chooses first file if multiple are chosen
     let file = e.target.files[0];
 
     reader.onloadend = () => {
@@ -73,7 +95,7 @@ class ProductUpload extends React.Component {
               <input 
               type="text"
               value={this.state.value} 
-              onChange={(e)=>this.handleChange(e)} />
+              onChange={(e)=>this.handleTitleChange(e)} />
             </label>
             <br />
             <label>
@@ -81,19 +103,19 @@ class ProductUpload extends React.Component {
               <input 
               type="text"
               value={this.state.value}
-              onChange={(e)=>this.handleChange(e)} />
+              onChange={(e)=>this.handlePriceChange(e)} />
             </label>
             <label>
               Number of Units:
               <input 
               type="text"
               value={this.state.value}
-              onChange={(e)=>this.handleChange(e)} />
+              onChange={(e)=>this.handleUnitsChange(e)} />
             </label>
             <br />
             <label>
               Description:
-              <textarea value={this.state.value} onChange={this.handleChange} />
+              <textarea value={this.state.value} onChange={this.handleDescriptionChange} />
             </label>
             <br />
             <label>
@@ -102,7 +124,7 @@ class ProductUpload extends React.Component {
                 name="takeAll"
                 type="checkbox"
                 checked={this.state.takeAll}
-                onChange={this.handleInputChange} />
+                onChange={this.handleCheckboxChange} />
             </label>
             <button className="submitButton" 
               type="submit" 
