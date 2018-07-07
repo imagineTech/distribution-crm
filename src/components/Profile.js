@@ -10,14 +10,12 @@ import { connect } from 'react-redux';
 
 class Profile extends Component {
 
-  componentDidMount() {
-    console.log(this.props.profileData);
-  }
 
   render() {
     return(
       <div>
-        <h1>Profile</h1>
+        <h1>{this.props.profileData.Name}</h1>
+        <p>Email: {this.props.profileData.Email}</p>
       </div>
     )
   }
