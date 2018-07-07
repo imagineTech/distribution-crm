@@ -21,7 +21,7 @@ export function dataToLoginWith(name, value) {
 export function loginWithEmailAndPassword(email, password) {
   return dispatch => {
     auth.doLoginWithEmailAndPassword(email, password).then(() => {
-      dispatch(push(routes.CRM))
+      dispatch(push(routes.MEMBER_PORTAL))
     })
   }
 }
