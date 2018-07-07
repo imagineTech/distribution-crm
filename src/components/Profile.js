@@ -13,12 +13,6 @@ class Profile extends Component {
     userInfo: null
   }
 
-  componentDidMount() {
-    db.getUserData().then(doc => {
-      console.log(doc);
-    })
-  }
-
   render() {
     return(
       <div>

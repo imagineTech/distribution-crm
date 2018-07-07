@@ -17,6 +17,6 @@ export const addingEntry = (dbData) => {
   })
 }
 
-export const getUserData = () => {
-  return db.collection('Buyer').get();
+export const getUserData = (docID) => {
+  return db.collection('Buyer').doc(docID).get();
 }

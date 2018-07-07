@@ -39,7 +39,11 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-    db.addingEntry(finalDataObj);
+    db.addingEntry(finalDataObj).then(docRef => {
+      db.getUserData(docRef.id).then(doc => {
+        console.log(doc);
+      })
+    });
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
       //instead of history obj with .push()
       //we use a push() function through the use
