@@ -45,7 +45,7 @@ export function emailPasswordFormAuth(EPData, formData) {
     //again and store into the profile action call
     db.addingEntry(finalDataObj).then(docRef => {
       db.getUserData(docRef.id).then(doc => {
-        dispatch(profileData(doc));
+        dispatch(profileData(doc.data()));
       })
     });
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
