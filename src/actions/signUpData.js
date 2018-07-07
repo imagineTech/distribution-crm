@@ -14,6 +14,7 @@
 import { auth, db } from '../firebase/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
+import { profileData } from './profileData';
 
 export function emailAndPasswordSuccess(EPName, EPValue) {
   return {
@@ -39,9 +40,12 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
+    //Here im taking the data object to post and
+    //im then sending it back to pull the data down
+    //again and store into the profile action call
     db.addingEntry(finalDataObj).then(docRef => {
       db.getUserData(docRef.id).then(doc => {
-        console.log(doc);
+        dispatch(profileData(doc));
       })
     });
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {

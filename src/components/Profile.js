@@ -1,16 +1,17 @@
 /*
-  Currently this is the Profile component,
-  very small and minimal component. Of course
-  will be added onto later.
+  UPDATE: Now supporting redux calls
+  right testing out how profile data is
+  being stored.
+
 */
 
 import React, { Component } from 'react';
-import { db } from '../firebase/index';
+import { connect } from 'react-redux';
 
 class Profile extends Component {
 
-  state = {
-    userInfo: null
+  componentDidMount() {
+    console.log(this.props.profileData);
   }
 
   render() {
@@ -22,4 +23,14 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    profileData: state.storeProfileData
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
