@@ -5,6 +5,7 @@
 */
 
 import React, { Component } from 'react';
+import Banner from '../../findoutmore/partials/Banner';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../actions/signUpData';
 
@@ -26,18 +27,20 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Sign-up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name: </label>
-          <input type="text" id="name" name="Name" onChange={this.handleChange}/>
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
-          <label htmlFor="signup_password">Password: </label>
-          <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
-          <button>Signup</button>
-        </form>
-      </div>
+      <Banner>
+        <div>
+          <h1>Sign-up</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="name">Name: </label>
+            <input type="text" id="name" name="Name" onChange={this.handleChange}/>
+            <label htmlFor="email">Email: </label>
+            <input type="email" id="email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
+            <label htmlFor="signup_password">Password: </label>
+            <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
+            <button>Signup</button>
+          </form>
+        </div>
+      </Banner>
     );
   }
 }
