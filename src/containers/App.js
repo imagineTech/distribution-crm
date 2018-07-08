@@ -12,7 +12,7 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
-import Profile from '../components/Profile.js';
+import Profile from './Profile.js';
 import * as routes from '../constants/routes';
 
 
