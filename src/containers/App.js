@@ -13,6 +13,7 @@ import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
 import Profile from './Profile.js';
+import EditProfile from '../components/profile/subcomponents/EditProfile';
 import * as routes from '../constants/routes';
 
 
@@ -53,9 +54,9 @@ class App extends Component {
               <div>
                 <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm/>} />
                 <Route exact path={routes.PROFILE} component={() => <Profile />} />
+                <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
               </div>
             }
-
         </div>
     );
   }
