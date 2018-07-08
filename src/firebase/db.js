@@ -9,8 +9,8 @@
 
 import { db } from './config_firebase';
 
-export const addingEntry = (dbData) => {
-  return db.collection('Buyer').add({
+export const addingEntry = (dbData, authId) => {
+  return db.collection('Buyer').doc(authId).set({
     Name: dbData.Name,
     Email: dbData.Email,
     Password: dbData.Password
