@@ -5,9 +5,10 @@
   to then be redirected into the CRM app
 */
 
-import { auth } from '../firebase/index';
+import { auth, db } from '../firebase/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
+import { profileData } from './profileData';
 
 export function dataToLoginWith(name, value) {
   return {
@@ -20,8 +21,11 @@ export function dataToLoginWith(name, value) {
 
 export function loginWithEmailAndPassword(email, password) {
   return dispatch => {
-    auth.doLoginWithEmailAndPassword(email, password).then(() => {
+    auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
       dispatch(push(routes.MEMBER_PORTAL))
+      db.getUserData(authUser.user.uid).then(doc => {
+        dispatch(profileData(doc.data()));
+      })
     })
   }
 }

@@ -40,19 +40,19 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-    //Here im taking the data object to post and
-    //im then sending it back to pull the data down
-    //again and store into the profile action call
-    db.addingEntry(finalDataObj).then(docRef => {
-      db.getUserData(docRef.id).then(doc => {
-        dispatch(profileData(doc.data()));
-      })
-    });
+
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
       //instead of history obj with .push()
       //we use a push() function through the use
       //of redux-thunk (dispatch)
       dispatch(push(routes.MEMBER_PORTAL))
+      //Here im taking the data object to post and
+      //im then sending it back to pull the data down
+      //again and store into the profile action call
+      db.addingEntry(finalDataObj, authUser.user.uid)
+      db.getUserData(authUser.user.uid).then(doc => {
+        dispatch(profileData(doc.data()));
+      });
     });
   }
 }
