@@ -9,11 +9,13 @@ import { emailAndPasswordData, signUpFormData } from './signUpData';
 import { emailAndPasswordToState } from './loginAuth';
 import { authToState } from './authStateChange'
 import { storeProfileData } from './profileData';
+import { storeNewProfileData } from './profileData';
 
 export default combineReducers({
   emailAndPasswordData,
   signUpFormData,
   emailAndPasswordToState,
   authToState,
-  storeProfileData
+  storeProfileData,
+  storeNewProfileData
 });
