@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { newProfileData, newProfileDataToSend } from '../../../actions/profileData';
 
 //A component thats going to handle edit
 //profile details. Right now its just name
-//and email. 
+//and email.
 class EditPofile extends Component {
+
+  handleChange = e => {
+    this.props.editProfile(e.target.name, e.target.value);
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    // Here is where we use the default and new dbData
+    this.props.sendNewProfileData(this.props.profileData, this.props.newProfileData, this.props.profileData.id);
+  }
 
   render() {
     return(
       <section>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name: </label>
-          <input name="name" id="name" placeholder={this.props.profileData.Name} />
+          <input
+            name="Name"
+            placeholder={this.props.profileData.Name}
+            onChange={this.handleChange}
+          />
           <label htmlFor="email">Email: </label>
-          <input name="email;" id="email" placeholder={this.props.profileData.Email} />
+          <input
+            name="Email"
+            placeholder={this.props.profileData.Email}
+            onChange={this.handleChange}
+          />
           <button>Save</button>
         </form>
       </section>
@@ -23,12 +42,18 @@ class EditPofile extends Component {
 
 const mapStateToProps = state => {
   return {
-    profileData: state.storeProfileData
+    // This profileData is the same
+    // as the one when created in SignUp 
+    profileData: state.storeProfileData,
+    newProfileData: state.storeNewProfileData
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
+    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPofile);
