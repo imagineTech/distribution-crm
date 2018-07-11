@@ -9,10 +9,32 @@
 
 import { db } from './config_firebase';
 
-export const addingEntry = (dbData) => {
-  return db.collection('Buyer').add({
+const DB = db.collection('Buyer')
+
+export const addingUser = (dbData, authId) => {
+  return DB.doc(authId).set({
+    id: authId,
     Name: dbData.Name,
     Email: dbData.Email,
     Password: dbData.Password
+  })
+}
+
+export const getUserData = (docID) => {
+  return DB.doc(docID).get();
+}
+
+export const editUserData = (defaultDbData, newDbData, dbID) => {
+  return DB.doc(dbID).update({
+    // These lines won't work, seems that the dynmaic object key calling
+    // wont work with fb for more than one entry. Any other entry would just
+    // have the same value as the first one.
+    // [Object.keys(newDbData)[0]]: (newDbData.Name || defaultDbData.Name),
+    // [Object.keys(newDbData)[1]]: (newDbData.Email || defaultDbData.Email)
+    // The conditional statements are for when a user only needs to update one
+    // value instead of all. That's why i ask for default and new dbData 
+    // I ended up hard coding them, below:
+    Name: (newDbData.Name || defaultDbData.Name),
+    Email: (newDbData.Email || defaultDbData.Email)
   })
 }
