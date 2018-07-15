@@ -4,7 +4,9 @@
 
   The one(s) that we have are:
    - creating a new user through firestore on the
-     'Buyer' table
+     'Buyer' table'
+   - loading user profile data for later use
+   - editing profile data
 */
 
 import { db } from './config_firebase';
@@ -20,7 +22,7 @@ export const addingUser = (dbData, authId) => {
   })
 }
 
-export const getUserData = (docID) => {
+export const loadUserProfileData = (docID) => {
   return DB.doc(docID).get();
 }
 
@@ -32,7 +34,7 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
     // [Object.keys(newDbData)[0]]: (newDbData.Name || defaultDbData.Name),
     // [Object.keys(newDbData)[1]]: (newDbData.Email || defaultDbData.Email)
     // The conditional statements are for when a user only needs to update one
-    // value instead of all. That's why i ask for default and new dbData 
+    // value instead of all. That's why i ask for default and new dbData
     // I ended up hard coding them, below:
     Name: (newDbData.Name || defaultDbData.Name),
     Email: (newDbData.Email || defaultDbData.Email)
