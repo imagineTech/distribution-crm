@@ -4,7 +4,6 @@
   being stored.
 
 */
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../components/SignOut';
@@ -12,8 +11,6 @@ import { connect } from 'react-redux';
 import * as routes from '../constants/routes';
 
 class Profile extends Component {
-
-
   render() {
     return(
       <div>
