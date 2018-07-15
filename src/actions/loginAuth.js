@@ -25,8 +25,10 @@ export function loginWithEmailAndPassword(email, password) {
       dispatch(push(routes.MEMBER_PORTAL))
       //this is how we use uid later, couldn't find
       //another way to reference db doc based on authUser
-      //info 
-      db.getUserData(authUser.user.uid).then(doc => {
+      //info
+      db.loadUserProfileData(authUser.user.uid).then(doc => {
+        // I'm taking the doc data and storing it thro a redux
+        // action to state
         dispatch(profileData(doc.data()));
       })
     })

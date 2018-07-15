@@ -40,22 +40,18 @@ export function emailPasswordFormAuth(EPData, formData) {
     ...EPData
   };
   return dispatch => {
-
     auth.doCreateUserWithEmailAndPassword(EPData.Email, EPData.Password).then(authUser => {
       //instead of history obj with .push()
       //we use a push() function through the use
       //of redux-thunk (dispatch)
       dispatch(push(routes.MEMBER_PORTAL))
-      //Here im taking the data object to post and
-      //im then sending it back to pull the data down
-      //again and store into the profile action call
-        //using uid as the custom id for doc creation
-        //easier to reference later rather than use fs
-        //id
+      //Using the auth uid to create a doc obj with finalDataObj
+      //data
       db.addingUser(finalDataObj, authUser.user.uid)
       //Saving it to profile is pretty straight forward
       //using uid again for login later
-      db.getUserData(authUser.user.uid).then(doc => {
+      //Having to do this in login so that data can be loaded both ways. 
+      db.loadUserProfileData(authUser.user.uid).then(doc => {
         dispatch(profileData(doc.data()));
       });
     });
