@@ -4,7 +4,7 @@
   So far we only have these for:
     - creating a user with email and password
     - logging in a user with email and password
-    - sigining out a user 
+    - sigining out a user
 */
 
 import { auth } from './config_firebase';
@@ -19,4 +19,8 @@ export const doLoginWithEmailAndPassword = (email, password) => {
 
 export const doSignOut = () => {
   return auth.signOut();
+}
+
+export const doUpdateUserEmail = (email) => {
+  return auth.currentUser.updateEmail(email)
 }
