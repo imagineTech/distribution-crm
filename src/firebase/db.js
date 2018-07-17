@@ -18,7 +18,9 @@ export const addingUser = (dbData, authId) => {
     id: authId,
     Name: dbData.Name,
     Email: dbData.Email,
-    Password: dbData.Password
+    Password: dbData.Password,
+    Company: dbData.Company,
+    Department: dbData.Department
   })
 }
 
