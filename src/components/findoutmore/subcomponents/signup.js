@@ -41,6 +41,8 @@ class SignUp extends Component {
             <input type="text" id="company" name="Company" onChange={this.handleChange}/>
             <label>Department: </label>
             <input type="text" id="department" name="Department" onChange={this.handleChange}/>
+            <label>Country: </label>
+            <input type="text" id="country" name="Country" onChange={this.handleChange} />
             <button>Signup</button>
           </form>
         </div>
