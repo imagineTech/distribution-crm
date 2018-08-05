@@ -14,6 +14,7 @@ import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
 import Profile from './Profile.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
+import ProductItem from '../components/CRM/Product/ProductItem';
 import * as routes from '../constants/routes';
 
 
@@ -57,6 +58,10 @@ class App extends Component {
                 <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
               </div>
             }
+            {
+              /*Testing out Product Item component with Moltin*/
+            }
+            <Route exact path={routes.PRODUCT_ITEM} component={() => <ProductItem />} />
         </div>
     );
   }

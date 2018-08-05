@@ -21,3 +21,4 @@ export const SIGN_IN = '/signin';
 export const MEMBER_PORTAL = '/memberportal';
 export const PROFILE = '/profile';
 export const EDIT_PROFILE = '/editprofile';
+export const PRODUCT_ITEM = '/productitem';
