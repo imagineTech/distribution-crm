@@ -50,14 +50,7 @@ class App extends Component {
             <Route exact path={routes.CONTACT} component={() => <Contact />} />
             <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
             <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-            {
-              /*Testing out Product Item component with Moltin*/
-            }
-            <Route
-              exact
-              path={routes.PRODUCT_ITEM}
-              component={() => <ProductItem products={this.state.products}/>}
-            />
+
             {/*
               This section below had to be setup because we have different
               commponents that need to be protected. Using local state right now,
