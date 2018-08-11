@@ -15,13 +15,15 @@ import Login from '../components/findoutmore/subcomponents/login.js';
 import Profile from './Profile.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import ProductItem from '../components/CRM/Product/ProductItem';
+import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
 
 class App extends Component {
 
   state = {
-    authUser: null
+    authUser: null,
+    products: []
   }
 
   componentDidMount() {
@@ -32,6 +34,9 @@ class App extends Component {
         this.setState({ authUser: null })
       }
     })
+    Moltin.getAllProducts().then(product => {
+      this.setState({ products: this.state.products.concat(product.data)})
+    });
   }
 
   render() {
@@ -45,6 +50,14 @@ class App extends Component {
             <Route exact path={routes.CONTACT} component={() => <Contact />} />
             <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
             <Route exact path={routes.SIGN_IN} component={() => <Login />} />
+            {
+              /*Testing out Product Item component with Moltin*/
+            }
+            <Route
+              exact
+              path={routes.PRODUCT_ITEM}
+              component={() => <ProductItem products={this.state.products}/>}
+            />
             {/*
               This section below had to be setup because we have different
               commponents that need to be protected. Using local state right now,
@@ -58,10 +71,7 @@ class App extends Component {
                 <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
               </div>
             }
-            {
-              /*Testing out Product Item component with Moltin*/
-            }
-            <Route exact path={routes.PRODUCT_ITEM} component={() => <ProductItem />} />
+
         </div>
     );
   }
