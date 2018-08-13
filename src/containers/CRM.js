@@ -17,13 +17,13 @@ import * as routes from '../constants/routes';
 class Crm extends Component {
 
   render() {
-    const { products } = this.props;
+    const { products, match } = this.props;
     return (
       <div>
         <h1>Welcome to our Crm</h1>
         <Link to={routes.PROFILE}>Profile</Link>
         <SignOutButton />
-        <ProductList products={products} />
+        <ProductList match={match} products={products} />
       </div>
     );
   };

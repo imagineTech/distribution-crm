@@ -64,7 +64,7 @@ class App extends Component {
                   render={({ match }) => {
                     return (
                       <div>
-                        <Crm products={this.state.products}/>
+                        <Crm match={match} products={this.state.products}/>
                         {console.log(match)}
                       </div>
                     );
