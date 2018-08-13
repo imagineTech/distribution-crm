@@ -59,7 +59,17 @@ class App extends Component {
             {
               authUser &&
               <div>
-                <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm/>} />
+                <Route
+                  path={routes.MEMBER_PORTAL}
+                  render={({ match }) => {
+                    return (
+                      <div>
+                        <Crm products={this.state.products}/>
+                        {console.log(match)}
+                      </div>
+                    );
+                  }}
+                />
                 <Route exact path={routes.PROFILE} component={() => <Profile />} />
                 <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
               </div>

@@ -10,17 +10,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../components/SignOut';
+import ProductList from '../components/CRM/Product/ProductList';
 import { connect } from 'react-redux';
 import * as routes from '../constants/routes';
 
 class Crm extends Component {
 
   render() {
+    const { products } = this.props;
     return (
       <div>
         <h1>Welcome to our Crm</h1>
         <Link to={routes.PROFILE}>Profile</Link>
         <SignOutButton />
+        <ProductList products={products} />
       </div>
     );
   };
