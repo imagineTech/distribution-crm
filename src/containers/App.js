@@ -15,6 +15,7 @@ import Login from '../components/findoutmore/subcomponents/login.js';
 import Profile from './Profile.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
+import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
@@ -42,50 +43,45 @@ class App extends Component {
   render() {
     const { authUser, products } = this.state;
     return (
-        <div id="main-container">
-            <Route exact path={routes.HOME} component={() => <Landing />}  />
-            <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
-            <Route exact path={routes.ABOUT} component={() => <About />}  />
-            <Route exact path={routes.OUR_POLICY} component={() => <OurPolicy />} />
-            <Route exact path={routes.CONTACT} component={() => <Contact />} />
-            <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
-            <Route exact path={routes.SIGN_IN} component={() => <Login />} />
+      <div id="main-container">
+        <Route exact path={routes.HOME} component={() => <Landing />}  />
+        <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
+        <Route exact path={routes.ABOUT} component={() => <About />}  />
+        <Route exact path={routes.OUR_POLICY} component={() => <OurPolicy />} />
+        <Route exact path={routes.CONTACT} component={() => <Contact />} />
+        <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
+        <Route exact path={routes.SIGN_IN} component={() => <Login />} />
 
-            {/*
-              This section below had to be setup because we have different
-              commponents that need to be protected. Using local state right now,
-              user is being given to us through firebase
-              */}
-            {
-              authUser &&
-              <div>
-                <Route
-                  exact
-                  path={routes.MEMBER_PORTAL}
-                  render={({ match }) => {
-                    return (
-                      <div>
-                        <Crm match={match} products={products}/>
-                        {console.log(match)}
-                      </div>
-                    );
-                  }}
-                />
-                <Route
-                  exact
-                  path={routes.PRODUCTS}
-                  render={({ match }) => {
-                    return <Products products={products} match={match} auth={authUser} />
-                  }}
-                />
-                <Route exact path={routes.PROFILE} component={() => <Profile />} />
-                <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
-              </div>
-            }
+        {/*
+          This section below had to be setup because we have different
+          commponents that need to be protected. Using local state right now,
+          user is being given to us through firebase
+          */}
+          {
+            authUser &&
+            <div>
+              <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
+              <Route exact path={routes.PROFILE} component={() => <Profile />} />
+              <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
+              <Route
+                exact
+                path={routes.PRODUCTS}
+                component={({ match }) => <Products products={products} match={match} />} />
+              {/*
+                Since nested routes seemed almost undoable. I had to find a way to get this route
+                to talk to the route above. So i just sent over the same state values and did my
+                logic in the ProductItem component
+                */}
+              <Route
+                exact
+                path={`${routes.PRODUCTS}/:productId`}
+                component={({ match }) => <ProductItem products={products} match={match} />} />
+            </div>
+          }
 
         </div>
-    );
+      );
+    }
   }
-}
 
-export default App;
+  export default App;
