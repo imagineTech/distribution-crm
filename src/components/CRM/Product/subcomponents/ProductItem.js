@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ProductItem = ({ product, match }) => {
+const ProductItem = ({ product, auth }) => {
     return (
       <div>
-        <h1>hello</h1>
+        <h1>Hello</h1>
+        {console.log(auth)}
       </div>
     )
 };

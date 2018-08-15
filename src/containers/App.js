@@ -14,6 +14,7 @@ import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
 import Profile from './Profile.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
+import Products from '../components/CRM/Product/Products';
 import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
@@ -39,7 +40,7 @@ class App extends Component {
   }
 
   render() {
-    const { authUser } = this.state;
+    const { authUser, products } = this.state;
     return (
         <div id="main-container">
             <Route exact path={routes.HOME} component={() => <Landing />}  />
@@ -59,14 +60,22 @@ class App extends Component {
               authUser &&
               <div>
                 <Route
+                  exact
                   path={routes.MEMBER_PORTAL}
                   render={({ match }) => {
                     return (
                       <div>
-                        <Crm match={match} products={this.state.products}/>
+                        <Crm match={match} products={products}/>
                         {console.log(match)}
                       </div>
                     );
+                  }}
+                />
+                <Route
+                  exact
+                  path={routes.PRODUCTS}
+                  render={({ match }) => {
+                    return <Products products={products} match={match} auth={authUser} />
                   }}
                 />
                 <Route exact path={routes.PROFILE} component={() => <Profile />} />
