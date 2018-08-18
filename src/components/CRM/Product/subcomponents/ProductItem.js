@@ -1,4 +1,5 @@
 import React from 'react';
+import QuantityCounter from './QuantityCounter';
 
 const ProductItem = ({ products, match }) => {
     return (
@@ -14,6 +15,7 @@ const ProductItem = ({ products, match }) => {
                 <h1>{product.name}</h1>
                 <p>{product.description}</p>
                 {console.log(product)}
+                <QuantityCounter />
               </div>
             )
           }
