@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 class QuantityCounter extends Component {
   state = {
-    counter: 0,
-    total: 0
+    counter: 0
   };
 
   handleChange = e => {
@@ -26,11 +25,6 @@ class QuantityCounter extends Component {
     this.setState({ counter: --e.target.value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ total: this.state.counter });
-  };
-
   render() {
     const { counter, total } = this.state;
     return (
@@ -49,15 +43,9 @@ class QuantityCounter extends Component {
             -
           </button>
         </section>
-        <form onSubmit={this.handleSubmit}>
-          <button>Checkout</button>
-        </form>
-        <Total total={total} />
       </div>
     );
   }
 }
-
-const Total = ({ total }) => <h1>Total: {total}</h1>;
 
 export default QuantityCounter;
