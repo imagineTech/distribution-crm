@@ -13,7 +13,7 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { products, match, authUser } = this.props;
+      const { products, match, authUser, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -30,7 +30,10 @@ class ProductItem extends Component {
                   <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
                   <form onSubmit={e => {
                     e.preventDefault();
-                    Moltin.addProductsToCart(authUser.uid, product.id, inputValue).then(cart => console.log(cart, this.props));
+                    Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
+                      .then(cartItems => {
+                        history.push('/cart');
+                      });
                     }}>
                     <button>Checkout</button>
                   </form>
