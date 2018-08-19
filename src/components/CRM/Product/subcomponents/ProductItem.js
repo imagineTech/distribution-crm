@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as Moltin from '../../../../moltin/index';
 import QuantityCounter from './QuantityCounter';
 
 class ProductItem extends Component {
@@ -11,13 +12,8 @@ class ProductItem extends Component {
       this.setState({ inputValue });
     }
 
-    handleSubmit = e => {
-      e.preventDefault();
-      console.log(this.state.inputValue);
-    }
-
     render() {
-      const { products, match } = this.props;
+      const { products, match, authUser } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -32,7 +28,10 @@ class ProductItem extends Component {
                   <h1>{product.name}</h1>
                   <p>{product.description}</p>
                   <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
-                  <form onSubmit={this.handleSubmit}>
+                  <form onSubmit={e => {
+                    e.preventDefault();
+                    Moltin.addProductsToCart(authUser.uid, product.id, inputValue).then(cart => console.log(cart, this.props));
+                    }}>
                     <button>Checkout</button>
                   </form>
                 </div>
