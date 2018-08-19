@@ -21,4 +21,4 @@ export const SIGN_IN = '/signin';
 export const MEMBER_PORTAL = '/memberportal';
 export const PRODUCTS = '/products'
 export const PROFILE = '/profile';
-export const EDIT_PROFILE = '/profile/editprofile';
+export const EDIT_PROFILE = 'editprofile';
