@@ -12,10 +12,11 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup.js';
 import Login from '../components/findoutmore/subcomponents/login.js';
-import Profile from './Profile.js';
+import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
+import Cart from '../components/CRM/Cart/Cart';
 import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
@@ -24,13 +25,14 @@ class App extends Component {
 
   state = {
     authUser: null,
+    authenticated: false,
     products: []
   }
 
   componentDidMount() {
     firebase.auth.onAuthStateChanged(user => {
       if(user) {
-        this.setState({ authUser: user })
+        this.setState({ authUser: user, authenticated: true })
       } else {
         this.setState({ authUser: null })
       }
@@ -41,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { authUser, products } = this.state;
+    const { authUser, products, authenticated } = this.state;
     return (
       <div id="main-container">
         <Route exact path={routes.HOME} component={() => <Landing />}  />
@@ -58,24 +60,18 @@ class App extends Component {
           user is being given to us through firebase
           */}
           {
-            authUser &&
+            authenticated &&
             <div>
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
-              <Route exact path={routes.PROFILE} component={() => <Profile />} />
-              <Route exact path={routes.EDIT_PROFILE} component={() => <EditProfile />} />
-              <Route
-                exact
-                path={routes.PRODUCTS}
-                component={({ match }) => <Products products={products} match={match} />} />
+              <Route exact path={routes.CART} component={() => <Cart /> }/>
+              <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
+              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} products={products}/>
               {/*
                 Since nested routes seemed almost undoable. I had to find a way to get this route
                 to talk to the route above. So i just sent over the same state values and did my
                 logic in the ProductItem component
                 */}
-              <Route
-                exact
-                path={`${routes.PRODUCTS}/:productId`}
-                component={({ match }) => <ProductItem products={products} match={match} />} />
+
             </div>
           }
 

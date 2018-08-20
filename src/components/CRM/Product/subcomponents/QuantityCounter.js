@@ -1,63 +1,51 @@
 import React, { Component } from 'react';
 
 class QuantityCounter extends Component {
-  state = {
-    counter: 0,
-    total: 0
-  };
 
   handleChange = e => {
-    this.setState({
-      counter: e.target.value
-    });
+    let { quantity, onQuantityChange } = this.props;
+    quantity = e.target.value;
+    onQuantityChange(quantity);
   };
 
   handleAddition = e => {
-    this.setState({
-      counter: ++e.target.value
-    });
+    let { quantity, onQuantityChange } = this.props;
+    quantity = ++e.target.value;
+    onQuantityChange(quantity);
   };
 
   handleSubtraction = e => {
-    if (this.state.counter <= 0) {
+    let { quantity, onQuantityChange } = this.props;
+    if (quantity <= 0) {
       alert("Can't go below 0");
-      this.setState({ counter: ++e.target.value });
+      quantity = ++e.target.value;
+      onQuantityChange(quantity);
     }
-    this.setState({ counter: --e.target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ total: this.state.counter });
+    quantity = --e.target.value;
+    onQuantityChange(quantity);
   };
 
   render() {
-    const { counter, total } = this.state;
+    const { quantity } = this.props;
     return (
       <div>
         <section>
-          <button value={counter} onClick={this.handleAddition}>
+          <button value={quantity} onClick={this.handleAddition}>
             +
           </button>
           <input
             style={{ width: "5%" }}
             type="text"
-            value={counter}
+            value={quantity}
             onChange={this.handleChange}
           />
-          <button value={counter} onClick={this.handleSubtraction}>
+          <button value={quantity} onClick={this.handleSubtraction}>
             -
           </button>
         </section>
-        <form onSubmit={this.handleSubmit}>
-          <button>Checkout</button>
-        </form>
-        <Total total={total} />
       </div>
     );
   }
 }
-
-const Total = ({ total }) => <h1>Total: {total}</h1>;
 
 export default QuantityCounter;
