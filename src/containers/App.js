@@ -16,6 +16,7 @@ import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
+import Cart from '../components/CRM/Cart/Cart';
 import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
@@ -62,6 +63,7 @@ class App extends Component {
             authenticated &&
             <div>
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
+              <Route exact path={routes.CART} component={() => <Cart /> }/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} products={products}/>
               {/*

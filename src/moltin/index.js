@@ -14,3 +14,8 @@ export const updateItemQuantity = async (refId, itemId, newQuantity) => {
   const update = await Moltin.Cart(refId).UpdateItemQuantity(itemId, newQuantity);
   return update;
 }
+
+export const getACart = async (refId) => {
+  const cart = await Moltin.Cart(refId).Get();
+  return cart;
+}
