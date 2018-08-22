@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ products, match }) => {
+const ProductList = ({ productData, match }) => {
   return (
     <div>
-      {products.map(product => {
+      {productData.map(product => {
         return (
           <div key={product.id}>
             {/*

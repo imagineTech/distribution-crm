@@ -1,4 +1,4 @@
-import Moltin  from './config_moltin';
+import Moltin from './config_moltin';
 
 export const getAllProducts = async () => {
   const products = await Moltin.Products.All();

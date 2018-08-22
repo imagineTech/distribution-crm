@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as Moltin from '../../../../moltin/index';
 import * as routes from '../../../../constants/routes';
-import Cart from '../../Cart/Cart';
 import QuantityCounter from './QuantityCounter';
 
 class ProductItem extends Component {
@@ -15,7 +14,7 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { products, match, authUser, history } = this.props;
+      const { productData, match, authUser, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -23,7 +22,7 @@ class ProductItem extends Component {
               I had to do a conditional statement first, this helped connect the
               ProductList to the ProductItem while sending over the correct data
           */}
-          {products.map(product => {
+          {productData.map(product => {
             if(product.id === match.params.productId) {
               return (
                 <div key={product.id}>
