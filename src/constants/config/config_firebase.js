@@ -6,7 +6,7 @@
   in your console.
 
   We're exporting firebase instances of firestore
-  and authentication through db and auth 
+  and authentication through db and auth
 */
 
 import firebase from 'firebase/app';
