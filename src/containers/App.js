@@ -17,7 +17,6 @@ import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
-import * as Moltin from '../moltin/index';
 import * as routes from '../constants/routes';
 
 
@@ -25,8 +24,7 @@ class App extends Component {
 
   state = {
     authUser: null,
-    authenticated: false,
-    products: []
+    authenticated: false
   }
 
   componentDidMount() {
@@ -37,13 +35,11 @@ class App extends Component {
         this.setState({ authUser: null })
       }
     })
-    Moltin.getAllProducts().then(product => {
-      this.setState({ products: this.state.products.concat(product.data)})
-    });
+
   }
 
   render() {
-    const { authUser, products, authenticated } = this.state;
+    const { authUser, authenticated } = this.state;
     return (
       <div id="main-container">
         <Route exact path={routes.HOME} component={() => <Landing />}  />
@@ -65,7 +61,7 @@ class App extends Component {
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
               <Route exact path={routes.CART} component={() => <Cart /> }/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
-              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} products={products}/>
+              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
               {/*
                 Since nested routes seemed almost undoable. I had to find a way to get this route
                 to talk to the route above. So i just sent over the same state values and did my
