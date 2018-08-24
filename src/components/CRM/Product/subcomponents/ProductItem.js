@@ -36,7 +36,7 @@ class ProductItem extends Component {
                         history.push(`${routes.CART}`)
                       });
                     }}>
-                    <button>Checkout</button>
+                    <button>Add to Cart</button>
                   </form>
                 </div>
               )
