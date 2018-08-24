@@ -29,7 +29,6 @@ class Cart extends Component {
             </div>
           )
         })}
-        {console.log(cartItems)}
       </div>
     )
   }
