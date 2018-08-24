@@ -27,20 +27,6 @@ class App extends Component {
     authenticated: false
   }
 
-
-  componentDidMount() {
-    firebase.auth.onAuthStateChanged(user => {
-      if(user) {
-        this.setState({ authUser: user, authenticated: true })
-      } else {
-        this.setState({ authUser: null })
-      }
-    })
-    Moltin.getAllProducts().then(product => {
-      this.setState({ products: this.state.products.concat(product.data)})
-    });
-  }
-
   componentDidMount() {
     firebase.auth.onAuthStateChanged(user => {
       if(user) {
