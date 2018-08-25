@@ -15,6 +15,11 @@ class Cart extends Component {
       })
     });
   }
+
+  handleClick = e => {
+    
+  }
+
   render() {
     const { cartItems } = this.state;
     const { auth } = this.props;
@@ -29,6 +34,7 @@ class Cart extends Component {
             </div>
           )
         })}
+        <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
   }
