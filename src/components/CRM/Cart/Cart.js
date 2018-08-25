@@ -17,7 +17,20 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    
+    const { auth } = this.props;
+    const customerId = "a756aff8-39e1-446e-b299-d69ee8d5399f";
+    const billing = {
+      first_name: 'Matt',
+      last_name: 'Mortensen',
+      line_1: '3333 South SomeStreet',
+      city: 'West Valley',
+      postcode: '84128',
+      county: 'Utah',
+      country: 'United States'
+    }
+    Moltin.checkoutCart(auth.uid, customerId, billing).then(order => {
+      console.log(order);
+    })
   }
 
   render() {

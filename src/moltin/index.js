@@ -20,4 +20,7 @@ export const getACart = async (refId) => {
   return cart;
 }
 
-export const checkoutCart = async (refId, customerId, billing, shipping) => {}
+export const checkoutCart = async (refId, customerId, billing, shipping) => {
+  const checkout = await Moltin.Cart(refId).Checkout(customerId, billing, shipping);
+  return checkout;
+}
