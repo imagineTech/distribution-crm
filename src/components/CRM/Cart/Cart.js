@@ -38,7 +38,6 @@ class Cart extends Component {
 
   render() {
     const { cartItems } = this.state;
-    const { auth } = this.props;
     return(
       <div>
         {cartItems.map(item => {

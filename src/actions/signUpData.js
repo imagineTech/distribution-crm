@@ -12,6 +12,7 @@
 */
 
 import { auth, db } from '../firebase/index';
+import * as Moltin from '../moltin/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
 import { profileData } from './profileData';
@@ -47,10 +48,11 @@ export function emailPasswordFormAuth(EPData, formData) {
       dispatch(push(routes.MEMBER_PORTAL))
       //Using the auth uid to create a doc obj with finalDataObj
       //data
+      Moltin.createAMoltinUser(finalDataObj.Name, finalDataObj.Email, authUser.user.uid);
       db.addingUser(finalDataObj, authUser.user.uid)
       //Saving it to profile is pretty straight forward
       //using uid again for login later
-      //Having to do this in login so that data can be loaded both ways. 
+      //Having to do this in login so that data can be loaded both ways.
       db.loadUserProfileData(authUser.user.uid).then(doc => {
         dispatch(profileData(doc.data()));
       });

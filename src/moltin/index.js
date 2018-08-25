@@ -1,5 +1,15 @@
 import Moltin  from './config_moltin';
 
+export const createAMoltinUser = async (name, email, id) => {
+  const moltinUser = {
+    name,
+    email
+  }
+  const customer = await Moltin.Customers.Create(moltinUser);
+  customer.data.id = id;
+  return customer;
+}
+
 export const getAllProducts = async () => {
   const products = await Moltin.Products.All();
   return products;
