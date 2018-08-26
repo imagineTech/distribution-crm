@@ -19,7 +19,7 @@ class Cart extends Component {
   handleClick = e => {
     const { auth } = this.props;
     //hard coded moltin user id. created within moltin cms
-    const customerId = "dab3c740-dcf5-45b5-867f-b86e8d2135ec";
+    const customerId = "3e8c0676-2d4c-426a-8e8a-065800215b38";
     //hard coded billing
     const billing = {
       first_name: 'Matt',

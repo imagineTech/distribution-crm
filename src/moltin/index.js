@@ -33,3 +33,8 @@ export const checkoutCart = async (refId, customerId, billing, shipping) => {
   const checkout = await Moltin.Cart(refId).Checkout(customerId, billing, shipping);
   return checkout;
 }
+
+export const getTransactions = async (orderId) => {
+  const transactions = await Moltin.Orders.Transactions(orderId);
+  return transactions;
+}
