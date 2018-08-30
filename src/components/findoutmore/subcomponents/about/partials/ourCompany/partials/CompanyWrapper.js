@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BrandWrapper = styled.div`
+const CompanyWrapper = styled.div`
   border: 2px solid black;
   max-width: 1000px;
   min-height: 600px;
@@ -8,4 +8,4 @@ const BrandWrapper = styled.div`
   overflow: hidden;
   `
 
-export default BrandWrapper;
+export default CompanyWrapper;

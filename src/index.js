@@ -11,6 +11,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './containers/App';
+import "../node_modules/font-awesome/css/font-awesome.css";
 
 
 //Had to combine my config_store file with this index file
@@ -40,7 +41,7 @@ const persistor = persistStore(store);
 //I couldnt find a way to bring in 'history'
 //in a way that would work seperatly without two
 //instances of 'history'
-//Using PersistGate to integrate the data into react 
+//Using PersistGate to integrate the data into react
 render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

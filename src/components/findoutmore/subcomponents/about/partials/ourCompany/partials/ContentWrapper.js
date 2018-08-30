@@ -4,7 +4,7 @@ const ContentWrapper = styled.div`
   border: 1px solid black;
   background: white;
   min-height: 500px;
-  width: 400px;
+  width: 600px;
   float: right;
   margin: 50px;
   padding: 0 30px;

@@ -13,7 +13,13 @@ const TeamContent = (props) => {
       <img className="main-pics" src={props.myPics} />
       <h2>{props.name}</h2>
       <h4>{props.title}</h4>
-      <p>{props.description}</p>
+      <div className="main-description">
+        <p>{props.description}</p>
+      </div>
+      <div className="mail-icon">
+        <a  href="mailto:office@cilph.com"><i className="fa fa-envelope mail"></i></a>
+      </div>
+
     </ContentWrapper>
   )
 }
