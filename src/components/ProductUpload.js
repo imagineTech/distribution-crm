@@ -1,59 +1,52 @@
 import React, { Component } from 'react';
-import './ProductUpload.css';
+import axios from '../axios-product';
+// import 'ProductUpload.css';
 
 class ProductUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      photoFile: '',
+      title: '',
+      pricePerUnit: '',
+      numberOfUnits: '',
+      description: '',
       takeAll: false
     };
-    // handles change for all text boxes
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.handleUnitsChange = this.handleUnitsChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    // handles change for check box...box does not check
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    // handles submission of product
-    this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   // handles changes for text boxes
-  handleTitleChange(e) {
-    this.setState({value: e.target.value});
-  }
-
-  handlePriceChange(e) {
-    this.setState({value: e.target.value});
-  }
-
-  handleUnitsChange(e) {
-    this.setState({value: e.target.value});
-  }
-
-  handleDescriptionChange(e) {
-    this.setState({value: e.target.value});
-  }
 
   // handles change for check box...box does not check
-  handleCheckboxChange(e) {
+  handleCheckboxChange = e => {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
   }
 
+  handleChange = e => {
+    const val = e.target.name;
+    console.log(e.target.name);
+    console.log(val);
+    console.log(e.target.value);
+    this.setState({val: e.target.value});
+
+  }
+
   // handles submission of product
-  handleSubmit(e) {
+  handleSubmit = e =>  {
     alert('A product was submitted: ' + this.state.value);
     e.preventDefault();
     // TODO: do something with -> this.state.file
     console.log('handle uploading-', this.state.file);
+
+    axios.post('/products.json')
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 
   // renders preview of chosen photo
-  _handleImageChange(e) {
+  _handleImageChange = e =>  {
     e.preventDefault();
 
     let reader = new FileReader();
@@ -86,49 +79,32 @@ class ProductUpload extends React.Component {
             <div className="imgPreview">
             {$imagePreview}
             </div>
-            <input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
+            <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
               <br />
             <label>
               Title:
-              <input 
-              type="text"
-              value={this.state.value} 
-              onChange={(e)=>this.handleTitleChange(e)} />
+              <input name="title" type="text" value={this.state.title} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Price Per Unit:
-              <input 
-              type="text"
-              value={this.state.value}
-              onChange={(e)=>this.handlePriceChange(e)} />
+              <input name="pricePerUnit" type="text" value={this.state.pricePerUnit} onChange={(e)=>this.handleChange(e)} />
             </label>
             <label>
               Number of Units:
-              <input 
-              type="text"
-              value={this.state.value}
-              onChange={(e)=>this.handleUnitsChange(e)} />
+              <input name="numberOfUnits" type="text" value={this.state.numberOfUnits} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Description:
-              <textarea value={this.state.value} onChange={this.handleDescriptionChange} />
+              <textarea name="description" value={this.state.description} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Take All:
-              <input
-                name="takeAll"
-                type="checkbox"
-                checked={this.state.takeAll}
-                onChange={this.handleCheckboxChange} />
+              <input name="takeAll" type="checkbox" checked={this.state.checked} onChange={this.handleCheckboxChange} />
             </label>
-            <button className="submitButton" 
-              type="submit" 
-              onClick={(e)=>this.handleSubmit(e)}>Upload Product</button>
+            <button className="submitButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Product</button>
           </form>
         </div>
       </div>
