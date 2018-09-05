@@ -1,0 +1,43 @@
+#wrapper{
+  margin: 50px auto;
+  border: 2px solid black;
+  max-width: 1000px;
+  text-align: center;
+  background: #ccc;
+  overflow: hidden;
+
+}
+
+.memberWrapper{
+  border: 1px solid black;
+  width: 300px;
+  display: inline-block;
+  margin: 20px 10px;
+  background: white;
+  height: 550px;
+  overflow: scroll;
+}
+
+clearfix::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#part3{
+  background: red;
+  height: 300px;
+}
+
+#part1{
+  background: #ccc;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+#part2{
+  max-width: 100%;
+  display: inline-block;
+  margin: 0 14px;
+  float: left;
+}

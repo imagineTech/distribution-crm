@@ -13,7 +13,7 @@ import { db } from './config_firebase';
 
 const DB = db.collection('Buyer')
 
-export const addingUser = (dbData, authId) => {
+export const addingUser = (dbData, authId, moltinId) => {
   return DB.doc(authId).set({
     id: authId,
     Name: dbData.Name,
@@ -21,7 +21,8 @@ export const addingUser = (dbData, authId) => {
     Password: dbData.Password,
     Company: dbData.Company,
     Department: dbData.Department,
-    Country: dbData.Country
+    Country: dbData.Country,
+    Moltin_User_Id: moltinId
   })
 }
 
