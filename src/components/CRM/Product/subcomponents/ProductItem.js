@@ -33,13 +33,10 @@ class ProductItem extends Component {
                     e.preventDefault();
                     Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
                       .then(cartItems => {
-                        console.log(cartItems);
                         history.push(`${routes.CART}`)
                       });
-                      Moltin.getACart(authUser.uid)
-                        .then(cart => console.log(cart))
                     }}>
-                    <button>Checkout</button>
+                    <button>Add to Cart</button>
                   </form>
                 </div>
               )

@@ -1,43 +1,58 @@
-import React from 'react';
-// import ProductItems from '../../Product/subcomponents/ProductItems';
+import React, { Component } from 'react';
+import * as Moltin from '../../../moltin/index';
 
-// const Moltin = MoltinGateway({
-//   client_id: '{ authUser.uid }'
-// })
-// const referenceId= '{ cart.cartItems.id }'
+class Cart extends Component {
 
-// const Cart = (cart, cartItems, products) => {
-//   return (
-//     <div>
-//       <h1>Hello</h1>
-//       <div key = { cart.cartItems[id] }>
-// 	     { products.map(product => {
-// 	     	<div key = { product.id }>
-// 	     		<h2> {product.name }</h2>
-// 	     		<h2> {product.description }</h2>
-// 	     	</div>
-// 	     })}
-//       </div>
-//     </div>
-//   );
-// } 
-const MoltinGateway = require('@moltin/sdk').gateway
+  state = {
+    cartItems: []
+  };
 
-const Moltin = MoltinGateway({
-  client_id: '{ authUser.uid }'
-})
+  componentDidMount() {
+    const { auth } = this.props;
+    Moltin.getACart(auth.uid).then(cart => {
+      this.setState({
+        cartItems: this.state.cartItems.concat(cart.data)
+      })
+    });
+  }
 
-const reference = '{  }'
+  handleClick = e => {
+    const { auth } = this.props;
+    //hard coded moltin user id. created within moltin cms
+    const customerId = "3e8c0676-2d4c-426a-8e8a-065800215b38";
+    //hard coded billing
+    const billing = {
+      first_name: 'Matt',
+      last_name: 'Mortensen',
+      line_1: '3333 South SomeStreet',
+      city: 'West Valley',
+      postcode: '84128',
+      county: 'Utah',
+      country: 'United States'
+    }
+    //billing becomes shipping, if shipping is undefined
+    Moltin.checkoutCart(auth.uid, customerId, billing).then(order => {
+      console.log(order);
+    })
+  }
 
-Moltin.cart( reference )
-	.CartItems()
-	.then(cart => {
-		console.log(CartItems.all)
-	})
-
-const Cart = () => {
-
+  render() {
+    const { cartItems } = this.state;
+    return(
+      <div>
+        {cartItems.map(item => {
+          return(
+            <div key={item.id}>
+              <span>{item.quantity}</span>
+              <span>{item.name}</span>
+              <span>{item.meta.display_price.with_tax.unit.formatted}</span>
+            </div>
+          )
+        })}
+        <button onClick={this.handleClick}>Checkout</button>
+      </div>
+    )
+  }
 }
-
 
 export default Cart;

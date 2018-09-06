@@ -10,6 +10,7 @@ const FindoutLanding = () => {
   return(
     <FindoutContainer >
       <Banner />
+      <h1>This is the Find Out More Section</h1>
     </FindoutContainer>
   );
 };
