@@ -11,7 +11,11 @@ const ProductList = ({ productData, match }) => {
               Please note that match.url is going to be the same as routes.PRODUCTS
               It's just a different way of dynamically producing the current URL path
             */}
-            <Link to={`${match.url}/${product.id}`}>{product.name}</Link><br />
+            <img></img>
+            <p>{product.name}</p>
+            <p>Price per product: {product.meta.display_price.with_tax.formatted}</p>
+            <p>Bulk: {product.meta.stock.level}</p>
+            <Link to={`${match.url}/${product.id}`}>More Info</Link><br />
           </div>
         )
       })}

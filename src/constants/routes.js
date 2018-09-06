@@ -19,7 +19,7 @@ export const CONTACT = '/contact';
 //MEMBER PORTAL
 export const SIGN_IN = '/signin';
 export const MEMBER_PORTAL = '/memberportal';
-export const PRODUCTS = '/products';
 export const CART = '/cart';
 export const PROFILE = '/profile';
+export const PRODUCTS = '/products';
 export const EDIT_PROFILE = 'editprofile';
