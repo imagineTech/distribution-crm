@@ -11,9 +11,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth } = this.props;
-    //hard coded moltin user id. created within moltin cms
-    const customerId = "2f3f7617-b1ed-4c49-941d-532cbf7118a3";
+    const { auth, profileData } = this.props;
     //hard coded billing
     const billing = {
       first_name: 'Matt',
@@ -25,7 +23,7 @@ class Cart extends Component {
       country: 'United States'
     }
     //billing becomes shipping, if shipping is undefined
-    Moltin.checkoutCart(auth.uid, customerId, billing).then(order => {
+    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
       console.log(order);
     })
   }
@@ -51,7 +49,8 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.loadingCartData.data
+    cartItems: state.loadingCartData.data,
+    profileData: state.storeProfileData
   }
 }
 
