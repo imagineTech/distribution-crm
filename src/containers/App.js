@@ -14,8 +14,8 @@ import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
-import SignUp from '../components/findoutmore/subcomponents/signup.js';
-import Login from '../components/findoutmore/subcomponents/login.js';
+import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
+import Login from '../components/findoutmore/subcomponents/login/login.js';
 
 import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
