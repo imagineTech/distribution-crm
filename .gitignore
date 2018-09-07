@@ -2,6 +2,9 @@
 
 # config
 /src/firebase/config_firebase.js
+/src/moltin/config_moltin.js
+/src/constants/config/config_firebase.js
+/src/constants/config/config_moltin.js
 
 # dependencies
 /node_modules

@@ -19,7 +19,9 @@ class Crm extends Component {
     return (
       <div>
         <h1>Welcome to our Crm</h1>
-        <Link to={routes.PROFILE}>Profile</Link>
+        <Link to={routes.PROFILE}>Profile</Link> <br />
+        <Link to={routes.PRODUCTS}>Products</Link> <br />
+        <Link to={routes.CART}>Cart</Link>
         <SignOutButton />
       </div>
     );

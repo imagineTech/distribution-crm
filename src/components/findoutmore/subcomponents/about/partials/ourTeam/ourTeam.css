@@ -1,0 +1,38 @@
+a:hover{
+  text-decoration: none;
+  color: black;
+}
+
+a{
+  text-decoration: none;
+  color: red;
+}
+
+.team-wrapper{
+  background: #ccc;
+  border: 2px solid black;
+  max-width: 1150px;
+  min-height: 700px;
+  margin: 40px auto;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+
+.mail-icon{
+  text-align: right;
+  font-size: 30px;
+}
+
+.main-pics{
+  width: 250px;
+  height: 200px;
+  margin: 30px 0;
+  border: 1px solid black;
+}
+
+.main-description{
+  height: 300px;
+  overflow: scroll;
+}

@@ -1,0 +1,12 @@
+.line{
+  height: 1px;
+  background: black;
+  margin: 20px;
+}
+
+.bottom-images{
+  width: 300px;
+  height: 250px;
+  margin: 20px;
+  border: 2px solid black;
+}

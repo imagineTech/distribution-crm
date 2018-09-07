@@ -28,9 +28,10 @@ export function newProfileData(dbDataName, dbDataValue) {
   }
 }
 
+
 /*
   This is how i would send it to fb to update, and the result
-  would be to redirect the user back to the profile. 
+  would be to redirect the user back to the profile.
 */
 export function newProfileDataToSend(defaultDbData, newDbData, dbID) {
   return dispatch => {

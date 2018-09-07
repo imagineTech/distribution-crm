@@ -43,7 +43,7 @@ class EditPofile extends Component {
 const mapStateToProps = state => {
   return {
     // This profileData is the same
-    // as the one when created in SignUp 
+    // as the one when created in SignUp
     profileData: state.storeProfileData,
     newProfileData: state.storeNewProfileData
   }
@@ -51,6 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    //This is for storing new profile data and then sending it. 
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID))
   }

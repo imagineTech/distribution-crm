@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from './CSS/Button'
 import LinksNav from './findoutmore/partials/LinksNav';
 import { SecondButton } from './CSS/Button';
+import LandingButton from './landing/partials/bottomComponents/LandingButton';
 
 
 
@@ -16,6 +17,15 @@ const LandingLinks = () =>
     <Link to={routes.FIND_OUT_MORE}><Button primary>Find Out More</Button></Link>
   </div>
 
+const BecomingAMemberLink = () =>
+    <div><Link to={routes.BECOMING_A_MEMBER}><LandingButton>Becoming a member!</LandingButton></Link></div>
+
+const HowItWorksLink = () =>
+    <div><Link to={routes.HOW_IT_WORKS}><LandingButton>How It Works!</LandingButton></Link></div>
+
+const SoldProducts = () =>
+    <div><Link to={routes.SOLD_PRODUCTS}><LandingButton>Products We Have Sold!</LandingButton></Link></div>
+
 //links for the find out page
 const FindoutLinks = () =>
   <LinksNav>
@@ -28,3 +38,6 @@ const FindoutLinks = () =>
 
 export { LandingLinks };
 export { FindoutLinks };
+export { BecomingAMemberLink };
+export { HowItWorksLink };
+export { SoldProducts };
