@@ -13,18 +13,18 @@ class Billing extends Component {
     return (
       <div>
         <label>
-          Field 3
-          <input name="Field 1" type="text" onChange={this.handleChange} />
-        </label>
-        <br />
-        <label>
           Field 4
-          <input name="Field 2" type="text" onChange={this.handleChange} />
+          <input name="Field 4" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
           Field 5
-          <input name="Field 3" type="text" onChange={this.handleChange} />
+          <input name="Field 5" type="text" onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          Field 6
+          <input name="Field 6" type="text" onChange={this.handleChange} />
         </label>
         <br />
       </div>

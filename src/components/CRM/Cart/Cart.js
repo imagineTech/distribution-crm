@@ -27,18 +27,19 @@ class Cart extends Component {
     const { auth, profileData } = this.props;
     //hard coded billing
     const billing = {
-      first_name: 'Matt',
-      last_name: 'Mortensen',
+      first_name: profileData.First_Name,
+      last_name: profileData.Last_Name,
       line_1: '3333 South SomeStreet',
       city: 'West Valley',
       postcode: '84128',
       county: 'Utah',
       country: 'United States'
     }
-    //billing becomes shipping, if shipping is undefined
-    // Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-    //   Moltin.Orders.Payment(order.id, payment)
-    // })
+    // billing becomes shipping, if shipping is undefined
+    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
+      // Moltin.Orders.Payment(order.id, payment);
+      console.log(order);
+    })
     console.log(this.state.formValues);
 
   }
@@ -56,9 +57,9 @@ class Cart extends Component {
             </div>
           )
         })}
-        <CreditCard formChange={}/>
+        <CreditCard formChange={this.handleChange}/>
         <hr />
-        <Billing formChange={}/>
+        <Billing formChange={this.handleChange}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
