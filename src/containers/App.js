@@ -6,12 +6,15 @@ import '../App.css';
 import { Route } from 'react-router-dom';
 import Crm from './CRM.js'
 import Landing from '../components/landing/Landing';
+import BecomingAMember from '../components/landing/partials/bottomComponents/BecomingAMember';
+import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
+import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts';
 import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 import Contact from '../components/findoutmore/subcomponents/contact/Contact';
-import SignUp from '../components/findoutmore/subcomponents/signup.js';
-import Login from '../components/findoutmore/subcomponents/login.js';
+import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
+import Login from '../components/findoutmore/subcomponents/login/login.js';
 import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
@@ -50,6 +53,9 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
+        <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
+        <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
+        <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
 
         {/*
           This section below had to be setup because we have different
