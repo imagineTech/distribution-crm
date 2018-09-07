@@ -12,19 +12,30 @@ class Billing extends Component {
   render() {
     return (
       <div>
+        <h4>Billing info:</h4>
         <label>
-          Field 4
-          <input name="Field 4" type="text" onChange={this.handleChange} />
+          Address:
+          <input name="Address" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Field 5
-          <input name="Field 5" type="text" onChange={this.handleChange} />
+          City:
+          <input name="City" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Field 6
-          <input name="Field 6" type="text" onChange={this.handleChange} />
+          Postcode:
+          <input name="Postcode" type="text" onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          County:
+          <input name="County" type="text" onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          Country:
+          <input name="Country" type="text" onChange={this.handleChange} />
         </label>
         <br />
       </div>
