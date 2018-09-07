@@ -11,8 +11,6 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './containers/App';
-import "../node_modules/font-awesome/css/font-awesome.css";
-
 
 //Had to combine my config_store file with this index file
 //just because i needed the history obj to work with

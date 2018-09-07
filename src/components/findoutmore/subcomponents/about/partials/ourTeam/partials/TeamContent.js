@@ -17,7 +17,7 @@ const TeamContent = (props) => {
         <p>{props.description}</p>
       </div>
       <div className="mail-icon">
-        <a  href="mailto:office@cilph.com"><i className="fa fa-envelope mail"></i></a>
+        <a  href="mailto:office@cilph.com"></a>
       </div>
 
     </ContentWrapper>

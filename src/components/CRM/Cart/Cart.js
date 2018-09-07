@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
+import CreditCard from './subcomponents/CreditCard';
+import Billing from './subcomponents/Billing';
 import * as Moltin from '../../../moltin/index';
 import { loadCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
 
 class Cart extends Component {
 
+  state = {
+    formValues: []
+  }
+
   componentDidMount() {
     const { auth, getCartData } = this.props;
     getCartData(auth.uid);
+  }
+
+  handleChange = formObject => {
+    let { formValues } = this.state;
+    this.setState({
+      formValues: { ...formValues, ...formObject }
+    });
   }
 
   handleClick = e => {
@@ -23,9 +36,11 @@ class Cart extends Component {
       country: 'United States'
     }
     //billing becomes shipping, if shipping is undefined
-    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-      console.log(order);
-    })
+    // Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
+    //   Moltin.Orders.Payment(order.id, payment)
+    // })
+    console.log(this.state.formValues);
+
   }
 
   render() {
@@ -41,6 +56,9 @@ class Cart extends Component {
             </div>
           )
         })}
+        <CreditCard formChange={}/>
+        <hr />
+        <Billing formChange={}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
