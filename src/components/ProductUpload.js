@@ -83,26 +83,26 @@ class ProductUpload extends React.Component {
               <br />
             <label>
               Title:
-              <input name="title" type="text" value={this.state.title} onChange={(e)=>this.handleChange(e)} />
+              <input name="title" type="text" value={} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Price Per Unit:
-              <input name="pricePerUnit" type="text" value={this.state.pricePerUnit} onChange={(e)=>this.handleChange(e)} />
+              <input name="pricePerUnit" type="text" value={} onChange={(e)=>this.handleChange(e)} />
             </label>
             <label>
               Number of Units:
-              <input name="numberOfUnits" type="text" value={this.state.numberOfUnits} onChange={(e)=>this.handleChange(e)} />
+              <input name="numberOfUnits" type="text" value={} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Description:
-              <textarea name="description" value={this.state.description} onChange={(e)=>this.handleChange(e)} />
+              <textarea name="description" value={} onChange={(e)=>this.handleChange(e)} />
             </label>
             <br />
             <label>
               Take All:
-              <input name="takeAll" type="checkbox" checked={this.state.checked} onChange={this.handleCheckboxChange} />
+              <input name="takeAll" type="checkbox" checked={} onChange={this.handleCheckboxChange} />
             </label>
             <button className="submitButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Upload Product</button>
           </form>
