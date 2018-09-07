@@ -10,7 +10,7 @@ export const loadCartData = crtData => {
 export const loadCart = crtId => {
   return dispatch => {
     Moltin.getACart(crtId).then(cart => {
-      dispatch(loadCartData(cart));
+      dispatch(loadCartData(cart.data));
     })
   }
 }
