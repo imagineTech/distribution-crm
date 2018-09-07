@@ -3,7 +3,7 @@ import React from 'react';
 
 //Partials
 import Banner from '../../partials/Banner';
-import OurBrand from './partials/ourBrand/OurBrand';
+import OurCompany from './partials/ourCompany/OurCompany';
 import OurTeam from './partials/ourTeam/OurTeam';
 
 
@@ -14,7 +14,7 @@ const About = () => {
   return(
     <Banner>
       <h1>This is the about section</h1>
-      <OurBrand />
+      <OurCompany />
       <OurTeam />
     </Banner>
   )

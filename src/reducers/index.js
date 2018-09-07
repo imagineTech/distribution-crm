@@ -11,6 +11,7 @@ import { authToState } from './authStateChange'
 import { storeProfileData } from './profileData';
 import { storeNewProfileData } from './profileData';
 import { loadingProductData } from './productData';
+import { loadingCartData } from './cartData';
 
 export default combineReducers({
   emailAndPasswordData,
@@ -19,5 +20,6 @@ export default combineReducers({
   authToState,
   storeProfileData,
   storeNewProfileData,
-  loadingProductData
+  loadingProductData,
+  loadingCartData
 });

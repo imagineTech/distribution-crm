@@ -12,7 +12,6 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './containers/App';
 
-
 //Had to combine my config_store file with this index file
 //just because i needed the history obj to work with
 //my redux action calls.
@@ -40,7 +39,7 @@ const persistor = persistStore(store);
 //I couldnt find a way to bring in 'history'
 //in a way that would work seperatly without two
 //instances of 'history'
-//Using PersistGate to integrate the data into react 
+//Using PersistGate to integrate the data into react
 render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
