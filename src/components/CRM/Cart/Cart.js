@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 import * as Moltin from '../../../moltin/index';
+import { loadCart } from '../../../actions/cartData';
+import { connect } from 'react-redux';
 
 class Cart extends Component {
 
-  state = {
-    cartItems: []
-  };
-
   componentDidMount() {
-    const { auth } = this.props;
-    Moltin.getACart(auth.uid).then(cart => {
-      this.setState({
-        cartItems: this.state.cartItems.concat(cart.data)
-      })
-    });
+    const { auth, getCartData } = this.props;
+    getCartData(auth.uid);
   }
 
   handleClick = e => {
-    const { auth } = this.props;
-    //hard coded moltin user id. created within moltin cms
-    const customerId = "3e8c0676-2d4c-426a-8e8a-065800215b38";
+    const { auth, profileData } = this.props;
     //hard coded billing
     const billing = {
       first_name: 'Matt',
@@ -31,13 +23,13 @@ class Cart extends Component {
       country: 'United States'
     }
     //billing becomes shipping, if shipping is undefined
-    Moltin.checkoutCart(auth.uid, customerId, billing).then(order => {
+    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
       console.log(order);
     })
   }
 
   render() {
-    const { cartItems } = this.state;
+    const { cartItems } = this.props;
     return(
       <div>
         {cartItems.map(item => {
@@ -55,4 +47,17 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+const mapStateToProps = state => {
+  return {
+    cartItems: state.loadingCartData.data,
+    profileData: state.storeProfileData
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCartData: (crtId) => dispatch(loadCart(crtId))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
