@@ -39,6 +39,7 @@ class App extends Component {
 
   }
 
+
   render() {
     const { authUser, authenticated } = this.state;
     return (
@@ -60,7 +61,7 @@ class App extends Component {
             authenticated &&
             <div>
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
-              <Route exact path={routes.CART} component={() => <Cart /> }/>
+              <Route exact path={routes.CART} render={() => <Cart auth={authUser}/> }/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
               {/*
