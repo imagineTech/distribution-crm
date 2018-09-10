@@ -10,8 +10,6 @@ constructor(props) {
       contactContent: ''
     };
 
-	this.handleChange = this.handleChange.bind(this);
-
   }
 
 	handleChange = e => {

@@ -18,6 +18,9 @@ import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
+import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
 
@@ -44,6 +47,7 @@ class App extends Component {
     const { authUser, authenticated } = this.state;
     return (
       <div id="main-container">
+        <Header />
         <Route exact path={routes.HOME} component={() => <Landing />}  />
         <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
         <Route exact path={routes.ABOUT} component={() => <About />}  />
@@ -51,6 +55,7 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
+        <Route exact path={routes.PRODUCTS} component={() => <ProductPage />} />
 
         {/*
           This section below had to be setup because we have different
@@ -72,7 +77,7 @@ class App extends Component {
 
             </div>
           }
-
+          <Footer />
         </div>
       );
     }
