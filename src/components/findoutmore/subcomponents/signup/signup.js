@@ -30,8 +30,10 @@ class SignUp extends Component {
           <Banner>
             <h1>Sign-up</h1>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="name">Name: </label>
-              <input type="text" id="name" name="Name" onChange={this.handleChange}/>
+              <label htmlFor="first_name">First Name: </label>
+              <input type="text" id="first_name" name="First_Name" onChange={this.handleChange}/>
+              <label htmlFor="name">Last Name: </label>
+              <input type="text" id="last_name" name="Last_Name" onChange={this.handleChange}/>
               <label htmlFor="email">Email: </label>
               <input type="email" id="signup_email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
               <label htmlFor="signup_password">Password: </label>
