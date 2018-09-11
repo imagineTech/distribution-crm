@@ -10,8 +10,6 @@ constructor(props) {
       contactContent: ''
     };
 
-	this.handleChange = this.handleChange.bind(this);
-
   }
 
 	handleChange = e => {
@@ -21,7 +19,7 @@ constructor(props) {
 	    	val: {
 	    		...this.state.val,
 					[e.target.name]: e.target.value
-				},
+				}
 			});
 	    console.log(this.state.customerName);
 	  }
