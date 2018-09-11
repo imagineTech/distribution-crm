@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import * as Moltin from '../../../../moltin/index';
 import * as routes from '../../../../constants/routes';
 import QuantityCounter from './QuantityCounter';
+// Styled Components
+import Background from './ProductPage/partials/Background'
+import Container from './ProductPage/partials/Container'
+import ProductInfoWrapper from './ProductPage/partials/ProductInfoWrapper'
+// CSS
+import './ProductPage/partials/ProductPage.css'
 
 class ProductItem extends Component {
 
@@ -25,19 +31,28 @@ class ProductItem extends Component {
           {productData.map(product => {
             if(product.id === match.params.productId) {
               return (
-                <div key={product.id}>
-                  <h1>{product.name}</h1>
-                  <p>{product.description}</p>
-                  <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
-                  <form onSubmit={e => {
-                    e.preventDefault();
-                    Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
-                      .then(cartItems => {
-                        history.push(`${routes.CART}`)
-                      });
-                    }}>
-                    <button>Add to Cart</button>
-                  </form>
+                <div>
+                <Background>
+                  <Container>
+                    <img className='productImage'></img>
+                    <ProductInfoWrapper>
+                      <div key={product.id}></div>
+                        <div className='title'>{product.name}</div>
+                        <div className='description'>{product.description}</div>
+                        <div className='quantityAvailable'>product.quantity</div>
+                        <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
+                        <form onSubmit={e => {
+                          e.preventDefault();
+                          Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
+                            .then(cartItems => {
+                              history.push(`${routes.CART}`)
+                            });
+                          }}>
+                          <button>Add to Cart</button>
+                        </form>
+                      </ProductInfoWrapper>
+                    </Container>
+                  </Background>
                 </div>
               )
             }

@@ -5,6 +5,6 @@ export const Background = styled.div`
 	width: 100%;
 	padding 10px;
 	overflow: auto;
-`
+`	
 
 export default Background;

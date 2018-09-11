@@ -55,7 +55,7 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-        <Route exact path={routes.PRODUCTS} component={() => <ProductPage />} />
+        <Route exact path={routes.PRODUCTS} component={() => <ProductItem />} />
 
         {/*
           This section below had to be setup because we have different

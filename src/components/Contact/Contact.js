@@ -19,7 +19,7 @@ constructor(props) {
 	    	val: {
 	    		...this.state.val,
 					[e.target.name]: e.target.value
-				},
+				}
 			});
 	    console.log(this.state.customerName);
 	  }
