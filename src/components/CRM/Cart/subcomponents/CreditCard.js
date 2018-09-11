@@ -13,20 +13,25 @@ class CreditCard extends Component {
     return (
       <div>
         <label>
-          Field 1
-          <input name="Field 1" type="text" onChange={this.handleChange} />
+          <h4>Credit Card info:</h4>
+          Credit Card #:
+          <input name="CreditCardNum" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Field 2
-          <input name="Field 2" type="text" onChange={this.handleChange} />
+          Ex. Month
+          <input name="ExMonth" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Field 3
-          <input name="Field 3" type="text" onChange={this.handleChange} />
+          Ex. Year
+          <input name="ExYear" type="text" onChange={this.handleChange} />
         </label>
         <br />
+        <label>
+          Verification Code:
+          <input name="VerificationCode" type="text" onChange={this.handleChange} />
+        </label>
       </div>
     );
   }

@@ -16,7 +16,8 @@ const DB = db.collection('Buyer')
 export const addingUser = (dbData, authId, moltinId) => {
   return DB.doc(authId).set({
     id: authId,
-    Name: dbData.Name,
+    First_Name: dbData.First_Name,
+    Last_Name: dbData.Last_Name,
     Email: dbData.Email,
     Password: dbData.Password,
     Company: dbData.Company,

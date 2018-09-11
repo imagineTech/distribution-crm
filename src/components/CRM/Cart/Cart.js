@@ -25,22 +25,22 @@ class Cart extends Component {
 
   handleClick = e => {
     const { auth, profileData } = this.props;
+    const { formValues } = this.state;
     //hard coded billing
     const billing = {
-      first_name: 'Matt',
-      last_name: 'Mortensen',
-      line_1: '3333 South SomeStreet',
-      city: 'West Valley',
-      postcode: '84128',
-      county: 'Utah',
-      country: 'United States'
+      first_name: profileData.First_Name,
+      last_name: profileData.Last_Name,
+      line_1: formValues.Address,
+      city: formValues.City,
+      postcode: formValues.Postcode,
+      county: formValues.County,
+      country: formValues.Country
     }
-    //billing becomes shipping, if shipping is undefined
-    // Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-    //   Moltin.Orders.Payment(order.id, payment)
-    // })
-    console.log(this.state.formValues);
-
+    // billing becomes shipping, if shipping is undefined
+    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
+      // Moltin.Orders.Payment(order.id, payment);
+      console.log(order);
+    })
   }
 
   render() {
@@ -56,9 +56,8 @@ class Cart extends Component {
             </div>
           )
         })}
-        <CreditCard formChange={}/>
-        <hr />
-        <Billing formChange={}/>
+        <CreditCard formChange={this.handleChange}/>
+        <Billing formChange={this.handleChange}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
