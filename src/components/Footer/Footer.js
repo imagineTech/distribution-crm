@@ -4,6 +4,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const footer = () => {
 	
@@ -24,10 +25,10 @@ const footer = () => {
 				<div className="lowerLinksContainer">
 					<div className="lowerLink">Privacy Policy</div>
 					<div className="socialLinksContainer">
-						<img src="" className="socialLink"/>
-						<img src="" className="socialLink"/>
-						<img src="" className="socialLink"/>
-						<img src="" className="socialLink"/>
+						<FontAwesomeIcon icon="stroopwafel" />
+						<FontAwesomeIcon icon="stroopwafel" />
+						<FontAwesomeIcon icon="stroopwafel" />
+						<FontAwesomeIcon icon="stroopwafel" />
 					</div>
 				</div>
 			</div>
