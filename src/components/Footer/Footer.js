@@ -15,6 +15,7 @@ const footer = () => {
 				<div className="navLinksContainer">
 					<Link to={routes.HOME} className="navLink">Home</Link>
 					<Link to={routes.SIGN_IN} className="navLink">Sign In</Link>
+					<Link to={routes.ABOUT} className="navLink">About</Link>
 			    <Link to={routes.OUR_POLICY} className="navLink">Our Policy</Link>
 			    <Link to={routes.CONTACT} className="navLink">Contact</Link>
 			    <Link to={routes.SIGN_UP} className="navLink">Register</Link>
