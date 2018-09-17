@@ -59,13 +59,10 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-<<<<<<< HEAD
         <Route exact path={routes.PRODUCTS} component={() => <ProductItem />} />
-=======
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
->>>>>>> 858f326839175a52b3f7fe973ba4062e3287112d
 
         {/*
           This section below had to be setup because we have different
