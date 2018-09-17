@@ -11,7 +11,7 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import { Route } from 'react-router-dom';
 import Crm from './CRM.js'
 import Landing from '../components/landing/Landing';
-import BecomingAMember from '../components/landing/partials/bottomComponents/BecomingAMember';
+import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
 import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts';
 import FindoutLanding from '../components/findoutmore/FindoutLanding';
