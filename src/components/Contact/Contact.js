@@ -13,7 +13,6 @@ constructor(props) {
   }
 
 	handleChange = e => {
-			console.log(e.target.name);
 	    const val = e.target.name;
 	    this.setState({
 	    	val: {
@@ -21,7 +20,6 @@ constructor(props) {
 					[e.target.name]: e.target.value
 				}
 			});
-	    console.log(this.state.customerName);
 	  }
 
 	handleSubmit = e =>  {
@@ -36,7 +34,7 @@ constructor(props) {
 		    <form onSubmit={(e)=>this.handleSubmit(e)}>
 		    	<label>
 		    		Your Name:
-		      	<input name="customerName" type="text" defautValue={this.state.customerName} onChange={this.handleChange} />
+		      	<input name="customerName" type="text" value={this.state.customerName} onChange={this.handleChange} />
 		      </label>
 		      <br />
 		      <label>
