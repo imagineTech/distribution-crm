@@ -56,6 +56,7 @@ class Cart extends Component {
             </div>
           )
         })}
+        <CardElement />
         <Billing formChange={this.handleChange}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
