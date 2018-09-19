@@ -42,9 +42,9 @@ class Cart extends Component {
         const payment = {
           gateway: 'stripe',
           method: 'purchase',
-          payment: payload.token.id
+          payment: `${payload.token.id}`
         }
-        Moltin.payForOrder(order.id, payment);
+        Moltin.payForOrder(order.data.id, payment);
         console.log(order);
       })
     });
