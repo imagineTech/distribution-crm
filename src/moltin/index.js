@@ -34,7 +34,7 @@ export const checkoutCart = async (refId, customerId, billing, shipping) => {
   return checkout;
 }
 
-export const getTransactions = async (orderId) => {
-  const transactions = await Moltin.Orders.Transactions(orderId);
-  return transactions;
+export const payForOrder = async (orderId, stripeToken) => {
+  const payment = await Moltin.Orders.Payment(orderId, stripeToken);
+  return payment;
 }

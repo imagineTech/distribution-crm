@@ -24,7 +24,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth, profileData } = this.props;
+    const { auth, profileData, stripe } = this.props;
     const { formValues } = this.state;
     //hard coded billing
     const billing = {
@@ -35,12 +35,19 @@ class Cart extends Component {
       postcode: formValues.Postcode,
       county: formValues.County,
       country: formValues.Country
-    }
-    // billing becomes shipping, if shipping is undefined
-    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-      // Moltin.Orders.Payment(order.id, payment);
-      console.log(order);
-    })
+    };
+    stripe.createToken().then(payload => {
+      // billing becomes shipping, if shipping is undefined
+      Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
+        const payment = {
+          gateway: 'stripe',
+          method: 'purchase',
+          payment: payload.token.id
+        }
+        Moltin.payForOrder(order.id, payment);
+        console.log(order);
+      })
+    });
   }
 
   render() {
