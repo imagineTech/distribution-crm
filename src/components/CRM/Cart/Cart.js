@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CreditCard from './subcomponents/CreditCard';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
 import * as Moltin from '../../../moltin/index';
 import { loadCart } from '../../../actions/cartData';
@@ -76,4 +76,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Cart));
