@@ -54,6 +54,8 @@ class Cart extends Component {
     const { cartItems } = this.props;
     return(
       <div>
+        {/* Testing history before route change */}
+        {console.log(this.props.history)}
         {cartItems.map(item => {
           return(
             <div key={item.id}>

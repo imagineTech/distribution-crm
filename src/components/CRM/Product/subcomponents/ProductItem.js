@@ -28,7 +28,7 @@ class ProductItem extends Component {
               I had to do a conditional statement first, this helped connect the
               ProductList to the ProductItem while sending over the correct data
           */}
-         {console.log(productData)}
+         {console.log(history)}
           {productData.map(product => {
             if(product.id === match.params.productId) {
               return (
