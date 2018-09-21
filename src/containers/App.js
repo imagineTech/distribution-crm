@@ -27,6 +27,7 @@ import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
+import OrderReview from '../components/CRM/Review/OrderReview';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -80,6 +81,7 @@ class App extends Component {
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
               {/* Realizing that you need router to get access to history. Done through render */}
               <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
+              <Route exact path={routes.ORDER_REVIEW} component={() => <OrderReview />} />
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
               {/*
