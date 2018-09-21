@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
 import * as Moltin from '../../../moltin/index';
+import * as routes from '../../../constants/routes';
 import { loadCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
 
@@ -24,7 +25,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth, profileData, stripe } = this.props;
+    const { auth, profileData, stripe, history } = this.props;
     const { formValues } = this.state;
     //hard coded billing
     const billing = {
@@ -45,7 +46,7 @@ class Cart extends Component {
           payment: `${payload.token.id}`
         }
         Moltin.payForOrder(order.data.id, payment);
-        console.log(order);
+        history.push(`${routes.ORDER_REVIEW}`);
       })
     });
   }
