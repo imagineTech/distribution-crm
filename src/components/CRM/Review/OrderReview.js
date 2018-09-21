@@ -1,7 +1,12 @@
 import React from 'react';
 
 const OrderReview = props => {
-  return <h1>Hello</h1>
+  return (
+    <div>
+      <h1>Hello</h1>
+      {console.log(props.match.path)}
+    </div>
+  )
 }
 
 export default OrderReview;
