@@ -38,3 +38,8 @@ export const payForOrder = async (orderId, stripeToken) => {
   const payment = await Moltin.Orders.Payment(orderId, stripeToken);
   return payment;
 }
+
+export const getAnOrder = async (orderId) => {
+  const order = await Moltin.Orders.Get(orderId);
+  return order;
+}
