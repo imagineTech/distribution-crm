@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
 import * as Moltin from '../../../moltin/index';
+import { db } from '../../../firebase/index';
 import * as routes from '../../../constants/routes';
 import { loadCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
@@ -46,6 +47,7 @@ class Cart extends Component {
           payment: `${payload.token.id}`
         }
         Moltin.payForOrder(order.data.id, payment);
+        db.addOrdersToUser(auth.uid, order.data.id);
         history.push(`${routes.ORDER_REVIEW}`);
       })
     });
@@ -56,7 +58,6 @@ class Cart extends Component {
     return(
       <div>
         {/* Testing history before route change */}
-        {console.log(this.props.history)}
         {cartItems.map(item => {
           return(
             <div key={item.id}>

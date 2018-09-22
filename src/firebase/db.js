@@ -47,3 +47,11 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
     Email: (newDbData.Email || defaultDbData.Email)
   })
 }
+
+export const addOrdersToUser = (userId, orderId) => {
+  return DB.doc(userId).update({
+    Orders: [
+      {id: orderId}
+    ]
+  })
+}
