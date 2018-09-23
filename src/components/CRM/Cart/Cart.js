@@ -26,7 +26,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth, profileData, stripe, history, addingOrdData } = this.props;
+    const { auth, profileData, stripe, history, match, addingOrdData } = this.props;
     const { formValues } = this.state;
     //hard coded billing
     const billing = {
@@ -48,16 +48,16 @@ class Cart extends Component {
         // }
         // Moltin.payForOrder(order.data.id, payment);
         addingOrdData(auth.uid, order.data.id)
+        match.params.orderId = order.data.id;
         history.push(`${routes.ORDER_REVIEW}`);
       })
     });
   }
 
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, history } = this.props;
     return(
       <div>
-        {/* Testing history before route change */}
         {cartItems.map(item => {
           return(
             <div key={item.id}>
