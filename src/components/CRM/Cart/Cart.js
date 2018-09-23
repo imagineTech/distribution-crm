@@ -47,7 +47,7 @@ class Cart extends Component {
         //   payment: `${payload.token.id}`
         // }
         // Moltin.payForOrder(order.data.id, payment);
-        db.addOrdersToUser(auth.uid, order.data.id);
+        db.addOrdersToUser(auth.uid, {id: order.data.id});
         history.push(`${routes.ORDER_REVIEW}`);
       })
     });

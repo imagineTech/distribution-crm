@@ -10,6 +10,7 @@
 */
 
 import { db } from './config_firebase';
+import firebase from 'firebase/app';
 
 const DB = db.collection('Buyer')
 
@@ -50,8 +51,6 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
 
 export const addOrdersToUser = (userId, orderId) => {
   return DB.doc(userId).update({
-    Orders: [
-      {id: db.FieldValue.arrayUnion(`${orderId}`)}
-    ]
+    Orders: firebase.firestore.FieldValue.arrayUnion(orderId)
   })
 }
