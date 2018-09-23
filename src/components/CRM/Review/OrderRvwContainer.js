@@ -12,6 +12,9 @@ class OrderRvwContainer extends Component {
   }
 
   render() {
+    const hiddenStyle = {
+      display: "none"
+    }
     const { path, auth, comp: Component, profileData, orderData } = this.props;
     const { Orders } = profileData;
     return(
@@ -27,9 +30,9 @@ class OrderRvwContainer extends Component {
                 :
                 <div>
                   <h2>Please wait while we process your order...</h2>
-                  {setTimeout(() => {
+                  <span style={hiddenStyle}>{setTimeout(() => {
                     window.location.reload();
-                  }, 1500)}
+                  }, 1500)}</span>
                 </div>
               :
               <p>Please Login</p>
