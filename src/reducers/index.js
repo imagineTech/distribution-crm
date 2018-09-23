@@ -22,5 +22,6 @@ export default combineReducers({
   storeProfileData,
   storeNewProfileData,
   loadingProductData,
-  loadingCartData
+  loadingCartData,
+  loadingOrderData
 });

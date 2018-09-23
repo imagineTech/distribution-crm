@@ -11,7 +11,7 @@ export const loadOrderData = ordData => {
 export const loadOrder = (orderId) => {
   return dispatch => {
     Moltin.getAnOrder(orderId).then(order => {
-      dispatch(loadOrderData(order));
+      dispatch(loadOrderData(order.data));
     })
   }
 }
