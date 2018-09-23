@@ -12,7 +12,7 @@ class OrderRvwContainer extends Component {
   }
 
   render() {
-    const { path, auth, comp: Component, profileData } = this.props;
+    const { path, auth, comp: Component, profileData, orderData } = this.props;
     const { Orders } = profileData;
     return(
       <div>
