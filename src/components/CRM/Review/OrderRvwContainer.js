@@ -17,7 +17,7 @@ class OrderRvwContainer extends Component {
       <div>
         <Route
           exact
-          path={`${path}`}
+          path={`${path}/:orderId`}
           render={rest => auth.authenticated ? <Component {...this.props} {...rest} /> : <p>Please Login</p> }
         />
       </div>

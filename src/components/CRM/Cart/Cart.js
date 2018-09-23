@@ -48,8 +48,7 @@ class Cart extends Component {
         // }
         // Moltin.payForOrder(order.data.id, payment);
         addingOrdData(auth.uid, order.data.id)
-        match.params.orderId = order.data.id;
-        history.push(`${routes.ORDER_REVIEW}`);
+        history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
       })
     });
   }
