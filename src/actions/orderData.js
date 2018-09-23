@@ -1,4 +1,5 @@
 import { db } from '../firebase/index';
+import * as Moltin from '../moltin/index';
 
 export const loadOrderData = ordData => {
   return {
@@ -7,8 +8,16 @@ export const loadOrderData = ordData => {
   }
 }
 
-export const loadOrder = (authId, orderId) => {
+export const loadOrder = (orderId) => {
   return dispatch => {
-    db.addOrdersToUser(auth.uid, {id: order.data.id});
+    Moltin.getAnOrder(orderId).then(order => {
+      dispatch(loadOrderData(order));
+    })
+  }
+}
+
+export const addOrderData = (authId, orderId) => {
+  return dispatch => {
+    db.addOrdersToUser(authId, {id: orderId});
   }
 }
