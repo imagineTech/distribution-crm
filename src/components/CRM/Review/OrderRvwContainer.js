@@ -12,7 +12,7 @@ class OrderRvwContainer extends Component {
   }
 
   render() {
-    const { path, auth, comp: Component, profileData, orderData } = this.props;
+    const { path, auth, comp: Component, profileData } = this.props;
     const { Orders } = profileData;
     return(
       <div>
@@ -22,7 +22,7 @@ class OrderRvwContainer extends Component {
           render={rest => {
             return(
               auth.authenticated ?
-              (Orders[Orders.length -1].id) === orderData.id ?
+              (Orders[Orders.length -1].id) === rest.match.params.orderId ?
                 <Component {...this.props} {...rest} />
                 :
                 <h2>Please wait while we process your order...</h2>

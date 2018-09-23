@@ -1,10 +1,10 @@
 import React from 'react';
 
 const OrderReview = props =>  {
-    const { orderData } = props;
+    const { orderData, match } = props;
     return (
       <div>
-        <h2>Thank you for your purchase! Order#: {orderData.id}</h2>
+        <h2>Thank you for your purchase! Order#: {orderData.id === match.params.orderId ? orderData.id : ""}</h2>
       </div>
     )
 }
