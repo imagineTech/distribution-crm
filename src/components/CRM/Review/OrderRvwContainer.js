@@ -8,17 +8,28 @@ class OrderRvwContainer extends Component {
   componentDidMount() {
     const { getOrder, profileData } = this.props;
     const { Orders } = profileData
-    getOrder((Orders[Orders.length - 1]).id);
+    getOrder(Orders[Orders.length - 1].id);
   }
 
   render() {
-    const { path, auth, comp: Component } = this.props;
+    const { path, auth, comp: Component, profileData, orderData } = this.props;
+    const { Orders } = profileData;
     return(
       <div>
         <Route
           exact
           path={`${path}/:orderId`}
-          render={rest => auth.authenticated ? <Component {...this.props} {...rest} /> : <p>Please Login</p> }
+          render={rest => {
+            return(
+              auth.authenticated ?
+              (Orders[Orders.length -1].id) === orderData.id ?
+                <Component {...this.props} {...rest} />
+                :
+                <h2>Please wait while we process your order...</h2>
+              :
+              <p>Please Login</p>
+            )
+          }}
         />
       </div>
     )
