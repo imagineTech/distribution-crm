@@ -41,12 +41,12 @@ class Cart extends Component {
     stripe.createToken().then(payload => {
       // billing becomes shipping, if shipping is undefined
       Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-        const payment = {
-          gateway: 'stripe',
-          method: 'purchase',
-          payment: `${payload.token.id}`
-        }
-        Moltin.payForOrder(order.data.id, payment);
+        // const payment = {
+        //   gateway: 'stripe',
+        //   method: 'purchase',
+        //   payment: `${payload.token.id}`
+        // }
+        // Moltin.payForOrder(order.data.id, payment);
         db.addOrdersToUser(auth.uid, order.data.id);
         history.push(`${routes.ORDER_REVIEW}`);
       })

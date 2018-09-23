@@ -51,7 +51,7 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
 export const addOrdersToUser = (userId, orderId) => {
   return DB.doc(userId).update({
     Orders: [
-      {id: orderId}
+      {id: db.FieldValue.arrayUnion(`${orderId}`)}
     ]
   })
 }
