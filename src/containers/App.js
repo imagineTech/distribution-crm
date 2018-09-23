@@ -81,7 +81,7 @@ class App extends Component {
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
               {/* Realizing that you need router to get access to history. Done through render */}
               <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
-              <Route exact path={routes.ORDER_REVIEW} render={props => <OrderReview {...props} />} />
+              <Route exact path={routes.ORDER_REVIEW} render={props => <OrderReview auth={authUser} {...props} />} />
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
               {/*
