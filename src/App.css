@@ -5,3 +5,8 @@
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 }
+
+#main-container{
+  max-width: 1200px;
+  margin: auto;
+}
