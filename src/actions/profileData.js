@@ -4,7 +4,7 @@
   the data to pull correctly
 */
 
-import { db } from '../firebase/index';
+import { db, firebase } from '../firebase/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
 
@@ -12,6 +12,18 @@ export function profileData(data) {
   return {
     type: "PROFILE_DATA",
     data
+  }
+}
+
+export function loadProfileData(userId) {
+  return dispatch => {
+    firebase.auth.onAuthStateChanged(authUser => {
+      if(authUser) {
+        db.loadUserProfileData(authUser.uid).then(doc => {
+          dispatch(profileData(doc.data()));
+        });
+      }
+    })
   }
 }
 /*

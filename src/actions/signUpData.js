@@ -15,7 +15,6 @@ import { auth, db } from '../firebase/index';
 import * as Moltin from '../moltin/index';
 import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
-import { profileData } from './profileData';
 
 export function emailAndPasswordSuccess(EPName, EPValue) {
   return {
@@ -47,10 +46,6 @@ export function emailPasswordFormAuth(EPData, formData) {
       Moltin.createAMoltinUser(fullName, finalDataObj.Email).then(customer => {
         db.addingUser(finalDataObj, authUser.user.uid, customer.data.id);
       });
-      db.loadUserProfileData(authUser.user.uid).then(doc => {
-        dispatch(profileData(doc.data()));
-      });
-
     });
   }
 }
