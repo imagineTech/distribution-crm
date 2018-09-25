@@ -68,13 +68,6 @@ class App extends Component {
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
 
-
-        // <Route exact path={routes.PRODUCTS} component={() => <ProductItem />} />
-
-        <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
-        <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
-        <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
-
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />

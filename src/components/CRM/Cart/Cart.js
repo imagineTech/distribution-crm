@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
+import QuantityCounter from './subcomponents/QuantityCounter';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
 import { loadCart } from '../../../actions/cartData';
@@ -16,6 +17,10 @@ class Cart extends Component {
   componentDidMount() {
     const { auth, getCartData } = this.props;
     getCartData(auth.uid);
+  }
+
+  handleQuantityChange = qty => {
+
   }
 
   handleChange = formObject => {
@@ -60,7 +65,7 @@ class Cart extends Component {
         {cartItems.map(item => {
           return(
             <div key={item.id}>
-              <span>{item.quantity}</span>
+              <QuantityCounter quantity={item.quantity} onQuantityChange={this.handleQuantityChange}/>
               <span>{item.name}</span>
               <span>{item.meta.display_price.with_tax.unit.formatted}</span>
             </div>

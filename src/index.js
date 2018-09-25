@@ -9,7 +9,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-// import { _stripeKey } from './stripe/config_stripe';
+import { _stripeKey } from './stripe/config_stripe';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import App from './containers/App';
@@ -46,11 +46,11 @@ render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
-        {/*<StripeProvider apiKey={_stripeKey}>*/}
+        <StripeProvider apiKey={_stripeKey}>
           <Elements>
             <App />
           </Elements>
-        {/*</StripeProvider>*/}
+        </StripeProvider>
       </ConnectedRouter>
     </PersistGate>
   </Provider>,
