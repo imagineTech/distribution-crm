@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
 import '../App.css';
 //Font awesome links
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
 
 //Custom components
 import { Route } from 'react-router-dom';
-import Crm from './CRM.js'
+import Crm from './CRM.js';
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
