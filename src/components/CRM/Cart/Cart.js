@@ -19,10 +19,6 @@ class Cart extends Component {
     getCartData(auth.uid);
   }
 
-  handleQuantityChange = qty => {
-
-  }
-
   handleChange = formObject => {
     let { formValues } = this.state;
     this.setState({
@@ -65,7 +61,12 @@ class Cart extends Component {
         {cartItems.map(item => {
           return(
             <div key={item.id}>
-              <QuantityCounter quantity={item.quantity} onQuantityChange={this.handleQuantityChange}/>
+              <QuantityCounter
+                quantity={item.quantity}
+                onQuantityChange={(qty) => {
+                  const { auth } = this.props;
+                  
+                }}/>
               <span>{item.name}</span>
               <span>{item.meta.display_price.with_tax.unit.formatted}</span>
             </div>

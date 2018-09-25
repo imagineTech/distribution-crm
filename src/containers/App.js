@@ -5,7 +5,7 @@ import '../App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
-import '../../node_modules/font-awesome/css/font-awesome.css';
+// import '../node_modules/font-awesome/css/font-awesome.css';
 
 
 //Custom components
