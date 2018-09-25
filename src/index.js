@@ -50,7 +50,7 @@ render(
           <Elements>
             <App />
           </Elements>
-        </StripeProvider>
+        </StripeProvider>*
       </ConnectedRouter>
     </PersistGate>
   </Provider>,
