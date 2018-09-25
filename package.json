@@ -10,6 +10,7 @@
     "ajv": "^6.5.3",
     "connected-react-router": "^4.4.1",
     "firebase": "^5.5.1",
+    "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "i": "^0.3.6",
     "npm": "^6.4.1",
