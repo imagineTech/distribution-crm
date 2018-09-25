@@ -17,12 +17,12 @@ class Products extends Component {
         <Route
           exact
           path={`${this.props.path}`}
-          render={rest => auth.authenticated ? <ProductList {...this.props} {...rest} /> : <p>Not Found</p>}
+          render={rest => auth.authenticated ? <ProductList {...this.props} {...rest} /> : <p>Please Login</p>}
         />
         <Route
           exact
           path={`${this.props.path}/:productId`}
-          render={rest => auth.authenticated ? <Component {...this.props} {...rest} {...auth} /> : <p>Not Found</p>}
+          render={rest => auth.authenticated ? <Component {...this.props} {...rest} {...auth} /> : <p>Pleas Login</p>}
         />
         </div>
       )

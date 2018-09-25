@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import CreditCard from './subcomponents/CreditCard';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
 import * as Moltin from '../../../moltin/index';
+import * as routes from '../../../constants/routes';
 import { loadCart } from '../../../actions/cartData';
+import { addOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
 class Cart extends Component {
@@ -24,7 +26,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth, profileData } = this.props;
+    const { auth, profileData, stripe, history, match, addingOrdData } = this.props;
     const { formValues } = this.state;
     //hard coded billing
     const billing = {
@@ -35,16 +37,24 @@ class Cart extends Component {
       postcode: formValues.Postcode,
       county: formValues.County,
       country: formValues.Country
-    }
-    // billing becomes shipping, if shipping is undefined
-    Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-      // Moltin.Orders.Payment(order.id, payment);
-      console.log(order);
-    })
+    };
+    stripe.createToken().then(payload => {
+      // billing becomes shipping, if shipping is undefined
+      Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
+        // const payment = {
+        //   gateway: 'stripe',
+        //   method: 'purchase',
+        //   payment: `${payload.token.id}`
+        // }
+        // Moltin.payForOrder(order.data.id, payment);
+        addingOrdData(auth.uid, order.data.id)
+        history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
+      })
+    });
   }
 
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, history } = this.props;
     return(
       <div>
         {cartItems.map(item => {
@@ -56,7 +66,7 @@ class Cart extends Component {
             </div>
           )
         })}
-        <CreditCard formChange={this.handleChange}/>
+        <CardElement />
         <Billing formChange={this.handleChange}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
@@ -73,8 +83,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCartData: (crtId) => dispatch(loadCart(crtId))
+    getCartData: (crtId) => dispatch(loadCart(crtId)),
+    addingOrdData: (authId, ordId) => dispatch(addOrderData(authId, ordId))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Cart));
