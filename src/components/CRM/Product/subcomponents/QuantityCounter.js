@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// CSS
+import './ProductPage/partials/ProductPage.css'
 
 class QuantityCounter extends Component {
 
@@ -30,17 +32,17 @@ class QuantityCounter extends Component {
     return (
       <div>
         <section>
-          <button value={quantity} onClick={this.handleAddition}>
-            +
+          <button value={quantity} onClick={this.handleSubtraction}>
+            -
           </button>
           <input
-            style={{ width: "5%" }}
+            className="chooseQuantity"
             type="text"
             value={quantity}
             onChange={this.handleChange}
           />
-          <button value={quantity} onClick={this.handleSubtraction}>
-            -
+          <button value={quantity} onClick={this.handleAddition}>
+            +
           </button>
         </section>
       </div>

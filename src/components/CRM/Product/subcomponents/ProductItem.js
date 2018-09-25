@@ -3,11 +3,11 @@ import * as Moltin from '../../../../moltin/index';
 import * as routes from '../../../../constants/routes';
 import QuantityCounter from './QuantityCounter';
 // Styled Components
-import Background from './ProductPage/partials/Background'
-import Container from './ProductPage/partials/Container'
-import ProductInfoWrapper from './ProductPage/partials/ProductInfoWrapper'
+import Background from './ProductPage/partials/Background';
+import Container from './ProductPage/partials/Container';
+import ProductInfoWrapper from './ProductPage/partials/ProductInfoWrapper';
 // CSS
-import './ProductPage/partials/ProductPage.css'
+import './ProductPage/partials/ProductPage.css';
 
 class ProductItem extends Component {
 
@@ -31,15 +31,14 @@ class ProductItem extends Component {
           {productData.map(product => {
             if(product.id === match.params.productId) {
               return (
-                <div>
-                <Background>
-                  <Container>
-                    <img className='productImage'></img>
-                    <ProductInfoWrapper>
-                      <div key={product.id}></div>
+                <div key={product.id}>
+                  <Background>
+                    <Container>
+                      <img className='productImage'></img>
+                      <ProductInfoWrapper>
                         <div className='title'>{product.name}</div>
                         <div className='description'>{product.description}</div>
-                        <div className='quantityAvailable'>product.quantity</div>
+                        <div className='quantityAvailable'>{product.meta.stock.level}</div>
                         <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
                         <form onSubmit={e => {
                           e.preventDefault();
@@ -48,7 +47,7 @@ class ProductItem extends Component {
                               history.push(`${routes.CART}`)
                             });
                           }}>
-                          <button>Add to Cart</button>
+                          <button className="addToCart">Add to Cart</button>
                         </form>
                       </ProductInfoWrapper>
                     </Container>

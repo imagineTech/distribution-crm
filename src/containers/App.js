@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
 import '../App.css';
+//Font awesome links
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
 
 //Custom components
 import { Route } from 'react-router-dom';
@@ -22,11 +27,14 @@ import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
+import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
+import OrderReview from '../components/CRM/Review/subcomponents/OrderReview';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
+library.add(faStroopwafel)
 
 class App extends Component {
 
@@ -60,7 +68,12 @@ class App extends Component {
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
         <Route exact path={routes.SIGN_IN} component={() => <Login />} />
 
-        <Route exact path={routes.PRODUCTS} component={() => <ProductItem />} />
+
+        // <Route exact path={routes.PRODUCTS} component={() => <ProductItem />} />
+
+        <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
+        <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
+        <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
 
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
@@ -76,15 +89,10 @@ class App extends Component {
             authenticated &&
             <div>
               <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
-              <Route exact path={routes.CART} render={() => <Cart auth={authUser}/> }/>
+              <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
-              {/*
-                Since nested routes seemed almost undoable. I had to find a way to get this route
-                to talk to the route above. So i just sent over the same state values and did my
-                logic in the ProductItem component
-                */}
-
+              <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
             </div>
           }
           <Footer />

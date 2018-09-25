@@ -12,6 +12,7 @@ import { storeProfileData } from './profileData';
 import { storeNewProfileData } from './profileData';
 import { loadingProductData } from './productData';
 import { loadingCartData } from './cartData';
+import { loadingOrderData } from './orderData';
 
 export default combineReducers({
   emailAndPasswordData,
@@ -21,5 +22,6 @@ export default combineReducers({
   storeProfileData,
   storeNewProfileData,
   loadingProductData,
-  loadingCartData
+  loadingCartData,
+  loadingOrderData
 });

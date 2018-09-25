@@ -23,6 +23,7 @@ export const BECOMING_A_MEMBER = '/becomingamemeber';
 export const SIGN_IN = '/signin';
 export const MEMBER_PORTAL = '/memberportal';
 export const CART = '/cart';
+export const ORDER_REVIEW = '/order_review';
 export const PROFILE = '/profile';
 export const PRODUCTS = '/products';
 export const EDIT_PROFILE = 'editprofile';
