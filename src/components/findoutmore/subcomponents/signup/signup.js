@@ -5,7 +5,6 @@
 */
 
 import React, { Component } from 'react';
-import Banner from '../../../findoutmore/partials/Banner';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
 
