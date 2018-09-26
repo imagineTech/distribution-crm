@@ -34,6 +34,11 @@ export const removeCartItem = async (refId, itemId, qty) => {
   return removed;
 }
 
+export const removeCart = async (refId) => {
+  const deleted = Moltin.Cart(refId).Delete();
+  return deleted;
+}
+
 export const checkoutCart = async (refId, customerId, billing, shipping) => {
   const checkout = await Moltin.Cart(refId).Checkout(customerId, billing, shipping);
   return checkout;

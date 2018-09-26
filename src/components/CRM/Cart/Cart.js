@@ -4,7 +4,7 @@ import Billing from './subcomponents/Billing';
 import QuantityCounter from './subcomponents/QuantityCounter';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
-import { loadCart, updateCartItemQty, removingCartItem } from '../../../actions/cartData';
+import { loadCart, updateCartItemQty, removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
@@ -27,7 +27,7 @@ class Cart extends Component {
   }
 
   handleClick = e => {
-    const { auth, profileData, stripe, history, match, addingOrdData } = this.props;
+    const { auth, profileData, stripe, history, match, addingOrdData, deleteCrt } = this.props;
     const { formValues } = this.state;
     const billing = {
       first_name: profileData.First_Name,
@@ -47,7 +47,8 @@ class Cart extends Component {
         //   payment: `${payload.token.id}`
         // }
         // Moltin.payForOrder(order.data.id, payment);
-        addingOrdData(auth.uid, order.data.id)
+        addingOrdData(auth.uid, order.data.id);
+        deleteCrt(auth.uid);
         history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
       })
     });
@@ -97,6 +98,7 @@ const mapDispatchToProps = dispatch => {
     getCartData: (crtId) => dispatch(loadCart(crtId)),
     updateQty: (cartId, itemId, newQty) => dispatch(updateCartItemQty(cartId, itemId, newQty)),
     removeItm: (cartId, itemId, qty) => dispatch(removingCartItem(cartId, itemId, qty)),
+    deleteCrt: (cartId) => dispatch(deleteCart(cartId)),
     addingOrdData: (authId, ordId) => dispatch(addOrderData(authId, ordId))
   }
 }
