@@ -4,7 +4,7 @@ import Billing from './subcomponents/Billing';
 import QuantityCounter from './subcomponents/QuantityCounter';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
-import { loadCart } from '../../../actions/cartData';
+import { loadCart, updateCartItemQty } from '../../../actions/cartData';
 import { addOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
@@ -64,8 +64,9 @@ class Cart extends Component {
               <QuantityCounter
                 quantity={item.quantity}
                 onQuantityChange={(qty) => {
-                  const { auth } = this.props;
-                  
+                  const { auth, updateQty } = this.props;
+                  updateQty(auth.uid, item.id, qty);
+
                 }}/>
               <span>{item.name}</span>
               <span>{item.meta.display_price.with_tax.unit.formatted}</span>
@@ -90,6 +91,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getCartData: (crtId) => dispatch(loadCart(crtId)),
+    updateQty: (cartId, itemId, newQty) => dispatch(updateCartItemQty(cartId, itemId, newQty)),
     addingOrdData: (authId, ordId) => dispatch(addOrderData(authId, ordId))
   }
 }

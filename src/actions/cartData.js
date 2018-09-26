@@ -14,3 +14,11 @@ export const loadCart = crtId => {
     })
   }
 }
+
+export const updateCartItemQty = (cartId, productId, newQty) => {
+  return dispatch => {
+    Moltin.updateItemQuantity(cartId, productId, newQty).then(order => {
+      dispatch(loadCartData(order));
+    })
+  }
+}
