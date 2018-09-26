@@ -15,9 +15,17 @@ export const loadCart = crtId => {
   }
 }
 
-export const updateCartItemQty = (cartId, productId, newQty) => {
+export const updateCartItemQty = (cartId, itemId, newQty) => {
   return dispatch => {
-    Moltin.updateItemQuantity(cartId, productId, newQty).then(order => {
+    Moltin.updateItemQuantity(cartId, itemId, newQty).then(order => {
+      dispatch(loadCartData(order));
+    })
+  }
+}
+
+export const removingCartItem = (cartId, itemId, qty) => {
+  return dispatch => {
+    Moltin.removeCartItem(cartId, itemId, qty).then(order => {
       dispatch(loadCartData(order));
     })
   }

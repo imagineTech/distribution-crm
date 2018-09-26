@@ -19,14 +19,19 @@ export const addProductsToCart = async (refId, productId, productQuantity) => {
   return cart;
 }
 
+export const getACart = async (refId) => {
+  const cart = await Moltin.Cart(refId).Items();
+  return cart;
+}
+
 export const updateItemQuantity = async (refId, itemId, newQuantity) => {
   const update = await Moltin.Cart(refId).UpdateItemQuantity(itemId, newQuantity);
   return update;
 }
 
-export const getACart = async (refId) => {
-  const cart = await Moltin.Cart(refId).Items();
-  return cart;
+export const removeCartItem = async (refId, itemId, qty) => {
+  const removed = Moltin.Cart(refId).RemoveItem(itemId, qty);
+  return removed;
 }
 
 export const checkoutCart = async (refId, customerId, billing, shipping) => {
