@@ -26,6 +26,7 @@ import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPor
 import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
+import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
 import OrderReview from '../components/CRM/Review/subcomponents/OrderReview';
@@ -81,8 +82,9 @@ class App extends Component {
           {
             authenticated &&
             <div>
-              <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
               <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
+              <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
+              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS}/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
               <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
             </div>
