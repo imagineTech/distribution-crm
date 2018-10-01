@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as routes from '../../../../constants/routes';
 
-const ProductList = ({ productData, match }) => {
+const ProductList = ({ productData, path }) => {
   return (
     <div>
       {productData.map(product => {
@@ -15,7 +16,7 @@ const ProductList = ({ productData, match }) => {
             <p>{product.name}</p>
             <p>Price per product: {product.meta.display_price.with_tax.formatted}</p>
             <p>Bulk: {product.meta.stock.level}</p>
-            <Link to={`${match.url}/${product.id}`}>More Info</Link><br />
+            <Link to={`${path}/${product.id}`}>More Info</Link><br />
           </div>
         )
       })}

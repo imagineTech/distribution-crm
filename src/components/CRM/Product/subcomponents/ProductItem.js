@@ -24,10 +24,6 @@ class ProductItem extends Component {
       const { inputValue } = this.state;
       return (
         <div>
-          {/*
-              I had to do a conditional statement first, this helped connect the
-              ProductList to the ProductItem while sending over the correct data
-          */}
           {productData.map(product => {
             if(product.id === match.params.productId) {
               return (

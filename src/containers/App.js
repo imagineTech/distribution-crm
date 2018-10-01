@@ -10,7 +10,7 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 //Custom components
 import { Route } from 'react-router-dom';
-import Crm from './CRM.js'
+import Crm from '../components/CRM/MemberPortal/MemPortalContainer.js'
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
@@ -22,11 +22,10 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
-
+import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPortal';
 import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
-import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
 import OrderReview from '../components/CRM/Review/subcomponents/OrderReview';
@@ -82,10 +81,9 @@ class App extends Component {
           {
             authenticated &&
             <div>
-              <Route exact path={routes.MEMBER_PORTAL} component={() => <Crm /> }/>
+              <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
               <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
-              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS} />
               <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
             </div>
           }
