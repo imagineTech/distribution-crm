@@ -15,7 +15,7 @@ class MemberPortal extends Component {
         <h1>Welcome to our Crm</h1>
         <Link to={routes.PROFILE}>Profile</Link> <br />
         <Link to={routes.CART}>Cart</Link> <br />
-        <Products auth={auth} comp={ProductItem} path={routes.PRODUCTS}/>
+        <Products auth={auth} path={routes.PRODUCTS}/>
         <SignOutButton />
       </div>
     );

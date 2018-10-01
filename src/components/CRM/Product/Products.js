@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import ProductList from './subcomponents/ProductList';
+import ProductItem from './subcomponents/ProductItem';
 import * as routes from '../../../constants/routes';
 import { loadProducts } from '../../../actions/productData';
 import { connect } from 'react-redux';
@@ -12,7 +13,7 @@ class Products extends Component {
   }
 
   render() {
-    const { comp: Component, auth, path } = this.props;
+    const { auth, path } = this.props;
     return(
       <div>
         {auth.authenticated ?
@@ -21,7 +22,7 @@ class Products extends Component {
             <Route
               exact
               path={`${path}/:productId`}
-              render={rest => <Component {...this.props} {...rest} {...auth} /> }
+              render={rest => auth.authenticated && <ProductItem {...this.props} {...rest} {...auth} /> }
             />
           </div>
           :
