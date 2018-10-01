@@ -9,7 +9,7 @@ class MemberPortalContainer extends Component {
       <Route
         exact
         path={`${this.props.path}`}
-        render={rest => auth.authenticated ? <Component {...this.props}  {...auth} /> : <p>Please Login</p>}
+        render={rest => <Component {...this.props}  {...auth} />}
       />
     )
   }
