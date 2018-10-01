@@ -40,7 +40,7 @@ class ProductItem extends Component {
                           e.preventDefault();
                           Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
                             .then(cartItems => {
-                              history.push(`${routes.CART}`)
+                              history.push(`${routes.CART}`);
                             });
                           }}>
                           <button className="addToCart">Add to Cart</button>
