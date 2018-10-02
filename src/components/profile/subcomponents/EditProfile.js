@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newProfileData, newProfileDataToSend } from '../../../actions/profileData';
+import { newProfileData, newProfileDataToSend, newEmailToSendAuth } from '../../../actions/profileData';
 
 //A component thats going to handle edit
 //profile details. Right now its just name
@@ -11,17 +11,27 @@ class EditPofile extends Component {
     this.props.editProfile(e.target.name, e.target.value);
   }
 
+  handleEmailChange = e => {
+    const { newProfileData, sendNewEmail } = this.props;
+    e.preventDefault();
+    sendNewEmail(newProfileData.Email);
+  }
+
   handleSubmit = e => {
+    const { profileData,newProfileData } = this.props;
     e.preventDefault();
     // Here is where we use the default and new dbData
-    this.props.sendNewProfileData(this.props.profileData, this.props.newProfileData, this.props.profileData.id);
+    this.props.sendNewProfileData(profileData, newProfileData, profileData.id);
   }
 
   render() {
     const { profileData } = this.props;
     return(
       <section>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e) => {
+            this.handleSubmit(e);
+            this.handleEmailChange(e);
+          }}>
           <label htmlFor="name">Name: </label>
           <input
             name="Name"
@@ -54,7 +64,8 @@ const mapDispatchToProps = dispatch => {
   return {
     //This is for storing new profile data and then sending it.
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
-    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID))
+    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID)),
+    sendNewEmail: (newEmail) => dispatch(newEmailToSendAuth(newEmail))
   }
 }
 
