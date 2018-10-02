@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newProfileData, newProfileDataToSend, newEmailToSendAuth } from '../../../actions/profileData';
+import { newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth } from '../../../actions/profileData';
 
 //A component thats going to handle edit
 //profile details. Right now its just name
@@ -17,11 +17,17 @@ class EditPofile extends Component {
     sendNewEmail(newProfileData.Email);
   }
 
+  handlePasswordChange = e => {
+    const { newProfileData, sendNewPassword } = this.props;
+    e.preventDefault();
+    sendNewPassword(newProfileData.Password);
+  }
+
   handleSubmit = e => {
-    const { profileData,newProfileData } = this.props;
+    const { profileData,newProfileData, sendNewProfileData } = this.props;
     e.preventDefault();
     // Here is where we use the default and new dbData
-    this.props.sendNewProfileData(profileData, newProfileData, profileData.id);
+    sendNewProfileData(profileData, newProfileData, profileData.id);
   }
 
   render() {
@@ -53,7 +59,19 @@ class EditPofile extends Component {
             onChange={this.handleChange}
           />
           </label>
-
+          <label>New Password:
+          <input
+            name="Password"
+            placeholder={profileData.Password}
+            onChange={this.handleChange}
+          />
+          </label>
+          <label>Confirm New Password:
+          <input
+            name="Confirm_Password"
+            onChange={this.handleChange}
+          />
+          </label>
           <button>Save</button>
         </form>
       </section>
@@ -75,7 +93,8 @@ const mapDispatchToProps = dispatch => {
     //This is for storing new profile data and then sending it.
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID)),
-    sendNewEmail: (newEmail) => dispatch(newEmailToSendAuth(newEmail))
+    sendNewEmail: (newEmail) => dispatch(newEmailToSendAuth(newEmail)),
+    sendNewPassword: (newPassword) => dispatch(newPasswordToSendAuth(newPassword))
   }
 }
 

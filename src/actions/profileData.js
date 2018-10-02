@@ -60,3 +60,11 @@ export function newEmailToSendAuth(newEmail) {
     })
   }
 }
+
+export function newPasswordToSendAuth(newPassword) {
+  return dispatch => {
+    auth.doUpdateUserPassword(newPassword).then(() => {
+      dispatch(push(routes.PROFILE))
+    })
+  }
+}
