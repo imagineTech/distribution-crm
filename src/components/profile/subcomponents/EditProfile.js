@@ -32,18 +32,33 @@ class EditPofile extends Component {
             this.handleSubmit(e);
             this.handleEmailChange(e);
           }}>
-          <label htmlFor="name">Name: </label>
+          <label>Name:
           <input
             name="Name"
             placeholder={`${profileData.First_Name} ${profileData.Last_Name}`}
             onChange={this.handleChange}
           />
-          <label htmlFor="email">Email: </label>
+          </label>
+          <label>Email: 
           <input
             name="Email"
             placeholder={profileData.Email}
             onChange={this.handleChange}
           />
+          </label>
+          <label>New Password:
+          <input
+            name="Password"
+            placeholder={profileData.Password}
+            onChange={this.handleChange}
+          />
+          </label>
+          <label>Confirm Password:
+          <input
+            name="Confirm_Password"
+            onChange={this.handleChange}
+          />
+          </label>
           <button>Save</button>
         </form>
       </section>
