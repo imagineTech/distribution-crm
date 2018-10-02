@@ -18,19 +18,20 @@ class EditPofile extends Component {
   }
 
   render() {
+    const { profileData } = this.props;
     return(
       <section>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name: </label>
           <input
             name="Name"
-            placeholder={this.props.profileData.Name}
+            placeholder={`${profileData.First_Name} ${profileData.Last_Name}`}
             onChange={this.handleChange}
           />
           <label htmlFor="email">Email: </label>
           <input
             name="Email"
-            placeholder={this.props.profileData.Email}
+            placeholder={profileData.Email}
             onChange={this.handleChange}
           />
           <button>Save</button>
@@ -51,7 +52,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    //This is for storing new profile data and then sending it. 
+    //This is for storing new profile data and then sending it.
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID))
   }
