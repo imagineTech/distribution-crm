@@ -8,19 +8,24 @@ import { newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordTo
 class EditPofile extends Component {
 
   handleChange = e => {
-    this.props.editProfile(e.target.name, e.target.value);
+    const { editProfile } = this.props;
+    const { name, value } = e.target;
+    editProfile(name, value);
   }
 
-  handleEmailChange = e => {
+  handleNewEmailSubmit = e => {
     const { newProfileData, sendNewEmail } = this.props;
     e.preventDefault();
     sendNewEmail(newProfileData.Email);
   }
 
-  handlePasswordChange = e => {
+  handleNewPasswordSubmit = e => {
     const { newProfileData, sendNewPassword } = this.props;
     e.preventDefault();
-    sendNewPassword(newProfileData.Password);
+    newProfileData.New_Password === newProfileData.Confirm_Password ?
+      sendNewPassword(newProfileData.New_Password)
+      :
+      alert('passwords do not match,try again :) ')
   }
 
   handleSubmit = e => {
@@ -31,38 +36,33 @@ class EditPofile extends Component {
   }
 
   render() {
-    const { profileData } = this.props;
+    const { profileData, newProfileData } = this.props;
     return(
       <section>
         <form onSubmit={(e) => {
             this.handleSubmit(e);
-            this.handleEmailChange(e);
           }}>
           <label>First Name:
           <input
             name="First_Name"
-            placeholder={profileData.First_Name}
             onChange={this.handleChange}
           />
           </label>
           <label> Last Name:
           <input
             name="Last_Name"
-            placeholder={profileData.Last_Name}
             onChange={this.handleChange}
           />
           </label>
           <label>Email:
           <input
             name="Email"
-            placeholder={profileData.Email}
             onChange={this.handleChange}
           />
           </label>
           <label>New Password:
           <input
-            name="Password"
-            placeholder={profileData.Password}
+            name="New_Password"
             onChange={this.handleChange}
           />
           </label>
