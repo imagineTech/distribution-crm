@@ -32,7 +32,13 @@ class EditPofile extends Component {
     const { profileData,newProfileData, sendNewProfileData } = this.props;
     e.preventDefault();
     // Here is where we use the default and new dbData
-    sendNewProfileData(profileData, newProfileData, profileData.id);
+    // sendNewProfileData(profileData, newProfileData, profileData.id);
+    for (let newData in newProfileData) {
+      let upObj = {
+        [newData]: newProfileData[newData]
+      };
+      console.log(upObj);
+    }
   }
 
   render() {
