@@ -48,7 +48,7 @@ render(
       <ConnectedRouter history={history}>
         <StripeProvider apiKey={_stripeKey}>
           <Elements>
-            <App />
+            <App storeToTest={store}/>
           </Elements>
         </StripeProvider>
       </ConnectedRouter>
