@@ -28,7 +28,6 @@ const persistConfig = {
     'storeNewProfileData', 
     'signUpFormData', 
     'emailAndPasswordData', 
-    'emailAndPasswordToState',
   ]
 };
 const store = createStore(
