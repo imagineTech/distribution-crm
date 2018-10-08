@@ -28,7 +28,7 @@ class Cart extends Component {
     let { formValues } = this.state;
     let { shippingForm } = formValues;
     this.setState({
-      formValues: { shippingForm: { ...shippingForm, ...formShippingObject } }
+      formValues: {  ...formValues, shippingForm: { ...shippingForm, ...formShippingObject } }
     });
   }
 
@@ -36,7 +36,7 @@ class Cart extends Component {
     let { formValues } = this.state;
     let { billingForm } = formValues;
     this.setState({
-      formValues: { billingForm: { ...billingForm, ...formBillingObject } }
+      formValues: { ...formValues, billingForm: { ...billingForm, ...formBillingObject } }
     });
   }
 
@@ -61,22 +61,21 @@ class Cart extends Component {
       postcode: billingForm.Postcode,
       county: billingForm.County,
       country: billingForm.Country
-    } : undefined;
-    // stripe.createToken().then(payload => {
-    //   Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, shipping, billing)
-    //     .then(order => {
-    //     // const payment = {
-    //     //   gateway: 'stripe',
-    //     //   method: 'purchase',
-    //     //   payment: `${payload.token.id}`
-    //     // }
-    //     // Moltin.payForOrder(order.data.id, payment);
-    //     addingOrdData(auth.uid, order.data.id);
-    //     deleteCrt(auth.uid);
-    //     history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
-    //   })
-    // });
-    console.log(billing)
+    } : shipping;
+    stripe.createToken().then(payload => {
+      Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, shipping, billing)
+        .then(order => {
+        // const payment = {
+        //   gateway: 'stripe',
+        //   method: 'purchase',
+        //   payment: `${payload.token.id}`
+        // }
+        // Moltin.payForOrder(order.data.id, payment);
+        addingOrdData(auth.uid, order.data.id);
+        deleteCrt(auth.uid);
+        history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
+      })
+    });
   }
 
   render() {
