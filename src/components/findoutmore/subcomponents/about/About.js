@@ -13,7 +13,7 @@ import OurTeam from './partials/ourTeam/OurTeam';
 const About = () => {
   return(
     <Banner>
-      <h1>This is the about section</h1>
+      {/* <h1>This is the about section</h1> */}
       <OurCompany />
       <OurTeam />
     </Banner>

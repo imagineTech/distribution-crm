@@ -9,7 +9,6 @@ constructor(props) {
       customerEmail: '',
       contactContent: ''
     };
-
   }
 
 	handleChange = e => {
@@ -53,6 +52,7 @@ constructor(props) {
 		      <br />
 		      <button className="submitButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Submit</button>
 		    </form>
+
 		  </div>
 		);
 	}
