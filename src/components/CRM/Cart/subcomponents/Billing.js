@@ -15,22 +15,22 @@ class Billing extends Component {
         <h4>Billing info:</h4>
         <label>
           Address:
-          <input name="Address" type="text" onChange={this.handleChange} />
+          <input name="Address" type="text" onChange={this.handleChange}   />
         </label>
         <br />
         <label>
           City:
-          <input name="City" type="text" onChange={this.handleChange} />
+          <input name="City" type="text" onChange={this.handleChange}  />
         </label>
         <br />
         <label>
           Postcode:
-          <input name="Postcode" type="text" onChange={this.handleChange} />
+          <input name="Postcode" type="text" onChange={this.handleChange}  />
         </label>
         <br />
         <label>
           County:
-          <input name="County" type="text" onChange={this.handleChange} />
+          <input name="County" type="text" onChange={this.handleChange}  />
         </label>
         <br />
         <label>

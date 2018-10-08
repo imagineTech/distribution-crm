@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Billing from './subcomponents/Billing';
+import Shipping from './subcomponents/Shipping';
 import QuantityCounter from './subcomponents/QuantityCounter';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
@@ -11,7 +12,11 @@ import { connect } from 'react-redux';
 class Cart extends Component {
 
   state = {
-    formValues: []
+    formValues: {
+      shippingForm: {},
+      billingForm: {}
+    },
+    billingIsDifferent: false
   }
 
   componentDidMount() {
@@ -19,43 +24,69 @@ class Cart extends Component {
     getCartData(auth.uid);
   }
 
-  handleChange = formObject => {
+  handleShippingChange = formShippingObject => {
     let { formValues } = this.state;
+    let { shippingForm } = formValues;
     this.setState({
-      formValues: { ...formValues, ...formObject }
+      formValues: { shippingForm: { ...shippingForm, ...formShippingObject } }
+    });
+  }
+
+  handleBillingChange = formBillingObject => {
+    let { formValues } = this.state;
+    let { billingForm } = formValues;
+    this.setState({
+      formValues: { billingForm: { ...billingForm, ...formBillingObject } }
     });
   }
 
   handleClick = e => {
     const { auth, profileData, stripe, history, match, addingOrdData, deleteCrt } = this.props;
-    const { formValues } = this.state;
-    const billing = {
+    const { formValues, billingIsDifferent } = this.state;
+    const { billingForm, shippingForm } = formValues;
+    const shipping = {
       first_name: profileData.First_Name,
       last_name: profileData.Last_Name,
-      line_1: formValues.Address,
-      city: formValues.City,
-      postcode: formValues.Postcode,
-      county: formValues.County,
-      country: formValues.Country
+      line_1: shippingForm.Address,
+      city: shippingForm.City,
+      postcode: shippingForm.Postcode,
+      county: shippingForm.County,
+      country: shippingForm.Country
     };
-    stripe.createToken().then(payload => {
-      // billing becomes shipping, if shipping is undefined
-      Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, billing).then(order => {
-        // const payment = {
-        //   gateway: 'stripe',
-        //   method: 'purchase',
-        //   payment: `${payload.token.id}`
-        // }
-        // Moltin.payForOrder(order.data.id, payment);
-        addingOrdData(auth.uid, order.data.id);
-        deleteCrt(auth.uid);
-        history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
-      })
-    });
+    const billing = billingIsDifferent ? {
+      first_name: profileData.First_Name,
+      last_name: profileData.Last_Name,
+      line_1: billingForm.Address,
+      city: billingForm.City,
+      postcode: billingForm.Postcode,
+      county: billingForm.County,
+      country: billingForm.Country
+    } : undefined;
+    // stripe.createToken().then(payload => {
+    //   Moltin.checkoutCart(auth.uid, profileData.Moltin_User_Id, shipping, billing)
+    //     .then(order => {
+    //     // const payment = {
+    //     //   gateway: 'stripe',
+    //     //   method: 'purchase',
+    //     //   payment: `${payload.token.id}`
+    //     // }
+    //     // Moltin.payForOrder(order.data.id, payment);
+    //     addingOrdData(auth.uid, order.data.id);
+    //     deleteCrt(auth.uid);
+    //     history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
+    //   })
+    // });
+    console.log(billing)
   }
 
   render() {
     const { cartItems, history } = this.props;
+    const { billingIsDifferent, formValues } = this.state;
+    const billing = billingIsDifferent ? 
+      <Billing formChange={this.handleBillingChange} {...this.state} />
+      :
+      null;
+
     return(
       <div>
         {cartItems.map(item => {
@@ -79,7 +110,20 @@ class Cart extends Component {
           )
         })}
         <CardElement />
-        <Billing formChange={this.handleChange}/>
+        <Shipping formChange={this.handleShippingChange} />
+        <label>
+          Check if shipping is the same as billing:
+        <input 
+          type="checkbox" 
+          defaultChecked={billingIsDifferent} 
+          onChange={() => {
+            this.setState({ 
+              billingIsDifferent: !billingIsDifferent
+            })
+          }}
+        />
+        </label>
+        {billing}
         <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
