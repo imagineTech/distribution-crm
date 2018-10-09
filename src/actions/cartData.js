@@ -13,24 +13,26 @@ export const loadCart = crtId => {
     Moltin.getACart(crtId).then(cart => {
       if(cart.data.length !== -1) {
         dispatch(loadCartData(cart.data));
+        console.log(cart.data);
       }
       dispatch(loadCartData(cart));
+      console.log(cart);
     })
   }
 }
 
 export const updateCartItemQty = (cartId, itemId, newQty) => {
   return dispatch => {
-    Moltin.updateItemQuantity(cartId, itemId, newQty).then(order => {
-      dispatch(loadCartData(order));
+    Moltin.updateItemQuantity(cartId, itemId, newQty).then(cart => {
+      dispatch(loadCartData(cart));
     })
   }
 }
 
 export const removingCartItem = (cartId, itemId, qty) => {
   return dispatch => {
-    Moltin.removeCartItem(cartId, itemId, qty).then(order => {
-      dispatch(loadCartData(order));
+    Moltin.removeCartItem(cartId, itemId, qty).then(cart => {
+      dispatch(loadCartData(cart));
     })
   }
 }
