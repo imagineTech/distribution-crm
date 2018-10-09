@@ -7,8 +7,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { ConnectedRouter } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { browserHistory } from 'react-router';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { _stripeKey } from './stripe/config_stripe';
 import thunk from 'redux-thunk';
@@ -19,7 +20,7 @@ import App from './containers/App';
 //just because i needed the history obj to work with
 //my redux action calls.
 const initialState = {};
-const history = createBrowserHistory();
+const history = createHashHistory();
 const persistConfig = {
   key: 'root',
   storage,
