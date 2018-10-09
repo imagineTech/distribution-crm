@@ -24,3 +24,7 @@ export const doSignOut = () => {
 export const doUpdateUserEmail = (email) => {
   return auth.currentUser.updateEmail(email)
 }
+
+export const doUpdateUserPassword = (password) => {
+  return auth.currentUser.updatePassword(password);
+}

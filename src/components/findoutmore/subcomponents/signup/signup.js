@@ -5,7 +5,6 @@
 */
 
 import React, { Component } from 'react';
-import Banner from '../../../findoutmore/partials/Banner';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
 
@@ -27,7 +26,7 @@ class SignUp extends Component {
 
   render() {
     return (
-          <Banner>
+          <div>
             <h1>Sign-up</h1>
             <form onSubmit={this.handleSubmit}>
               <label htmlFor="first_name">First Name: </label>
@@ -46,7 +45,7 @@ class SignUp extends Component {
               <input type="text" id="country" name="Country" onChange={this.handleChange} />
               <button>Signup</button>
             </form>
-          </Banner>
+          </div>
     );
   }
 }

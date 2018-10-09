@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 
+
 const header = () => {
-	
+
 	return (
 		<div>
 			<div>
@@ -19,6 +20,7 @@ const header = () => {
 				    <Link to={routes.OUR_POLICY} className="navLink">Our Policy</Link>
 				    <Link to={routes.CONTACT} className="navLink">Contact</Link>
 				    <Link to={routes.SIGN_UP} className="navLink">Register</Link>
+						
 					</div>
 				</div>
 			</div>

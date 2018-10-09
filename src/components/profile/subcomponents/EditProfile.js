@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newProfileData, newProfileDataToSend } from '../../../actions/profileData';
+import { newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth } from '../../../actions/profileData';
 
 //A component thats going to handle edit
 //profile details. Right now its just name
@@ -8,31 +8,76 @@ import { newProfileData, newProfileDataToSend } from '../../../actions/profileDa
 class EditPofile extends Component {
 
   handleChange = e => {
-    this.props.editProfile(e.target.name, e.target.value);
+    const { editProfile } = this.props;
+    const { name, value } = e.target;
+    editProfile(name, value);
+  }
+
+  handleNewEmailSubmit = e => {
+    const { newProfileData, sendNewEmail } = this.props;
+    e.preventDefault();
+    sendNewEmail(newProfileData.Email);
+  }
+
+  handleNewPasswordSubmit = e => {
+    const { newProfileData, sendNewPassword } = this.props;
+    e.preventDefault();
+    newProfileData.New_Password === newProfileData.Confirm_Password ?
+      sendNewPassword(newProfileData.New_Password)
+      :
+      alert('passwords do not match,try again :) ')
   }
 
   handleSubmit = e => {
+    const { profileData,newProfileData, sendNewProfileData } = this.props;
     e.preventDefault();
     // Here is where we use the default and new dbData
-    this.props.sendNewProfileData(this.props.profileData, this.props.newProfileData, this.props.profileData.id);
+    // sendNewProfileData(profileData, newProfileData, profileData.id);
+    for (let newData in newProfileData) {
+      let upObj = {
+        [newData]: newProfileData[newData]
+      };
+      console.log(upObj);
+    }
   }
 
   render() {
+    const { profileData, newProfileData } = this.props;
     return(
       <section>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name: </label>
+        <form onSubmit={(e) => {
+            this.handleSubmit(e);
+          }}>
+          <label>First Name:
           <input
-            name="Name"
-            placeholder={this.props.profileData.Name}
+            name="First_Name"
             onChange={this.handleChange}
           />
-          <label htmlFor="email">Email: </label>
+          </label>
+          <label> Last Name:
+          <input
+            name="Last_Name"
+            onChange={this.handleChange}
+          />
+          </label>
+          <label>Email:
           <input
             name="Email"
-            placeholder={this.props.profileData.Email}
             onChange={this.handleChange}
           />
+          </label>
+          <label>New Password:
+          <input
+            name="New_Password"
+            onChange={this.handleChange}
+          />
+          </label>
+          <label>Confirm New Password:
+          <input
+            name="Confirm_Password"
+            onChange={this.handleChange}
+          />
+          </label>
           <button>Save</button>
         </form>
       </section>
@@ -51,9 +96,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    //This is for storing new profile data and then sending it. 
+    //This is for storing new profile data and then sending it.
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
-    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID))
+    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID)),
+    sendNewEmail: (newEmail) => dispatch(newEmailToSendAuth(newEmail)),
+    sendNewPassword: (newPassword) => dispatch(newPasswordToSendAuth(newPassword))
   }
 }
 
