@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import MemberPortal from './subcomponents/MemberPortal';
+import { loadProducts } from '../../../actions/productData';
+import { connect } from 'react-redux';
 
 class MemberPortalContainer extends Component {
+
+  componentDidMount() {
+    const { getProductData } = this.props;
+    getProductData();
+  }
+
   render() {
     const { comp: Component, auth } = this.props;
     return(
@@ -15,4 +22,16 @@ class MemberPortalContainer extends Component {
   }
 }
 
-export default MemberPortalContainer;
+const mapStateToProps = state => {
+  return {
+    productData: state.loadingProductData.data
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getProductData: () => dispatch(loadProducts())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MemberPortalContainer);

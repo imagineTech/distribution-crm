@@ -45,10 +45,6 @@ const store = createStore(
 );
 const persistor = persistStore(store);
 
-//I couldnt find a way to bring in 'history'
-//in a way that would work seperatly without two
-//instances of 'history'
-//Using PersistGate to integrate the data into react
 render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
