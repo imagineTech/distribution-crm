@@ -8,7 +8,7 @@ class OrderRvwContainer extends Component {
   componentDidMount() {
     const { getOrder, profileData } = this.props;
     const { Orders } = profileData
-    getOrder(Orders[Orders.length - 1].id);
+    // getOrder(Orders[Orders.length - 1].id);
   }
 
   render() {
