@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
@@ -21,7 +22,13 @@ const initialState = {};
 const history = createBrowserHistory();
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  stateReconciler: autoMergeLevel2,
+  blacklist: [
+    'storeNewProfileData',
+    'signUpFormData',
+    'emailAndPasswordData',
+  ]
 };
 const store = createStore(
   //for my redux data to stay, had to bring in redux-persist
@@ -46,11 +53,11 @@ render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
-        {/*<StripeProvider apiKey={_stripeKey}>*/}
+        <StripeProvider apiKey={_stripeKey}>
           <Elements>
-            <App />
+            <App storeToTest={store}/>
           </Elements>
-        {/*</StripeProvider>*/}
+        </StripeProvider>
       </ConnectedRouter>
     </PersistGate>
   </Provider>,

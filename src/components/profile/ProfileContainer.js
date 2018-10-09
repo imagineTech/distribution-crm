@@ -25,12 +25,12 @@ class ProfileContainer extends Component {
         <Route
           exact
           path={`${this.props.path}`}
-          render={rest => auth.authenticated ? <Profile {...this.props} {...rest} /> : <p>Access denied</p> }
+          render={rest => <Profile {...this.props} {...rest} /> }
         />
         <Route
           exact
           path={`${this.props.path}/${routes.EDIT_PROFILE}`}
-          render={rest => auth.authenticated ? <Component {...this.props} {...rest} {...auth} /> : <p>Access denied</p> }
+          render={rest => <Component {...this.props} {...rest} {...auth} /> }
         />
       </div>
     )
