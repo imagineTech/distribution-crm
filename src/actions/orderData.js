@@ -11,9 +11,10 @@ export const loadOrderData = ordData => {
 export const loadOrder = (orderId) => {
   return dispatch => {
     Moltin.getAnOrder(orderId).then(order => {
-      if(order) {
+      if(order.data.length !== -1) {
         dispatch(loadOrderData(order.data));
       }
+      dispatch(loadOrderData(order));
     })
   }
 }

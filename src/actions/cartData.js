@@ -11,6 +11,9 @@ export const loadCartData = crtData => {
 export const loadCart = crtId => {
   return dispatch => {
     Moltin.getACart(crtId).then(cart => {
+      if(cart.data.length !== -1) {
+        dispatch(loadCartData(cart.data));
+      }
       dispatch(loadCartData(cart));
     })
   }
