@@ -18,7 +18,6 @@ export const loadProducts = () => {
   return dispatch => {
     Moltin.getAllProducts().then(products => {
       dispatch(loadProductData(products));
-      console.log(products);
     })
   }
 } 
@@ -27,7 +26,6 @@ export const loadProductImage = () => {
   return dispatch => {
     Moltin.getProductImage().then(productImageData => {
       dispatch(loadProductData(productImageData));
-      console.log(productImageData);
     })
   }
 }
