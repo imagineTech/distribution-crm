@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Billing extends Component {
+class Shipping extends Component {
   handleChange = e => {
     let { formChange } = this.props;
     let objToSend = {
@@ -12,25 +12,25 @@ class Billing extends Component {
   render() {
     return (
       <div>
-        <h4>Billing info:</h4>
+        <h4>Shipping info:</h4>
         <label>
           Address:
-          <input name="Address" type="text" onChange={this.handleChange}   />
+          <input name="Address" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
           City:
-          <input name="City" type="text" onChange={this.handleChange}  />
+          <input name="City" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
           Postcode:
-          <input name="Postcode" type="text" onChange={this.handleChange}  />
+          <input name="Postcode" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
           County:
-          <input name="County" type="text" onChange={this.handleChange}  />
+          <input name="County" type="text" onChange={this.handleChange} />
         </label>
         <br />
         <label>
@@ -43,4 +43,4 @@ class Billing extends Component {
   }
 }
 
-export default Billing;
+export default Shipping;

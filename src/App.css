@@ -1,6 +1,9 @@
 body {
   margin: 0;
   width: 100vw;
+  border: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .modal-container {
