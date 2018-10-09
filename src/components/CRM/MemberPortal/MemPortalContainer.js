@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { loadProducts } from '../../../actions/productData';
+import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
 
 class MemberPortalContainer extends Component {
@@ -30,7 +30,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProductData: () => dispatch(loadProducts())
+    getProductData: () => dispatch(loadProducts()),
+    getProductImage: (productId) => dispatch(loadProductImage(productId))
   }
 };
 
