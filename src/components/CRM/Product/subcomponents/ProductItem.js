@@ -24,13 +24,19 @@ class ProductItem extends Component {
       const { inputValue } = this.state;
       return (
         <div>
-          {productData.map(product => {
+          {productData.data.map(product => {
             if(product.id === match.params.productId) {
               return (
                 <div key={product.id}>
                   <Background>
                     <Container>
-                      <img className='productImage'></img>
+                      {productData.included.main_images.map(image => {
+                        return image.id === product.relationships.main_image.data.id ? (
+                          <img className='productImage'key={image.id} src={image.link.href} alt={image.file_name} />
+                        ) : (
+                          null
+                        )
+                      })}   
                       <ProductInfoWrapper>
                         <div className='title'>{product.name}</div>
                         <div className='description'>{product.description}</div>

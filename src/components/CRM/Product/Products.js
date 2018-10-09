@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import * as routes from '../../../constants/routes';
-import { loadProducts } from '../../../actions/productData';
+import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
 
 class Products extends Component {
 
   componentDidMount() {
-    this.props.getProductData();
+    const { getProductData, getProductImage } = this.props;
+    getProductData();
+    getProductImage();
   }
 
   render() {
@@ -24,13 +26,14 @@ class Products extends Component {
 
 export const mapStateToProps = state => {
   return {
-    productData: state.loadingProductData.data
+    productData: state.loadingProductData
   }
 }
 
 export const mapDispatchToProps = dispatch => {
   return {
-    getProductData: () => dispatch(loadProducts())
+    getProductData: () => dispatch(loadProducts()),
+    getProductImage: () => dispatch(loadProductImage())
   }
 }
 
