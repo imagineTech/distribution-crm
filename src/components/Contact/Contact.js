@@ -1,57 +1,49 @@
 import React, { Component } from 'react';
 
 class contact extends React.Component {
-constructor(props) {
-    super(props);
-    this.state = {
-      customerName: '',
-      customerNumber: '',
-      customerEmail: '',
-      contactContent: ''
-    };
+	constructor() {
+		super();
+		
   }
 
-	handleChange = e => {
-	    const val = e.target.name;
-	    this.setState({
-	    	val: {
-	    		...this.state.val,
-					[e.target.name]: e.target.value
-				}
-			});
-	  }
-
-	handleSubmit = e =>  {
-	    alert('Thanks for your feedback' + this.state.value);
-	    e.preventDefault();
-	  }
-
 	render() {
-
 		return (
-			<div>
-		    <form onSubmit={(e)=>this.handleSubmit(e)}>
-		    	<label>
-		    		Your Name:
-		      	<input name="customerName" type="text" value={this.state.customerName} onChange={this.handleChange} />
-		      </label>
-		      <br />
-		      <label>
-		        Your Number:
-		        <input name="customerNumber" type="text" value={this.state.customerNumber} onChange={this.handleChange} />
-		      </label>
-		      <br />
-		      <label>
-		        Your Email:
-		        <input name="customerEmail" type="text" value={this.state.customerEmail} onChange={this.handleChange} />
-		      </label>
-		      <label>
-		        Your Comment or Question:
-		        <textarea name="contactContent" type="text" value={this.state.contactContent} onChange={this.handleChange} />
-		      </label>
-		      <br />
-		      <button className="submitButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Submit</button>
-		    </form>
+			<div className='contact'>
+
+				<button id="close-contact-modal" onClick={this.props.closeContactModal}>X</button>
+
+				<p id='help-question'>What can we help you with?</p>
+
+				<form onSubmit={(e)=>this.handleSubmit(e)}>
+		
+					<label>Your Name
+					<br/>
+					<input name="customerName" type="text" value={this.props.customerName} onChange={this.handleChangeName} />
+					</label>
+					<br/>
+
+					<label>Your Number
+					<br/>
+					<input name="customerNumber" type="text" value={this.props.customerNumber} onChange={this.handleChangeNumber} />
+					</label>
+					<br/>
+
+					<label>Your Email
+					<br/>
+					<input name="customerEmail" type="text" value={this.props.customerEmail} onChange={this.handleChangeEmail} />
+					</label>
+					<br/>
+
+					<label>Your Comment or Question
+					<br/>
+					<textarea name="contactContent" type="text" value={this.props.contactContent} onChange={this.handleChangeContent} />
+					</label>
+					<br/>
+
+					<button className="submitButton" type="submit" onClick={(e)=>this.props.handleSubmit(e)}>Submit</button>
+					<button>Reset</button>
+
+				</form>
 
 		  </div>
 		);

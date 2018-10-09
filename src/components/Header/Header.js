@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Contact from './../Contact/Contact.js';
 
 class Header extends Component {
 	constructor() {
@@ -19,16 +20,16 @@ class Header extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	openModal = () => {
-		document.getElementById('myModal').style.display = 'block';
+	openContactModal = () => {
+		document.getElementById('myContactModal').style.display = 'block';
 	}
 
-	closeModal = () => {
-		document.getElementById('myModal').style.display = 'none';
+	closeContactModal = () => {
+		document.getElementById('myContactModal').style.display = 'none';
 	}
 
 
-//============= Contact Modal ===============//
+//============= ContactModal ===============//
 
 	handleChange = e => {
 		this.setState({value: e.target.value});
@@ -75,7 +76,7 @@ class Header extends Component {
 			<div className='contact-sign-in'>
 
 				<div id='contact'>
-					<FontAwesomeIcon onClick={this.openModal} icon="envelope" style={{height: '20px', width: '20px'}}/>
+					<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px'}}/>
 				</div>
 
 				<Link to={routes.SIGN_IN} id='sign-in' style={{color: 'red'}}>
@@ -83,44 +84,18 @@ class Header extends Component {
 				</Link>
 
 			</div>
-				
-				<div id="myModal" style={{display: 'none'}}>
-					<div className='modal-content'>
+				 
+				<div id="myContactModal" style={{display: 'none'}}>
+					<div className='contact-modal-content'>
 
-					<button id="close-modal" onClick={this.closeModal}>X</button>
-
-						<p id='help-question'>What can we help you with?</p>
-						<form onSubmit={(e)=>this.handleSubmit(e)}>
-							
-							<label>Your Name
-							<br/>
-							<input name="customerName" type="text" value={this.state.customerName} onChange={this.handleChangeName} />
-							</label>
-							<br/>
-
-							<label>Your Number
-							<br/>
-							<input name="customerNumber" type="text" value={this.state.customerNumber} onChange={this.handleChangeNumber} />
-							</label>
-							<br/>
-
-							<label>Your Email
-							<br/>
-							<input name="customerEmail" type="text" value={this.state.customerEmail} onChange={this.handleChangeEmail} />
-							</label>
-							<br/>
-
-							<label>Your Comment or Question
-							<br/>
-							<textarea name="contactContent" type="text" value={this.state.contactContent} onChange={this.handleChangeContent} />
-							</label>
-							<br/>
-
-							<button className="submitButton" type="submit" onClick={(e)=>this.handleSubmit(e)}>Submit</button>
-							<button>Reset</button>
-
-						</form>
-
+					<Contact
+						handleSubmit={this.handleSubmit}
+						closeContactModal={this.closeContactModal} 
+						customerName={this.state.customerName}
+						customerNumber={this.state.customerNumber}
+						customerEmail={this.state.customerEmail}
+						contactContent={this.state.contactContent}
+					/>
 					
 				</div>	
 
