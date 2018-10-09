@@ -5,9 +5,10 @@
 */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/loginAuth';
-
+import * as routes from '../../../../constants/routes';
 class Login extends Component {
 
   handleChange = e => {
@@ -30,6 +31,7 @@ class Login extends Component {
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
           <button>Login</button>
         </form>
+        <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link>
       </div>
     )
   }
