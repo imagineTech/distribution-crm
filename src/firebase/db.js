@@ -33,8 +33,6 @@ export const loadUserProfileData = (docID) => {
 }
 
 export const editUserData = (defaultDbData, newDbData, dbID) => {
-  let newFullName = `${newDbData.First_Name} ${newDbData.Last_Name}`;
-  let defaultFullName = `${defaultDbData.First_Name} ${defaultDbData.Last_Name}`;
   return DB.doc(dbID).update({
     // These lines won't work, seems that the dynmaic object key calling
     // wont work with fb for more than one entry. Any other entry would just
@@ -44,8 +42,10 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
     // The conditional statements are for when a user only needs to update one
     // value instead of all. That's why i ask for default and new dbData
     // I ended up hard coding them, below:
-    Name: (newFullName || defaultFullName),
-    Email: (newDbData.Email || defaultDbData.Email)
+    First_Name: (newDbData.First_Name || defaultDbData.First_Name),
+    Last_Name: (newDbData.Last_Name || defaultDbData.Last_Name),
+    Email: (newDbData.Email || defaultDbData.Email),
+    Password: (newDbData.Password || defaultDbData.Password)
   })
 }
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
-  
-  max-width: 550px;
+  margin: 20px;
+  max-width: 500px;
   height: 700px;
   display: inline-block;
   overflow: hidden;
