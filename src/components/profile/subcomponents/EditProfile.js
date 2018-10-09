@@ -20,33 +20,35 @@ class EditPofile extends Component {
   }
 
   handleNewPasswordSubmit = e => {
-    const { newProfileData, sendNewPassword } = this.props;
+    const { profileData, newProfileData, sendNewPassword, sendNewProfileData } = this.props;
     e.preventDefault();
-    newProfileData.New_Password === newProfileData.Confirm_Password ?
-      sendNewPassword(newProfileData.New_Password)
-      :
+    if(newProfileData.New_Password === newProfileData.Confirm_Password) {
+      sendNewPassword(newProfileData.New_Password),
+      sendNewProfileData(profileData, newProfileData, profileData.id)
+    } else {
       alert('passwords do not match,try again :) ')
-  }
-
-  handleSubmit = e => {
-    const { profileData,newProfileData, sendNewProfileData } = this.props;
-    e.preventDefault();
-    // Here is where we use the default and new dbData
-    // sendNewProfileData(profileData, newProfileData, profileData.id);
-    for (let newData in newProfileData) {
-      let upObj = {
-        [newData]: newProfileData[newData]
-      };
-      console.log(upObj);
     }
   }
 
+  handleSubmit = e => {
+    const { profileData, newProfileData, sendNewProfileData } = this.props;
+    e.preventDefault();
+    // Here is where we use the default and new dbData
+    sendNewProfileData(profileData, newProfileData, profileData.id);
+  }
+
   render() {
-    const { profileData, newProfileData } = this.props;
+    const { profileData, newProfileData } = this.props
     return(
       <section>
         <form onSubmit={(e) => {
             this.handleSubmit(e);
+            if(newProfileData.Email !== undefined) {
+              this.handleNewEmailSubmit(e);
+            }
+            if (newProfileData.New_Password !== undefined) {
+              this.handleNewPasswordSubmit(e);
+            }
           }}>
           <label>First Name:
           <input
@@ -105,3 +107,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPofile);
+
