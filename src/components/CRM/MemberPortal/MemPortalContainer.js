@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 class MemberPortalContainer extends Component {
 
   componentDidMount() {
-    const { getProductData } = this.props;
+    const { getProductData, getProductImage } = this.props;
     getProductData();
+    getProductImage();
   }
 
   render() {
@@ -24,7 +25,7 @@ class MemberPortalContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    productData: state.loadingProductData.data
+    productData: state.loadingProductData
   };
 };
 

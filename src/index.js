@@ -27,7 +27,7 @@ const persistConfig = {
   blacklist: [
     'storeNewProfileData', 
     'signUpFormData', 
-    'emailAndPasswordData', 
+    'emailAndPasswordData',
   ]
 };
 const store = createStore(
