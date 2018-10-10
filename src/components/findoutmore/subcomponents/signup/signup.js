@@ -5,9 +5,10 @@
 */
 
 import React, { Component } from 'react';
-import Banner from '../../../findoutmore/partials/Banner';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
+import * as routes from '../../../../constants/routes';
 
 class SignUp extends Component {
 
@@ -27,11 +28,13 @@ class SignUp extends Component {
 
   render() {
     return (
-          <Banner>
+          <div>
             <h1>Sign-up</h1>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="name">Name: </label>
-              <input type="text" id="name" name="Name" onChange={this.handleChange}/>
+              <label htmlFor="first_name">First Name: </label>
+              <input type="text" id="first_name" name="First_Name" onChange={this.handleChange}/>
+              <label htmlFor="name">Last Name: </label>
+              <input type="text" id="last_name" name="Last_Name" onChange={this.handleChange}/>
               <label htmlFor="email">Email: </label>
               <input type="email" id="signup_email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
               <label htmlFor="signup_password">Password: </label>
@@ -44,7 +47,8 @@ class SignUp extends Component {
               <input type="text" id="country" name="Country" onChange={this.handleChange} />
               <button>Signup</button>
             </form>
-          </Banner>
+            <Link to={routes.SIGN_IN}>Already have an account? Login </Link>
+          </div>
     );
   }
 }

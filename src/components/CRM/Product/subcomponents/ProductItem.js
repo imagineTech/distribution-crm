@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import * as Moltin from '../../../../moltin/index';
 import * as routes from '../../../../constants/routes';
 import QuantityCounter from './QuantityCounter';
+// Styled Components
+import Background from './ProductPage/partials/Background';
+import Container from './ProductPage/partials/Container';
+import ProductInfoWrapper from './ProductPage/partials/ProductInfoWrapper';
+// CSS
+import './ProductPage/partials/ProductPage.css';
 
 class ProductItem extends Component {
 
@@ -18,26 +24,36 @@ class ProductItem extends Component {
       const { inputValue } = this.state;
       return (
         <div>
-          {/*
-              I had to do a conditional statement first, this helped connect the
-              ProductList to the ProductItem while sending over the correct data
-          */}
-          {productData.map(product => {
+          {productData.data.map(product => {
             if(product.id === match.params.productId) {
               return (
                 <div key={product.id}>
-                  <h1>{product.name}</h1>
-                  <p>{product.description}</p>
-                  <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
-                  <form onSubmit={e => {
-                    e.preventDefault();
-                    Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
-                      .then(cartItems => {
-                        history.push(`${routes.CART}`)
-                      });
-                    }}>
-                    <button>Add to Cart</button>
-                  </form>
+                  <Background>
+                    <Container>
+                      {productData.included.main_images.map(image => {
+                        return image.id === product.relationships.main_image.data.id ? (
+                          <img className='productImage'key={image.id} src={image.link.href} alt={image.file_name} />
+                        ) : (
+                          null
+                        )
+                      })}   
+                      <ProductInfoWrapper>
+                        <div className='title'>{product.name}</div>
+                        <div className='description'>{product.description}</div>
+                        <div className='quantityAvailable'>{product.meta.stock.level}</div>
+                        <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
+                        <form onSubmit={e => {
+                          e.preventDefault();
+                          Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
+                            .then(cartItems => {
+                              history.push(`${routes.CART}`);
+                            });
+                          }}>
+                          <button className="addToCart">Add to Cart</button>
+                        </form>
+                      </ProductInfoWrapper>
+                    </Container>
+                  </Background>
                 </div>
               )
             }

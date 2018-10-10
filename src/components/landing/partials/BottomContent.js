@@ -12,7 +12,7 @@ import IndividualComponentWrapper from './bottomComponents/IndividualComponentWr
 const BottomContent = (props) => {
   return(
     <IndividualComponentWrapper>
-      <img className="bottom-images" src= {process.env.PUBLIC_URL + props.images} />
+      <img className="bottom-images" src= {props.images} />
       {props.bottomLinks}
 
     </IndividualComponentWrapper>
