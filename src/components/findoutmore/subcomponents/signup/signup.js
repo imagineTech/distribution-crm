@@ -5,8 +5,10 @@
 */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
+import * as routes from '../../../../constants/routes';
 
 class SignUp extends Component {
 
@@ -45,6 +47,7 @@ class SignUp extends Component {
               <input type="text" id="country" name="Country" onChange={this.handleChange} />
               <button>Signup</button>
             </form>
+            <Link to={routes.SIGN_IN}>Already have an account? Login </Link>
           </div>
     );
   }

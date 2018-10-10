@@ -6,16 +6,20 @@ import { connect } from 'react-redux';
 class OrderRvwContainer extends Component {
 
   componentDidMount() {
-    const { getOrder, profileData } = this.props;
+    const { getOrder, profileData, orderData } = this.props;
     const { Orders } = profileData
-    getOrder(Orders[Orders.length - 1].id);
+    if((orderData.data.length !== undefined) || (orderData.data.length !== 0)) {
+      getOrder(Orders[Orders.length - 1].id);
+    } else {
+      console.log('No orders found');
+    }
   }
 
   render() {
     const hiddenStyle = {
       display: "none"
     }
-    const { path, auth, comp: Component, profileData, orderData } = this.props;
+    const { path, auth, comp: Component, profileData } = this.props;
     const { Orders } = profileData;
     return(
       <div>

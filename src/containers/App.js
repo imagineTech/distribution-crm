@@ -5,6 +5,10 @@ import '../App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
+
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
 
@@ -36,6 +40,8 @@ import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
 library.add(faStroopwafel)
+library.add(faUser)
+library.add(faEnvelope)
 
 class App extends Component {
 
