@@ -53,11 +53,11 @@ render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
-        <StripeProvider apiKey={_stripeKey}>
+        {/*<StripeProvider apiKey={_stripeKey}>*/}
           <Elements>
             <App storeToTest={store}/>
           </Elements>
-        </StripeProvider>
+        {/*</StripeProvider>*/}
       </ConnectedRouter>
     </PersistGate>
   </Provider>,
