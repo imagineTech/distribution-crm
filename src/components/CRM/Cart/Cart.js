@@ -130,8 +130,9 @@ class Cart extends Component {
 }
 
 const mapStateToProps = state => {
+  const { data } = state.loadingCartData
   return {
-    cartItems: state.loadingCartData.data,
+    cartItems: data.length !== 0 ? data : data,
     profileData: state.storeProfileData
   }
 }

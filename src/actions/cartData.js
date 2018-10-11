@@ -1,5 +1,4 @@
 import * as Moltin from '../moltin/index';
-import { push } from 'connected-react-router';
 
 export const loadCartData = crtData => {
   return {
@@ -11,10 +10,7 @@ export const loadCartData = crtData => {
 export const loadCart = crtId => {
   return dispatch => {
     Moltin.getACart(crtId).then(cart => {
-      if(cart.data.length === 0) {
-        dispatch(loadCartData(cart));
-      }
-      dispatch(loadCartData(cart.data));
+      dispatch(loadCartData(cart));
     })
   }
 }
