@@ -11,7 +11,8 @@ import rootReducer from '../reducers/index';
 export const history = createBrowserHistory();
 export const creatingTheStore = () => {
   const initial = {
-    loadingProductData: initialState.loadingProductData
+    loadingProductData: initialState.loadingProductData,
+    loadingOrderData: initialState.loadingOrderData
   }
   const persistConfig = {
     key: 'root',

@@ -40,67 +40,63 @@ const loadingOrderData = {
     data: [
         {
         billing_address: {
-            city: "West Valley City",
+            city: "",
             company_name: "",
-            country: "United States",
-            county: "Ut",
-            first_name: "Nick",
-            last_name: "Last",
-            line_1: "3127 South Sugar Bowl Lane",
+            country: "",
+            county: "",
+            first_name: "",
+            last_name: "",
+            line_1: "",
             line_2: "",
-            postcode: "84128"
+            postcode: ""
         },
         customer: {
-            email: "andy@email.com",
-            name: "Andy Last"
+            email: "",
+            name: ""
         },        
-        id: "b874eb51-75e2-41b1-a488-86c2c2760515",
+        id: "",
         links: {},
         meta: {
             display_price: {
                 with_tax: {
-                    amount: 80000,
-                    currency: "USD",
-                    formatted: "$800.00"
+                    amount: 0,
+                    currency: "",
+                    formatted: "$00.00"
                 },
                 without_tax: {
-                    amount: 80000,
+                    amount: 0,
                     currency: "USD",
-                    formatted: "$800.00"
+                    formatted: "$00.00"
                 }
             }
         },
-        timestamps:{
-            created_at: "2018-10-09T19:56:10Z",
-            updated_at: "2018-10-09T19:56:10Z"
-        },
-        payment: "unpaid",
+        payment: "",
         relationships: {
             customer: {
                 data:{
-                    id: "d2bb7c3b-86d4-44d5-93d7-febdb1a814ef",
-                    type: "customer"
+                    id: "",
+                    type: ""
                 }
             },
             items: {
                 data: [
-                    { id: "030f34e8-481e-4078-b704-55f29d26c041", type: "item" } 
+                    { id: "", type: "" } 
                 ]
             }
         },
-        shipping: "unfulfilled",
+        shipping: "",
         shipping_address: { 
-            city: "West Valley City",
+            city: "",
             company_name: "",
-            country: "United States",
-            county: "Ut",
-            first_name: "Nick",
+            country: "",
+            county: "",
+            first_name: "",
             instructions: "",
-            last_name: "Last",
-            line_1: "3127 South Sugar Bowl Lane",
+            last_name: "",
+            line_1: "",
             line_2: "",
             phone_number: "",
-            postcode: "84128"
+            postcode: ""
         },
         status: "incomplete",
         type: "order"
