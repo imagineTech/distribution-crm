@@ -12,7 +12,8 @@ export const history = createBrowserHistory();
 export const creatingTheStore = () => {
   const initial = {
     loadingProductData: initialState.loadingProductData,
-    loadingOrderData: initialState.loadingOrderData
+    loadingOrderData: initialState.loadingOrderData,
+    loadingCartData: initialState.loadingCartData
   }
   const persistConfig = {
     key: 'root',
@@ -22,6 +23,8 @@ export const creatingTheStore = () => {
       'storeNewProfileData', 
       'signUpFormData', 
       'emailAndPasswordData',
+      'loadingCartData',
+      'loadingOrderData'
     ]
   };
   const store = createStore(
