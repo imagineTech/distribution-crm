@@ -7,22 +7,22 @@
             display_price:
             {
                 with_tax:
-                {amount: 2500,
+                {amount: 0,
                 currency: "USD",
-                formatted: "$25.00"},
+                formatted: "$00.00"},
                 without_tax:
-                {amount: 2500,
+                {amount: 0,
                 currency: "USD",
-                formatted: "$25.00"}
+                formatted: "$00.00"}
             },
             stock:
             {availability: "in-stock",
             level: 99999},
-            name: "Test Product 2"
+            name: "Default Product"
         },
         price: [
         {
-        amount: 2500,
+        amount: 0,
         currency: "USD",
         includes_tax: true
         }
