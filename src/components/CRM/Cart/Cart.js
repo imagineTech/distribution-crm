@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import Billing from './subcomponents/Billing';
-import Shipping from './subcomponents/Shipping';
+import Address from './subcomponents/Address';
 import QuantityCounter from './subcomponents/QuantityCounter';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
@@ -12,38 +11,19 @@ import { connect } from 'react-redux';
 class Cart extends Component {
 
   state = {
-    formValues: {
-      shippingForm: {},
-      billingForm: {}
-    },
-    billingIsDifferent: false
+    addressValues: {}
   }
 
   componentDidMount() {
     const { auth, getCartData } = this.props;
     getCartData(auth.uid);
-  }
-
-  handleShippingChange = formShippingObject => {
-    let { formValues } = this.state;
-    let { shippingForm } = formValues;
-    this.setState({
-      formValues: {  ...formValues, shippingForm: { ...shippingForm, ...formShippingObject } }
-    });
-  }
-
-  handleBillingChange = formBillingObject => {
-    let { formValues } = this.state;
-    let { billingForm } = formValues;
-    this.setState({
-      formValues: { ...formValues, billingForm: { ...billingForm, ...formBillingObject } }
-    });
+    console.log(this.state.addressValues)
   }
 
   handleClick = e => {
     const { auth, profileData, stripe, history, match, addingOrdData, deleteCrt } = this.props;
-    const { formValues, billingIsDifferent } = this.state;
-    const { billingForm, shippingForm } = formValues;
+    const { addressValues } = this.state;
+    const { shippingForm, billingForm, billingIsDifferent } = addressValues;
     const shipping = {
       first_name: profileData.First_Name,
       last_name: profileData.Last_Name,
@@ -79,13 +59,7 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartItems, history } = this.props;
-    const { billingIsDifferent, formValues } = this.state;
-    const billing = billingIsDifferent ? 
-      <Billing formChange={this.handleBillingChange} {...this.state} />
-      :
-      null;
-
+    const { cartItems } = this.props;
     return(
       <div>
         {cartItems.map(item => {
@@ -109,20 +83,11 @@ class Cart extends Component {
           )
         })}
         <CardElement />
-        <Shipping formChange={this.handleShippingChange} />
-        <label>
-          Check if shipping is the same as billing:
-        <input 
-          type="checkbox" 
-          defaultChecked={billingIsDifferent} 
-          onChange={() => {
-            this.setState({ 
-              billingIsDifferent: !billingIsDifferent
-            })
-          }}
-        />
-        </label>
-        {billing}
+        <Address formDataToSend={values => (
+          this.setState({
+            addressValues: {...values}
+          })
+        )}/>
         <button onClick={this.handleClick}>Checkout</button>
       </div>
     )
