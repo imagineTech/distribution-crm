@@ -31,6 +31,12 @@ export const removingCartItem = (cartId, itemId, qty) => {
   }
 }
 
+export const checkOutCart = (refId, customerId, billing, shipping) => {
+  return dispatch => {
+    return Moltin.checkoutCart(refId, customerId, billing, shipping);
+  }
+}
+
 export const deleteCart = (cartId) => {
   return dispatch => {
     Moltin.removeCart(cartId).then(cart => {

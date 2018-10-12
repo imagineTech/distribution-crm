@@ -3,7 +3,7 @@ import { CardElement, injectStripe } from 'react-stripe-elements';
 import Address from './subcomponents/Address';
 import CartList from './subcomponents/List';
 import CheckoutButton from './subcomponents/CheckoutBtn';
-import { loadCart, updateCartItemQty, removingCartItem, deleteCart } from '../../../actions/cartData';
+import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
@@ -48,7 +48,8 @@ const mapDispatchToProps = dispatch => {
     updateQty: (cartId, itemId, newQty) => dispatch(updateCartItemQty(cartId, itemId, newQty)),
     removeItm: (cartId, itemId, qty) => dispatch(removingCartItem(cartId, itemId, qty)),
     deleteCrt: (cartId) => dispatch(deleteCart(cartId)),
-    addingOrdData: (authId, ordId) => dispatch(addOrderData(authId, ordId))
+    addingOrdData: (authId, ordId) => dispatch(addOrderData(authId, ordId)),
+    checkOut: (refId, customerId, billing, shipping) =>dispatch(checkOutCart(refId, customerId, billing, shipping))
   }
 }
 
