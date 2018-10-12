@@ -7,6 +7,12 @@ export const loadCartData = crtData => {
   }
 }
 
+export const addProductsToCart = (refId, productId, productQuantity) => {
+  return dispatch => {
+    return Moltin.addProductsToCart(refId, productId, productQuantity);
+  }
+}
+
 export const loadCart = crtId => {
   return dispatch => {
     Moltin.getACart(crtId).then(cart => {

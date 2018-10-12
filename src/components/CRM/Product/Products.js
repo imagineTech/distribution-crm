@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import * as routes from '../../../constants/routes';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
+import { addProductsToCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
 
 class Products extends Component {
@@ -33,7 +33,8 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     getProductData: () => dispatch(loadProducts()),
-    getProductImage: () => dispatch(loadProductImage())
+    getProductImage: () => dispatch(loadProductImage()),
+    addProducts: (refId, productId, productQuantity) => dispatch(addProductsToCart(refId, productId, productQuantity))
   }
 }
 
