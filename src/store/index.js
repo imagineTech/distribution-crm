@@ -42,6 +42,7 @@ export const creatingTheStore = () => {
     ),
   );
   const persistor = persistStore(store);
+  persistor.purge();
   return {
     store, 
     persistor
