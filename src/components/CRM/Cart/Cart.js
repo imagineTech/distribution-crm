@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Address from './subcomponents/Address';
-import QuantityCounter from './subcomponents/QuantityCounter';
+import CartList from './subcomponents/List';
 import * as Moltin from '../../../moltin/index';
 import * as routes from '../../../constants/routes';
 import { loadCart, updateCartItemQty, removingCartItem, deleteCart } from '../../../actions/cartData';
@@ -59,29 +59,15 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, auth, updateQty, removeItm } = this.props;
     return(
       <div>
-        {cartItems.map(item => {
-          return(
-            <div key={item.id}>
-              <QuantityCounter
-                quantity={item.quantity}
-                onQuantityChange={(qty) => {
-                  const { auth, updateQty } = this.props;
-                  updateQty(auth.uid, item.id, qty);
-
-                }}/>
-              <span>{item.name}</span>
-              <span>{item.meta.display_price.with_tax.unit.formatted}</span>
-              <button onClick={e => {
-                  const { auth, removeItm } = this.props;
-                  removeItm(auth.uid, item.id, item.quantity);
-                }}>Remove item
-              </button>
-            </div>
-          )
-        })}
+        <CartList 
+          cartItems={cartItems}
+          auth={auth}
+          updateQty={updateQty} 
+          removeItm={removeItm}
+        />
         <CardElement />
         <Address formDataToSend={values => (
           this.setState({
