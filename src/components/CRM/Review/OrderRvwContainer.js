@@ -26,15 +26,7 @@ class OrderRvwContainer extends Component {
           render={rest => {
             return(
               auth.authenticated ?
-              (Orders[Orders.length -1].id) === rest.match.params.orderId ?
                 <Component {...this.props} {...rest} />
-                :
-                <div>
-                  <h2>Please wait while we process your order...</h2>
-                  <span style={hiddenStyle}>{setTimeout(() => {
-                    window.location.reload();
-                  }, 1500)}</span>
-                </div>
               :
               <p>Please Login</p>
             )
