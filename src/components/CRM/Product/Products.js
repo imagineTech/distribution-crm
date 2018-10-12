@@ -34,7 +34,7 @@ export const mapDispatchToProps = dispatch => {
   return {
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage()),
-    addProducts: (refId, productId, productQuantity) => dispatch(addProductsToCart(refId, productId, productQuantity))
+    addProducts: (refId, productId, productQuantity, history) => dispatch(addProductsToCart(refId, productId, productQuantity, history))
   }
 }
 
