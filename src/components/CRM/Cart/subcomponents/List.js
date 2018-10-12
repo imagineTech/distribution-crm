@@ -11,7 +11,7 @@ const CartList = ({ cartItems, auth, updateQty, removeItm }) => {
                         quantity={item.quantity}
                         onQuantityChange={(qty) => {
                         updateQty(auth.uid, item.id, qty);
-                        }}/>
+                    }}/>
                     <span>{item.name}</span>
                     <span>{item.meta.display_price.with_tax.unit.formatted}</span>
                     <button onClick={e => {
