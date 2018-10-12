@@ -13,7 +13,8 @@ export const creatingTheStore = () => {
   const initial = {
     loadingProductData: initialState.loadingProductData,
     loadingOrderData: initialState.loadingOrderData,
-    loadingCartData: initialState.loadingCartData
+    loadingCartData: initialState.loadingCartData,
+    storeProfileData: initialState.storeProfileData
   }
   const persistConfig = {
     key: 'root',

@@ -11,8 +11,13 @@ const loadingCartData = {
     data: []
 }
 
+const storeProfileData = {
+    Orders: []
+}
+
   export const initialState = {
       loadingProductData,
       loadingOrderData,
-      loadingCartData
+      loadingCartData,
+      storeProfileData
   }
