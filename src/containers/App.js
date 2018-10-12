@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+import asyncComponent from '../hoc/async';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -33,11 +34,14 @@ import Products from '../components/CRM/Product/Products';
 import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
 import Cart from '../components/CRM/Cart/Cart';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
-import OrderReview from '../components/CRM/Review/subcomponents/OrderReview';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
+
+const AsyncOrderReview = asyncComponent(() => {
+  return import('../components/CRM/Review/subcomponents/OrderReview');
+});
 
 library.add(faStroopwafel)
 library.add(faUser)
@@ -94,7 +98,7 @@ class App extends Component {
               <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
               <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS}/>
               <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
-              <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
+              <OrderRvw auth={{authUser, authenticated}} comp={AsyncOrderReview} path={routes.ORDER_REVIEW} />
             </div>
           }
           <Footer />
