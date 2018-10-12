@@ -1,4 +1,5 @@
 import * as Moltin from '../moltin/index';
+import * as routes from '../constants/routes';
 
 export const loadCartData = crtData => {
   return {
@@ -7,9 +8,11 @@ export const loadCartData = crtData => {
   }
 }
 
-export const addProductsToCart = (refId, productId, productQuantity) => {
+export const addProductsToCart = (refId, productId, productQuantity, history) => {
   return dispatch => {
-    return Moltin.addProductsToCart(refId, productId, productQuantity);
+    Moltin.addProductsToCart(refId, productId, productQuantity).then(cartItems => {
+      history.push(`${routes.CART}`);
+    });
   }
 }
 
