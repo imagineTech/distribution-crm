@@ -7,7 +7,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@moltin/sdk": "^3.14.0",
-    "connected-react-router": "^4.5.0",
     "firebase": "^5.5.1",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
