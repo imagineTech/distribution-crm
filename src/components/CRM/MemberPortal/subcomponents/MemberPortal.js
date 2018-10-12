@@ -11,7 +11,7 @@ const MemberPortal = props => {
       <Link to={routes.PROFILE}>Profile</Link> <br />
       <Link to={routes.CART}>Cart</Link> <br />
       <ProductList {...props} path={routes.PRODUCTS}/>
-      <SignOutButton />
+      <SignOutButton history={props.history}/>
     </div>
   );
 }
