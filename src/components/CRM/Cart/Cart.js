@@ -28,7 +28,7 @@ class Cart extends Component {
             addressValues: {...values}
           })
         )}/>
-        <CheckoutButton {...this.props} />
+        <CheckoutButton {...this.props} {...this.state} />
       </div>
     )
   }
