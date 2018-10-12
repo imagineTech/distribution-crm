@@ -8,11 +8,11 @@ class OrderRvwContainer extends Component {
   componentDidMount() {
     const { getOrder, profileData, orderData } = this.props;
     const { Orders } = profileData
-    if((orderData.data.length !== undefined) || (orderData.data.length !== 0)) {
-      getOrder(Orders[Orders.length - 1].id);
-    } else {
-      console.log('No orders found');
-    }
+    // if((orderData.data.length !== undefined) || (orderData.data.length !== 0)) {
+    //   getOrder(Orders[Orders.length - 1].id);
+    // } else {
+    //   console.log('No orders found');
+    // }
   }
 
   render() {

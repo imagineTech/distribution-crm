@@ -81,14 +81,14 @@ class Cart extends Component {
   render() {
     const { cartItems, history } = this.props;
     const { billingIsDifferent, formValues } = this.state;
-    const billing = billingIsDifferent ? 
+    const billing = billingIsDifferent ?
       <Billing formChange={this.handleBillingChange} {...this.state} />
       :
       null;
 
     return(
       <div>
-        {cartItems.map(item => {
+        {/*{cartItems.map(item => {
           return(
             <div key={item.id}>
               <QuantityCounter
@@ -107,16 +107,16 @@ class Cart extends Component {
               </button>
             </div>
           )
-        })}
+        })}*/}
         <CardElement />
         <Shipping formChange={this.handleShippingChange} />
         <label>
           Check if shipping is the same as billing:
-        <input 
-          type="checkbox" 
-          defaultChecked={billingIsDifferent} 
+        <input
+          type="checkbox"
+          defaultChecked={billingIsDifferent}
           onChange={() => {
-            this.setState({ 
+            this.setState({
               billingIsDifferent: !billingIsDifferent
             })
           }}
