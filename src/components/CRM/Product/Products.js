@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 class Products extends Component {
 
   componentDidMount() {
-    const { getProductData } = this.props;
+    const { getProductData, getProductImage } = this.props;
     getProductData();
+    getProductImage();
   }
 
   render() {
@@ -24,15 +25,17 @@ class Products extends Component {
 }
 
 export const mapStateToProps = state => {
+  const { data, included, imagesExist } = state.loadingProductData
   return {
-    productData: state.loadingProductData
+    productData: data.length !==0 ? data : data,
+    imageProductData: imagesExist ? included : included
   }
 }
 
 export const mapDispatchToProps = dispatch => {
   return {
     getProductData: () => dispatch(loadProducts()),
-    getProductImage: (productId) => dispatch(loadProductImage(productId)),
+    getProductImage: () => dispatch(loadProductImage()),
     addProducts: (refId, productId, productQuantity, history) => dispatch(addProductsToCart(refId, productId, productQuantity, history))
   }
 }
