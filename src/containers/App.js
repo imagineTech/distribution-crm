@@ -27,18 +27,23 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
-import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPortal';
 import Profile from '../components/profile/ProfileContainer.js';
-import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
-import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
-import Cart from '../components/CRM/Cart/Cart';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
+const AsyncMemberPortal = asyncComponent(() => {
+  return import('../components/CRM/MemberPortal/subcomponents/MemberPortal');
+});
+const AsyncProductItem = asyncComponent(() => {
+  return import('../components/CRM/Product/subcomponents/ProductItem');
+});
+const AsyncCart = asyncComponent(() => {
+  return import('../components/CRM/Cart/Cart')
+})
 const AsyncOrderReview = asyncComponent(() => {
   return import('../components/CRM/Review/subcomponents/OrderReview');
 });
@@ -94,10 +99,10 @@ class App extends Component {
             authenticated &&
             <div>
               {console.log(storeToTest.getState())}
-              <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
-              <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS}/>
-              <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
+              <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
+              <Route exact path={routes.CART} render={props => <AsyncCart auth={authUser} {...props}/> }/>
+              <Crm auth={{authUser, authenticated}} comp={AsyncMemberPortal} path={routes.MEMBER_PORTAL} />
+              <Products auth={{authUser, authenticated}} comp={AsyncProductItem} path={routes.PRODUCTS}/>
               <OrderRvw auth={{authUser, authenticated}} comp={AsyncOrderReview} path={routes.ORDER_REVIEW} />
             </div>
           }
