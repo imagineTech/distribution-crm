@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
-import asyncComponent from '../hoc/async';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -29,15 +28,12 @@ import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
 import Profile from '../components/profile/ProfileContainer.js';
 import Products from '../components/CRM/Product/Products';
+import Cart from '../components/CRM/Cart/CartContainer';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
-
-const AsyncCart = asyncComponent(() => {
-  return import('../components/CRM/Cart/Cart')
-})
 
 library.add(faStroopwafel)
 library.add(faUser)
@@ -91,7 +87,7 @@ class App extends Component {
             <div>
               {console.log(storeToTest.getState())}
               <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
-              <Route exact path={routes.CART} render={props => <AsyncCart auth={authUser} {...props}/> }/>
+              <Cart auth={{authUser, authenticated}} path={routes.CART} />
               <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
               <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
               <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
