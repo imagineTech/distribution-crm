@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import asyncComponent from '../../../hoc/async';
 import { Route } from 'react-router-dom';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { addProductsToCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
+
+const AsyncProductItem = asyncComponent(() => {
+  return import('./subcomponents/ProductItem');
+});
 
 class Products extends Component {
 
@@ -13,12 +18,12 @@ class Products extends Component {
   }
 
   render() {
-    const { comp: Component, auth, path } = this.props;
+    const { auth, path } = this.props;
     return(
       <Route
         exact
         path={`${path}/:productId`}
-        render={rest => <Component {...this.props} {...rest} {...auth} /> }
+        render={rest => <AsyncProductItem {...this.props} {...rest} {...auth} /> }
       />
     )
   }

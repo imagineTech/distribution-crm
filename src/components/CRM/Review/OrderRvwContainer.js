@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import asyncComponent from '../../../hoc/async';
 import { loadOrder } from '../../../actions/orderData';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
+
+const AsyncOrderReview = asyncComponent(() => {
+  return import('./subcomponents/OrderReview');
+});
+
 
 class OrderRvwContainer extends Component {
 
@@ -13,13 +19,13 @@ class OrderRvwContainer extends Component {
   }
 
   render() {
-    const { path, auth, comp: Component } = this.props;
+    const { path, auth } = this.props;
     return(
       <div>
         <Route
           exact
           path={`${path}/:orderId`}
-          render={rest => auth.authenticated ?  <Component {...this.props} {...rest} /> : <p>Please Login</p>}
+          render={rest => auth.authenticated ?  <AsyncOrderReview {...this.props} {...rest} /> : <p>Please Login</p>}
         />
       </div>
     )

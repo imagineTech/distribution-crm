@@ -35,18 +35,9 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
-const AsyncMemberPortal = asyncComponent(() => {
-  return import('../components/CRM/MemberPortal/subcomponents/MemberPortal');
-});
-const AsyncProductItem = asyncComponent(() => {
-  return import('../components/CRM/Product/subcomponents/ProductItem');
-});
 const AsyncCart = asyncComponent(() => {
   return import('../components/CRM/Cart/Cart')
 })
-const AsyncOrderReview = asyncComponent(() => {
-  return import('../components/CRM/Review/subcomponents/OrderReview');
-});
 
 library.add(faStroopwafel)
 library.add(faUser)
@@ -101,9 +92,9 @@ class App extends Component {
               {console.log(storeToTest.getState())}
               <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
               <Route exact path={routes.CART} render={props => <AsyncCart auth={authUser} {...props}/> }/>
-              <Crm auth={{authUser, authenticated}} comp={AsyncMemberPortal} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} comp={AsyncProductItem} path={routes.PRODUCTS}/>
-              <OrderRvw auth={{authUser, authenticated}} comp={AsyncOrderReview} path={routes.ORDER_REVIEW} />
+              <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
+              <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
+              <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
             </div>
           }
           <Footer />

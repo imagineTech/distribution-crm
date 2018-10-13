@@ -5,9 +5,9 @@ being stored.
 
 */
 import React, { Component } from 'react';
+import asyncComponent from '../../hoc/async';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import asyncComponent from '../../hoc/async';
 import { loadProfileData } from '../../actions/profileData';
 import * as routes from '../../constants/routes';
 
