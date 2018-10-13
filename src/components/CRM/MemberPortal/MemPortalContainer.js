@@ -12,11 +12,11 @@ class MemberPortalContainer extends Component {
   }
 
   render() {
-    const { comp: Component, auth } = this.props;
+    const { comp: Component, auth, path } = this.props;
     return(
       <Route
         exact
-        path={`${this.props.path}`}
+        path={`${path}`}
         render={rest => <Component {...this.props}  {...auth} {...rest} />}
       />
     )
@@ -24,15 +24,18 @@ class MemberPortalContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  const { data, included, imagesExist } = state.loadingProductData
   return {
-    productData: state.loadingProductData
-  };
+    productData: data.length !==0 ? data : data,
+    imageProductData: imagesExist ? included : included,
+    imagesExist
+  }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getProductData: () => dispatch(loadProducts()),
-    getProductImage: (productId) => dispatch(loadProductImage(productId))
+    getProductImage: () => dispatch(loadProductImage())
   }
 };
 
