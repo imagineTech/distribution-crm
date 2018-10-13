@@ -5,7 +5,6 @@
 */
 
 import { auth, db, firebase } from '../firebase/index';
-import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
 
 export function profileData(data) {
@@ -45,26 +44,26 @@ export function newProfileData(dbDataName, dbDataValue) {
   This is how i would send it to fb to update, and the result
   would be to redirect the user back to the profile.
 */
-export function newProfileDataToSend(defaultDbData, newDbData, dbID) {
+export function newProfileDataToSend(defaultDbData, newDbData, dbID, history) {
   return dispatch => {
     db.editUserData(defaultDbData, newDbData, dbID).then(() => {
-      dispatch(push(routes.PROFILE))
+      history.push(routes.PROFILE)
     })
   }
 }
 
-export function newEmailToSendAuth(newEmail) {
+export function newEmailToSendAuth(newEmail, history) {
   return dispatch => {
     auth.doUpdateUserEmail(newEmail).then(() => {
-      dispatch(push(routes.PROFILE))
+      history.push(routes.PROFILE)
     })
   }
 }
 
-export function newPasswordToSendAuth(newPassword) {
+export function newPasswordToSendAuth(newPassword, history) {
   return dispatch => {
     auth.doUpdateUserPassword(newPassword).then(() => {
-      dispatch(push(routes.PROFILE))
+      history.push(routes.PROFILE)
     })
   }
 }
