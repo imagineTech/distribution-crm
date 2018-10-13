@@ -13,24 +13,13 @@ class OrderRvwContainer extends Component {
   }
 
   render() {
-    const hiddenStyle = {
-      display: "none"
-    }
-    const { path, auth, comp: Component, profileData } = this.props;
-    const { Orders } = profileData;
+    const { path, auth, comp: Component } = this.props;
     return(
       <div>
         <Route
           exact
           path={`${path}/:orderId`}
-          render={rest => {
-            return(
-              auth.authenticated ?
-                <Component {...this.props} {...rest} />
-              :
-              <p>Please Login</p>
-            )
-          }}
+          render={rest => auth.authenticated ?  <Component {...this.props} {...rest} /> : <p>Please Login</p>}
         />
       </div>
     )
