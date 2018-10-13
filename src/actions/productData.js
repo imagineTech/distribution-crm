@@ -23,10 +23,10 @@ export const loadProducts = () => {
   }
 } 
 
-export const loadProductImage = () => {
+export const loadProductImage = (productId) => {
   return dispatch => {
-    Moltin.getProductImage().then(productImageData => {
-      dispatch(loadProductData(productImageData));
+    Moltin.getProductImage(productId).then(productImageData => {
+      console.log(productImageData)
     })
   }
 }
