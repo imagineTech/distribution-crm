@@ -19,20 +19,20 @@
                 }
             }
         },
-        included:
-            {
-                main_images: [
-                    {
-                        id: 0, 
-                        file_name: "noFile",
-                        link:{
-                            href: ""
-                        }
-                    }
-                ]
-            } 
         }
     ],
+    included:
+    {
+        main_images: [
+            {
+                id: 0, 
+                file_name: "noFile",
+                link:{
+                    href: ""
+                }
+            }
+        ]
+    },
     imagesExist: false
 };
 
