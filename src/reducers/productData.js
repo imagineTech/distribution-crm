@@ -3,6 +3,11 @@ export const loadingProductData = (state = {}, action) => {
     case "LOAD_PRODUCTS":
       return {
         ...state,
+        ...action.payload
+      }
+    case "LOAD_PRODUCT_IMAGE":
+      return {
+        ...state,
         ...action.payload,
         imagesExist: !action.imagesExist
       }
