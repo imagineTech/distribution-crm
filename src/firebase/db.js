@@ -42,10 +42,6 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
           res(DB.doc(dbID).update({
             [defaultName]: newDbData[newName]
           }))
-        } else {
-          res(DB.doc(dbID).update({
-            [defaultName]: defaultDbData[defaultName]
-          }))
         }
       })
     })
