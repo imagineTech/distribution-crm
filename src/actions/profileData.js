@@ -47,7 +47,7 @@ export function newProfileData(dbDataName, dbDataValue) {
 export function newProfileDataToSend(defaultDbData, newDbData, dbID, history) {
   return dispatch => {
     db.editUserData(defaultDbData, newDbData, dbID).then(() => {
-      history.push(routes.PROFILE)
+      history.push(routes.MEMBER_PORTAL)
     })
   }
 }
@@ -55,7 +55,7 @@ export function newProfileDataToSend(defaultDbData, newDbData, dbID, history) {
 export function newEmailToSendAuth(newEmail, history) {
   return dispatch => {
     auth.doUpdateUserEmail(newEmail).then(() => {
-      history.push(routes.PROFILE)
+      history.push(routes.MEMBER_PORTAL)
     })
   }
 }
@@ -63,7 +63,7 @@ export function newEmailToSendAuth(newEmail, history) {
 export function newPasswordToSendAuth(newPassword, history) {
   return dispatch => {
     auth.doUpdateUserPassword(newPassword).then(() => {
-      history.push(routes.PROFILE)
+      history.push(routes.MEMBER_PORTAL)
     })
   }
 }
