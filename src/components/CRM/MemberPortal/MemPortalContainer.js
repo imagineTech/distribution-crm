@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import asyncComponent from '../../../hoc/async';
 import { Route } from 'react-router-dom';
+import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
 
@@ -31,14 +32,15 @@ class MemberPortalContainer extends Component {
 const mapStateToProps = state => {
   const { data, included, imagesExist } = state.loadingProductData
   return {
+    profileData: state.storeProfileData,
     productData: data.length !==0 ? data : data,
-    imageProductData: imagesExist ? included : included,
-    imagesExist
+    imageProductData: imagesExist ? included : included
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    getProfileData: (userId) => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage())
   }

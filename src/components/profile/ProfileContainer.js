@@ -11,10 +11,6 @@ import { Route } from 'react-router-dom';
 import { loadProfileData } from '../../actions/profileData';
 import * as routes from '../../constants/routes';
 
-const AsyncProfile = asyncComponent(() => {
-  return import('./subcomponents/Profile');
-})
-
 const AsyncEditProfile = asyncComponent(() => {
   return import('./subcomponents/EditProfile');
 })
@@ -30,11 +26,6 @@ class ProfileContainer extends Component {
     const { auth } = this.props
     return(
       <div>
-        <Route
-          exact
-          path={`${this.props.path}`}
-          render={rest => <AsyncProfile {...this.props} {...rest} /> }
-        />
         <Route
           exact
           path={`${this.props.path}/${routes.EDIT_PROFILE}`}
