@@ -20,7 +20,6 @@ const ProductList = ({ productData, imageProductData, path }) => {
           </div>
         )
       })}
-      {console.log(productData, imageProductData)}
     </div>
   )
 }
