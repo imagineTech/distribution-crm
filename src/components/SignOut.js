@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 class SignOut extends Component {
 
   handleSignOut = () => {
-    this.props.signOut();
+    const { signOut, history} = this.props;
+    signOut(history);
   }
 
   render() {
@@ -23,7 +24,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOutAuth())
+    signOut: (history) => dispatch(signOutAuth(history))
   }
 }
 

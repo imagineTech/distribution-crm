@@ -5,18 +5,23 @@
 */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/loginAuth';
-
+import * as routes from '../../../../constants/routes';
 class Login extends Component {
 
   handleChange = e => {
-    this.props.emailAndPasswordChange(e.target.name, e.target.value);
+    const { emailAndPasswordChange } = this.props;
+    const { name, value } = e.target;
+    emailAndPasswordChange(name, value);
   }
 
   handleSubmit = e => {
+    const { emailAndPassword, emailAndPasswordLogin, history } = this.props;
+    const { login_email, login_password} = emailAndPassword;
     e.preventDefault();
-    this.props.emailAndPasswordLogin(this.props.emailAndPassword.login_email, this.props.emailAndPassword.login_password);
+    emailAndPasswordLogin(login_email, login_password, history);
   }
 
   render() {
@@ -30,6 +35,7 @@ class Login extends Component {
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
           <button>Login</button>
         </form>
+        <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link>
       </div>
     )
   }
@@ -44,7 +50,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
-    emailAndPasswordLogin: (email, password) => dispatch(loginWithEmailAndPassword(email, password))
+    emailAndPasswordLogin: (email, password, history) => dispatch(loginWithEmailAndPassword(email, password, history))
   }
 }
 

@@ -1,41 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import Profile from '../../../profile/subcomponents/Profile';
 import ProductList from '../../Product/subcomponents/ProductList';
 import SignOutButton from '../../../SignOut';
-import { loadProducts } from '../../../../actions/productData';
-import { connect } from 'react-redux';
 import * as routes from '../../../../constants/routes';
 
-class MemberPortal extends Component {
-
-  componentDidMount() {
-    this.props.getProductData();
-  }
-
-  render() {
-    const { auth } = this.props;
-    return (
-      <div>
-        <h1>Welcome to our Crm</h1>
-        <Link to={routes.PROFILE}>Profile</Link> <br />
-        <Link to={routes.CART}>Cart</Link> <br />
-        <ProductList {...this.props} path={routes.PRODUCTS}/>
-        <SignOutButton />
-      </div>
-    );
-  };
+const MemberPortal = props => {
+  return (
+    <div>
+      <h1>Welcome to our Crm</h1>
+      <Profile {...props} path={routes.PROFILE}/> <br />
+      <Link to={routes.CART}>Cart</Link> <br />
+      <ProductList {...props} path={routes.PRODUCTS}/>
+      <SignOutButton history={props.history}/>
+    </div>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    productData: state.loadingProductData.data
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getProductData: () => dispatch(loadProducts())
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MemberPortal);
+export default MemberPortal;

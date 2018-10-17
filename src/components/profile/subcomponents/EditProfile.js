@@ -14,39 +14,41 @@ class EditPofile extends Component {
   }
 
   handleNewEmailSubmit = e => {
-    const { newProfileData, sendNewEmail } = this.props;
+    const { newProfileData, sendNewEmail, history } = this.props;
     e.preventDefault();
-    sendNewEmail(newProfileData.Email);
+    sendNewEmail(newProfileData.Email, history);
   }
 
   handleNewPasswordSubmit = e => {
-    const { newProfileData, sendNewPassword } = this.props;
+    const { profileData, newProfileData, sendNewPassword, sendNewProfileData, history } = this.props;
     e.preventDefault();
-    newProfileData.New_Password === newProfileData.Confirm_Password ?
-      sendNewPassword(newProfileData.New_Password)
-      :
+    if(newProfileData.New_Password === newProfileData.Confirm_Password) {
+      sendNewPassword(newProfileData.New_Password, history),
+      sendNewProfileData(profileData, newProfileData, profileData.id, history)
+    } else {
       alert('passwords do not match,try again :) ')
-  }
-
-  handleSubmit = e => {
-    const { profileData,newProfileData, sendNewProfileData } = this.props;
-    e.preventDefault();
-    // Here is where we use the default and new dbData
-    // sendNewProfileData(profileData, newProfileData, profileData.id);
-    for (let newData in newProfileData) {
-      let upObj = {
-        [newData]: newProfileData[newData]
-      };
-      console.log(upObj);
     }
   }
 
+  handleSubmit = e => {
+    const { profileData, newProfileData, sendNewProfileData, history } = this.props;
+    e.preventDefault();
+    // Here is where we use the default and new dbData
+    sendNewProfileData(profileData, newProfileData, profileData.id, history);
+  }
+
   render() {
-    const { profileData, newProfileData } = this.props;
+    const { profileData, newProfileData } = this.props
     return(
       <section>
         <form onSubmit={(e) => {
             this.handleSubmit(e);
+            if(newProfileData.Email !== undefined) {
+              this.handleNewEmailSubmit(e);
+            }
+            if (newProfileData.New_Password !== undefined) {
+              this.handleNewPasswordSubmit(e);
+            }
           }}>
           <label>First Name:
           <input
@@ -98,10 +100,11 @@ const mapDispatchToProps = dispatch => {
   return {
     //This is for storing new profile data and then sending it.
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
-    sendNewProfileData: (defaultDbData, newDbData, dbID) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID)),
-    sendNewEmail: (newEmail) => dispatch(newEmailToSendAuth(newEmail)),
-    sendNewPassword: (newPassword) => dispatch(newPasswordToSendAuth(newPassword))
+    sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
+    sendNewEmail: (newEmail, history) => dispatch(newEmailToSendAuth(newEmail, history)),
+    sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPofile);
+
