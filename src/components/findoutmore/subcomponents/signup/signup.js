@@ -14,16 +14,21 @@ class SignUp extends Component {
 
   //Making Email and Password it's own group due to Authentication with fb
   handleEmailAndPasswordChange = e => {
-    this.props.setEmailAndPassword(e.target.name, e.target.value);
+    const { setEmailAndPassword } = this.props;
+    const { name, value } = e.target;
+    setEmailAndPassword(name, value);
   };
 
   handleChange = e => {
-    this.props.setFormData(e.target.name, e.target.value);
+    const { setFormData } = this.props;
+    const { name, value } = e.target;
+    setFormData(name, value);
   }
 
   handleSubmit = e => {
+    const { emailAndPassword, signUpData, history, authEmailPasswordForm } = this.props;
     e.preventDefault();
-    this.props.authEmailPasswordForm(this.props.emailAndPassword, this.props.signUpData);
+    authEmailPasswordForm(emailAndPassword, signUpData, history);
   };
 
   render() {
@@ -64,7 +69,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setEmailAndPassword: (name, value) => dispatch(emailAndPasswordSuccess(name, value)),
     setFormData: (name, value) => dispatch(restOfFormSuccess(name, value)),
-    authEmailPasswordForm: (EPData, formData) => dispatch(emailPasswordFormAuth(EPData, formData))
+    authEmailPasswordForm: (EPData, formData, history) => dispatch(emailPasswordFormAuth(EPData, formData, history))
   }
 };
 

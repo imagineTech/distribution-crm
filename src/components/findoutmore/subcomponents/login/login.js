@@ -12,12 +12,16 @@ import * as routes from '../../../../constants/routes';
 class Login extends Component {
 
   handleChange = e => {
-    this.props.emailAndPasswordChange(e.target.name, e.target.value);
+    const { emailAndPasswordChange } = this.props;
+    const { name, value } = e.target;
+    emailAndPasswordChange(name, value);
   }
 
   handleSubmit = e => {
+    const { emailAndPassword, emailAndPasswordLogin, history } = this.props;
+    const { login_email, login_password} = emailAndPassword;
     e.preventDefault();
-    this.props.emailAndPasswordLogin(this.props.emailAndPassword.login_email, this.props.emailAndPassword.login_password);
+    emailAndPasswordLogin(login_email, login_password, history);
   }
 
   render() {
@@ -46,7 +50,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
-    emailAndPasswordLogin: (email, password) => dispatch(loginWithEmailAndPassword(email, password))
+    emailAndPasswordLogin: (email, password, history) => dispatch(loginWithEmailAndPassword(email, password, history))
   }
 }
 
