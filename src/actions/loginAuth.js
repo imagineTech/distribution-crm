@@ -6,7 +6,6 @@
 */
 
 import { auth, db } from '../firebase/index';
-import { push } from 'connected-react-router';
 import * as routes from '../constants/routes';
 import { profileData } from './profileData';
 
@@ -19,10 +18,10 @@ export function dataToLoginWith(name, value) {
   }
 }
 
-export function loginWithEmailAndPassword(email, password) {
+export function loginWithEmailAndPassword(email, password, history) {
   return dispatch => {
     auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
-      dispatch(push(routes.MEMBER_PORTAL))
+      history.push(routes.MEMBER_PORTAL)
       //this is how we use uid later, couldn't find
       //another way to reference db doc based on authUser
       //info

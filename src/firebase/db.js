@@ -33,20 +33,23 @@ export const loadUserProfileData = (docID) => {
 }
 
 export const editUserData = (defaultDbData, newDbData, dbID) => {
-  return DB.doc(dbID).update({
-    // These lines won't work, seems that the dynmaic object key calling
-    // wont work with fb for more than one entry. Any other entry would just
-    // have the same value as the first one.
-    // [Object.keys(newDbData)[0]]: (newDbData.Name || defaultDbData.Name),
-    // [Object.keys(newDbData)[1]]: (newDbData.Email || defaultDbData.Email)
-    // The conditional statements are for when a user only needs to update one
-    // value instead of all. That's why i ask for default and new dbData
-    // I ended up hard coding them, below:
-    First_Name: (newDbData.First_Name || defaultDbData.First_Name),
-    Last_Name: (newDbData.Last_Name || defaultDbData.Last_Name),
-    Email: (newDbData.Email || defaultDbData.Email),
-    Password: (newDbData.Password || defaultDbData.Password)
-  })
+  let defaultDbNames = Object.keys(defaultDbData);
+  let newDbNames = Object.keys(newDbData);
+  return new Promise((res) => {
+    defaultDbNames.map(defaultName => {
+      return newDbNames.map(newName => {
+        if (defaultName === newName) {
+          res(DB.doc(dbID).update({
+            [defaultName]: newDbData[newName]
+          }))
+        } else {
+          res(DB.doc(dbID).update({
+            [defaultName]: defaultDbData[defaultName]
+          }))
+        }
+      })
+    })
+  }) 
 }
 
 export const addOrdersToUser = (userId, orderId) => {
@@ -54,3 +57,4 @@ export const addOrdersToUser = (userId, orderId) => {
     Orders: firebase.firestore.FieldValue.arrayUnion(orderId)
   })
 }
+
