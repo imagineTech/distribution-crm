@@ -17,7 +17,7 @@ export const addProductsToCart = (refId, productId, productQuantity) => {
 }
 
 export const getProductImage = () => {
-  return Moltin.Products.With('main_image').Get();
+  return Moltin.Products.With('main_image').All();
 }
 
 export const getACart = (refId) => {

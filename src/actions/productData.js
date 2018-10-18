@@ -3,15 +3,15 @@ import * as Moltin from '../moltin/index';
 export const loadProductData = (prodData) => {
   return {
     type: "LOAD_PRODUCTS",
-    payload: prodData,
-    imgesExist: false
+    payload: prodData
   }
 }
 
 export const loadProductImageData = (imageProductData) => {
   return {
     type: "LOAD_PRODUCT_IMAGE",
-    payload: imageProductData
+    payload: imageProductData,
+    imgesExist: false
   }
 }
 
@@ -23,10 +23,10 @@ export const loadProducts = () => {
   }
 } 
 
-export const loadProductImage = () => {
+export const loadProductImage = (productId) => {
   return dispatch => {
-    Moltin.getProductImage().then(productImageData => {
-      dispatch(loadProductData(productImageData));
+    Moltin.getProductImage(productId).then(productImageData => {
+      dispatch(loadProductImageData(productImageData))
     })
   }
 }

@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { CardElement, injectStripe } from 'react-stripe-elements';
-import Address from './subcomponents/Address';
-import CartList from './subcomponents/List';
-import CheckoutButton from './subcomponents/CheckoutBtn';
+import asyncComponent from '../../../hoc/async';
 import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderData } from '../../../actions/orderData';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class Cart extends Component {
+const AsyncCart = asyncComponent(() => {
+    return import('./subcomponents/Cart')
+})
 
-  state = {
-    addressValues: {}
-  }
+class CartContainer extends Component {
 
   componentDidMount() {
     const { auth, getCartData } = this.props;
@@ -19,17 +17,13 @@ class Cart extends Component {
   }
 
   render() {
+    const { path, auth } = this.props;
     return(
-      <div>
-        <CartList {...this.props} />
-        <CardElement />
-        <Address formDataToSend={values => (
-          this.setState({
-            addressValues: {...values}
-          })
-        )}/>
-        <CheckoutButton {...this.props} {...this.state} />
-      </div>
+            <Route 
+                exact
+                path={`${path}`}
+                render={rest => <AsyncCart {...this.props}  {...auth} {...rest} />}
+            />
     )
   }
 }
@@ -53,4 +47,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Cart));
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

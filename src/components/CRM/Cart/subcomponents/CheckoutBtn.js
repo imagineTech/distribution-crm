@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as Moltin from '../../../../moltin/index';
 import * as routes from '../../../../constants/routes';
 
 class CheckoutButton extends Component{ 

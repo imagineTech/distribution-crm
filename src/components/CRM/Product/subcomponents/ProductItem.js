@@ -18,17 +18,17 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { productData, addProducts, match, authUser, history } = this.props;
+      const { productData, imageProductData, addProducts, match, authUser, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
-          {productData.data.map(product => {
+          {productData.map(product => {
             if(product.id === match.params.productId) {
               return (
                 <div key={product.id}>
                   <Background>
                     <Container>
-                      {productData.included.main_images.map(image => {
+                      {imageProductData.main_images.map(image => {
                         return image.id === product.relationships.main_image.data.id ? (
                           <img className='productImage'key={image.id} src={image.link.href} alt={image.file_name} />
                         ) : (
