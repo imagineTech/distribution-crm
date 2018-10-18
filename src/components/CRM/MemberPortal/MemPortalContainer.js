@@ -12,9 +12,10 @@ const AsyncMemberPortal = asyncComponent(() => {
 class MemberPortalContainer extends Component {
 
   componentDidMount() {
-    const { getProductData, getProductImage } = this.props;
+    const { getProductData, getProductImage, getProfileData, auth } = this.props;
     getProductData();
     getProductImage();
+    getProfileData(auth.uid)
   }
 
   render() {
