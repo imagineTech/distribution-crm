@@ -18,7 +18,7 @@ import Crm from '../components/CRM/MemberPortal/MemPortalContainer.js'
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
-import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts';
+import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts/SoldProducts';
 import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';

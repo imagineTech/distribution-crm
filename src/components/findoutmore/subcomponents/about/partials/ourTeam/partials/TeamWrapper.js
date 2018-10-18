@@ -7,7 +7,7 @@ const TeamWrapper = styled.div`
   overflow: hidden;
   padding: 0;
   text-align: center;
-  background: red;
+  background: rgba(70, 43, 28);
 `
 
 export default TeamWrapper;
