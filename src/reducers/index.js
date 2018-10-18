@@ -7,7 +7,6 @@
 import { combineReducers } from 'redux';
 import { emailAndPasswordData, signUpFormData } from './signUpData';
 import { emailAndPasswordToState } from './loginAuth';
-import { authToState } from './authStateChange'
 import { storeProfileData } from './profileData';
 import { storeNewProfileData } from './profileData';
 import { loadingProductData } from './productData';
@@ -18,7 +17,6 @@ export default combineReducers({
   emailAndPasswordData,
   signUpFormData,
   emailAndPasswordToState,
-  authToState,
   storeProfileData,
   storeNewProfileData,
   loadingProductData,

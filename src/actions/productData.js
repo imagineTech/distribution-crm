@@ -3,7 +3,8 @@ import * as Moltin from '../moltin/index';
 export const loadProductData = (prodData) => {
   return {
     type: "LOAD_PRODUCTS",
-    payload: prodData
+    payload: prodData,
+    imgesExist: false
   }
 }
 

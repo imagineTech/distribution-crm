@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import * as Moltin from '../../../../moltin/index';
-import * as routes from '../../../../constants/routes';
 import QuantityCounter from './QuantityCounter';
 // Styled Components
 import Background from './ProductPage/partials/Background';
@@ -20,7 +18,7 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { productData, match, authUser, history } = this.props;
+      const { productData, addProducts, match, authUser, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -44,10 +42,7 @@ class ProductItem extends Component {
                         <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
                         <form onSubmit={e => {
                           e.preventDefault();
-                          Moltin.addProductsToCart(authUser.uid, product.id, inputValue)
-                            .then(cartItems => {
-                              history.push(`${routes.CART}`);
-                            });
+                          addProducts(authUser.uid, product.id, inputValue, history);
                           }}>
                           <button className="addToCart">Add to Cart</button>
                         </form>

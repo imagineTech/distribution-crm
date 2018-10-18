@@ -1,5 +1,5 @@
 import * as Moltin from '../moltin/index';
-import { push } from 'connected-react-router';
+import * as routes from '../constants/routes';
 
 export const loadCartData = crtData => {
   return {
@@ -8,13 +8,18 @@ export const loadCartData = crtData => {
   }
 }
 
+export const addProductsToCart = (refId, productId, productQuantity, history) => {
+  return dispatch => {
+    Moltin.addProductsToCart(refId, productId, productQuantity).then(cartItems => {
+      history.push(`${routes.CART}`);
+    });
+  }
+}
+
 export const loadCart = crtId => {
   return dispatch => {
     Moltin.getACart(crtId).then(cart => {
-      if(cart.data.length === 0) {
-        dispatch(loadCartData(cart));
-      }
-      dispatch(loadCartData(cart.data));
+      dispatch(loadCartData(cart));
     })
   }
 }
@@ -32,6 +37,12 @@ export const removingCartItem = (cartId, itemId, qty) => {
     Moltin.removeCartItem(cartId, itemId, qty).then(cart => {
       dispatch(loadCartData(cart));
     })
+  }
+}
+
+export const checkOutCart = (refId, customerId, billing, shipping) => {
+  return dispatch => {
+    return Moltin.checkoutCart(refId, customerId, billing, shipping);
   }
 }
 

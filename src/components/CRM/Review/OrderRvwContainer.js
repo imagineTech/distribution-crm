@@ -6,13 +6,10 @@ import { connect } from 'react-redux';
 class OrderRvwContainer extends Component {
 
   componentDidMount() {
-    const { getOrder, profileData, orderData } = this.props;
+    const { getOrder, profileData } = this.props;
     const { Orders } = profileData
-    // if((orderData.data.length !== undefined) || (orderData.data.length !== 0)) {
-    //   getOrder(Orders[Orders.length - 1].id);
-    // } else {
-    //   console.log('No orders found');
-    // }
+    getOrder(Orders[Orders.length - 1].id);
+
   }
 
   render() {
@@ -50,8 +47,9 @@ class OrderRvwContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  const { data } = state.loadingOrderData;
   return {
-    orderData: state.loadingOrderData,
+    orderData: data.length !== 0 ? data : data,
     profileData: state.storeProfileData
   }
 }
