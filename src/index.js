@@ -17,7 +17,7 @@ render(
       <Router history={history}>
         <StripeProvider apiKey={_stripeKey}>
           <Elements>
-            <App storeToTest={store}/>
+            <App />
           </Elements>
         </StripeProvider>
       </Router>

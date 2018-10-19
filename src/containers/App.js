@@ -60,7 +60,6 @@ class App extends Component {
 
   render() {
     const { authUser, authenticated } = this.state;
-    const { storeToTest } = this.props;
     return (
       <div id="main-container">
         <Header />
@@ -85,7 +84,6 @@ class App extends Component {
           {
             authenticated &&
             <div>
-              {console.log(storeToTest.getState())}
               <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
               <Cart auth={{authUser, authenticated}} path={routes.CART} />
               <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
