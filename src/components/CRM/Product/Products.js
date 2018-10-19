@@ -15,14 +15,8 @@ class Products extends Component {
   }
 
   render() {
-    const { path } = this.props;
-    return(
-      <Route
-        exact
-        path={`${path}/:productId`}
-        render={rest => <ProductItem {...this.props} {...rest} /> }
-      />
-    )
+    const { rest } = this.props;
+    return <ProductItem {...this.props} {...rest} /> 
   }
 }
 

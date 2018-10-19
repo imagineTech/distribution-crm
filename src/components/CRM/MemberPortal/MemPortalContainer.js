@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MemberPortal from './subcomponents/MemberPortal'
-import { Route } from 'react-router-dom';
+import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
+
 
 
 class MemberPortalContainer extends Component {
@@ -16,14 +16,8 @@ class MemberPortalContainer extends Component {
   }
 
   render() {
-    const { auth, path } = this.props;
-    return(
-      <Route
-        exact
-        path={`${path}`}
-        render={rest => <MemberPortal {...this.props}  {...auth} {...rest} />}
-      />
-    )
+    const { rest } = this.props;
+    return <MemberPortal {...this.props} {...rest} />
   }
 }
 

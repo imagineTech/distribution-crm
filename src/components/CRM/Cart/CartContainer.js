@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Cart from './subcomponents/Cart';
 import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderData } from '../../../actions/orderData';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 
 class CartContainer extends Component {
 
@@ -14,19 +12,13 @@ class CartContainer extends Component {
   }
 
   render() {
-    const { path } = this.props;
-    return(
-            <Route 
-                exact
-                path={`${path}`}
-                render={rest => <Cart {...this.props}  {...rest} />}
-            />
-    )
+    const { rest } = this.props;
+    return <Cart {...this.props}  {...rest} />
   }
 }
 
 const mapStateToProps = state => {
-  const { data } = state.loadingCartData
+  const { data } = state.loadingCartData;
   return {
     cartItems: data.length !== 0 ? data : data,
     profileData: state.storeProfileData
