@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -7,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
@@ -32,9 +33,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
-library.add(faStroopwafel)
-library.add(faUser)
-library.add(faEnvelope)
+library.add(faStroopwafel, faUser, faEnvelope, faWindowClose)
 
 const LoadProducts = Loadable({
   loader: () => import('../components/CRM/Product/Products'),
@@ -96,11 +95,10 @@ class App extends Component {
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
-
-
+        <Footer />
         {/*
           This section below had to be setup because we have different
-          commponents that need to be protected. Using local state right now,
+          components that need to be protected. Using local state right now,
           user is being given to us through firebase
           */}
           {
@@ -113,7 +111,7 @@ class App extends Component {
               <Route exact path={`${routes.ORDER_REVIEW}/:productId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     }

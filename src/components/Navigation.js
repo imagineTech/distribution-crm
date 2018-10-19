@@ -5,8 +5,6 @@ import LinksNav from './findoutmore/partials/LinksNav';
 import { SecondButton } from './CSS/Button';
 import LandingButton from './landing/partials/bottomComponents/LandingButton';
 
-
-
 //All routes
 import * as routes from '../constants/routes';
 
@@ -26,13 +24,13 @@ const BecomingAMemberInstructionsLink = () =>
   <div><Link to={routes.BECOMING_A_MEMBER}><h2>Find out how to become a memeber!</h2></Link></div>
 
 const BecomingAMemberLink = () =>
-    <div><Link to={routes.BECOMING_A_MEMBER}><LandingButton>Becoming a member!</LandingButton></Link></div>
+    <div><Link to={routes.BECOMING_A_MEMBER}><LandingButton>BECOME A MEMBER</LandingButton></Link></div>
 
 const HowItWorksLink = () =>
-    <div><Link to={routes.HOW_IT_WORKS}><LandingButton>How It Works!</LandingButton></Link></div>
+    <div><Link to={routes.HOW_IT_WORKS}><LandingButton>HOW IT WORKS</LandingButton></Link></div>
 
 const SoldProducts = () =>
-    <div><Link to={routes.SOLD_PRODUCTS}><LandingButton>Products We Have Sold!</LandingButton></Link></div>
+    <div><Link to={routes.SOLD_PRODUCTS}><LandingButton>SOLD PRODUCTS</LandingButton></Link></div>
 
 //links for the find out page
 const FindoutLinks = () =>

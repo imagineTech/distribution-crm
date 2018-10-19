@@ -34,23 +34,37 @@ class SignUp extends Component {
   render() {
     return (
           <div>
-            <h1>Sign-up</h1>
+            <h1>Register</h1>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="first_name">First Name: </label>
+              <label htmlFor="first_name">First Name<br/>
               <input type="text" id="first_name" name="First_Name" onChange={this.handleChange}/>
-              <label htmlFor="name">Last Name: </label>
+              </label><br/>
+
+              <label htmlFor="name">Last Name<br/>
               <input type="text" id="last_name" name="Last_Name" onChange={this.handleChange}/>
-              <label htmlFor="email">Email: </label>
+              </label><br/>
+
+              <label htmlFor="email">Email<br/>
               <input type="email" id="signup_email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
-              <label htmlFor="signup_password">Password: </label>
+              </label><br/>
+
+              <label htmlFor="signup_password">Password<br/>
               <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
-              <label htmlFor="company">Company: </label>
+              </label><br/>
+
+              <label htmlFor="company">Company<br/>
               <input type="text" id="company" name="Company" onChange={this.handleChange}/>
-              <label>Department: </label>
+              </label><br/>
+
+              <label>Department<br/>
               <input type="text" id="department" name="Department" onChange={this.handleChange}/>
-              <label>Country: </label>
+              </label><br/>
+
+              <label>Country<br/>
               <input type="text" id="country" name="Country" onChange={this.handleChange} />
-              <button>Signup</button>
+              </label><br/>
+
+              <button>Sign up</button>
             </form>
             <Link to={routes.SIGN_IN}>Already have an account? Login </Link>
           </div>
