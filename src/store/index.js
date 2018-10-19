@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import rootReducer from '../reducers/index';
 
 export const history = createBrowserHistory();
@@ -34,7 +35,8 @@ export const creatingTheStore = () => {
     initial,
     compose(
       applyMiddleware(
-        thunk
+        thunk,
+        logger
       ),
     ),
   );
