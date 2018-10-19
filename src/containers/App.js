@@ -13,9 +13,9 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 
 //Custom components
+import { Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import LoadingComponent from '../components/LoadingComponent';
-import { Route } from 'react-router-dom';
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
@@ -27,10 +27,6 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
-import Profile from '../components/profile/ProfileContainer.js';
-import Products from '../components/CRM/Product/Products';
-import Cart from '../components/CRM/Cart/CartContainer';
-import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -40,13 +36,28 @@ library.add(faStroopwafel)
 library.add(faUser)
 library.add(faEnvelope)
 
-const LoadCRM = Loadable({
-  loader: () => import('../components/CRM/MemberPortal/MemPortalContainer.js'),
+const LoadProducts = Loadable({
+  loader: () => import('../components/CRM/Product/Products'),
   loading: LoadingComponent
-});
+})
 
 const LoadCart = Loadable({
   loader: () => import('../components/CRM/Cart/CartContainer'),
+  loading: LoadingComponent
+})
+
+const LoadEditPro = Loadable({
+  loader: () => import('../components/profile/ProfileContainer'),
+  loading: LoadingComponent
+})
+
+const LoadCRM = Loadable({
+  loader: () => import('../components/CRM/MemberPortal/MemPortalContainer'),
+  loading: LoadingComponent
+})
+
+const LoadOrdRvw = Loadable({
+  loader: () => import('../components/CRM/Review/OrderRvwContainer'),
   loading: LoadingComponent
 })
 
@@ -95,11 +106,11 @@ class App extends Component {
           {
             authenticated &&
             <div>
-              <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
-              <LoadCart auth={{authUser, authenticated}} path={routes.CART} />
-              <LoadCRM auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
-              <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
+            <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />  
+              <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
+              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
+              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+              <Route exact path={routes.ORDER_REVIEW} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
           <Footer />
