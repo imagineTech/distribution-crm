@@ -48,14 +48,13 @@ export const newProfileData = (dbDataName, dbDataValue) => {
 export const newProfileDataToSend = (defaultDbData, newDbData, dbID, history) => {
   return dispatch => {
     db.editUserData(defaultDbData, newDbData, dbID).then(() => {
-      let newDbNames = Object.keys(newDbData);
-      newDbNames.map(newName => {
-        if((newName === 'First_Name' && newName === 'Last_Name') && newName === 'Email') {
-          Moltin.updateMoltinUser(defaultDbData.Moltin_User_Id, newDbData.First_Name, newDbData.Last_Name, newDbData.Email )
-          history.push(routes.MEMBER_PORTAL);
-        }
+      let moltinFirst = (defaultDbData.First_Name || newDbData.First_Name);
+      let moltinLast = (defaultDbData.Last_Name || newDbData.Last_Name);
+      return Moltin.updateMoltinUser(defaultDbData.Moltin_User_Id, 
+        moltinFirst, moltinLast, newDbData.Email )
+      .then(()=> {
+        history.push(routes.MEMBER_PORTAL);
       })
-      history.push(routes.MEMBER_PORTAL)
     })
   }
 }
