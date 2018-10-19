@@ -13,8 +13,9 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 
 //Custom components
+import Loadable from 'react-loadable';
+import LoadingComponent from '../components/LoadingComponent';
 import { Route } from 'react-router-dom';
-import Crm from '../components/CRM/MemberPortal/MemPortalContainer.js'
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
@@ -38,6 +39,16 @@ import * as routes from '../constants/routes';
 library.add(faStroopwafel)
 library.add(faUser)
 library.add(faEnvelope)
+
+const LoadCRM = Loadable({
+  loader: () => import('../components/CRM/MemberPortal/MemPortalContainer.js'),
+  loading: LoadingComponent
+});
+
+const LoadCart = Loadable({
+  loader: () => import('../components/CRM/Cart/CartContainer'),
+  loading: LoadingComponent
+})
 
 class App extends Component {
 
@@ -85,8 +96,8 @@ class App extends Component {
             authenticated &&
             <div>
               <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
-              <Cart auth={{authUser, authenticated}} path={routes.CART} />
-              <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
+              <LoadCart auth={{authUser, authenticated}} path={routes.CART} />
+              <LoadCRM auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
               <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
               <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
             </div>
