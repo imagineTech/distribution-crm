@@ -1,52 +1,47 @@
 import Moltin  from './config_moltin';
 
-export const createAMoltinUser = async (name, email) => {
+export const createAMoltinUser = (name, email) => {
   const moltinUser = {
     name,
     email
   }
-  const customer = await Moltin.Customers.Create(moltinUser);
-  return customer;
+  return Moltin.Customers.Create(moltinUser);
 }
 
-export const getAllProducts = async () => {
-  const products = await Moltin.Products.All();
-  return products;
+export const getAllProducts = () => {
+  return Moltin.Products.All();
 }
 
-export const addProductsToCart = async (refId, productId, productQuantity) => {
-  const cart = await Moltin.Cart(refId).AddProduct(productId, productQuantity);
-  return cart;
+export const addProductsToCart = (refId, productId, productQuantity) => {
+  return Moltin.Cart(refId).AddProduct(productId, productQuantity);
 }
 
-export const getACart = async (refId) => {
-  const cart = await Moltin.Cart(refId).Items();
-  return cart;
+export const getProductImage = () => {
+  return Moltin.Products.With('main_image').All();
 }
 
-export const updateItemQuantity = async (refId, itemId, newQuantity) => {
-  const update = await Moltin.Cart(refId).UpdateItemQuantity(itemId, newQuantity);
-  return update;
+export const getACart = (refId) => {
+  return Moltin.Cart(refId).Items();
 }
 
-export const removeCartItem = async (refId, itemId, qty) => {
-  const removed = Moltin.Cart(refId).RemoveItem(itemId, qty);
-  return removed;
+export const updateItemQuantity = (refId, itemId, newQuantity) => {
+  return Moltin.Cart(refId).UpdateItemQuantity(itemId, newQuantity);
 }
 
-export const removeCart = async (refId) => {
-  const deleted = Moltin.Cart(refId).Delete();
-  return deleted;
+export const removeCartItem = (refId, itemId, qty) => {
+  return Moltin.Cart(refId).RemoveItem(itemId, qty);
 }
 
-export const checkoutCart = async (refId, customerId, billing, shipping) => {
-  const checkout = await Moltin.Cart(refId).Checkout(customerId, billing, shipping);
-  return checkout;
+export const removeCart = (refId) => {
+  return Moltin.Cart(refId).Delete();
 }
 
-export const payForOrder = async (orderId, stripeToken) => {
-  const payment = await Moltin.Orders.Payment(orderId, stripeToken);
-  return payment;
+export const checkoutCart = (refId, customerId, billing, shipping) => {
+  return Moltin.Cart(refId).Checkout(customerId, billing, shipping);
+}
+
+export const payForOrder = (orderId, stripeToken) => {
+  return Moltin.Orders.Payment(orderId, stripeToken);
 }
 
 export const getAnOrder = (orderId) => {

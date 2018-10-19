@@ -26,15 +26,12 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
-// import Login from '../components/findoutmore/subcomponents/login/login.js';
+import Login from '../components/findoutmore/subcomponents/Login/Login.js';
 import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPortal';
 import Profile from '../components/profile/ProfileContainer.js';
-import EditProfile from '../components/profile/subcomponents/EditProfile';
 import Products from '../components/CRM/Product/Products';
-import ProductItem from '../components/CRM/Product/subcomponents/ProductItem';
-import Cart from '../components/CRM/Cart/Cart';
+import Cart from '../components/CRM/Cart/CartContainer';
 import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
-import OrderReview from '../components/CRM/Review/subcomponents/OrderReview';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -72,7 +69,9 @@ class App extends Component {
         <Route exact path={routes.ABOUT} component={() => <About />}  />
         <Route exact path={routes.OUR_POLICY} component={() => <OurPolicy />} />
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
-        <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
+        <Route exact path={routes.SIGN_UP} render={rest => <SignUp {...rest} />} />
+        <Route exact path={routes.SIGN_IN} render={rest => <Login {...rest} />} />
+
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
@@ -86,11 +85,11 @@ class App extends Component {
             authenticated &&
             <div>
               {console.log(storeToTest.getState())}
-              <Route exact path={routes.CART} render={props => <Cart auth={authUser} {...props}/> }/>
-              <Crm auth={{authUser, authenticated}} comp={MemberPortal} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} comp={ProductItem} path={routes.PRODUCTS}/>
-              <Profile auth={{authUser, authenticated}} comp={EditProfile} path={routes.PROFILE} />
-              <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
+              <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
+              <Cart auth={{authUser, authenticated}} path={routes.CART} />
+              <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
+              <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
+              <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
             </div>
           }
           {/* <Footer /> */}
