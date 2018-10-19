@@ -1,15 +1,22 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+#main-container {
+  width: 100%;
+  background: none;
   margin: 0;
-  width: 100vw;
   border: 0;
   padding: 0;
   list-style: none;
+  font-family: 'Lato', sans-serif;
+  color: rgb(10, 10, 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-.modal-container {
+/* .modal-container {
   position: relative;
 }
-
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
-}
+} */

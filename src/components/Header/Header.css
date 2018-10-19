@@ -1,69 +1,105 @@
 .header {
-	background-color: #ffe9c8;
+  /* background-color: #ffe9c8; */
+  /* background: #ddd; */
+  /* background: #111; */
+  background: rgb(247, 167, 168);
+  height: 150px;
 	width: 100%;
-  height: auto;
-  border-bottom: 2px solid grey;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .6);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: #eee;
 }
-.headerLogo {
+
+/* ICONS */
+
+.contact-sign-in {
+  /* background: pink; */
+  width: 100%;
+  /* color: #ccc; */
+  color: rgba(0, 0, 0, .7);
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+#contact:hover, #sign-in:hover {
+  /* color: #eee; */
+  color: rgba(0, 0, 0, 1);
+  transition: color .5s ease;
+  cursor: pointer;
+}
+
+/* KUPIDO */
+
+.header h1 {
+  font-size: 60px;
+  width: 300px;
+  /* color: #eee; */
+  color: #111;
+}
+/* .logo {
   position: relative;
   display: block;
   margin: auto;
-}
+} */
+
+/* MENU */
+
 .navLinksContainer {
-	text-align: center;
+  /* background: yellow; */
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 .navLink {
-	color: #3e3e3e;
+  /* color: #aaa; */
+  color: #555;
   text-decoration: none;
   cursor: pointer;
   margin: 10px;
 }
-.contact-sign-in {
-  /* background: pink; */
-  color: #3e3e3e;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  display: flex;
+.navLink:hover {
+  /* color: #eee; */
+  color: #000;
+  transition: color .5s ease;
 }
-#contact {
-  margin-right: 10px;
-}
-.header Link {
-  color: green;
-}
-#contact:hover {
-  color: black;
-}
-#sign-in:hover {
-  color: black;
-}
-.header Link:hover {
-  color: red;
-}
-#myContactModal {
-  background: rgba(0, 0,    0, 0.6);
+
+#myContactModal, #myLoginModal {
+  background: rgba(0, 0, 0, 0.6);
   height: 100vh;
   width: 100vw;
   z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.contact-modal-content {
+.contact-modal-content, .login-modal-content {
   background: rgba(255, 255, 255, 1);
   height: 80vh;
-  width: 80vw;
-  max-width: 500px;
+  width: 450px;
   top: 10%;
-  left: 20%;
+  left: calc(50% - 225px);
   position: absolute;
   z-index: 11px;
-  padding: 5vh;
+  padding: 10vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#close-contact-modal, #close-login-modal {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 form {
   /* background: red; */
@@ -77,7 +113,10 @@ form {
   width: 250px;
   height: 26px;
 }
-#help-question {
+.header textarea {
+  height: 52px;
+}
+.modal-title {
   /* background: pink; */
   text-align: left;
   width: 100%;
@@ -85,8 +124,9 @@ form {
   font-size: 26px;
   margin-bottom: 20px;
 }
-#close-contact-modal {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+#login {
+  text-align: center;
+}
+.submitButton {
+  margin-right: 20px;
 }
