@@ -106,11 +106,11 @@ class App extends Component {
           {
             authenticated &&
             <div>
-            <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />  
+              <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />  
               <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
               <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
               <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
-              <Route exact path={routes.ORDER_REVIEW} render={rest => <LoadOrdRvw {...rest} />} />
+              <Route exact path={`${routes.ORDER_REVIEW}/:productId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
           <Footer />
