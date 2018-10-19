@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import asyncComponent from '../../../hoc/async';
+import MemberPortal from './subcomponents/MemberPortal'
 import { Route } from 'react-router-dom';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
 
-const AsyncMemberPortal = asyncComponent(() => {
-  return import('./subcomponents/MemberPortal');
-});
 
 class MemberPortalContainer extends Component {
 
@@ -24,7 +21,7 @@ class MemberPortalContainer extends Component {
       <Route
         exact
         path={`${path}`}
-        render={rest => <AsyncMemberPortal {...this.props}  {...auth} {...rest} />}
+        render={rest => <MemberPortal {...this.props}  {...auth} {...rest} />}
       />
     )
   }
