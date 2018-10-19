@@ -96,7 +96,11 @@
   flex-direction: column;
   align-items: center;
 }
-
+#close-contact-modal, #close-login-modal {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 form {
   /* background: red; */
   width: 300px;
@@ -109,7 +113,10 @@ form {
   width: 250px;
   height: 26px;
 }
-#help-question {
+.header textarea {
+  height: 52px;
+}
+.modal-title {
   /* background: pink; */
   text-align: left;
   width: 100%;
@@ -117,8 +124,9 @@ form {
   font-size: 26px;
   margin-bottom: 20px;
 }
-#close-contact-modal, #close-login-modal {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+#login {
+  text-align: center;
+}
+.submitButton {
+  margin-right: 20px;
 }

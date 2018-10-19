@@ -25,13 +25,24 @@ class Login extends Component {
       <div>
 				<FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
 
-        <h1>Login</h1>
+        <p className='modal-title' id='login'>Login</p>
+
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="login_email">Email: </label>
+
+          <label htmlFor="login_email">Email
+          <br/>
             <input type="text" name="login_email" id="login_email" onChange={this.handleChange}/>
-          <label htmlFor="login_password">Password: </label>
+          </label>
+          <br/>
+
+          <label htmlFor="login_password">Password
+          <br/>
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
+          </label>
+          <br/>
+
           <button>Login</button>
+
         </form>
       </div>
     )

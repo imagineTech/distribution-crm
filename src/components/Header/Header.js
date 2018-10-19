@@ -62,7 +62,7 @@ class Header extends Component {
 			<div className="navLinksContainer">
 				<Link to={routes.HOME} className="navLink">HOME</Link>
 				<Link to={routes.ABOUT} className="navLink">ABOUT</Link>
-
+ 
 				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
 			</div>
 
