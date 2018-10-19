@@ -5,7 +5,7 @@ import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
-import Login from './../findoutmore/subcomponents/Login/Login.js';
+import Login from './../findoutmore/subcomponents/login/login.js';
 
 class Header extends Component {
 	constructor() {
