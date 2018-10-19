@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class contact extends React.Component {
 	constructor() {
@@ -6,15 +7,43 @@ class contact extends React.Component {
 		
   }
 
+  handleChange = e => {
+	this.setState({value: e.target.value});
+
+	const val = e.target.name;
+	this.setState({
+		val: {
+			...this.state.val,
+				[e.target.name]: e.target.value
+		}
+	});
+}
+
+handleChangeName(value) {
+	this.setState({customerName: value});
+  }
+
+  handleChangeNumber(value) {
+	this.setState({customerNumber: value});
+  }	
+
+  handleChangeEmail(value) {
+	this.setState({customerEmail: value});
+  }
+
+  handleChangeContent(value) {
+	this.setState({contactContent: value});
+  }
+
 	render() {
 		return (
 			<div className='contact'>
 
-				<button id="close-contact-modal" onClick={this.props.closeContactModal}>X</button>
+				<FontAwesomeIcon id="close-contact-modal" onClick={this.props.closeContactModal} icon='window-close' style={{height: 25, width: 25}}/>
 
 				<p id='help-question'>What can we help you with?</p>
 
-				<form onSubmit={(e)=>this.handleSubmit(e)}>
+				<form onSubmit={(e)=>this.handleContactSubmit(e)}>
 		
 					<label>Your Name
 					<br/>
@@ -40,7 +69,7 @@ class contact extends React.Component {
 					</label>
 					<br/>
 
-					<button className="submitButton" type="submit" onClick={(e)=>this.props.handleSubmit(e)}>Submit</button>
+					<button className="submitButton" type="submit" onClick={(e)=>this.props.handleContactSubmit(e)}>Submit</button>
 					<button>Reset</button>
 
 				</form>

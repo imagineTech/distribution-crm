@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -7,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
@@ -25,7 +26,7 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
-import Login from '../components/findoutmore/subcomponents/login/login.js';
+// import Login from '../components/findoutmore/subcomponents/login/login.js';
 import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPortal';
 import Profile from '../components/profile/ProfileContainer.js';
 import EditProfile from '../components/profile/subcomponents/EditProfile';
@@ -39,9 +40,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
-library.add(faStroopwafel)
-library.add(faUser)
-library.add(faEnvelope)
+library.add(faStroopwafel, faUser, faEnvelope, faWindowClose)
 
 class App extends Component {
 
@@ -74,16 +73,13 @@ class App extends Component {
         <Route exact path={routes.OUR_POLICY} component={() => <OurPolicy />} />
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} component={() => <SignUp />} />
-        <Route exact path={routes.SIGN_IN} component={() => <Login />} />
-
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
-
-
+        <Footer />
         {/*
           This section below had to be setup because we have different
-          commponents that need to be protected. Using local state right now,
+          components that need to be protected. Using local state right now,
           user is being given to us through firebase
           */}
           {
@@ -97,7 +93,7 @@ class App extends Component {
               <OrderRvw auth={{authUser, authenticated}} comp={OrderReview} path={routes.ORDER_REVIEW} />
             </div>
           }
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     }

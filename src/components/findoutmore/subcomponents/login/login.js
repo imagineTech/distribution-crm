@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/loginAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Login extends Component {
 
@@ -22,6 +23,8 @@ class Login extends Component {
   render() {
     return (
       <div>
+				<FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
+
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="login_email">Email: </label>
