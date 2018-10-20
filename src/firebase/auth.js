@@ -28,3 +28,7 @@ export const doUpdateUserEmail = (email) => {
 export const doUpdateUserPassword = (password) => {
   return auth.currentUser.updatePassword(password);
 }
+
+export const deleteAuth = () => {
+  return auth.currentUser.delete();
+}

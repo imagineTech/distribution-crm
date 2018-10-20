@@ -74,3 +74,13 @@ export const newPasswordToSendAuth = (newPassword, history) => {
     })
   }
 }
+
+export const deleteUser = (moltId, fbId, history) => {
+  return dispatch => {
+    Moltin.deleteMoltinUser(moltId)
+    auth.deleteAuth()
+    db.deleteDocument(fbId).then(() => {
+      history.push(routes.HOME)
+    })
+  }
+}

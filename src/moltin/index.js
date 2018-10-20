@@ -16,6 +16,10 @@ export const updateMoltinUser = (id, first_name, last_name, email) => {
   return Moltin.Customers.Update(id, moltinUser);
 }
 
+export const deleteMoltinUser = id => {
+  return Moltin.Customers.Delete(id);
+}
+
 export const getAllProducts = () => {
   return Moltin.Products.All();
 }
