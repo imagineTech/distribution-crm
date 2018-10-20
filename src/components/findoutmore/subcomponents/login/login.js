@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/loginAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ErrorComponent from'./subcomponents/Error';
 import * as routes from '../../../../constants/routes';
 
 class Login extends Component {
@@ -27,6 +28,7 @@ class Login extends Component {
   }
 
   render() {
+    const { loginError } = this.props;
     return (
       <div>
 				<FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
@@ -49,6 +51,7 @@ class Login extends Component {
           <button>Login</button>
 
         </form>
+        <ErrorComponent error={loginError} />
         <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link> <br />
         <Link to={routes.FORGOT_EMAIL}>Forgot email?</Link> <br />
         <Link to={routes.FORGOT_PASS}>Forgot password?</Link>
@@ -59,7 +62,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    emailAndPassword: state.emailAndPasswordToState
+    emailAndPassword: state.emailAndPasswordToState,
+    loginError: state.handleErrorForLogin
   }
 }
 

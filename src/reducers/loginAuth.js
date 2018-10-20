@@ -4,18 +4,25 @@
   Login component. 
 */
 
-export function emailAndPasswordToState(state = {}, action) {
+export const emailAndPasswordToState = (state = {}, action) => {
   switch(action.type) {
     case "DATA_TO_LOGIN_WITH":
       return {
         ...state,
         ...action.data
       }
+    default:
+      return state;
+  }
+}
+
+export const handleErrorForLogin = (state = {}, action) => {
+  switch(action.type) {
     case "HANDLE_LOGIN_ERROR":
       return {
         ...state,
-        ...action.code,
-        ...action.message
+        code: action.code,
+        message: action.message
       }
     default:
       return state;

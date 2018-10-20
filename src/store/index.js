@@ -27,6 +27,7 @@ export const creatingTheStore = () => {
       'signUpFormData', 
       'emailAndPasswordData',
       'emailAndPasswordToState',
+      'handleErrorForLogin',
       'passwordResetSuccess',
       'loadingCartData',
       'loadingCurrentOrderData',
