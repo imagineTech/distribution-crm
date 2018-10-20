@@ -84,7 +84,7 @@ class App extends Component {
     const { authUser, authenticated } = this.state;
     return (
       <div id="main-container">
-        <Header />
+        <Header auth={authenticated}/>
         <Route exact path={routes.HOME} component={() => <Landing />}  />
         <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
         <Route exact path={routes.ABOUT} component={() => <About />}  />

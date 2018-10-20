@@ -39,6 +39,7 @@ class Header extends Component {
 	}
 
 	render() {
+		const { auth } = this.props;
 		return (
 		
 		<div className="header">
@@ -67,6 +68,9 @@ class Header extends Component {
  
 				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
 				<Link to={routes.SIGN_IN} className="navLink">LOGIN</Link>
+
+				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
+
 			</div>
 
 {/* ========== Contact Modal ========== */}
