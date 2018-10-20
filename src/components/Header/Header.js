@@ -50,9 +50,7 @@ class Header extends Component {
 						<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
 				</div>
 				<div id='sign-in'>
-						<Link to={routes.SIGN_IN}>
-							<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
-						</Link>
+						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
 
 				</div>
 			</div>
@@ -68,6 +66,7 @@ class Header extends Component {
 				<Link to={routes.ABOUT} className="navLink">ABOUT</Link>
  
 				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
+				<Link to={routes.SIGN_IN} className="navLink">LOGIN</Link>
 			</div>
 
 {/* ========== Contact Modal ========== */}
