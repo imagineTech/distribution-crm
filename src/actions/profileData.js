@@ -5,6 +5,7 @@
 */
 
 import { auth, db, firebase } from '../firebase/';
+import { errorHandling } from './loginAuth';
 import * as Moltin from '../moltin'
 import * as routes from '../constants/routes';
 
@@ -87,7 +88,7 @@ export const sendPasswordResetEmail = email => {
   return dispatch => {
     // auth.passwordReset(email).then(() => {
     //   dispatch(passwordResetSuccess())
-    // })
+    // }).catch(err => dispatch(errorHandling(err.code, err.message)))
     dispatch(passwordResetSuccess())
   }
 }
