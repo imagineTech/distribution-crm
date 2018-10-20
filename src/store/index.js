@@ -12,7 +12,7 @@ export const history = createBrowserHistory();
 export const creatingTheStore = () => {
   const initial = {
     loadingProductData: initialState.loadingProductData,
-    loadingOrderData: initialState.loadingOrderData,
+    loadingCurrentOrderData: initialState.loadingCurrentOrderData,
     loadingCartData: initialState.loadingCartData,
     storeProfileData: initialState.storeProfileData
   }
@@ -26,7 +26,7 @@ export const creatingTheStore = () => {
       'signUpFormData', 
       'emailAndPasswordData',
       'loadingCartData',
-      'loadingOrderData',
+      'loadingCurrentOrderData',
       'loadingProductData'
     ]
   };

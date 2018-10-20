@@ -36,7 +36,7 @@
     imagesExist: false
 };
 
-const loadingOrderData = { 
+const loadingCurrentOrderData = { 
     data: []
 };
 
@@ -50,7 +50,7 @@ const storeProfileData = {
 
   export const initialState = {
       loadingProductData,
-      loadingOrderData,
+      loadingCurrentOrderData,
       loadingCartData,
       storeProfileData
   }
