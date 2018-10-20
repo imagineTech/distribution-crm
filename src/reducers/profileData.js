@@ -33,9 +33,9 @@ export const storeNewProfileData = (state = {}, action) => {
   }
 }
 
-export const emailVerificationSuccess = (state = "", action) => {
+export const passwordResetSuccess = (state = "", action) => {
   switch(action.type) {
-    case "EMAIL_SENT_SUCCESS": 
+    case "PASSWORD_RESET_EMAIL_SENT_SUCCESS": 
       return {
         ...state,
         message: action.message,

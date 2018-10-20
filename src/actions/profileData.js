@@ -40,10 +40,10 @@ export const newProfileData = (dbDataName, dbDataValue) => {
   }
 }
 
-export const emailVerificationSuccess = () => {
+export const passwordResetSuccess = () => {
   return {
-    type: "EMAIL_SENT_SUCCESS",
-    message: "Email was sent :) ",
+    type: "PASSWORD_RESET_EMAIL_SENT_SUCCESS",
+    message: "A Password reset email was sent :) ",
     display: false
   }
 }
@@ -83,11 +83,12 @@ export const newPasswordToSendAuth = (newPassword, history) => {
   }
 }
 
-export const sendVerficationEmail = () => {
+export const sendPasswordResetEmail = email => {
   return dispatch => {
-    auth.emailVerification().then(() => {
-      dispatch(emailVerificationSuccess())
-    })
+    // auth.passwordReset(email).then(() => {
+    //   dispatch(passwordResetSuccess())
+    // })
+    dispatch(passwordResetSuccess())
   }
 }
 
