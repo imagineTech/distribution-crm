@@ -20,10 +20,10 @@ class Login extends Component {
   }
 
   handleSubmit = e => {
-    const { emailAndPassword, emailAndPasswordLogin } = this.props;
+    const { emailAndPassword, emailAndPasswordLogin, history } = this.props;
     const { login_email, login_password} = emailAndPassword;
     e.preventDefault();
-    emailAndPasswordLogin(login_email, login_password);
+    emailAndPasswordLogin(login_email, login_password, history);
   }
 
   render() {
@@ -46,9 +46,7 @@ class Login extends Component {
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
           </label>
           <br/>
-          <Link to={routes.MEMBER_PORTAL}>
-            <button>Login</button>
-          </Link>
+          <button>Login</button>
 
         </form>
         <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link>
@@ -66,7 +64,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
-    emailAndPasswordLogin: (email, password) => dispatch(loginWithEmailAndPassword(email, password))
+    emailAndPasswordLogin: (email, password, history) => dispatch(loginWithEmailAndPassword(email, password, history))
   }
 }
 
