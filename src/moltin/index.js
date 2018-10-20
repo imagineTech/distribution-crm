@@ -52,6 +52,10 @@ export const payForOrder = (orderId, stripeToken) => {
   return Moltin.Orders.Payment(orderId, stripeToken);
 }
 
-export const getAnOrder = (orderId) => {
+export const getAnOrder = orderId => {
   return Moltin.Orders.Get(orderId);
+}
+
+export const getOrderItems = orderId => {
+  return Moltin.Orders.Items(orderId);
 }

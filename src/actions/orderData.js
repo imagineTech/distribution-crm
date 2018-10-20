@@ -8,10 +8,11 @@ export const loadStoredOrderData = ordData => {
   }
 }
 
-export const addOrderDataToLoad = order => {
+export const addOrderDataToLoad = (orderInfo, orderItems) => {
   return {
     type: "LOAD_CURRENT_ORDER",
-    order
+    orderInfo,
+    orderItems
   }
 }
 
@@ -24,7 +25,9 @@ export const addOrderDataToStore = (authId, orderId) => {
 export const loadCurrentOrder = (orderId) => {
   return dispatch => {
     Moltin.getAnOrder(orderId).then(order => {
-      dispatch(addOrderDataToLoad(order));
+      Moltin.getOrderItems(order.data.id).then(orderItems => {
+        dispatch(addOrderDataToLoad(order.data, orderItems.data));
+      })
     })
   }
 }

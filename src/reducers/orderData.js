@@ -3,10 +3,11 @@ export const loadingCurrentOrderData = (state = {}, action) => {
     case "LOAD_CURRENT_ORDER":
       return {
         ...state,
-        data: [
+        data: {
           ...state.data,
-          ...action.order.data
-        ]
+          info: { ...state.data.info, ...action.orderInfo}, 
+          items: [ ...state.data.items, {...action.orderItems[0]}]
+        }
       };
     default:
       return state;

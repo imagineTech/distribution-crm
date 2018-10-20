@@ -37,7 +37,10 @@
 };
 
 const loadingCurrentOrderData = { 
-    data: []
+    data: {
+        info: {}, 
+        items: []
+    }
 };
 
 const loadingCartData = {
