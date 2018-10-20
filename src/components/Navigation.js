@@ -15,6 +15,14 @@ const LandingLinks = () =>
     <Link to={routes.FIND_OUT_MORE}><Button primary>Find Out More</Button></Link>
   </div>
 
+const RegistrationRedirection = () =>
+  <div>
+    <Link to={routes.SIGN_UP}><LandingButton primary>Apply Now!</LandingButton></Link>
+  </div>
+
+const BecomingAMemberInstructionsLink = () =>
+  <div><Link to={routes.BECOMING_A_MEMBER}><h2>Find out how to become a memeber!</h2></Link></div>
+
 const BecomingAMemberLink = () =>
     <div><Link to={routes.BECOMING_A_MEMBER}><LandingButton>BECOME A MEMBER</LandingButton></Link></div>
 
@@ -39,3 +47,5 @@ export { FindoutLinks };
 export { BecomingAMemberLink };
 export { HowItWorksLink };
 export { SoldProducts };
+export { BecomingAMemberInstructionsLink }
+export { RegistrationRedirection }

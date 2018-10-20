@@ -15,29 +15,50 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 //Custom components
 import { Route } from 'react-router-dom';
-import Crm from '../components/CRM/MemberPortal/MemPortalContainer.js'
+import Loadable from 'react-loadable';
+import LoadingComponent from '../components/LoadingComponent';
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
-import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts';
+import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts/SoldProducts';
 import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
-import Login from '../components/findoutmore/subcomponents/Login/Login.js';
-import MemberPortal from '../components/CRM/MemberPortal/subcomponents/MemberPortal';
-import Profile from '../components/profile/ProfileContainer.js';
-import Products from '../components/CRM/Product/Products';
-import Cart from '../components/CRM/Cart/CartContainer';
-import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
+import Login from '../components/findoutmore/subcomponents/login/login.js';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
 library.add(faStroopwafel, faUser, faEnvelope, faWindowClose)
+
+const LoadProducts = Loadable({
+  loader: () => import('../components/CRM/Product/Products'),
+  loading: LoadingComponent
+})
+
+const LoadCart = Loadable({
+  loader: () => import('../components/CRM/Cart/CartContainer'),
+  loading: LoadingComponent
+})
+
+const LoadEditPro = Loadable({
+  loader: () => import('../components/profile/ProfileContainer'),
+  loading: LoadingComponent
+})
+
+const LoadCRM = Loadable({
+  loader: () => import('../components/CRM/MemberPortal/MemPortalContainer'),
+  loading: LoadingComponent
+})
+
+const LoadOrdRvw = Loadable({
+  loader: () => import('../components/CRM/Review/OrderRvwContainer'),
+  loading: LoadingComponent
+})
 
 class App extends Component {
 
@@ -60,7 +81,6 @@ class App extends Component {
 
   render() {
     const { authUser, authenticated } = this.state;
-    const { storeToTest } = this.props;
     return (
       <div id="main-container">
         <Header />
@@ -84,12 +104,11 @@ class App extends Component {
           {
             authenticated &&
             <div>
-              {console.log(storeToTest.getState())}
-              <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
-              <Cart auth={{authUser, authenticated}} path={routes.CART} />
-              <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
-              <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
+              <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />  
+              <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
+              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
+              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+              <Route exact path={`${routes.ORDER_REVIEW}/:productId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
           {/* <Footer /> */}

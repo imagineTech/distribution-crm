@@ -5,7 +5,7 @@ import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
-import Login from './../findoutmore/subcomponents/Login/Login.js';
+import Login from './../findoutmore/subcomponents/login/login.js';
 
 class Header extends Component {
 	constructor() {
@@ -27,6 +27,7 @@ class Header extends Component {
 
 	openLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'block';
+
 	}
 	closeLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'none';
@@ -46,10 +47,13 @@ class Header extends Component {
 			
 			<div className='contact-sign-in'>
 				<div id='contact'>
-					<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
+						<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
 				</div>
 				<div id='sign-in'>
-					<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{height: '20px', width: '20px', marginLeft: '5px'}}/>
+						<Link to={routes.SIGN_IN}>
+							<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
+						</Link>
+
 				</div>
 			</div>
 

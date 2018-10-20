@@ -5,15 +5,9 @@ being stored.
 
 */
 import React, { Component } from 'react';
-import asyncComponent from '../../hoc/async';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import EditProfile from './subcomponents/EditProfile';
 import { loadProfileData } from '../../actions/profileData';
-import * as routes from '../../constants/routes';
-
-const AsyncEditProfile = asyncComponent(() => {
-  return import('./subcomponents/EditProfile');
-})
 
 class ProfileContainer extends Component {
 
@@ -23,16 +17,8 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { auth } = this.props
-    return(
-      <div>
-        <Route
-          exact
-          path={`${this.props.path}/${routes.EDIT_PROFILE}`}
-          render={rest => <AsyncEditProfile {...this.props} {...rest} {...auth} /> }
-        />
-      </div>
-    )
+    const { rest } = this.props
+    return <EditProfile {...this.props} {...rest} /> 
   }
 }
 

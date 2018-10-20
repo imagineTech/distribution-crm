@@ -4,17 +4,18 @@
   the data to pull correctly
 */
 
-import { auth, db, firebase } from '../firebase/index';
+import { auth, db, firebase } from '../firebase/';
+import * as Moltin from '../moltin'
 import * as routes from '../constants/routes';
 
-export function profileData(data) {
+export const profileData = (data) => {
   return {
     type: "PROFILE_DATA",
     data
   }
 }
 
-export function loadProfileData(userId) {
+export const loadProfileData = (userId) => {
   return dispatch => {
     firebase.auth.onAuthStateChanged(authUser => {
       if(authUser) {
@@ -30,7 +31,7 @@ export function loadProfileData(userId) {
   i was using forms, i needed a way to control the vaules of
   the edit profile form
 */
-export function newProfileData(dbDataName, dbDataValue) {
+export const newProfileData = (dbDataName, dbDataValue) => {
   return {
     type: "NEW_PROFILE_DATA",
     data: {
@@ -44,15 +45,21 @@ export function newProfileData(dbDataName, dbDataValue) {
   This is how i would send it to fb to update, and the result
   would be to redirect the user back to the profile.
 */
-export function newProfileDataToSend(defaultDbData, newDbData, dbID, history) {
+export const newProfileDataToSend = (defaultDbData, newDbData, dbID, history) => {
   return dispatch => {
     db.editUserData(defaultDbData, newDbData, dbID).then(() => {
-      history.push(routes.MEMBER_PORTAL)
+      let moltinFirst = (defaultDbData.First_Name || newDbData.First_Name);
+      let moltinLast = (defaultDbData.Last_Name || newDbData.Last_Name);
+      return Moltin.updateMoltinUser(defaultDbData.Moltin_User_Id, 
+        moltinFirst, moltinLast, newDbData.Email )
+      .then(()=> {
+        history.push(routes.MEMBER_PORTAL);
+      })
     })
   }
 }
 
-export function newEmailToSendAuth(newEmail, history) {
+export const newEmailToSendAuth = (newEmail, history) => {
   return dispatch => {
     auth.doUpdateUserEmail(newEmail).then(() => {
       history.push(routes.MEMBER_PORTAL)
@@ -60,7 +67,7 @@ export function newEmailToSendAuth(newEmail, history) {
   }
 }
 
-export function newPasswordToSendAuth(newPassword, history) {
+export const newPasswordToSendAuth = (newPassword, history) => {
   return dispatch => {
     auth.doUpdateUserPassword(newPassword).then(() => {
       history.push(routes.MEMBER_PORTAL)

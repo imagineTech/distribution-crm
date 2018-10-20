@@ -6,8 +6,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Router } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { _stripeKey } from './stripe/config_stripe';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/index';
 import App from './containers/App';
 
 const store = creatingTheStore().store;
@@ -19,7 +17,7 @@ render(
       <Router history={history}>
         <StripeProvider apiKey={_stripeKey}>
           <Elements>
-            <App storeToTest={store}/>
+            <App />
           </Elements>
         </StripeProvider>
       </Router>
