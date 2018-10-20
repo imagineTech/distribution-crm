@@ -49,7 +49,9 @@ class Login extends Component {
           <button>Login</button>
 
         </form>
-        <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link>
+        <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link> <br />
+        <Link to={routes.FORGOT_EMAIL}>Forgot username?</Link> <br />
+        <Link to={routes.FORGOT_PASS}>Forgot password?</Link>
       </div>
     )
   }
