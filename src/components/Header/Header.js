@@ -92,10 +92,10 @@ class Header extends Component {
 
 				<div id="myLoginModal" style={{display: 'none'}}>
 					<div className='login-modal-content'>
-						<Login
+						{/* <Login
 							// handleContactSubmit={this.handleContactSubmit}
 							closeLoginModal={this.closeLoginModal} 
-						/>		
+						/>		 */}
 					</div>	
 				</div>
 		</div>
