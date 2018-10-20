@@ -14,7 +14,8 @@ export const creatingTheStore = () => {
     loadingProductData: initialState.loadingProductData,
     loadingCurrentOrderData: initialState.loadingCurrentOrderData,
     loadingCartData: initialState.loadingCartData,
-    storeProfileData: initialState.storeProfileData
+    storeProfileData: initialState.storeProfileData,
+    passwordResetSuccess: initialState.passwordResetSuccess
   }
   const persistConfig = {
     key: 'root',
@@ -25,6 +26,7 @@ export const creatingTheStore = () => {
       'storeProfileData',
       'signUpFormData', 
       'emailAndPasswordData',
+      'passwordResetSuccess',
       'loadingCartData',
       'loadingCurrentOrderData',
       'loadingProductData'

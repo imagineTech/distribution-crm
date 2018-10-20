@@ -51,9 +51,14 @@ const storeProfileData = {
     Orders: [{ id: 0}]
 }
 
+const passwordResetSuccess = {
+    display: false
+}
+
   export const initialState = {
       loadingProductData,
       loadingCurrentOrderData,
       loadingCartData,
-      storeProfileData
+      storeProfileData,
+      passwordResetSuccess
   }

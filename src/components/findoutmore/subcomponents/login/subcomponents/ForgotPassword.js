@@ -18,6 +18,7 @@ class ForgotEmail extends Component {
         const { email } = this.state;
         const { sendPassResetEmail } = this.props;
         e.preventDefault();
+        this.setState({ email: "" })
         sendPassResetEmail(email)
     }
 
