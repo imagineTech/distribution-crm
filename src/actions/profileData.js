@@ -40,6 +40,14 @@ export const newProfileData = (dbDataName, dbDataValue) => {
   }
 }
 
+export const emailVerificationSuccess = () => {
+  return {
+    type: "EMAIL_SENT_SUCCESS",
+    message: "Email was sent :) ",
+    display: false
+  }
+}
+
 
 /*
   This is how i would send it to fb to update, and the result
@@ -71,6 +79,14 @@ export const newPasswordToSendAuth = (newPassword, history) => {
   return dispatch => {
     auth.doUpdateUserPassword(newPassword).then(() => {
       history.push(routes.MEMBER_PORTAL)
+    })
+  }
+}
+
+export const sendVerficationEmail = () => {
+  return dispatch => {
+    auth.emailVerification().then(() => {
+      dispatch(emailVerificationSuccess())
     })
   }
 }
