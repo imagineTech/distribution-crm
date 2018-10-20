@@ -11,6 +11,12 @@ export function emailAndPasswordToState(state = {}, action) {
         ...state,
         ...action.data
       }
+    case "HANDLE_LOGIN_ERROR":
+      return {
+        ...state,
+        ...action.code,
+        ...action.message
+      }
     default:
       return state;
   }
