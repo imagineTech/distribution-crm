@@ -13,7 +13,8 @@ class OrderRvwContainer extends Component {
 const mapStateToProps = state => {
   const { data } = state.loadingCurrentOrderData;
   return {
-    orderData: data.length !== 0 ? data : data
+    orderData: data.length !== 0 ? data : data,
+    profileData: state.storeProfileData
   }
 }
 
