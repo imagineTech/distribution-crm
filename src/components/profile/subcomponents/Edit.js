@@ -1,6 +1,7 @@
 import React from 'react';
+import DeleteProfile from './Delete';
 
-const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit }) => {
+const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, deleteAcct }) => {
   return (
     <section>
       <form onSubmit={(e) => {
@@ -44,6 +45,7 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit }) 
         </label>
         <button>Save</button>
       </form>
+      <DeleteProfile clicked={deleteAcct} />
     </section>
   )
 } 
