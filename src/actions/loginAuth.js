@@ -18,9 +18,10 @@ export function dataToLoginWith(name, value) {
   }
 }
 
-export function loginWithEmailAndPassword(email, password) {
+export function loginWithEmailAndPassword(email, password, history) {
   return dispatch => {
     auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
+      history.push(routes.MEMBER_PORTAL)
       //this is how we use uid later, couldn't find
       //another way to reference db doc based on authUser
       //info

@@ -22,6 +22,7 @@ export const creatingTheStore = () => {
     stateReconciler: autoMergeLevel2,
     blacklist: [
       'storeNewProfileData', 
+      'storeProfileData',
       'signUpFormData', 
       'emailAndPasswordData',
       'loadingCartData',
