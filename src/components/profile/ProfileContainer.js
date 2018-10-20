@@ -7,7 +7,7 @@ being stored.
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditProfile from './subcomponents/Edit';
-import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth } from '../../actions/profileData';
+import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
 
 class ProfileContainer extends Component {
 
@@ -46,6 +46,11 @@ class ProfileContainer extends Component {
     sendNewProfileData(profileData, newProfileData, profileData.id, history);
   }
 
+  handleDelete = e => {
+    const { deletingUser, profileData, history } = this.props;
+    deletingUser(profileData.Moltin_User_Id, profileData.id, history)
+  }
+
   render() {
     const { rest } = this.props
     return (
@@ -56,6 +61,7 @@ class ProfileContainer extends Component {
         newEmail={this.handleNewEmailSubmit}
         newPassword={this.handleNewPasswordSubmit}
         submit={this.handleSubmit}
+        deleteAcct={this.handleDelete}
       /> 
     )
   }
@@ -74,7 +80,8 @@ const mapDispatchToProps = dispatch => {
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
     sendNewEmail: (newEmail, history) => dispatch(newEmailToSendAuth(newEmail, history)),
-    sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history))
+    sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history)),
+    deletingUser: (moltId, fbId, history) => dispatch(deleteUser(moltId, fbId, history))
   }
 }
 
