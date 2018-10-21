@@ -21,7 +21,6 @@ export const BECOMING_A_MEMBER = '/becomingamemeber';
 
 //MEMBER PORTAL
 export const SIGN_IN = '/signin';
-export const FORGOT_EMAIL = '/forgot_email';
 export const FORGOT_PASS = '/forgot_password';
 export const MEMBER_PORTAL = '/memberportal';
 export const CART = '/cart';

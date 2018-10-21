@@ -53,7 +53,6 @@ class Login extends Component {
         </form>
         <ErrorComponent error={loginError} />
         <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link> <br />
-        <Link to={routes.FORGOT_EMAIL}>Forgot email?</Link> <br />
         <Link to={routes.FORGOT_PASS}>Forgot password?</Link>
       </div>
     )
