@@ -6,20 +6,21 @@
 
 import { combineReducers } from 'redux';
 import { emailAndPasswordData, signUpFormData } from './signUpData';
-import { emailAndPasswordToState } from './loginAuth';
-import { storeProfileData } from './profileData';
-import { storeNewProfileData } from './profileData';
+import { emailAndPasswordToState, handleErrorForLogin } from './loginAuth';
+import { storeProfileData, storeNewProfileData ,passwordResetSuccess } from './profileData';
 import { loadingProductData } from './productData';
 import { loadingCartData } from './cartData';
-import { loadingOrderData } from './orderData';
+import { loadingCurrentOrderData } from './orderData';
 
 export default combineReducers({
   emailAndPasswordData,
   signUpFormData,
   emailAndPasswordToState,
+  handleErrorForLogin,
   storeProfileData,
   storeNewProfileData,
+  passwordResetSuccess,
   loadingProductData,
   loadingCartData,
-  loadingOrderData
+  loadingCurrentOrderData
 });

@@ -36,8 +36,11 @@
     imagesExist: false
 };
 
-const loadingOrderData = { 
-    data: []
+const loadingCurrentOrderData = { 
+    data: {
+        info: {}, 
+        items: []
+    }
 };
 
 const loadingCartData = {
@@ -48,9 +51,14 @@ const storeProfileData = {
     Orders: [{ id: 0}]
 }
 
+const passwordResetSuccess = {
+    display: false
+}
+
   export const initialState = {
       loadingProductData,
-      loadingOrderData,
+      loadingCurrentOrderData,
       loadingCartData,
-      storeProfileData
+      storeProfileData,
+      passwordResetSuccess
   }

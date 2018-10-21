@@ -12,9 +12,10 @@ export const history = createBrowserHistory();
 export const creatingTheStore = () => {
   const initial = {
     loadingProductData: initialState.loadingProductData,
-    loadingOrderData: initialState.loadingOrderData,
+    loadingCurrentOrderData: initialState.loadingCurrentOrderData,
     loadingCartData: initialState.loadingCartData,
-    storeProfileData: initialState.storeProfileData
+    storeProfileData: initialState.storeProfileData,
+    passwordResetSuccess: initialState.passwordResetSuccess
   }
   const persistConfig = {
     key: 'root',
@@ -25,8 +26,11 @@ export const creatingTheStore = () => {
       'storeProfileData',
       'signUpFormData', 
       'emailAndPasswordData',
+      'emailAndPasswordToState',
+      'handleErrorForLogin',
+      'passwordResetSuccess',
       'loadingCartData',
-      'loadingOrderData',
+      'loadingCurrentOrderData',
       'loadingProductData'
     ]
   };

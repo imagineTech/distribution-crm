@@ -28,6 +28,7 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
+import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -83,7 +84,7 @@ class App extends Component {
     const { authUser, authenticated } = this.state;
     return (
       <div id="main-container">
-        <Header />
+        <Header auth={authenticated}/>
         <Route exact path={routes.HOME} component={() => <Landing />}  />
         <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
         <Route exact path={routes.ABOUT} component={() => <About />}  />
@@ -91,7 +92,7 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} render={rest => <SignUp {...rest} />} />
         <Route exact path={routes.SIGN_IN} render={rest => <Login {...rest} />} />
-
+        <Route exact path={routes.FORGOT_PASS} component={() => <ForgotPassword />} />
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
@@ -108,7 +109,7 @@ class App extends Component {
               <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
               <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
               <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
-              <Route exact path={`${routes.ORDER_REVIEW}/:productId`} render={rest => <LoadOrdRvw {...rest} />} />
+              <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
           {/* <Footer /> */}

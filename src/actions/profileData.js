@@ -5,6 +5,7 @@
 */
 
 import { auth, db, firebase } from '../firebase/';
+import { errorHandling } from './loginAuth';
 import * as Moltin from '../moltin'
 import * as routes from '../constants/routes';
 
@@ -40,6 +41,14 @@ export const newProfileData = (dbDataName, dbDataValue) => {
   }
 }
 
+export const passwordResetSuccess = () => {
+  return {
+    type: "PASSWORD_RESET_EMAIL_SENT_SUCCESS",
+    message: "A Password reset email was sent :) ",
+    display: false
+  }
+}
+
 
 /*
   This is how i would send it to fb to update, and the result
@@ -71,6 +80,24 @@ export const newPasswordToSendAuth = (newPassword, history) => {
   return dispatch => {
     auth.doUpdateUserPassword(newPassword).then(() => {
       history.push(routes.MEMBER_PORTAL)
+    })
+  }
+}
+
+export const sendPasswordResetEmail = email => {
+  return dispatch => {
+    auth.passwordReset(email).then(() => {
+      dispatch(passwordResetSuccess())
+    }).catch(err => dispatch(errorHandling(err.code, err.message)))
+  }
+}
+
+export const deleteUser = (moltId, fbId, history) => {
+  return dispatch => {
+    Moltin.deleteMoltinUser(moltId)
+    auth.deleteAuth()
+    db.deleteDocument(fbId).then(() => {
+      history.push(routes.HOME)
     })
   }
 }

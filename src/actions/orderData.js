@@ -1,23 +1,37 @@
 import { db } from '../firebase/index';
 import * as Moltin from '../moltin/index';
 
-export const loadOrderData = ordData => {
+export const loadStoredOrderData = ordData => {
   return {
-    type: "LOAD_ORDER_DATA",
+    type: "LOAD_STORED_ORDER_DATA",
     payload: ordData
   }
 }
 
-export const loadOrder = (orderId) => {
+export const addOrderDataToLoad = (orderInfo, orderItems) => {
+  return {
+    type: "LOAD_CURRENT_ORDER",
+    orderInfo,
+    orderItems
+  }
+}
+
+export const addOrderDataToStore = (authId, orderId) => {
+  return dispatch => {
+    db.addOrdersToUser(authId, { id: orderId });
+  }
+}
+
+export const loadCurrentOrder = (orderId) => {
   return dispatch => {
     Moltin.getAnOrder(orderId).then(order => {
-      dispatch(loadOrderData(order.data));
+      Moltin.getOrderItems(order.data.id).then(orderItems => {
+        dispatch(addOrderDataToLoad(order.data, orderItems.data));
+      })
     })
   }
 }
 
-export const addOrderData = (authId, orderId) => {
-  return dispatch => {
-    db.addOrdersToUser(authId, {id: orderId});
-  }
-}
+
+
+

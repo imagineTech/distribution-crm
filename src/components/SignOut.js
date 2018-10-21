@@ -6,7 +6,7 @@ class SignOut extends Component {
 
   handleSignOut = () => {
     const { signOut, history} = this.props;
-    signOut(history);
+    signOut(history, window);
   }
 
   render() {
@@ -24,7 +24,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: (history) => dispatch(signOutAuth(history))
+    signOut: (history, reloadWindow) => dispatch(signOutAuth(history, reloadWindow))
   }
 }
 

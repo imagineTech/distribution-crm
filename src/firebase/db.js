@@ -54,3 +54,7 @@ export const addOrdersToUser = (userId, orderId) => {
   })
 }
 
+export const deleteDocument = docId => {
+  return DB.doc(docId).delete()
+}
+
