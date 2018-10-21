@@ -39,7 +39,9 @@ export const loginWithEmailAndPassword = (email, password, history) => {
         dispatch(profileData(doc.data()));
       })
     }).catch(err => {
-      dispatch(errorHandling(err.code, err.message))
+      if(err) {
+        dispatch(errorHandling(err.code, err.message))
+      }
     })
   }
 }

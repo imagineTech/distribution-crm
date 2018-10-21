@@ -86,10 +86,9 @@ export const newPasswordToSendAuth = (newPassword, history) => {
 
 export const sendPasswordResetEmail = email => {
   return dispatch => {
-    // auth.passwordReset(email).then(() => {
-    //   dispatch(passwordResetSuccess())
-    // }).catch(err => dispatch(errorHandling(err.code, err.message)))
-    dispatch(passwordResetSuccess())
+    auth.passwordReset(email).then(() => {
+      dispatch(passwordResetSuccess())
+    }).catch(err => dispatch(errorHandling(err.code, err.message)))
   }
 }
 
