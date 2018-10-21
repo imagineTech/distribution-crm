@@ -14,7 +14,7 @@ import styled from 'styled-components';
   opacity: .7;
   font-family: 'Cinzel', serif;
   font-weight: bold;
-  width: 300px;
+  width: ${props => (props.primary ? '350px' : '300px')};
   margin: 10px;
 `;
 

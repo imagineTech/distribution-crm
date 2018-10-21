@@ -42,10 +42,6 @@ export const editUserData = (defaultDbData, newDbData, dbID) => {
           res(DB.doc(dbID).update({
             [defaultName]: newDbData[newName]
           }))
-        } else {
-          res(DB.doc(dbID).update({
-            [defaultName]: defaultDbData[defaultName]
-          }))
         }
       })
     })
@@ -56,5 +52,9 @@ export const addOrdersToUser = (userId, orderId) => {
   return DB.doc(userId).update({
     Orders: firebase.firestore.FieldValue.arrayUnion(orderId)
   })
+}
+
+export const deleteDocument = docId => {
+  return DB.doc(docId).delete()
 }
 

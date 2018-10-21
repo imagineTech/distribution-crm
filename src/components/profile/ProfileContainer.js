@@ -5,15 +5,9 @@ being stored.
 
 */
 import React, { Component } from 'react';
-import asyncComponent from '../../hoc/async';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { loadProfileData } from '../../actions/profileData';
-import * as routes from '../../constants/routes';
-
-const AsyncEditProfile = asyncComponent(() => {
-  return import('./subcomponents/EditProfile');
-})
+import EditProfile from './subcomponents/Edit';
+import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
 
 class ProfileContainer extends Component {
 
@@ -22,29 +16,72 @@ class ProfileContainer extends Component {
     getProfileData(auth.uid);
   }
 
+  handleChange = e => {
+    const { editProfile } = this.props;
+    const { name, value } = e.target;
+    editProfile(name, value);
+  }
+
+  handleNewEmailSubmit = e => {
+    const { newProfileData, sendNewEmail, history } = this.props;
+    e.preventDefault();
+    sendNewEmail(newProfileData.Email, history);
+  }
+
+  handleNewPasswordSubmit = e => {
+    const { profileData, newProfileData, sendNewPassword, sendNewProfileData, history } = this.props;
+    e.preventDefault();
+    if (newProfileData.New_Password === newProfileData.Confirm_Password) {
+      sendNewPassword(newProfileData.New_Password, history),
+      sendNewProfileData(profileData, newProfileData, profileData.id, history)
+    } else {
+      alert('passwords do not match,try again :) ')
+    }
+  }
+
+  handleSubmit = e => {
+    const { profileData, newProfileData, sendNewProfileData, history } = this.props;
+    e.preventDefault();
+    // Here is where we use the default and new dbData
+    sendNewProfileData(profileData, newProfileData, profileData.id, history);
+  }
+
+  handleDelete = e => {
+    const { deletingUser, profileData, history } = this.props;
+    deletingUser(profileData.Moltin_User_Id, profileData.id, history)
+  }
+
   render() {
-    const { auth } = this.props
-    return(
-      <div>
-        <Route
-          exact
-          path={`${this.props.path}/${routes.EDIT_PROFILE}`}
-          render={rest => <AsyncEditProfile {...this.props} {...rest} {...auth} /> }
-        />
-      </div>
+    const { rest } = this.props
+    return (
+      <EditProfile 
+        {...this.props} 
+        {...rest} 
+        changed={this.handleChange} 
+        newEmail={this.handleNewEmailSubmit}
+        newPassword={this.handleNewPasswordSubmit}
+        submit={this.handleSubmit}
+        deleteAcct={this.handleDelete}
+      /> 
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    profileData: state.storeProfileData
+    profileData: state.storeProfileData,
+    newProfileData: state.storeNewProfileData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProfileData: (userId) => dispatch(loadProfileData(userId))
+    getProfileData: (userId) => dispatch(loadProfileData(userId)),
+    editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
+    sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
+    sendNewEmail: (newEmail, history) => dispatch(newEmailToSendAuth(newEmail, history)),
+    sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history)),
+    deletingUser: (moltId, fbId, history) => dispatch(deleteUser(moltId, fbId, history))
   }
 }
 

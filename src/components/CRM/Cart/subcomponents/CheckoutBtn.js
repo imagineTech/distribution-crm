@@ -4,7 +4,7 @@ import * as routes from '../../../../constants/routes';
 class CheckoutButton extends Component{ 
 
     handleClick = e => {
-        const { auth, profileData, stripe, history, match, addingOrdData, checkOut, deleteCrt, addressValues } = this.props;
+        const { profileData, stripe, history, match, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues } = this.props;
         const { shippingForm, billingForm, billingIsDifferent } = addressValues;
         const shipping = {
             first_name: profileData.First_Name,
@@ -25,7 +25,7 @@ class CheckoutButton extends Component{
             country: billingForm.Country
         } : shipping;
         stripe.createToken().then(payload => {
-            checkOut(auth.uid, profileData.Moltin_User_Id, shipping, billing)
+            checkOut(profileData.id, profileData.Moltin_User_Id, shipping, billing)
             .then(order => {
             // const payment = {
             //   gateway: 'stripe',
@@ -33,8 +33,9 @@ class CheckoutButton extends Component{
             //   payment: `${payload.token.id}`
             // }
             // Moltin.payForOrder(order.data.id, payment);
-            addingOrdData(auth.uid, order.data.id);
-            deleteCrt(auth.uid);
+            loadingCrrntOrder(order.data.id);
+            addingOrdDataToStore(profileData.id, order.data.id);
+            deleteCrt(profileData.id);
             history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
             })
         });

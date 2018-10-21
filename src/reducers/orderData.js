@@ -1,9 +1,13 @@
-export const loadingOrderData = (state = {}, action) => {
+export const loadingCurrentOrderData = (state = {}, action) => {
   switch (action.type) {
-    case "LOAD_ORDER_DATA":
+    case "LOAD_CURRENT_ORDER":
       return {
         ...state,
-        ...action.payload
+        data: {
+          ...state.data,
+          info: { ...state.data.info, ...action.orderInfo}, 
+          items: [ ...state.data.items, {...action.orderItems[0]}]
+        }
       };
     default:
       return state;

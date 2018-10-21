@@ -13,7 +13,7 @@ import './OurTeam.css';
 const OurTeam = () => {
   return(
     <div className="team-wrapper">
-      <h1>MEET THE TEAM</h1><hr />
+      <h1 className="team-heading">MEET THE TEAM</h1><hr />
       <TeamWrapper>
         <ContentWrapContainer>
           <TeamContent description="As the Chief Operating Officer, I make sure that the company's core procedures, and values are always met, and embodied. I also provide our staff with any resources they might need in order to succeed in their tasks. I love to learn, and to teach. It is my belief that my calling is to help those around me, reach their highest potential!" title="Chief Operating Officer" name="Jahaziel (Jay) Vazquez" myPics="http://www.ffwa.eu/ff7/images/char_cloud.gif" />
