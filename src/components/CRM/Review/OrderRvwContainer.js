@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import OrderReview from './subcomponents/OrderReview';
-import { loadOrder } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
 class OrderRvwContainer extends Component {
-
-  componentDidMount() {
-    const { getOrder, profileData } = this.props;
-    const { Orders } = profileData
-    getOrder(Orders[Orders.length - 1].id);
-
-  }
 
   render() {
     const { rest } = this.props;
@@ -19,7 +11,7 @@ class OrderRvwContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data } = state.loadingOrderData;
+  const { data } = state.loadingCurrentOrderData;
   return {
     orderData: data.length !== 0 ? data : data,
     profileData: state.storeProfileData
@@ -27,9 +19,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getOrder: (ordId) => dispatch(loadOrder(ordId))
-   }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderRvwContainer);
