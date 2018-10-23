@@ -26,10 +26,11 @@ export const errorHandling = (code, message) => {
   }
 }
 
-export const loginWithEmailAndPassword = (email, password, history) => {
+export const loginWithEmailAndPassword = (email, password, history, reloadWindow) => {
   return dispatch => {
     auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
-      history.push(routes.MEMBER_PORTAL)
+      history.push(routes.MEMBER_PORTAL);
+      reloadWindow.location.reload();
       //this is how we use uid later, couldn't find
       //another way to reference db doc based on authUser
       //info

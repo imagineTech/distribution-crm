@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -50,10 +51,12 @@ class Header extends Component {
 				<div id='contact'>
 						<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
 				</div>
-				<div id='sign-in'>
-						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
+				<Link to={routes.SIGN_IN}>
+					<div id='sign-in'>
+							<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
 
-				</div>
+					</div>
+				</Link>
 			</div>
 
 			<Link to={routes.HOME} className="navLink">
@@ -67,7 +70,7 @@ class Header extends Component {
 				<Link to={routes.ABOUT} className="navLink">ABOUT</Link>
  
 				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
-				<Link to={routes.SIGN_IN} className="navLink">LOGIN</Link>
+				{/* <Link to={routes.SIGN_IN} className="navLink">LOGIN</Link> */}
 
 				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
 
@@ -92,12 +95,19 @@ class Header extends Component {
 
 				<div id="myLoginModal" style={{display: 'none'}}>
 					<div className='login-modal-content'>
-						{/* <Login
-							// handleContactSubmit={this.handleContactSubmit}
-							closeLoginModal={this.closeLoginModal} 
-						/>		 */}
+						<Route 
+							exact
+							path={routes.SIGN_IN} 
+							render={rest => {
+								return <Login 
+									{...rest} 
+									// handleContactSubmit={this.handleContactSubmit}
+									closeLoginModal={this.closeLoginModal} />
+							}} />	
 					</div>	
 				</div>
+				
+
 		</div>
 	);
 }
