@@ -22,12 +22,20 @@ export const addOrderDataToStore = (authId, orderId) => {
   }
 }
 
-export const loadCurrentOrder = (orderId) => {
+export const loadCurrentOrder = orderId => {
   return dispatch => {
     Moltin.getAnOrder(orderId).then(order => {
       Moltin.getOrderItems(order.data.id).then(orderItems => {
         dispatch(addOrderDataToLoad(order.data, orderItems.data));
       })
+    })
+  }
+}
+
+export const loadStoredOrderData = orderId => {
+  return dispatch => {
+    Moltin.getOrderItems(orderId).then(items => {
+      dispatch(loadStoredOrderData(items.data))
     })
   }
 }
