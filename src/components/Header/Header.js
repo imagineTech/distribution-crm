@@ -9,15 +9,6 @@ import Contact from './../Contact/Contact.js';
 import Login from './../findoutmore/subcomponents/login/login.js';
 
 class Header extends Component {
-	constructor() {
-		super();
-		this.state = {
-		  	customerName: '',
-		  	customerNumber: '',
-		  	customerEmail: '',
-		  	contactContent: ''
-		};
-	}
 
 	openContactModal = () => {
 		document.getElementById('myContactModal').style.display = 'block';
@@ -32,11 +23,6 @@ class Header extends Component {
 	}
 	closeLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'none';
-	}
-
-	handleContactSubmit = e =>  {
-	    alert('Thank you for contacting us, ' + this.state.value + "!");
-	    e.preventDefault();
 	}
 
 	render() {
@@ -81,12 +67,7 @@ class Header extends Component {
 				<div id="myContactModal" style={{display: 'none'}}>
 					<div className='contact-modal-content'>
 						<Contact
-							handleContactSubmit={this.handleContactSubmit}
 							closeContactModal={this.closeContactModal} 
-							customerName={this.state.customerName}
-							customerNumber={this.state.customerNumber}
-							customerEmail={this.state.customerEmail}
-							contactContent={this.state.contactContent}
 						/>
 					</div>	
 				</div>
@@ -101,7 +82,6 @@ class Header extends Component {
 							render={rest => {
 								return <Login 
 									{...rest} 
-									// handleContactSubmit={this.handleContactSubmit}
 									closeLoginModal={this.closeLoginModal} />
 							}} />	
 					</div>	
