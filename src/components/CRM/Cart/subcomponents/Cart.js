@@ -7,7 +7,15 @@ import CheckoutButton from './CheckoutBtn';
 class Cart extends Component {
 
   state = {
-    addressValues: {}
+    addressValues: {},
+    billingIsDifferent: false
+  }
+
+  hanldeBooleanChange = () => {
+    let { billingIsDifferent } = this.state;
+    this.setState({
+      billingIsDifferent: !billingIsDifferent
+    })
   }
 
   render() {
@@ -15,11 +23,14 @@ class Cart extends Component {
       <div>
         <CartList {...this.props} />
         <CardElement />
-        <Address formDataToSend={values => (
-          this.setState({
-            addressValues: {...values}
-          })
-        )}/>
+        <Address 
+          {...this.state}
+          formDataToSend={values => (
+            this.setState({
+              addressValues: {...values}
+            })
+          )} 
+          booleanChange={this.hanldeBooleanChange}/>
         <CheckoutButton {...this.props} {...this.state} />
       </div>
     )
