@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 class Contact extends React.Component {
 	
-	state = {}
+	state = {
+		customerName: ""
+	}
 
-  handleChange = e => {
+  	handleChange = e => {
 		const { name, value } = e.target
 		this.setState({ [name]: value});
 	}
@@ -28,7 +30,7 @@ class Contact extends React.Component {
 		
 					<label>Name
 					<br/>
-						<input name="customerName" type="text"  onChange={this.handleChange} />
+						<input name="customerName" type="text" onChange={this.handleChange} />
 					</label>
 					<br/>
 
@@ -63,12 +65,7 @@ class Contact extends React.Component {
 }
 
 Contact.propTypes = {
-	handleContactSubmit: PropTypes.func.isRequired,
-	closeContactModal: PropTypes.func.isRequired,
-	customerName: PropTypes.string.isRequired,
-	customerNumber: PropTypes.string.isRequired,
-	customerEmail: PropTypes.string.isRequired,
-	contactContent: PropTypes.string.isRequired
+	closeContactModal: PropTypes.func.isRequired
 }
 
 export default Contact;
