@@ -9,7 +9,7 @@ import { auth, db } from '../firebase/index';
 import * as routes from '../constants/routes';
 import { profileData } from './profileData';
 
-export function dataToLoginWith(name, value) {
+export const dataToLoginWith = (name, value) => {
   return {
     type: "DATA_TO_LOGIN_WITH",
     data: {
@@ -18,7 +18,15 @@ export function dataToLoginWith(name, value) {
   }
 }
 
-export function loginWithEmailAndPassword(email, password, history) {
+export const errorHandling = (code, message) => {
+  return {
+    type: "HANDLE_LOGIN_ERROR",
+    code,
+    message
+  }
+}
+
+export const loginWithEmailAndPassword = (email, password, history) => {
   return dispatch => {
     auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
       history.push(routes.MEMBER_PORTAL)
@@ -30,6 +38,10 @@ export function loginWithEmailAndPassword(email, password, history) {
         // action to state
         dispatch(profileData(doc.data()));
       })
+    }).catch(err => {
+      if(err) {
+        dispatch(errorHandling(err.code, err.message))
+      }
     })
   }
 }

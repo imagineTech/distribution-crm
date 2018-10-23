@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -7,14 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
 
 //Custom components
 import { Route } from 'react-router-dom';
-import Crm from '../components/CRM/MemberPortal/MemPortalContainer.js'
+import Loadable from 'react-loadable';
+import LoadingComponent from '../components/LoadingComponent';
 import Landing from '../components/landing/Landing';
 import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
 import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
@@ -26,18 +28,38 @@ import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPoli
 import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import Login from '../components/findoutmore/subcomponents/login/login.js';
-import Profile from '../components/profile/ProfileContainer.js';
-import Products from '../components/CRM/Product/Products';
-import Cart from '../components/CRM/Cart/CartContainer';
-import OrderRvw from '../components/CRM/Review/OrderRvwContainer';
+import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
 import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';
 
-library.add(faStroopwafel)
-library.add(faUser)
-library.add(faEnvelope)
+library.add(faStroopwafel, faUser, faEnvelope, faWindowClose)
+
+const LoadProducts = Loadable({
+  loader: () => import('../components/CRM/Product/Products'),
+  loading: LoadingComponent
+})
+
+const LoadCart = Loadable({
+  loader: () => import('../components/CRM/Cart/CartContainer'),
+  loading: LoadingComponent
+})
+
+const LoadEditPro = Loadable({
+  loader: () => import('../components/profile/ProfileContainer'),
+  loading: LoadingComponent
+})
+
+const LoadCRM = Loadable({
+  loader: () => import('../components/CRM/MemberPortal/MemPortalContainer'),
+  loading: LoadingComponent
+})
+
+const LoadOrdRvw = Loadable({
+  loader: () => import('../components/CRM/Review/OrderRvwContainer'),
+  loading: LoadingComponent
+})
 
 class App extends Component {
 
@@ -60,10 +82,9 @@ class App extends Component {
 
   render() {
     const { authUser, authenticated } = this.state;
-    const { storeToTest } = this.props;
     return (
       <div id="main-container">
-        <Header />
+        <Header auth={authenticated}/>
         <Route exact path={routes.HOME} component={() => <Landing />}  />
         <Route exact path={routes.FIND_OUT_MORE} component={() => <FindoutLanding />} />
         <Route exact path={routes.ABOUT} component={() => <About />}  />
@@ -71,29 +92,27 @@ class App extends Component {
         <Route exact path={routes.CONTACT} component={() => <Contact />} />
         <Route exact path={routes.SIGN_UP} render={rest => <SignUp {...rest} />} />
         <Route exact path={routes.SIGN_IN} render={rest => <Login {...rest} />} />
-
+        <Route exact path={routes.FORGOT_PASS} component={() => <ForgotPassword />} />
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
-
-
+        <Footer />
         {/*
           This section below had to be setup because we have different
-          commponents that need to be protected. Using local state right now,
+          components that need to be protected. Using local state right now,
           user is being given to us through firebase
           */}
           {
             authenticated &&
             <div>
-              {console.log(storeToTest.getState())}
-              <Profile auth={{authUser, authenticated}} path={routes.PROFILE} />
-              <Cart auth={{authUser, authenticated}} path={routes.CART} />
-              <Crm auth={{authUser, authenticated}} path={routes.MEMBER_PORTAL} />
-              <Products auth={{authUser, authenticated}} path={routes.PRODUCTS}/>
-              <OrderRvw auth={{authUser, authenticated}} path={routes.ORDER_REVIEW} />
+              <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />  
+              <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
+              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
+              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+              <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     }

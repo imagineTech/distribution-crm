@@ -18,7 +18,7 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { productData, imageProductData, addProducts, match, authUser, history } = this.props;
+      const { productData, imageProductData, addProducts, match, profileData, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -42,7 +42,7 @@ class ProductItem extends Component {
                         <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
                         <form onSubmit={e => {
                           e.preventDefault();
-                          addProducts(authUser.uid, product.id, inputValue, history);
+                          addProducts(profileData.id, product.id, inputValue, history);
                           }}>
                           <button className="addToCart">Add to Cart</button>
                         </form>

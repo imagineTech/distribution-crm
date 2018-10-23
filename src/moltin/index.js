@@ -8,6 +8,18 @@ export const createAMoltinUser = (name, email) => {
   return Moltin.Customers.Create(moltinUser);
 }
 
+export const updateMoltinUser = (id, first_name, last_name, email) => {
+  const moltinUser = {
+    name: `${first_name} ${last_name}`, 
+    email
+  };
+  return Moltin.Customers.Update(id, moltinUser);
+}
+
+export const deleteMoltinUser = id => {
+  return Moltin.Customers.Delete(id);
+}
+
 export const getAllProducts = () => {
   return Moltin.Products.All();
 }
@@ -44,6 +56,10 @@ export const payForOrder = (orderId, stripeToken) => {
   return Moltin.Orders.Payment(orderId, stripeToken);
 }
 
-export const getAnOrder = (orderId) => {
+export const getAnOrder = orderId => {
   return Moltin.Orders.Get(orderId);
+}
+
+export const getOrderItems = orderId => {
+  return Moltin.Orders.Items(orderId);
 }
