@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 class contact extends React.Component {
 	constructor() {
@@ -79,6 +80,15 @@ handleChangeName(value) {
 		  </div>
 		);
 	}
+}
+
+contact.propTypes = {
+	handleContactSubmit: PropTypes.func.isRequired,
+	closeContactModal: PropTypes.func.isRequired,
+	customerName: PropTypes.string.isRequired,
+	customerNumber: PropTypes.string.isRequired,
+	customerEmail: PropTypes.string.isRequired,
+	contactContent: PropTypes.string.isRequired
 }
 
 export default contact;

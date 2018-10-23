@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 class Shipping extends Component {
   handleChange = e => {
@@ -41,6 +42,10 @@ class Shipping extends Component {
       </div>
     );
   }
+}
+
+Shipping.propTypes = {
+  formChange: PropTypes.func.isRequired
 }
 
 export default Shipping;
