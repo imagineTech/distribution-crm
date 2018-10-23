@@ -24,7 +24,7 @@ class Login extends Component {
     const { emailAndPassword, emailAndPasswordLogin, history } = this.props;
     const { login_email, login_password} = emailAndPassword;
     e.preventDefault();
-    emailAndPasswordLogin(login_email, login_password, history);
+    emailAndPasswordLogin(login_email, login_password, history, window);
   }
 
   render() {
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
-    emailAndPasswordLogin: (email, password, history) => dispatch(loginWithEmailAndPassword(email, password, history))
+    emailAndPasswordLogin: (email, password, history, reloadWindow) => dispatch(loginWithEmailAndPassword(email, password, history, reloadWindow))
   }
 }
 
