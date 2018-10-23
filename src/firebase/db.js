@@ -24,7 +24,8 @@ export const addingUser = (dbData, authId, moltinId) => {
     Company: dbData.Company,
     Department: dbData.Department,
     Country: dbData.Country,
-    Moltin_User_Id: moltinId
+    Moltin_User_Id: moltinId,
+    Orders: [{ id: 0 }]
   })
 }
 

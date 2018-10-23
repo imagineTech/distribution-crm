@@ -15,7 +15,6 @@ class OrderRvwContainer extends Component {
     const { getOrder, profileData } = this.props;
     const { Orders } = profileData
     getOrder(Orders[Orders.length - 1].id);
-
   }
 
   render() {
