@@ -56,6 +56,11 @@ const LoadCRM = Loadable({
   loading: LoadingComponent
 })
 
+const LoadRecentOrders = Loadable({
+  loader: () => import('../components/CRM/Review/subcomponents/Recent'),
+  loading: LoadingComponent
+})
+
 const LoadOrdRvw = Loadable({
   loader: () => import('../components/CRM/Review/OrderRvwContainer'),
   loading: LoadingComponent
@@ -110,6 +115,7 @@ class App extends Component {
               <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
               <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
               <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} />} />
+              <Route exact path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
             </div>
           }
           {/* <Footer /> */}
