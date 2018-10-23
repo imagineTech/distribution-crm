@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as routes from '../../../../constants/routes';
+import PropTypes from 'prop-types';
 
 class CheckoutButton extends Component{ 
 
     handleClick = e => {
-        const { profileData, stripe, history, match, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues } = this.props;
-        const { shippingForm, billingForm, billingIsDifferent } = addressValues;
+        const { profileData, stripe, history, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues, billingIsDifferent } = this.props;
+        const { shippingForm, billingForm  } = addressValues;
         const shipping = {
             first_name: profileData.First_Name,
             last_name: profileData.Last_Name,
@@ -45,6 +46,18 @@ class CheckoutButton extends Component{
         return <button onClick={this.handleClick}>Checkout</button>
 
     }
+}
+
+CheckoutButton.propTypes = {
+    profileData: PropTypes.object.isRequired,
+    stripe: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    addingOrdDataToStore: PropTypes.func.isRequired,
+    loadingCrrntOrder: PropTypes.func.isRequired,
+    checkOut: PropTypes.func.isRequired,
+    deleteCrt: PropTypes.func.isRequired,
+    addressValues: PropTypes.object.isRequired
 }
 
 export default CheckoutButton;
