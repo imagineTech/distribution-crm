@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Billing from './Billing';
 import Shipping from './Shipping';
+import PropTypes from 'prop-types';
 
 class Address extends Component {
 
@@ -64,6 +65,10 @@ class Address extends Component {
             </div>
         );
     }
+}
+
+Address.propTypes = {
+  formDataToSend: PropTypes.func.isRequired
 }
 
 export default Address;

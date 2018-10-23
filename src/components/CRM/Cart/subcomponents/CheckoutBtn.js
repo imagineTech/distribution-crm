@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as routes from '../../../../constants/routes';
+import PropTypes from 'prop-types';
 
 class CheckoutButton extends Component{ 
 
@@ -45,6 +46,18 @@ class CheckoutButton extends Component{
         return <button onClick={this.handleClick}>Checkout</button>
 
     }
+}
+
+CheckoutButton.propTypes = {
+    profileData: PropTypes.object.isRequired,
+    stripe: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    addingOrdDataToStore: PropTypes.func.isRequired,
+    loadingCrrntOrder: PropTypes.func.isRequired,
+    checkOut: PropTypes.func.isRequired,
+    deleteCrt: PropTypes.func.isRequired,
+    addressValues: PropTypes.object.isRequired
 }
 
 export default CheckoutButton;
