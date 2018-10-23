@@ -26,22 +26,36 @@ export const errorHandling = (code, message) => {
   }
 }
 
-export const loginWithEmailAndPassword = (email, password, history) => {
-  return dispatch => {
-    auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
-      history.push(routes.MEMBER_PORTAL)
-      //this is how we use uid later, couldn't find
-      //another way to reference db doc based on authUser
-      //info
-      db.loadUserProfileData(authUser.user.uid).then(doc => {
-        // I'm taking the doc data and storing it thro a redux
-        // action to state
-        dispatch(profileData(doc.data()));
+export const loginWithEmailAndPassword = (email, password, history, reloadWindow) => {
+
+  if (email === undefined || password === undefined) {
+    let errToSend = {
+      code: "auth/argument-error",
+      message: (password === undefined ? 
+        "siging in with Email And Password failed: Second argument \"password\" must be a valid string."
+        :
+        "siging in with Email And Password failed: First argument \"email\" must be a valid string."
+        )
+    }
+    return dispatch => dispatch(errorHandling(errToSend.code, errToSend.message))
+  } else {
+    return dispatch => {
+      auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
+        history.push(routes.MEMBER_PORTAL);
+        reloadWindow.location.reload();
+        //this is how we use uid later, couldn't find
+        //another way to reference db doc based on authUser
+        //info
+        db.loadUserProfileData(authUser.user.uid).then(doc => {
+          // I'm taking the doc data and storing it thro a redux
+          // action to state
+          dispatch(profileData(doc.data()));
+        })
+      }).catch(err => {
+        if(err) {
+          dispatch(errorHandling(err.code, err.message))
+        }
       })
-    }).catch(err => {
-      if(err) {
-        dispatch(errorHandling(err.code, err.message))
-      }
-    })
+    }
   }
 }

@@ -32,8 +32,8 @@ class ProfileContainer extends Component {
     const { profileData, newProfileData, sendNewPassword, sendNewProfileData, history } = this.props;
     e.preventDefault();
     if (newProfileData.New_Password === newProfileData.Confirm_Password) {
-      sendNewPassword(newProfileData.New_Password, history),
-      sendNewProfileData(profileData, newProfileData, profileData.id, history)
+      return (sendNewPassword(newProfileData.New_Password, history),
+      sendNewProfileData(profileData, newProfileData, profileData.id, history))
     } else {
       alert('passwords do not match,try again :) ')
     }

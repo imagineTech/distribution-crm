@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Billing from './Billing';
 import Shipping from './Shipping';
+import PropTypes from 'prop-types';
 
 class Address extends Component {
 
@@ -8,42 +9,34 @@ class Address extends Component {
         formValues: {
           shippingForm: {},
           billingForm: {}
-        },
-        billingIsDifferent: false
+        }
       }
 
     handleShippingChange = formShippingObject => {
         let { formDataToSend } = this.props;
-        let { formValues, billingIsDifferent } = this.state;
+        let { formValues  } = this.state;
         let { billingForm, shippingForm } = formValues;
         this.setState({
           formValues: {  ...formValues, shippingForm: { ...shippingForm, ...formShippingObject } }
         });
-        formDataToSend({shippingForm, billingForm, billingIsDifferent});
+        formDataToSend({shippingForm, billingForm });
       }
     
       handleBillingChange = formBillingObject => {
         let { formDataToSend } = this.props
-        let { formValues, billingIsDifferent } = this.state;
+        let { formValues } = this.state;
         let { billingForm, shippingForm } = formValues;
         this.setState({
           formValues: { ...formValues, billingForm: { ...billingForm, ...formBillingObject } }
         })
-        formDataToSend({shippingForm, billingForm, billingIsDifferent});
+        formDataToSend({shippingForm, billingForm});
       }
 
-      hanldeBooleanChange = () => {
-        let { formDataToSend } = this.props;
-        let { formValues, billingIsDifferent } = this.state;
-        let { billingForm, shippingForm } = formValues;
-        this.setState({ 
-          billingIsDifferent: !billingIsDifferent
-        })
-        formDataToSend({shippingForm, billingForm, billingIsDifferent});
-      }
+      
 
     render() {
-        const { billingIsDifferent } = this.state;
+        const { billingIsDifferent } = this.props;
+        const { booleanChange } = this.props;
         const billing = billingIsDifferent ? (
         <Billing 
             formChange={this.handleBillingChange} 
@@ -57,13 +50,17 @@ class Address extends Component {
                 <input 
                     type="checkbox" 
                     defaultChecked={billingIsDifferent} 
-                    onChange={this.hanldeBooleanChange}
+                    onChange={booleanChange}
                 />
                 </label>
                 {billing}
             </div>
         );
     }
+}
+
+Address.propTypes = {
+  formDataToSend: PropTypes.func.isRequired
 }
 
 export default Address;
