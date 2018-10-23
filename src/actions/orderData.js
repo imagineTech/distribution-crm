@@ -32,7 +32,7 @@ export const loadCurrentOrder = orderId => {
   }
 }
 
-export const loadStoredOrderData = orderId => {
+export const loadRecentOrderData = orderId => {
   return dispatch => {
     Moltin.getOrderItems(orderId).then(items => {
       dispatch(loadStoredOrderData(items.data))
