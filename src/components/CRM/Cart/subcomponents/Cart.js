@@ -3,6 +3,7 @@ import { CardElement, injectStripe } from 'react-stripe-elements';
 import Address from './Address';
 import CartList from './List';
 import CheckoutButton from './CheckoutBtn';
+import DeleteButton from './Delete';
 
 class Cart extends Component {
 
@@ -32,6 +33,7 @@ class Cart extends Component {
           )} 
           booleanChange={this.hanldeBooleanChange}/>
         <CheckoutButton {...this.props} {...this.state} />
+        <DeleteButton {...this.props} />
       </div>
     )
   }
