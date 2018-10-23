@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
+import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
 
@@ -32,7 +33,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProfileData: (userId) => dispatch(loadProfileData(userId)),
+    getProfileData: userId => dispatch(loadProfileData(userId)),
+    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage())
   }
