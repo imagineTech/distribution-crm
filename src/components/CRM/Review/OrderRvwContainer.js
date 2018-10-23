@@ -4,15 +4,6 @@ import { connect } from 'react-redux';
 
 class OrderRvwContainer extends Component {
 
-<<<<<<< HEAD
-  componentDidMount() {
-    const { getOrder, profileData } = this.props;
-    const { Orders } = profileData
-    getOrder(Orders[Orders.length - 1].id);
-  }
-
-=======
->>>>>>> 91e673e8e2b5ccea4acb5485302835cb0e074a53
   render() {
     const { rest } = this.props;
     return <OrderReview {...this.props} {...rest} /> 
