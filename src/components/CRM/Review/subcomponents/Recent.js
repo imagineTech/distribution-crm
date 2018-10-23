@@ -2,7 +2,9 @@ import React from 'react';
 
 const RecentOrders = () => {
     return( 
-        <div></div>
+        <div>
+            <h1>I'm some recent orders</h1>
+        </div>
     )
 }
 
