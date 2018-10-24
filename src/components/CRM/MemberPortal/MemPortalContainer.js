@@ -5,8 +5,6 @@ import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
-
-
 class MemberPortalContainer extends Component {
 
   componentDidMount() {
