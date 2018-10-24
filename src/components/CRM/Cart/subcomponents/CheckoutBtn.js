@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 class CheckoutButton extends Component{ 
 
     handleClick = e => {
-        const { profileData, stripe, history, match, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues } = this.props;
-        const { shippingForm, billingForm, billingIsDifferent } = addressValues;
+        const { profileData, stripe, history, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues, billingIsDifferent } = this.props;
+        const { shippingForm, billingForm  } = addressValues;
         const shipping = {
             first_name: profileData.First_Name,
             last_name: profileData.Last_Name,
