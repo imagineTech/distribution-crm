@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import {database} from '../../firebase/config_firebase';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faCheckCircle)
 
 class Contact extends React.Component {
 	
 	state = {
-		customerName: ""
+		customerName: "",
+		message:""
 	}
 
   	handleChange = e => {
@@ -15,15 +22,21 @@ class Contact extends React.Component {
 
 	handleContactSubmit = e => {
 		e.preventDefault();
-		console.log(this.state)
+		let query = {...this.state};
+		
+		database.ref('contact_queries').push().set(query)
+		this.setState({message:"Thanks, We will get you back ASAP."})
 	}
 
 	render() {
+		let {message} = this.state;
 		return (
 			<div className='contact'>
 
 				<FontAwesomeIcon id="close-contact-modal" onClick={this.props.closeContactModal} icon='window-close' style={{height: 25, width: 25}}/>
-
+				{
+				message===''?
+				<div>
 				<p className='modal-title'>What can we help you with?</p>
 
 				<form onSubmit={this.handleContactSubmit}>
@@ -58,7 +71,15 @@ class Contact extends React.Component {
 					</div>
 
 				</form>
-
+			</div>:
+			<div>
+				<p>{message}</p>
+				<div style={{textAlign:'center',paddingTop:'3em'}}>
+				<FontAwesomeIcon icon="check-circle" size="7x"/>
+				</div>
+			</div>}
+			
+			
 		  </div>
 		);
 	}
