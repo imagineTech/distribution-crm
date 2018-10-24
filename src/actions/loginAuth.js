@@ -5,9 +5,8 @@
   to then be redirected into the CRM app
 */
 
-import { auth, db } from '../firebase/index';
+import { auth } from '../firebase/index';
 import * as routes from '../constants/routes';
-import { profileData } from './profileData';
 
 export const dataToLoginWith = (name, value) => {
   return {
@@ -43,14 +42,6 @@ export const loginWithEmailAndPassword = (email, password, history, reloadWindow
       auth.doLoginWithEmailAndPassword(email, password).then(authUser => {
         history.push(routes.MEMBER_PORTAL);
         reloadWindow.location.reload();
-        //this is how we use uid later, couldn't find
-        //another way to reference db doc based on authUser
-        //info
-        db.loadUserProfileData(authUser.user.uid).then(doc => {
-          // I'm taking the doc data and storing it thro a redux
-          // action to state
-          dispatch(profileData(doc.data()));
-        })
       }).catch(err => {
         if(err) {
           dispatch(errorHandling(err.code, err.message))

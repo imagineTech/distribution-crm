@@ -7,14 +7,24 @@ being stored.
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditProfile from './subcomponents/Edit';
+import RecentOrders from '../CRM/Review/subcomponents/Recent'
+import { loadRecentOrderData } from '../../actions/orderData';
 import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
 
 class ProfileContainer extends Component {
 
   componentDidMount() {
-    const { getProfileData, auth } = this.props;
+    const { getProfileData ,auth } = this.props;
     getProfileData(auth.uid);
   }
+
+  componentWillReceiveProps(nextProps) {
+    const { getRecentOrders } = this.props;
+    const { profileData } = nextProps;
+    const { Orders } = profileData;
+    // getRecentOrders(Orders[Orders.length - 1].id);
+    console.log(Orders);
+  } 
 
   handleChange = e => {
     const { editProfile } = this.props;
@@ -54,28 +64,34 @@ class ProfileContainer extends Component {
   render() {
     const { rest } = this.props
     return (
-      <EditProfile 
-        {...this.props} 
-        {...rest} 
-        changed={this.handleChange} 
-        newEmail={this.handleNewEmailSubmit}
-        newPassword={this.handleNewPasswordSubmit}
-        submit={this.handleSubmit}
-        deleteAcct={this.handleDelete}
-      /> 
+      <div>
+        <EditProfile 
+          {...this.props} 
+          {...rest} 
+          changed={this.handleChange} 
+          newEmail={this.handleNewEmailSubmit}
+          newPassword={this.handleNewPasswordSubmit}
+          submit={this.handleSubmit}
+          deleteAcct={this.handleDelete}
+        /> 
+        <RecentOrders {...this.props}/>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
+  const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
-    newProfileData: state.storeNewProfileData
+    newProfileData: state.storeNewProfileData,
+    recentOrders: orderData.length !== 0 ? orderData : orderData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProfileData: (userId) => dispatch(loadProfileData(userId)),
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
