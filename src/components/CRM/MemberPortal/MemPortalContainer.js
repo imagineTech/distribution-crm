@@ -34,7 +34,7 @@ const mapStateToProps = state => {
     profileData: state.storeProfileData,
     productData: data.length !==0 ? data : data,
     imageProductData: imagesExist ? included : included,
-    recentOrders: (orderData.length !== 0 && orderData.length === 5) ? orderData : orderData
+    recentOrders: orderData.length !== 0 ? orderData : orderData
 
   }
 };
