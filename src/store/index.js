@@ -15,7 +15,8 @@ export const creatingTheStore = () => {
     loadingCurrentOrderData: initialState.loadingCurrentOrderData,
     loadingCartData: initialState.loadingCartData,
     storeProfileData: initialState.storeProfileData,
-    passwordResetSuccess: initialState.passwordResetSuccess
+    passwordResetSuccess: initialState.passwordResetSuccess,
+    loadStoredOrderData: initialState.loadStoredOrderData
   }
   const persistConfig = {
     key: 'root',

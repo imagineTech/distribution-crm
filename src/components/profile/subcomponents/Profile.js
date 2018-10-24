@@ -6,8 +6,8 @@ import * as routes from '../../../constants/routes';
 const Profile = ({ profileData, path }) => {
   return(
     <div>
-      <img class="profilepicture" src="https://dummyimage.com/200x100/000/cccccc&text=Profile+Picture"></img>
-      <h1 class="displayinline">{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
+      <img className="profilepicture" src="https://dummyimage.com/200x100/000/cccccc&text=Profile+Picture"></img>
+      <h1 className="displayinline">{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
       <p>Email: {profileData.Email}</p>
       <button><Link to={`${path}/${routes.EDIT_PROFILE}`}>Edit Profile</Link></button>
     </div>

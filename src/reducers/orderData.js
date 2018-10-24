@@ -13,3 +13,18 @@ export const loadingCurrentOrderData = (state = {}, action) => {
       return state;
   }
 }
+
+export const loadStoredOrderData = (state = {}, action) => {
+  switch (action.type) {
+    case "LOAD_STORED_ORDER_DATA":
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          ...action.payload
+        }
+      };
+    default:
+      return state;
+  }
+}
