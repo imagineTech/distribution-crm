@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
-import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
 class MemberPortalContainer extends Component {
@@ -11,7 +10,7 @@ class MemberPortalContainer extends Component {
     const { getProductData, getProductImage, getProfileData, auth } = this.props;
     getProductData();
     getProductImage();
-    getProfileData(auth.uid)
+    getProfileData(auth.uid);
   }
 
   render() {
@@ -21,18 +20,17 @@ class MemberPortalContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data, included, imagesExist } = state.loadingProductData
+  const { data, included, imagesExist } = state.loadingProductData;
   return {
     profileData: state.storeProfileData,
     productData: data.length !==0 ? data : data,
-    imageProductData: imagesExist ? included : included
+    imageProductData: imagesExist ? included : included,
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getProfileData: userId => dispatch(loadProfileData(userId)),
-    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage())
   }
