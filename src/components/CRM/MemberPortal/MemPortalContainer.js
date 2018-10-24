@@ -3,6 +3,7 @@ import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 
@@ -37,5 +38,24 @@ const mapDispatchToProps = dispatch => {
     getProductImage: () => dispatch(loadProductImage())
   }
 };
+
+MemberPortalContainer.propTypes = {
+  getProductData: PropTypes.func.isRequired,
+  getProductImage: PropTypes.func.isRequired,
+  profileData: PropTypes.shape({
+    Company: PropTypes.string.isRequired,
+    Country: PropTypes.string.isRequired,
+    Department: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    First_Name: PropTypes.string.isRequired,
+    Last_Name: PropTypes.string.isRequired,
+    Moltin_User_Id: PropTypes.string.isRequired,
+    Orders: PropTypes.array.isRequired,
+    Password: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
+  auth: PropTypes.object.isRequired,
+  rest: PropTypes.object.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemberPortalContainer);
