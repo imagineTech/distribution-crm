@@ -7,6 +7,7 @@ being stored.
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditProfile from './subcomponents/Edit';
+import { loadRecentOrderData } from '../../actions/orderData';
 import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
 
 class ProfileContainer extends Component {
@@ -68,14 +69,17 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
-    newProfileData: state.storeNewProfileData
+    newProfileData: state.storeNewProfileData,
+    recentOrders: orderData.length !== 0 ? orderData : orderData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProfileData: (userId) => dispatch(loadProfileData(userId)),
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
