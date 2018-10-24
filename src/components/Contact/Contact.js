@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import {database} from '../../firebase/config_firebase';
+import { db } from '../../firebase/config_firebase';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -24,8 +24,14 @@ class Contact extends React.Component {
 		e.preventDefault();
 		let query = {...this.state};
 		
-		database.ref('contact_queries').push().set(query)
-		this.setState({message:"Thanks, We will get you back ASAP."})
+		db.collection("contact_queries").doc().set(query)
+		.then(() =>{
+		    this.setState({message:"Thanks, We will get you back ASAP."})
+		})
+		.catch((error)=> {
+		    console.error("Error writing document: ", error);
+		    this.setState({message:'Oops!! Please try again.'})
+		});
 	}
 
 	render() {
