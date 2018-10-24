@@ -1,0 +1,14 @@
+.profilepicture {
+	margin: 8px;
+}
+
+.displayinline {
+	display: inline;
+}
+
+.greeting {
+	display: inline;
+  bottom: 10px;
+  position: relative;
+  margin-left: 10px;
+}
