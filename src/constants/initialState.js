@@ -43,6 +43,10 @@ const loadingCurrentOrderData = {
     }
 };
 
+const loadStoredOrderData = {
+    data: []
+}
+
 const loadingCartData = {
     data: []
 }
@@ -60,5 +64,6 @@ const passwordResetSuccess = {
       loadingCurrentOrderData,
       loadingCartData,
       storeProfileData,
-      passwordResetSuccess
+      passwordResetSuccess,
+      loadStoredOrderData
   }

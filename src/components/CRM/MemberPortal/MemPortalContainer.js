@@ -1,38 +1,65 @@
 import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
+import {database} from '../../../firebase/config_firebase';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
+import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 
-
-
 class MemberPortalContainer extends Component {
-
+  state = {url:''}
   componentDidMount() {
     const { getProductData, getProductImage, getProfileData, auth } = this.props;
     getProductData();
     getProductImage();
-    getProfileData(auth.uid)
+    getProfileData(auth.uid);
+    let uid = auth.authUser.uid;
+    database.ref('/profile_images/'+uid).once('value').then(snapshot => {
+      
+      let profile_photos = snapshot.val();
+      
+        let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
+        let arr = photo[photo.length-1]
+        this.setState({url:arr.url})  
+      
+    })
+    database.ref('/profile_images/'+uid).on('child_added', snapshot => {
+      let profile_photos = snapshot.val();
+      let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
+        let arr = photo[photo.length-1]
+        this.setState({url:arr.url})  
+    })
   }
+
+  componentWillReceiveProps(nextProps) {
+    const { getRecentOrders } = this.props;
+    const { profileData } = nextProps;
+    const { Orders } = profileData;
+    // getRecentOrders(Orders[Orders.length - 1].id);
+  } 
 
   render() {
     const { rest } = this.props;
-    return <MemberPortal {...this.props} {...rest} />
+    return <MemberPortal {...this.props} {...rest} url={this.state.url} uid={this.props.auth.authUser.uid}/>
   }
 }
 
 const mapStateToProps = state => {
-  const { data, included, imagesExist } = state.loadingProductData
+  const { data, included, imagesExist } = state.loadingProductData;
+  const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
     productData: data.length !==0 ? data : data,
-    imageProductData: imagesExist ? included : included
+    imageProductData: imagesExist ? included : included,
+    recentOrders: (orderData.length !== 0 && orderData.length === 5) ? orderData : orderData
+
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProfileData: (userId) => dispatch(loadProfileData(userId)),
+    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
+    getProfileData: userId => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage())
   }

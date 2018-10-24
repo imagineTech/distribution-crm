@@ -12,7 +12,7 @@ import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAu
 class ProfileContainer extends Component {
 
   componentDidMount() {
-    const { getProfileData, auth } = this.props;
+    const { getProfileData ,auth } = this.props;
     getProfileData(auth.uid);
   }
 
@@ -54,15 +54,17 @@ class ProfileContainer extends Component {
   render() {
     const { rest } = this.props
     return (
-      <EditProfile 
-        {...this.props} 
-        {...rest} 
-        changed={this.handleChange} 
-        newEmail={this.handleNewEmailSubmit}
-        newPassword={this.handleNewPasswordSubmit}
-        submit={this.handleSubmit}
-        deleteAcct={this.handleDelete}
-      /> 
+      <div>
+        <EditProfile 
+          {...this.props} 
+          {...rest} 
+          changed={this.handleChange} 
+          newEmail={this.handleNewEmailSubmit}
+          newPassword={this.handleNewPasswordSubmit}
+          submit={this.handleSubmit}
+          deleteAcct={this.handleDelete}
+        /> 
+      </div>
     )
   }
 }
@@ -70,7 +72,7 @@ class ProfileContainer extends Component {
 const mapStateToProps = state => {
   return {
     profileData: state.storeProfileData,
-    newProfileData: state.storeNewProfileData
+    newProfileData: state.storeNewProfileData,
   }
 }
 
