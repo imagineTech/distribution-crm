@@ -30,13 +30,13 @@ class Contact extends React.Component {
 		
 					<label>Name
 					<br/>
-						<input name="customerName" type="text" onChange={this.handleChange} />
+						<input name="customerName" type="text" value={this.props.customerName} onChange={this.handleChange} />
 					</label>
 					<br/>
 
 					<label>Phone Number
 					<br/>
-						<input name="customerNumber" type="text" onChange={this.handleChange} />
+						<input name="customerNumber" type="text" value={this.props.customerNumber} onChange={this.handleChange} />
 					</label>
 					<br/>
 
@@ -65,7 +65,11 @@ class Contact extends React.Component {
 }
 
 Contact.propTypes = {
-	closeContactModal: PropTypes.func.isRequired
+	closeContactModal: PropTypes.func.isRequired,
+	customerName: PropTypes.string.isRequired,
+	customerNumber: PropTypes.string.isRequired,
+	customerEmail: PropTypes.string.isRequired,
+	contactContent: PropTypes.string.isRequired
 }
 
 export default Contact;
