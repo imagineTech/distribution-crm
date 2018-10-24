@@ -10,9 +10,10 @@ const MemberPortal = props => {
     <div>
       <h1>Welcome to our Crm</h1>
       <Profile {...props} path={routes.PROFILE}/> <br />
-      <Link to={routes.CART}>Cart</Link> <br />
-      <ProductList {...props} path={routes.PRODUCTS}/>
       <SignOutButton history={props.history}/>
+      <Link to={routes.CART}>Cart</Link> <br />
+      <Link to={routes.RECENT_ORDERS}>Recently purchased</Link>
+      <ProductList {...props} path={routes.PRODUCTS}/>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 class Billing extends Component {
   handleChange = e => {
@@ -41,6 +42,10 @@ class Billing extends Component {
       </div>
     );
   }
+}
+
+Billing.propTypes = {
+  formChange: PropTypes.func.isRequired
 }
 
 export default Billing;

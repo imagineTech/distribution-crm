@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
-import asyncComponent from '../../../hoc/async';
-import { Route } from 'react-router-dom';
+import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
+import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
-
-const AsyncMemberPortal = asyncComponent(() => {
-  return import('./subcomponents/MemberPortal');
-});
 
 class MemberPortalContainer extends Component {
 
   componentDidMount() {
-    const { getProductData, getProductImage } = this.props;
+    const { getProductData, getProductImage, getProfileData, auth } = this.props;
     getProductData();
     getProductImage();
+    getProfileData(auth.uid)
   }
 
   render() {
-    const { auth, path } = this.props;
-    return(
-      <Route
-        exact
-        path={`${path}`}
-        render={rest => <AsyncMemberPortal {...this.props}  {...auth} {...rest} />}
-      />
-    )
+    const { rest } = this.props;
+    return <MemberPortal {...this.props} {...rest} />
   }
 }
 
@@ -40,7 +31,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProfileData: (userId) => dispatch(loadProfileData(userId)),
+    getProfileData: userId => dispatch(loadProfileData(userId)),
+    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage())
   }

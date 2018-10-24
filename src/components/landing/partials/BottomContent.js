@@ -12,9 +12,10 @@ import IndividualComponentWrapper from './bottomComponents/IndividualComponentWr
 const BottomContent = (props) => {
   return(
     <IndividualComponentWrapper>
-      <img className="bottom-images" src= {props.images} />
-      {props.bottomLinks}
-
+      <div className='bottom-image-container'>
+        <img className="bottom-images" src= {props.images} />
+      </div>
+        {props.bottomLinks}
     </IndividualComponentWrapper>
   )
 }

@@ -10,6 +10,8 @@ import ContentContainer from './partials/ContentContainer';
 import Content from './partials/Content';
 import ImageContainer from './partials/ImageContainer';
 import Image from './partials/Image';
+import { BecomingAMemberInstructionsLink } from '../../../../Navigation';
+import { RegistrationRedirection } from '../../../../Navigation';
 
 const HowItWorks = () => {
   return(
@@ -23,15 +25,16 @@ const HowItWorks = () => {
         </ContentContainer>
         <ImageContainer>
           <Image />
-          <p>Our members enjoy exclusive rights such as having first hand knowledge of our most profitable products, a direct line of communication with our team of specialists, and absolute bottom line pricing without the need to ask for it! </p>
-          <h3>Find out how to become a memeber!</h3>
-
-          <h2>Apply Now!</h2>
+          <p>Our members enjoy exclusive rights such as having first hand knowledge of our most profitable products, a direct line of communication with our team of specialists, and absolute bottom line pricing without the need to ask for it! </p><br />
+          <BecomingAMemberInstructionsLink /><br /><br />
+          <RegistrationRedirection />
         </ImageContainer>
       </HowItWorksWrapper>
       <TempFooter />
     </div>
   )
 }
+
+
 
 export default HowItWorks;

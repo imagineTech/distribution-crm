@@ -1,47 +1,61 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-class contact extends React.Component {
-	constructor() {
-		super();
-		
-  }
+class Contact extends React.Component {
+	
+	state = {
+		customerName: ""
+	}
+
+  	handleChange = e => {
+		const { name, value } = e.target
+		this.setState({ [name]: value});
+	}
+
+	handleContactSubmit = e => {
+		e.preventDefault();
+		console.log(this.state)
+	}
 
 	render() {
 		return (
 			<div className='contact'>
 
-				<button id="close-contact-modal" onClick={this.props.closeContactModal}>X</button>
+				<FontAwesomeIcon id="close-contact-modal" onClick={this.props.closeContactModal} icon='window-close' style={{height: 25, width: 25}}/>
 
-				<p id='help-question'>What can we help you with?</p>
+				<p className='modal-title'>What can we help you with?</p>
 
-				<form onSubmit={(e)=>this.handleSubmit(e)}>
+				<form onSubmit={this.handleContactSubmit}>
 		
-					<label>Your Name
+					<label>Name
 					<br/>
-					<input name="customerName" type="text" value={this.props.customerName} onChange={this.handleChangeName} />
+						<input name="customerName" type="text" onChange={this.handleChange} />
 					</label>
 					<br/>
 
-					<label>Your Number
+					<label>Phone Number
 					<br/>
-					<input name="customerNumber" type="text" value={this.props.customerNumber} onChange={this.handleChangeNumber} />
+						<input name="customerNumber" type="text" onChange={this.handleChange} />
 					</label>
 					<br/>
 
-					<label>Your Email
+					<label>Email
 					<br/>
-					<input name="customerEmail" type="text" value={this.props.customerEmail} onChange={this.handleChangeEmail} />
+						<input name="customerEmail" type="text" value={this.props.customerEmail} onChange={this.handleChange} />
 					</label>
 					<br/>
 
-					<label>Your Comment or Question
+					<label>Comment or Question
 					<br/>
-					<textarea name="contactContent" type="text" value={this.props.contactContent} onChange={this.handleChangeContent} />
+						<textarea name="contactContent" type="text" value={this.props.contactContent} onChange={this.handleChange} />
 					</label>
 					<br/>
 
-					<button className="submitButton" type="submit" onClick={(e)=>this.props.handleSubmit(e)}>Submit</button>
-					<button>Reset</button>
+					<div className='contact-buttons'>
+						<button className="submitButton">Submit</button>
+						<button>Reset</button>
+					</div>
 
 				</form>
 
@@ -50,4 +64,8 @@ class contact extends React.Component {
 	}
 }
 
-export default contact;
+Contact.propTypes = {
+	closeContactModal: PropTypes.func.isRequired
+}
+
+export default Contact;

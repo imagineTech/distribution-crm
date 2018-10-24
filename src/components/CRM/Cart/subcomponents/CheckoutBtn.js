@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as routes from '../../../../constants/routes';
+import PropTypes from 'prop-types';
 
 class CheckoutButton extends Component{ 
 
     handleClick = e => {
-        const { auth, profileData, stripe, history, match, addingOrdData, checkOut, deleteCrt, addressValues } = this.props;
-        const { shippingForm, billingForm, billingIsDifferent } = addressValues;
+        const { profileData, stripe, history, addingOrdDataToStore, loadingCrrntOrder, checkOut, deleteCrt, addressValues, billingIsDifferent } = this.props;
+        const { shippingForm, billingForm  } = addressValues;
         const shipping = {
             first_name: profileData.First_Name,
             last_name: profileData.Last_Name,
@@ -25,7 +26,7 @@ class CheckoutButton extends Component{
             country: billingForm.Country
         } : shipping;
         stripe.createToken().then(payload => {
-            checkOut(auth.uid, profileData.Moltin_User_Id, shipping, billing)
+            checkOut(profileData.id, profileData.Moltin_User_Id, shipping, billing)
             .then(order => {
             // const payment = {
             //   gateway: 'stripe',
@@ -33,8 +34,9 @@ class CheckoutButton extends Component{
             //   payment: `${payload.token.id}`
             // }
             // Moltin.payForOrder(order.data.id, payment);
-            addingOrdData(auth.uid, order.data.id);
-            deleteCrt(auth.uid);
+            loadingCrrntOrder(order.data.id);
+            addingOrdDataToStore(profileData.id, order.data.id);
+            deleteCrt(profileData.id);
             history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
             })
         });
@@ -44,6 +46,18 @@ class CheckoutButton extends Component{
         return <button onClick={this.handleClick}>Checkout</button>
 
     }
+}
+
+CheckoutButton.propTypes = {
+    profileData: PropTypes.object.isRequired,
+    stripe: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    addingOrdDataToStore: PropTypes.func.isRequired,
+    loadingCrrntOrder: PropTypes.func.isRequired,
+    checkOut: PropTypes.func.isRequired,
+    deleteCrt: PropTypes.func.isRequired,
+    addressValues: PropTypes.object.isRequired
 }
 
 export default CheckoutButton;
