@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //Wrapper
 import ContentWrapper from './ContentWrapper';
@@ -10,6 +11,11 @@ const Content = (props) => {
       <p>{props.description}</p>
     </ContentWrapper>
   )
+}
+
+ContentWrapper.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default Content;

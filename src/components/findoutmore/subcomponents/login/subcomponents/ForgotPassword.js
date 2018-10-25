@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { sendPasswordResetEmail } from '../../../../../actions/profileData';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class ForgotEmail extends Component {
 
@@ -48,6 +49,11 @@ const mapDispatchToProps = dispatch => {
     return {
         sendPassResetEmail: email => dispatch(sendPasswordResetEmail(email)) 
     }
+}
+
+ForgotEmail.propTypes = {
+    sendPassResetEmail: PropTypes.func.isRequired,
+    success: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotEmail);
