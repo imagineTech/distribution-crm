@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
-import { db } from '../../../firebase/config_firebase';
+import { database } from '../../../firebase/config_firebase';
 import { loadProfileData } from '../../../actions/profileData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
@@ -14,22 +14,22 @@ class MemberPortalContainer extends Component {
     getProductData();
     getProductImage();
     getProfileData(auth.uid);
-    // let uid = auth.authUser.uid;
-    // db.ref('/profile_images/'+uid).once('value').then(snapshot => {
+    let uid = auth.authUser.uid;
+    database.ref('/profile_images/'+uid).once('value').then(snapshot => {
       
-    //   let profile_photos = snapshot.val();
+      let profile_photos = snapshot.val();
       
-    //     let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
-    //     let arr = photo[photo.length-1]
-    //     this.setState({url:arr.url})  
+        let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
+        let arr = photo[photo.length-1]
+        this.setState({url:arr.url})  
       
-    // })
-    // db.ref('/profile_images/'+uid).on('child_added', snapshot => {
-    //   let profile_photos = snapshot.val();
-    //   let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
-    //     let arr = photo[photo.length-1]
-    //     this.setState({url:arr.url})  
-    // })
+    })
+    database.ref('/profile_images/'+uid).on('child_added', snapshot => {
+      let profile_photos = snapshot.val();
+      let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
+        let arr = photo[photo.length-1]
+        this.setState({url:arr.url})  
+    })
   }
 
   componentWillReceiveProps(nextProps) {
