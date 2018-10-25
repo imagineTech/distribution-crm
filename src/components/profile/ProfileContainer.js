@@ -7,9 +7,8 @@ being stored.
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditProfile from './subcomponents/Edit';
-import RecentOrders from '../CRM/Review/subcomponents/Recent'
-import { loadRecentOrderData } from '../../actions/orderData';
 import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
+import PropTypes from 'prop-types';
 
 class ProfileContainer extends Component {
 
@@ -17,14 +16,6 @@ class ProfileContainer extends Component {
     const { getProfileData ,auth } = this.props;
     getProfileData(auth.uid);
   }
-
-  componentWillReceiveProps(nextProps) {
-    const { getRecentOrders } = this.props;
-    const { profileData } = nextProps;
-    const { Orders } = profileData;
-    // getRecentOrders(Orders[Orders.length - 1].id);
-    console.log(Orders);
-  } 
 
   handleChange = e => {
     const { editProfile } = this.props;
@@ -62,6 +53,7 @@ class ProfileContainer extends Component {
   }
 
   render() {
+    console.log('PROFILE CONTAINER RENDERED',this.props)
     const { rest } = this.props
     return (
       <div>
@@ -74,24 +66,20 @@ class ProfileContainer extends Component {
           submit={this.handleSubmit}
           deleteAcct={this.handleDelete}
         /> 
-        <RecentOrders {...this.props}/>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
     newProfileData: state.storeNewProfileData,
-    recentOrders: orderData.length !== 0 ? orderData : orderData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProfileData: (userId) => dispatch(loadProfileData(userId)),
     editProfile: (dbDataName, dbDataValue) => dispatch(newProfileData(dbDataName, dbDataValue)),
     sendNewProfileData: (defaultDbData, newDbData, dbID, history) => dispatch(newProfileDataToSend(defaultDbData, newDbData, dbID, history)),
@@ -99,6 +87,31 @@ const mapDispatchToProps = dispatch => {
     sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history)),
     deletingUser: (moltId, fbId, history) => dispatch(deleteUser(moltId, fbId, history))
   }
+}
+
+ProfileContainer.propTypes = {
+  getProfileData: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  editProfile: PropTypes.func.isRequired,
+  newProfileData: PropTypes.object.isRequired,
+  sendNewEmail: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  profileData: PropTypes.shape({
+    Company: PropTypes.string.isRequired,
+    Country: PropTypes.string.isRequired,
+    Department: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    First_Name: PropTypes.string.isRequired,
+    Last_Name: PropTypes.string.isRequired,
+    Moltin_User_Id: PropTypes.string.isRequired,
+    Orders: PropTypes.array.isRequired,
+    Password: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
+  sendNewPassword: PropTypes.func.isRequired,
+  sendNewProfileData: PropTypes.func.isRequired,
+  deletingUser: PropTypes.func.isRequired,
+  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
