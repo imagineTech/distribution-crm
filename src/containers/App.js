@@ -95,7 +95,7 @@ class App extends Component {
         <Route exact path={routes.ABOUT} component={About}  />
         <Route exact path={routes.OUR_POLICY} component={OurPolicy} />
         <Route exact path={routes.CONTACT} component={Contact} />
-        <Route exact path={routes.SIGN_UP} render={SignUp} />
+        <Route exact path={routes.SIGN_UP} component={SignUp} />
         <Route exact path={routes.FORGOT_PASS} component={ForgotPassword} />
         <Route exact path={routes.SOLD_PRODUCTS} component={SoldProducts} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
