@@ -49,18 +49,7 @@ class CheckoutButton extends Component{
 }
 
 CheckoutButton.propTypes = {
-    profileData: PropTypes.shape({
-        Company: PropTypes.string.isRequired,
-        Country: PropTypes.string.isRequired,
-        Department: PropTypes.string.isRequired,
-        Email: PropTypes.string.isRequired,
-        First_Name: PropTypes.string.isRequired,
-        Last_Name: PropTypes.string.isRequired,
-        Moltin_User_Id: PropTypes.string.isRequired,
-        Orders: PropTypes.array.isRequired,
-        Password: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-    }).isRequired,
+    profileData: PropTypes.object.isRequired,
     stripe: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,

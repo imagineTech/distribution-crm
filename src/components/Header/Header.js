@@ -7,7 +7,6 @@ import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
 import Login from './../findoutmore/subcomponents/login/login.js';
-import PropTypes from 'prop-types';
 
 class Header extends Component {
 
@@ -93,9 +92,5 @@ class Header extends Component {
 	);
 }
 };
-
-Header.propTypes = {
-	auth: PropTypes.bool
-}
 
 export default Header;

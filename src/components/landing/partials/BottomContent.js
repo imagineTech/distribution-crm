@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 //CSS
 import '../landing.css';
@@ -19,11 +18,6 @@ const BottomContent = (props) => {
         {props.bottomLinks}
     </IndividualComponentWrapper>
   )
-}
-
-BottomContent.propTypes = {
-  bottomLinks: PropTypes.element.isRequired,
-  images: PropTypes.string.isRequired
 }
 
 export default BottomContent;

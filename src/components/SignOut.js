@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { signOutAuth } from '../actions/signOut';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 class SignOut extends Component {
 
@@ -27,11 +26,6 @@ const mapDispatchToProps = dispatch => {
   return {
     signOut: (history, reloadWindow) => dispatch(signOutAuth(history, reloadWindow))
   }
-}
-
-SignOut.propTypes = {
-  signOut: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignOut)

@@ -11,7 +11,6 @@ import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ErrorComponent from'./subcomponents/Error';
 import * as routes from '../../../../constants/routes';
-import PropTypes from 'prop-types';
 
 class Login extends Component {
 
@@ -72,15 +71,6 @@ const mapDispatchToProps = dispatch => {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
     emailAndPasswordLogin: (email, password, history, reloadWindow) => dispatch(loginWithEmailAndPassword(email, password, history, reloadWindow))
   }
-}
-
-Login.propTypes = {
-  emailAndPasswordChange: PropTypes.func.isRequired,
-  emailAndPassword: PropTypes.object.isRequired,
-  emailAndPasswordLogin: PropTypes.func.isRequired,
-  loginError: PropTypes.object.isRequired,
-  closeLoginModal: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

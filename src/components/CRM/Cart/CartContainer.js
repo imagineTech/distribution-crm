@@ -3,7 +3,6 @@ import Cart from './subcomponents/Cart';
 import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderDataToStore, loadCurrentOrder } from '../../../actions/orderData';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 class CartContainer extends Component {
 
@@ -36,23 +35,6 @@ const mapDispatchToProps = dispatch => {
     loadingCrrntOrder: ordId => dispatch(loadCurrentOrder(ordId)),
     checkOut: (refId, customerId, billing, shipping) =>dispatch(checkOutCart(refId, customerId, billing, shipping))
   }
-}
-
-CartContainer.propTypes = {
-  profileData: PropTypes.shape({
-    Company: PropTypes.string.isRequired,
-    Country: PropTypes.string.isRequired,
-    Department: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    First_Name: PropTypes.string.isRequired,
-    Last_Name: PropTypes.string.isRequired,
-    Moltin_User_Id: PropTypes.string.isRequired,
-    Orders: PropTypes.array.isRequired,
-    Password: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
-  }).isRequired,
-  getCartData: PropTypes.func.isRequired,
-  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
