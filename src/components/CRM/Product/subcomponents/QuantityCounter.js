@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // CSS
 import './ProductPage/partials/ProductPage.css'
+import PropTypes from 'prop-types';
 
 class QuantityCounter extends Component {
 
@@ -48,6 +49,11 @@ class QuantityCounter extends Component {
       </div>
     );
   }
+}
+
+QuantityCounter.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  onQuantityChange: PropTypes.func.isRequired
 }
 
 export default QuantityCounter;

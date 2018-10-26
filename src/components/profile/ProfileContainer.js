@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditProfile from './subcomponents/Edit';
 import { loadProfileData, newProfileData, newProfileDataToSend, newEmailToSendAuth, newPasswordToSendAuth, deleteUser } from '../../actions/profileData';
+import PropTypes from 'prop-types';
 
 class ProfileContainer extends Component {
 
@@ -52,6 +53,7 @@ class ProfileContainer extends Component {
   }
 
   render() {
+    console.log('PROFILE CONTAINER RENDERED',this.props)
     const { rest } = this.props
     return (
       <div>
@@ -85,6 +87,31 @@ const mapDispatchToProps = dispatch => {
     sendNewPassword: (newPassword, history) => dispatch(newPasswordToSendAuth(newPassword, history)),
     deletingUser: (moltId, fbId, history) => dispatch(deleteUser(moltId, fbId, history))
   }
+}
+
+ProfileContainer.propTypes = {
+  getProfileData: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  editProfile: PropTypes.func.isRequired,
+  newProfileData: PropTypes.object.isRequired,
+  sendNewEmail: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  profileData: PropTypes.shape({
+    Company: PropTypes.string.isRequired,
+    Country: PropTypes.string.isRequired,
+    Department: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    First_Name: PropTypes.string.isRequired,
+    Last_Name: PropTypes.string.isRequired,
+    Moltin_User_Id: PropTypes.string.isRequired,
+    Orders: PropTypes.array.isRequired,
+    Password: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
+  sendNewPassword: PropTypes.func.isRequired,
+  sendNewProfileData: PropTypes.func.isRequired,
+  deletingUser: PropTypes.func.isRequired,
+  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
