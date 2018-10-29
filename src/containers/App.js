@@ -12,7 +12,6 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
-
 //Custom components
 import { Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
@@ -111,7 +110,6 @@ class App extends Component {
               <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} />} />
             </div>
           }
-          {/* <Footer /> */}
         </div>
       );
     }
