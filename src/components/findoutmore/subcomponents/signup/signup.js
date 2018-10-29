@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
 import * as routes from '../../../../constants/routes';
 import './signup.css';
+import PropTypes from 'prop-types';
 
 class SignUp extends Component {
 
@@ -86,5 +87,14 @@ const mapDispatchToProps = dispatch => {
     authEmailPasswordForm: (EPData, formData, history) => dispatch(emailPasswordFormAuth(EPData, formData, history))
   }
 };
+
+SignUp.propTypes = {
+  setFormData: PropTypes.func.isRequired,
+  setEmailAndPassword: PropTypes.func.isRequired,
+  emailAndPassword: PropTypes.object.isRequired,
+  signUpData: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  authEmailPasswordForm: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

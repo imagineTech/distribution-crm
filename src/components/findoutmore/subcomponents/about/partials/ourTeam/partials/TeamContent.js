@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //partials
 import ContentWrapper from './ContentWrapper';
@@ -22,6 +23,13 @@ const TeamContent = (props) => {
       </div>
     </ContentWrapper>
   )
+}
+
+TeamContent.propTypes = {
+  description: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  myPics: PropTypes.string.isRequired
 }
 
 export default TeamContent;

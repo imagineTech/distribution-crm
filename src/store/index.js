@@ -1,4 +1,4 @@
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { initialState } from '../constants/initialState';
 import storage from 'redux-persist/lib/storage';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -8,14 +8,15 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from '../reducers/index';
 
-export const history = createBrowserHistory();
+export const history = createHashHistory();
 export const creatingTheStore = () => {
   const initial = {
     loadingProductData: initialState.loadingProductData,
     loadingCurrentOrderData: initialState.loadingCurrentOrderData,
     loadingCartData: initialState.loadingCartData,
     storeProfileData: initialState.storeProfileData,
-    passwordResetSuccess: initialState.passwordResetSuccess
+    passwordResetSuccess: initialState.passwordResetSuccess,
+    loadStoredOrderData: initialState.loadStoredOrderData
   }
   const persistConfig = {
     key: 'root',
