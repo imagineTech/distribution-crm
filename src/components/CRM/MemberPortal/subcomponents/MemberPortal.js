@@ -14,5 +14,5 @@ const MemberPortal = props => {
     </div>
   );
 }
-
+}
 export default MemberPortal;

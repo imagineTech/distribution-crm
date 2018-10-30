@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OrderReview from './subcomponents/OrderReview';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class OrderRvwContainer extends Component {
 
@@ -20,6 +21,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {}
+}
+
+OrderRvwContainer.propTypes = {
+  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderRvwContainer);
