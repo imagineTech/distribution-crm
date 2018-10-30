@@ -100,7 +100,7 @@ class App extends Component {
         <Route exact path={routes.SOLD_PRODUCTS} component={() => <SoldProducts />} />
         <Route exact path={routes.BECOMING_A_MEMBER} component={() => <BecomingAMember />} />
         <Route exact path={routes.HOW_IT_WORKS} component={() => <HowItWorks />} />
-        <Footer />
+        {/*<Footer />*/}
         {/*
           This section below had to be setup because we have different
           components that need to be protected. Using local state right now,
@@ -117,7 +117,7 @@ class App extends Component {
               <Route exact path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
             </div>
           }
-          {/* <Footer /> */}
+          <Footer />
         </div>
       );
     }

@@ -16,19 +16,19 @@ class MemberPortalContainer extends Component {
     getProfileData(auth.uid);
     let uid = auth.authUser.uid;
     database.ref('/profile_images/'+uid).once('value').then(snapshot => {
-      
+
       let profile_photos = snapshot.val();
-      
+
         let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
         let arr = photo[photo.length-1]
-        this.setState({url:arr.url})  
-      
+        this.setState({url:arr.url})
+
     })
     database.ref('/profile_images/'+uid).on('child_added', snapshot => {
       let profile_photos = snapshot.val();
       let photo = !!profile_photos?Object.keys(profile_photos).map(key => profile_photos[key]):[{url:''}]
         let arr = photo[photo.length-1]
-        this.setState({url:arr.url})  
+        this.setState({url:arr.url})
     })
   }
 
@@ -37,7 +37,7 @@ class MemberPortalContainer extends Component {
     const { profileData } = nextProps;
     const { Orders } = profileData;
     // getRecentOrders(Orders[Orders.length - 1].id);
-  } 
+  }
 
   render() {
     const { rest } = this.props;
