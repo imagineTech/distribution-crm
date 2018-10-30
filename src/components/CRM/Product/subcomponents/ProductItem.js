@@ -34,7 +34,7 @@ class ProductItem extends Component {
                         ) : (
                           null
                         )
-                      })}   
+                      })}
                       <ProductInfoWrapper>
                         <div className='title'>{product.name}</div>
                         <div className='description'>{product.description}</div>
