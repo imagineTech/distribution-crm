@@ -11,15 +11,15 @@ import '../OurTeam.css';
 const TeamContent = (props) => {
   return(
     <ContentWrapper>
-      <img className="main-pics" src={props.myPics} />
+      <img className="main-pics" src={props.myPics} alt="" />
       <h2>{props.name}</h2>
       <h4>{props.title}</h4>
       <div className="main-description">
         <p>{props.description}</p>
       </div>
-      <div className="mail-icon">
-        <a  href="mailto:office@cilph.com"></a>
-      </div>
+      {/* <div className="mail-icon">
+        <a  href="mailto:office@cilph.com">A link icon</a>
+      </div> */}
 
     </ContentWrapper>
   )

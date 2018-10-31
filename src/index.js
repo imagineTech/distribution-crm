@@ -7,8 +7,6 @@ import { Router } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { _stripeKey } from './stripe/config_stripe';
 import App from './containers/App';
-import NProgress from 'nprogress';
-import '../node_modules/nprogress/nprogress.css';
 
 const store = creatingTheStore().store;
 const persistor = creatingTheStore().persistor;

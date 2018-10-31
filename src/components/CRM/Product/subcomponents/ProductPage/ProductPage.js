@@ -6,7 +6,7 @@ import ProductInfoWrapper from './partials/ProductInfoWrapper'
 // CSS
 import './partials/ProductPage.css'
 
-class productPage extends React.Component {
+class productPage extends Component {
 constructor(props) {
     super(props);
     this.state = {
