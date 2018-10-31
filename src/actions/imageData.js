@@ -1,4 +1,4 @@
-import { storage, db } from '../firebase/'
+import { storage } from '../firebase/'
 
 const imageUploadBegin = () => {
     return {
@@ -24,7 +24,6 @@ const imageUploadError = err => {
 
 export const imageUpload = (userId, imageFile) => {
     return dispatch => {
-        dispatch(imageUploadBegin())
         storage.uploadImage(userId, imageFile).then(snap => {
             dispatch(imageUploadSuccess())
         }).catch(err => dispatch(imageUploadError(err)))
