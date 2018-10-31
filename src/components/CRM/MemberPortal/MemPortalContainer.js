@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
+import { imageUpload, newTestAction } from '../../../actions/imageData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
@@ -46,7 +47,8 @@ const mapDispatchToProps = dispatch => {
     getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProfileData: userId => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
-    getProductImage: () => dispatch(loadProductImage())
+    getProductImage: () => dispatch(loadProductImage()),
+    upload: (userId, imageFile) => dispatch(imageUpload(userId, imageFile))
   }
 };
 

@@ -4,18 +4,32 @@ import './Profile.css'
 import * as routes from '../../../constants/routes';
 
 class Profile extends Component {
+
+  state = {
+    imageFile: {}
+  }
+
+  files = e => {
+    this.setState({ imageFile: e.target.files[0]})
+  }
+
+  sendUpload = e => {
+    const { upload, profileData } = this.props;
+    const { imageFile } = this.state;
+    e.preventDefault();
+    upload(profileData.id, imageFile);
+  }
+
   render(){
-    let { profileData, path,url } = this.props;
+    let { profileData, path } = this.props;
     return(
       <div>
-        {url!==''?<img src={url} width="150"/>:
-        <img className="profilepicture" src="https://dummyimage.com/200x100/000/cccccc&text=Profile+Picture"></img>}
         <h1 className="displayinline">{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
         <p>Email: {profileData.Email}</p>
         <button><Link to={`${path}/${routes.EDIT_PROFILE}`}>Edit Profile</Link></button>
-        <form>
-          <input type="file" />
-          <button onClick={this.upload}>Upload</button>
+        <form onSubmit={this.sendUpload}>
+          <input type="file" onChange={this.files}/>
+          <button >Upload</button>
         </form>
       </div>
     )
