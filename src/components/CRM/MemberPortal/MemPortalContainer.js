@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
-import { imageUpload, newTestAction } from '../../../actions/imageData';
+import { imageUpload } from '../../../actions/imageData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
@@ -18,9 +18,9 @@ class MemberPortalContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { getRecentOrders } = this.props;
-    const { profileData } = nextProps;
-    const { Orders } = profileData;
+    // const { getRecentOrders } = this.props;
+    // const { profileData } = nextProps;
+    // const { Orders } = profileData;
     // getRecentOrders(Orders[Orders.length - 1].id);
   } 
 

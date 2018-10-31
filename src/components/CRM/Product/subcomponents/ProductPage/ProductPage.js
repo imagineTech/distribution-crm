@@ -36,7 +36,7 @@ constructor(props) {
 			<div>
 				<Background>
 					<Container>
-						<img className='productImage'></img>
+						<img className='productImage' alt="" />
 						<ProductInfoWrapper>
 							<div className='title'>product.title</div>
 							<div className='description'>product.description</div>

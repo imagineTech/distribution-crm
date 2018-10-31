@@ -2,7 +2,6 @@ import React from 'react';
 
 //partials
 import TeamWrapper from './partials/TeamWrapper';
-import TeamTop from './partials/TeamTop';
 import TeamBottom from './partials/TeamBottom';
 import TeamContent from './partials/TeamContent';
 import ContentWrapContainer from './partials/ContentWrapContainer';

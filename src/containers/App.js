@@ -4,7 +4,6 @@ import { firebase } from '../firebase/index';
 import '../App.css';
 //Font awesome links
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -25,11 +24,8 @@ import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
-import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
-import Login from '../components/findoutmore/subcomponents/login/login.js';
 import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
-import ProductPage from '../components/CRM/Product/subcomponents/ProductPage/ProductPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import * as routes from '../constants/routes';

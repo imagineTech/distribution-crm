@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProductItem from './subcomponents/ProductItem';
-import { Route } from 'react-router-dom';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { addProductsToCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
