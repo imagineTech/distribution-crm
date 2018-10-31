@@ -25,6 +25,7 @@ const imageUploadError = err => {
 
 export const imageUpload = (userId, imageFile) => {
     return dispatch => {
+        dispatch(imageUploadBegin())
         storage.uploadImage(userId, imageFile).then(snap => {
             NProgress.done();
             dispatch(imageUploadSuccess())
