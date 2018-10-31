@@ -1,4 +1,5 @@
-import { storage } from '../firebase/'
+import { storage } from '../firebase'
+import NProgress from 'nprogress';
 
 const imageUploadBegin = () => {
     return {
@@ -25,6 +26,7 @@ const imageUploadError = err => {
 export const imageUpload = (userId, imageFile) => {
     return dispatch => {
         storage.uploadImage(userId, imageFile).then(snap => {
+            NProgress.done();
             dispatch(imageUploadSuccess())
         }).catch(err => dispatch(imageUploadError(err)))
     }
