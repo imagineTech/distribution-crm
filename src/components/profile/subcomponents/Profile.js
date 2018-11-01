@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css'
 import * as routes from '../../../constants/routes';
+import PropTypes from 'prop-types';
+
 
 class Profile extends Component {
 
@@ -34,5 +36,20 @@ class Profile extends Component {
       </div>
     )
   }
+}
+
+Profile.prototypes = {
+  profileData: PropTypes.shape({
+    Company: PropTypes.string.isRequired,
+    Country: PropTypes.string.isRequired,
+    Department: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    First_Name: PropTypes.string.isRequired,
+    Last_Name: PropTypes.string.isRequired,
+    Moltin_User_Id: PropTypes.string.isRequired,
+    Orders: PropTypes.array.isRequired,
+    Password: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
 }
 export default Profile;

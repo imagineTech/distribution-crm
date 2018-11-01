@@ -25,8 +25,7 @@ class MemberPortalContainer extends Component {
   } 
 
   render() {
-    const { rest } = this.props;
-    return <MemberPortal {...this.props} {...rest} />
+    return <MemberPortal {...this.props}/>
   }
 }
 
@@ -56,20 +55,7 @@ const mapDispatchToProps = dispatch => {
 MemberPortalContainer.propTypes = {
   getProductData: PropTypes.func.isRequired,
   getProductImage: PropTypes.func.isRequired,
-  profileData: PropTypes.shape({
-    Company: PropTypes.string.isRequired,
-    Country: PropTypes.string.isRequired,
-    Department: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    First_Name: PropTypes.string.isRequired,
-    Last_Name: PropTypes.string.isRequired,
-    Moltin_User_Id: PropTypes.string.isRequired,
-    Orders: PropTypes.array.isRequired,
-    Password: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
-  }).isRequired,
   auth: PropTypes.object.isRequired,
-  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemberPortalContainer);
