@@ -19,7 +19,11 @@ class OrderRvwContainer extends Component {
       (nextProps.profileData.Orders[nextProps.profileData.Orders.length - 1].id) !== 
       (this.props.profileData.Orders[this.props.profileData.Orders.length - 1].id)
     ) {
-      loadingCrrntOrder(Orders[Orders.length - 1].id)
+      if (this.props.orderData.items.length < 1) {
+        loadingCrrntOrder(Orders[Orders.length - 1].id)
+      } else {
+        window.location.reload();
+      }
     }
   }
 
