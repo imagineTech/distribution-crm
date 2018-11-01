@@ -38,7 +38,7 @@ class CheckoutButton extends Component{
             addingOrdDataToStore(profileData.id, order.data.id);
             deleteCrt(profileData.id);
             history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
-            })
+            });
         });
     }
 

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import OrderReview from './subcomponents/OrderReview';
+import { loadProfileData } from '../../../actions/profileData';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class OrderRvwContainer extends Component {
+
+  componentDidMount() {
+    const { getProfileData, auth } = this.props;
+    getProfileData(auth.authUser.uid);
+  }
 
   render() {
     const { rest } = this.props;
@@ -20,7 +26,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    getProfileData: userId => dispatch(loadProfileData(userId)),
+  }
 }
 
 OrderRvwContainer.propTypes = {
