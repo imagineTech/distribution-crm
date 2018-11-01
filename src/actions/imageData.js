@@ -1,13 +1,6 @@
 import { storage } from '../firebase'
 import NProgress from 'nprogress';
 
-const imageUploadBegin = () => {
-    return {
-        type: "IMAGE_UPLOAD_BEGIN",
-        message: "Starting image reteval"
-    };
-};
-
 const imageUploadSuccess = () => {
     return {
         type: "IMAGE_UPLOAD_SUCCESS",
@@ -23,12 +16,32 @@ const imageUploadError = err => {
     };
 };
 
+const downloadImageSucces = () => {
+    return {
+        type: "DOWNLOAD_IMAGE_SUCCESS",
+        message: "Downloaded Image :)"
+    }
+}
+
+const downloadImageError = err => {
+    return {
+        type: "DOWNLOAD_IMAGE_ERR",
+        message: "Oh-no something happened while download...",
+        err
+    }
+}
+
 export const imageUpload = (userId, imageFile) => {
     return dispatch => {
-        dispatch(imageUploadBegin())
         storage.uploadImage(userId, imageFile).then(snap => {
             NProgress.done();
             dispatch(imageUploadSuccess())
         }).catch(err => dispatch(imageUploadError(err)))
+    };
+};
+
+export const downloadImage = userId => {
+    return dispatch => {
+        storage.downloadImage(userId)
     }
 }
