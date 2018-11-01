@@ -7,5 +7,5 @@ export const uploadImage = (userId, imgFile) => {
 }
 
 export const downloadImage = userId => {
-    return storage.child('imgs/' + userId).getDownloadURL()
+    return storage.ref().child('imgs/' + userId).getDownloadURL()
 }
