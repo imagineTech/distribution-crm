@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cart from './subcomponents/Cart';
 import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
-import { addOrderDataToStore, loadCurrentOrder } from '../../../actions/orderData';
+import { addOrderDataToStore } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -33,7 +33,6 @@ const mapDispatchToProps = dispatch => {
     removeItm: (cartId, itemId, qty) => dispatch(removingCartItem(cartId, itemId, qty)),
     deleteCrt: (cartId) => dispatch(deleteCart(cartId)),
     addingOrdDataToStore: (userId, ordId) => dispatch(addOrderDataToStore(userId, ordId)),
-    loadingCrrntOrder: ordId => dispatch(loadCurrentOrder(ordId)),
     checkOut: (refId, customerId, billing, shipping) =>dispatch(checkOutCart(refId, customerId, billing, shipping))
   }
 }
