@@ -8,7 +8,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faCheckCircle)
 
-class Contact extends React.Component {
+class Contact extends Component {
 	
 	state = {
 		customerName: "",

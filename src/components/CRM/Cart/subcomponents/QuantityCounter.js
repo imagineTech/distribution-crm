@@ -50,7 +50,7 @@ class QuantityCounter extends Component {
 }
 
 QuantityCounter.propTypes = {
-  quantity: PropTypes.number.isRequired,
+  quantity: PropTypes.string.isRequired,
   onQuantityChange: PropTypes.func.isRequired
 }
 

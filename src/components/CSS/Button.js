@@ -18,10 +18,10 @@ import styled from 'styled-components';
   margin: 10px;
 `;
 
-//temp component for testing
-const InputOne = styled.input`
+// //temp component for testing
+// const InputOne = styled.input`
 
-`;
+// `;
 
 
 //Smaller secondary button

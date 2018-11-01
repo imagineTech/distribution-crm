@@ -11,6 +11,7 @@
     "firebase": "^5.5.1",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
