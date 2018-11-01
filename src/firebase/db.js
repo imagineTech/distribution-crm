@@ -25,7 +25,7 @@ export const addingUser = (dbData, authId, moltinId) => {
     Department: dbData.Department,
     Country: dbData.Country,
     Moltin_User_Id: moltinId,
-    Orders: [{ id: 0 }]
+    Orders: [{ id: 0 }],
   })
 }
 
@@ -53,6 +53,12 @@ export const addOrdersToUser = (userId, orderId) => {
   return DB.doc(userId).update({
     Orders: firebase.firestore.FieldValue.arrayUnion(orderId)
   })
+}
+
+export const addingProfileImageURL = (userId, url) => {
+  return DB.doc(userId).update({
+    Profile_Image_URL: url
+  }, { merge: true })
 }
 
 export const deleteDocument = docId => {

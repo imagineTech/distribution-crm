@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
-import { imageUpload } from '../../../actions/imageData';
+import { imageUpload, downloadImage } from '../../../actions/imageData';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 class MemberPortalContainer extends Component {
 
   componentDidMount() {
-    const { getProductData, getProductImage, getProfileData, auth } = this.props;
+    const { getProductData, getProductImage, getProfileData, downloadProfileImage, auth } = this.props;
     getProductData();
     getProductImage();
-    getProfileData(auth.uid);
-   
+    downloadProfileImage(auth.authUser.uid);
+    getProfileData(auth.authUser.uid);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,7 +48,8 @@ const mapDispatchToProps = dispatch => {
     getProfileData: userId => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage()),
-    upload: (userId, imageFile) => dispatch(imageUpload(userId, imageFile))
+    uploadProfileImage: (userId, imageFile) => dispatch(imageUpload(userId, imageFile)),
+    downloadProfileImage: userId => dispatch(downloadImage(userId))
   }
 };
 
