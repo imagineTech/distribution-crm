@@ -14,10 +14,10 @@ class Profile extends Component {
   }
 
   sendUpload = e => {
-    const { upload, profileData } = this.props;
+    const { uploadProfileImage, profileData } = this.props;
     const { imageFile } = this.state;
     e.preventDefault();
-    upload(profileData.id, imageFile);
+    uploadProfileImage(profileData.id, imageFile);
   }
 
   render(){

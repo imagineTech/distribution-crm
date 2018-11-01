@@ -1,4 +1,4 @@
-import { storage } from '../firebase'
+import { storage, db } from '../firebase'
 import NProgress from 'nprogress';
 
 const imageUploadSuccess = () => {
@@ -42,6 +42,11 @@ export const imageUpload = (userId, imageFile) => {
 
 export const downloadImage = userId => {
     return dispatch => {
-        storage.downloadImage(userId)
+        storage.downloadImage(userId).then(url => {
+            if(url) {
+                // db.addingProfileImageURL(url).then(() => dispatch(downloadImageSucces()));   
+                console.log(url);
+            }
+        }).catch(err => dispatch(downloadImageError(err)))
     }
 }
