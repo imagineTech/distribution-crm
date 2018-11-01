@@ -16,7 +16,6 @@ const OrderReview = props =>  {
               </div>
             )
           })}
-          {console.log(profileData.Orders)}
         </section>
       </div>
     )
