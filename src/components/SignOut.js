@@ -31,7 +31,6 @@ const mapDispatchToProps = dispatch => {
 
 SignOut.propTypes = {
   signOut: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignOut)

@@ -15,8 +15,7 @@ class Products extends Component {
   }
 
   render() {
-    const { rest } = this.props;
-    return <ProductItem {...this.props} {...rest} /> 
+    return <ProductItem {...this.props}  /> 
   }
 }
 
@@ -40,7 +39,6 @@ export const mapDispatchToProps = dispatch => {
 Products.propTypes = {
   getProductData: PropTypes.func.isRequired,
   getProductImage: PropTypes.func.isRequired,
-  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

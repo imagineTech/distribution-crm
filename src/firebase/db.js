@@ -26,6 +26,7 @@ export const addingUser = (dbData, authId, moltinId) => {
     Country: dbData.Country,
     Moltin_User_Id: moltinId,
     Orders: [{ id: 0 }],
+    Profile_Image_URL: ""
   })
 }
 
@@ -58,7 +59,7 @@ export const addOrdersToUser = (userId, orderId) => {
 export const addingProfileImageURL = (userId, url) => {
   return DB.doc(userId).update({
     Profile_Image_URL: url
-  }, { merge: true })
+  })
 }
 
 export const deleteDocument = docId => {

@@ -31,10 +31,11 @@ const downloadImageError = err => {
     }
 }
 
-export const imageUpload = (userId, imageFile) => {
+export const imageUpload = (userId, imageFile, reloadWindow) => {
     return dispatch => {
         storage.uploadImage(userId, imageFile).then(snap => {
             NProgress.done();
+            reloadWindow.location.reload();
             dispatch(imageUploadSuccess())
         }).catch(err => dispatch(imageUploadError(err)))
     };
@@ -44,8 +45,7 @@ export const downloadImage = userId => {
     return dispatch => {
         storage.downloadImage(userId).then(url => {
             if(url) {
-                // db.addingProfileImageURL(url).then(() => dispatch(downloadImageSucces()));   
-                console.log(url);
+                db.addingProfileImageURL(userId, url).then(() => dispatch(downloadImageSucces()));   
             }
         }).catch(err => dispatch(downloadImageError(err)))
     }
