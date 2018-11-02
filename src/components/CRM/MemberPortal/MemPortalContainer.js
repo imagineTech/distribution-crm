@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => {
     getProfileData: userId => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
     getProductImage: () => dispatch(loadProductImage()),
-    uploadProfileImage: (userId, imageFile) => dispatch(imageUpload(userId, imageFile)),
+    uploadProfileImage: (userId, imageFile, reloadWindow) => dispatch(imageUpload(userId, imageFile, reloadWindow)),
     downloadProfileImage: userId => dispatch(downloadImage(userId))
   }
 };

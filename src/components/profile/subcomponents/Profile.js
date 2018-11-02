@@ -19,7 +19,7 @@ class Profile extends Component {
     const { uploadProfileImage, profileData } = this.props;
     const { imageFile } = this.state;
     e.preventDefault();
-    uploadProfileImage(profileData.id, imageFile);
+    uploadProfileImage(profileData.id, imageFile, window);
   }
 
   render(){

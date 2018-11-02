@@ -31,10 +31,11 @@ const downloadImageError = err => {
     }
 }
 
-export const imageUpload = (userId, imageFile) => {
+export const imageUpload = (userId, imageFile, reloadWindow) => {
     return dispatch => {
         storage.uploadImage(userId, imageFile).then(snap => {
             NProgress.done();
+            reloadWindow.location.reload();
             dispatch(imageUploadSuccess())
         }).catch(err => dispatch(imageUploadError(err)))
     };
