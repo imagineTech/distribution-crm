@@ -24,8 +24,14 @@ class Profile extends Component {
 
   render(){
     let { profileData, path } = this.props;
+    let url = profileData.Profile_Image_URL;
     return(
       <div>
+        <figure>
+          {url !== undefined ? 
+          <img src={url} alt={"profile_image_" + profileData.id} /> : <img src="" alt="no_profile_image" />
+          }
+        </figure>
         <h1 className="displayinline">{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
         <p>Email: {profileData.Email}</p>
         <button><Link to={`${path}/${routes.EDIT_PROFILE}`}>Edit Profile</Link></button>
