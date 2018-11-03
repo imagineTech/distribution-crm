@@ -15,10 +15,10 @@ export const loadProductImageData = imageProductData => {
   }
 }
 
-export const decrementSuccess = inventory => {
+export const decrementSuccess = () => {
   return {
     type: "INVENTORY_DECREMENT_SUCCESS",
-    inventory
+    message: "decrement of product inventory was successfull :)"
   }
 }
 
@@ -38,10 +38,14 @@ export const loadProductImage = productId => {
   }
 }
 
-export const decrementStock = (productId, quantity) => {
+export const decrementStock = cart => {
   return dispatch => {
-    Moltin.decreaseProductStock(productId, quantity).then(inventory => {
-      dispatch(decrementSuccess(inventory.data))
+    cart.map(item => {
+      return Moltin.decreaseProductStock(item.product_id, item.quantity).then(inventory => {
+        if (inventory) {
+          dispatch(decrementSuccess())
+        }
+      })
     })
   }
 }

@@ -16,13 +16,10 @@ export const loadingProductData = (state = {}, action) => {
   }
 }
 
-export const decrementProductStock = (state = {}, action) => {
+export const decrementProductStock = (state = "", action) => {
   switch(action.type) {
     case "INVENTORY_DECREMENT_SUCCESS":
-      return {
-        ...state,
-        inventory: {...state.inventory, ...action.inventory}
-      }
+      return action.message;
     default: 
       return state;
   }
