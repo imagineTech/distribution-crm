@@ -11,16 +11,19 @@ import '../OurTeam.css';
 const TeamContent = (props) => {
   return(
     <ContentWrapper>
-
-      <img className="main-pics" src={props.myPics} />
-      <h2 style={{margin: 0}}>{props.name}</h2>
-      <p style={{margin: 0, marginBottom: '20px'}}>{props.title}</p>
+      <img className="main-pics" src={props.myPics} alt="team_pics" />
+      <h2>{props.name}</h2>
+      <h4>{props.title}</h4>
       <div className="main-description">
         <p style={{margin: 0}}>{props.description}</p>
       </div>
+      {/* 
+      Leaving this here for now, will look into best ways for emailing 
+      with react. 
       <div className="mail-icon">
-        <a  href="mailto:office@cilph.com"></a>
-      </div>
+        <a  href="mailto:office@cilph.com">A link icon</a>
+      </div> 
+      */}
     </ContentWrapper>
   )
 }

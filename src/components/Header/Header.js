@@ -40,10 +40,12 @@ class Header extends Component {
 				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
 
 			</div>
-				<div id='contact'>
-						<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
-				</div>
-				<Link to={routes.SIGN_IN}>
+      <Link to={routes.CONTACT}>
+			  	<div id='contact'>
+					  	<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
+			  	</div>
+      </Link>
+			<Link to={routes.SIGN_IN}>
 					<div id='sign-in'>
 						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
 					</div>
@@ -62,9 +64,16 @@ class Header extends Component {
 				
 				<div id="myContactModal" style={{display: 'none'}}>
 					<div className='contact-modal-content'>
-						<Contact
-							closeContactModal={this.closeContactModal} 
-						/>
+					<Route 
+						exact 
+						path={routes.CONTACT} 
+						render={rest => {
+							return <Contact
+								{...rest}
+								closeContactModal={this.closeContactModal} 
+							/>
+						}} 
+					/>
 					</div>	
 				</div>
 
