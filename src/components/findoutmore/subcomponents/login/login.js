@@ -32,7 +32,7 @@ class Login extends Component {
     const { loginError } = this.props;
     return (
       <div>
-				<FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
+	      <FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
 
         <p className='modal-title' id='login'>Login</p>
 
@@ -49,6 +49,7 @@ class Login extends Component {
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
           </label>
           <br/>
+
           <button>Login</button>
 
         </form>

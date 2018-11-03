@@ -11,7 +11,6 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
-
 //Custom components
 import { Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
@@ -112,7 +111,6 @@ class App extends Component {
               <Route exact path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
             </div>
           }
-          {/* <Footer /> */}
         </div>
       );
     }

@@ -1,13 +1,8 @@
 import React from 'react';
-
-//header/footer
-import TempHeader from '../../TempHeader';
-import TempFooter from '../../TempFooter';
 import './BecomingAMember.css';
 
 //partials
 import BecomingAMemberWrapper from './partials/BecomingAMemberWrapper';
-
 
 const BecomingAMember = (props) => {
   return(
