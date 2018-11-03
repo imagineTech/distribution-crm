@@ -43,9 +43,10 @@ class CheckoutButton extends Component{
             //   payment: `${payload.token.id}`
             // }
             // Moltin.payForOrder(order.data.id, payment);
-            addingOrdDataToStore(profileData.id, order.data.id);
-            deleteCrt(profileData.id);
-            history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
+            // addingOrdDataToStore(profileData.id, order.data.id);
+            // deleteCrt(profileData.id);
+            // history.push(`${routes.ORDER_REVIEW}/${order.data.id}`);
+            console.log(order)
             });
         });
     }
