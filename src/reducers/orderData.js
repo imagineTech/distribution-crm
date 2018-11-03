@@ -12,7 +12,7 @@ export const loadingCurrentOrderData = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export const loadStoredOrderData = (state = {}, action) => {
   switch (action.type) {
@@ -24,6 +24,18 @@ export const loadStoredOrderData = (state = {}, action) => {
           ...action.payload
         }
       };
+    default:
+      return state;
+  }
+};
+
+export const loadOrderItems = (state = {}, action) => {
+  switch(action.type) {
+    case "LOAD_ORDER_ITEMS":
+      return {
+        ...state, 
+        items: [ ...state.items, {...action.orderItems}]
+      }
     default:
       return state;
   }
