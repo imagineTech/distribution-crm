@@ -10,7 +10,7 @@ import { emailAndPasswordToState, handleErrorForLogin } from './loginAuth';
 import { storeProfileData, storeNewProfileData ,passwordResetSuccess } from './profileData';
 import { loadingProductData, decrementProductStock } from './productData';
 import { loadingCartData } from './cartData';
-import { loadingCurrentOrderData, loadStoredOrderData, loadOrderItems } from './orderData';
+import { loadingCurrentOrderData, loadStoredOrderData } from './orderData';
 
 export default combineReducers({
   emailAndPasswordData,
@@ -25,5 +25,4 @@ export default combineReducers({
   loadingCartData,
   loadingCurrentOrderData,
   loadStoredOrderData,
-  loadOrderItems
 });

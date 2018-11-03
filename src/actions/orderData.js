@@ -16,24 +16,9 @@ export const addOrderDataToLoad = (orderInfo, orderItems) => {
   }
 }
 
-export const loadOrderItemsSuccess = orderItems => {
-  return {
-    type: "LOAD_ORDER_ITEMS",
-    orderItems
-  }
-}
-
 export const addOrderDataToStore = (authId, orderId) => {
   return dispatch => {
     db.addOrdersToUser(authId, { id: orderId });
-  }
-}
-
-export const loadOrderItems = orderId => {
-  return dispatch => {
-    Moltin.getOrderItems(orderId).then(items => {
-      dispatch(loadOrderItemsSuccess(items.data));
-    })
   }
 }
 

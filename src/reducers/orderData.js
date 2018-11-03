@@ -28,15 +28,3 @@ export const loadStoredOrderData = (state = {}, action) => {
       return state;
   }
 };
-
-export const loadOrderItems = (state = {}, action) => {
-  switch(action.type) {
-    case "LOAD_ORDER_ITEMS":
-      return {
-        ...state, 
-        items: [ ...state.items, {...action.orderItems}]
-      }
-    default:
-      return state;
-  }
-}
