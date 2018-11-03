@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     updateQty: (cartId, itemId, newQty) => dispatch(updateCartItemQty(cartId, itemId, newQty)),
     removeItm: (cartId, itemId, qty) => dispatch(removingCartItem(cartId, itemId, qty)),
     deleteCrt: (cartId) => dispatch(deleteCart(cartId)),
-    decreaseStock: (productId, qunatity) => dispatch(decrementStock(productId, qunatity)),
+    decreaseStock: cart => dispatch(decrementStock(cart)),
     addingOrdDataToStore: (userId, ordId) => dispatch(addOrderDataToStore(userId, ordId)),
     checkOut: (refId, customerId, billing, shipping) =>dispatch(checkOutCart(refId, customerId, billing, shipping))
   }
