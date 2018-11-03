@@ -12,7 +12,7 @@ export const loadingCurrentOrderData = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export const loadStoredOrderData = (state = {}, action) => {
   switch (action.type) {
@@ -27,4 +27,4 @@ export const loadStoredOrderData = (state = {}, action) => {
     default:
       return state;
   }
-}
+};

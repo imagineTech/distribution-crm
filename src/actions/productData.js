@@ -1,17 +1,24 @@
 import * as Moltin from '../moltin/index';
 
-export const loadProductData = (prodData) => {
+export const loadProductData = prodData => {
   return {
     type: "LOAD_PRODUCTS",
     payload: prodData
   }
 }
 
-export const loadProductImageData = (imageProductData) => {
+export const loadProductImageData = imageProductData => {
   return {
     type: "LOAD_PRODUCT_IMAGE",
     payload: imageProductData,
     imgesExist: false
+  }
+}
+
+export const decrementSuccess = () => {
+  return {
+    type: "INVENTORY_DECREMENT_SUCCESS",
+    message: "decrement of product inventory was successfull :)"
   }
 }
 
@@ -23,10 +30,22 @@ export const loadProducts = () => {
   }
 } 
 
-export const loadProductImage = (productId) => {
+export const loadProductImage = productId => {
   return dispatch => {
     Moltin.getProductImage(productId).then(productImageData => {
       dispatch(loadProductImageData(productImageData))
+    })
+  }
+}
+
+export const decrementStock = cart => {
+  return dispatch => {
+    cart.map(item => {
+      return Moltin.decreaseProductStock(item.product_id, item.quantity).then(inventory => {
+        if (inventory) {
+          dispatch(decrementSuccess())
+        }
+      })
     })
   }
 }
