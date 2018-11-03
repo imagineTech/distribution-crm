@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { Link, Route, NavLink } from 'react-router-dom';
+import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
@@ -16,7 +16,6 @@ class Header extends Component {
 	closeContactModal = () => {
 		document.getElementById('myContactModal').style.display = 'none';
 	}
-
 	openLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'block';
 
@@ -31,20 +30,26 @@ class Header extends Component {
 		
 		<div className="header">
 
-		
-			
 			<div className='contact-sign-in'>
-				<Link to={routes.CONTACT}>
-					<div id='contact'>
-							<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
+
+						<div className="navLinksContainer">
+				<NavLink to={routes.HOME} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">HOME</NavLink>
+				<NavLink to={routes.ABOUT} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">ABOUT</NavLink>
+				<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>	
+
+				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
+
+			</div>
+      <Link to={routes.CONTACT}>
+			  	<div id='contact'>
+					  	<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
+			  	</div>
+      </Link>
+			<Link to={routes.SIGN_IN}>
+					<div id='sign-in'>
+						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
 					</div>
 				</Link>
-				{auth ? null : <Link to={routes.SIGN_IN}>
-					<div id='sign-in'>
-							<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
-
-					</div>
-				</Link>}
 			</div>
 
 			<Link to={routes.HOME} className="navLink">
@@ -53,14 +58,7 @@ class Header extends Component {
 
 			{/* <img src="https://dummyimage.com/200x100/000/fff" className="logo"></img> */}
 
-			<div className="navLinksContainer">
-				<Link to={routes.HOME} className="navLink">HOME</Link>
-				<Link to={routes.ABOUT} className="navLink">ABOUT</Link>
-				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
 
-				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
-
-			</div>
 
 {/* ========== Contact Modal ========== */}
 				
@@ -84,8 +82,7 @@ class Header extends Component {
 				<div id="myLoginModal" style={{display: 'none'}}>
 					<div className='login-modal-content'>
 						<Route 
-							exact
-							path={routes.SIGN_IN} 
+							exact path={routes.SIGN_IN} 
 							render={rest => {
 								return <Login 
 									{...rest} 
