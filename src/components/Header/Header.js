@@ -36,8 +36,7 @@ class Header extends Component {
 				<NavLink exact={true} to={routes.HOME} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">HOME</NavLink>
 				<NavLink to={routes.ABOUT} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">ABOUT</NavLink>
 				<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>	
-
-				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
+				{auth && <NavLink to={routes.MEMBER_PORTAL} activeStyle={{ color: 'black', borderBottom: '#C02932 2px solid' }} className="navLink">PORTAL</NavLink>}
 
 			</div>
       <Link to={routes.CONTACT}>
@@ -45,11 +44,13 @@ class Header extends Component {
 					  	<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
 			  	</div>
       </Link>
+			{auth ? null : 
 			<Link to={routes.SIGN_IN}>
 					<div id='sign-in'>
 						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
 					</div>
 				</Link>
+			}
 			</div>
 
 			<Link to={routes.HOME} className="navLink">
