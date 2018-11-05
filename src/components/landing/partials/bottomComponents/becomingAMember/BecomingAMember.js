@@ -8,7 +8,6 @@ const BecomingAMember = (props) => {
   return(
     <div>
       <BecomingAMemberWrapper>
-      <TempHeader/>
       <h1>BECOMING A MEMBER</h1>
       <p>Candidates must have a registered business. To become a member, just follow the simple 3 step process below</p>
        <div class="container">
