@@ -17,31 +17,39 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
           <input
             name="First_Name"
             onChange={changed}
+            required
           />
         </label>
         <label> Last Name:
           <input
             name="Last_Name"
             onChange={changed}
+            required
           />
         </label>
         <label>Email:
           <input
             name="Email"
             onChange={changed}
+            type="email"
           />
         </label>
         <label>New Password:
           <input
             name="New_Password"
             onChange={changed}
+            type="password"
+            
           />
         </label>
         <label>Confirm New Password:
           <input
             name="Confirm_Password"
             onChange={changed}
+            type="password"
+            
           />
+          
         </label>
         <button>Save</button>
       </form>
