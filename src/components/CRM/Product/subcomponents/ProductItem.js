@@ -60,56 +60,11 @@ class ProductItem extends Component {
 };
 
 ProductItem.propTypes = {
-  productData: PropTypes.arrayOf(PropTypes.shape({
-    commodity_type: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    manage_stock: PropTypes.bool.isRequired,
-    meta: PropTypes.shape({
-      display_price: PropTypes.shape({
-        with_tax: PropTypes.shape({
-          ammount: PropTypes.number.isRequired,
-          currency: PropTypes.string.isRequired,
-          formatted: PropTypes.string.isRequired
-        }).isRequired,
-        without_tax: PropTypes.shape({
-          ammount: PropTypes.number.isRequired,
-          currency: PropTypes.string.isRequired,
-          formatted: PropTypes.string.isRequired
-        }).isRequired
-      }).isRequired,
-      stock: PropTypes.shape({
-        level: PropTypes.number.isRequired,
-        availability: PropTypes.string.isRequired
-      }).isRequired,
-      timestamps: PropTypes.shape({
-        created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    relationships: PropTypes.object.isRequired,
-    sku: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  productData: PropTypes.array.isRequired,
   imageProductData: PropTypes.objectOf(PropTypes.array.isRequired).isRequired,
   addProducts: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
-  profileData: PropTypes.shape({
-    Company: PropTypes.string.isRequired,
-    Country: PropTypes.string.isRequired,
-    Department: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    First_Name: PropTypes.string.isRequired,
-    Last_Name: PropTypes.string.isRequired,
-    Moltin_User_Id: PropTypes.string.isRequired,
-    Orders: PropTypes.array.isRequired,
-    Password: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
-  }).isRequired,
+  profileData: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 }
 
