@@ -24,12 +24,16 @@ export const getAllProducts = () => {
   return Moltin.Products.All();
 }
 
+export const getProductImage = () => {
+  return Moltin.Products.With('main_image').All();
+}
+
 export const addProductsToCart = (refId, productId, productQuantity) => {
   return Moltin.Cart(refId).AddProduct(productId, productQuantity);
 }
 
-export const getProductImage = () => {
-  return Moltin.Products.With('main_image').All();
+export const decreaseProductStock = (productId, quantity) => {
+  return Moltin.Inventories.DecrementStock(productId, quantity);
 }
 
 export const getACart = (refId) => {

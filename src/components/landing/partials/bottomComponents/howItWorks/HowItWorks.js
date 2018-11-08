@@ -1,9 +1,5 @@
 import React from 'react';
 
-// Header/footer
-import TempHeader from '../../TempHeader';
-import TempFooter from '../../TempFooter';
-
 //partials
 import HowItWorksWrapper from './partials/HowItWorksWrapper';
 import ContentContainer from './partials/ContentContainer';
@@ -16,7 +12,6 @@ import { RegistrationRedirection } from '../../../../Navigation';
 const HowItWorks = () => {
   return(
     <div>
-      <TempHeader />
       <HowItWorksWrapper>
         <ContentContainer>
           <Content title="Product Offer Priority" description="As you'll notice, we're very selective with our client base. The purpose for this is to ensure that we do not saturate the market with too much competition. We also want to provide the best possible service. We consider every one of our clients a business partner. Because of these reasons, we do not favor one client over another. Only our registered clients are allowed to purchase product from us, and our products are sold on a first come first serve basis." /><hr />
@@ -30,7 +25,6 @@ const HowItWorks = () => {
           <RegistrationRedirection />
         </ImageContainer>
       </HowItWorksWrapper>
-      <TempFooter />
     </div>
   )
 }

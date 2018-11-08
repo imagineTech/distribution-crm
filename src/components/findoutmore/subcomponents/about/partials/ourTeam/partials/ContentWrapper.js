@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
-  background: white;
-  height: 750px;
-  width: 280px;
-  padding: 0 30px;
+  // background: pink;
+  height: 800px;
+  width: 22vw;
   line-height: 30px;
   font-size: 18px;
-  display: inline-block;
-  margin: 20px 10px;
-  border: 2px solid black;
-  overflow: hidden;
+  margin: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export default ContentWrapper;

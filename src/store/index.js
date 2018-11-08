@@ -31,7 +31,8 @@ export const creatingTheStore = () => {
       'handleErrorForLogin',
       'passwordResetSuccess',
       'loadingCurrentOrderData',
-      'loadingProductData'
+      'loadingProductData',
+      'decrementProductStock'
     ]
   };
   const store = createStore(
