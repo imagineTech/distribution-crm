@@ -10,10 +10,15 @@ import PropTypes from 'prop-types';
 class CartContainer extends Component {
 
   componentDidMount() {
-    const { profileData, getProfileData, getCartData, auth } = this.props;
-    getProfileData(auth.authUser.uid);
-    getCartData(profileData.id);
-    console.log(profileData)
+    const { getCartData, auth } = this.props;
+    getCartData(auth.authUser.uid);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { getProfileData, auth } = nextProps;
+    if (nextProps.profileData === this.props.profileData) {
+      getProfileData(auth.authUser.uid);
+    }
   }
 
   render() {
@@ -44,10 +49,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 CartContainer.propTypes = {
-  profileData: PropTypes.shape({
-    id: PropTypes.string.isRequired
-  }).isRequired,
+  auth: PropTypes.object.isRequired,
   getCartData: PropTypes.func.isRequired,
+  getProfileData: PropTypes.func.isRequired,
+  updateQty: PropTypes.func.isRequired,
+  removeItm: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
