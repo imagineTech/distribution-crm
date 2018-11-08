@@ -9,6 +9,7 @@
     "@moltin/sdk": "^3.14.0",
     "ajv": "^6.5.4",
     "firebase": "^5.5.1",
+    "firebase-functions": "^2.1.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "nprogress": "^0.2.0",

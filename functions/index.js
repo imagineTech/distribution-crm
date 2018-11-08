@@ -17,3 +17,15 @@ exports.userCreation = functions.https.onRequest((req, res) => {
     })
   })
 });
+
+exports.sendOrderConfirm = functions.firestore
+  .document('distribution-crm/Buyer/{BuyerId}')
+  .onUpdate((change, context) => {
+    // const oldData = change.before.data();
+    // const newData = change.after.data();
+    // if (newData.Orders) {
+    //   if (oldData.Orders.length)
+    //   var order = newData.Orders[newData.Orders.length-1]
+    // }
+    console.log('@@@@@@@@Buyer Updated@@@@@@@@sud')
+  })
