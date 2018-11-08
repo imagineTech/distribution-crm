@@ -35,7 +35,6 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="email"
             name="Email"
             onChange={changed}
-            type="email"
           />
         </label>
         <label>New Password:
@@ -43,7 +42,6 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="password"
             name="New_Password"
             onChange={changed}
-            type="password"
             
           />
         </label>
@@ -52,7 +50,6 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="password"
             name="Confirm_Password"
             onChange={changed}
-            type="password"
             
           />
           
