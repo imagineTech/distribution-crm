@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { Link, Route, NavLink } from 'react-router-dom';
-import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
