@@ -7,6 +7,7 @@ import { Router } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { _stripeKey } from './stripe/config_stripe';
 import App from './containers/App';
+import 'font-awesome/css/font-awesome.min.css'
 
 const store = creatingTheStore().store;
 const persistor = creatingTheStore().persistor;

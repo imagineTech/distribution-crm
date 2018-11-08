@@ -32,6 +32,8 @@ const HowItWorksLink = () =>
 const SoldProducts = () =>
     <div><Link to={routes.SOLD_PRODUCTS}><LandingButton>SOLD PRODUCTS</LandingButton></Link></div>
 
+
+
 //links for the find out page
 const FindoutLinks = () =>
   <LinksNav>
@@ -47,5 +49,5 @@ export { FindoutLinks };
 export { BecomingAMemberLink };
 export { HowItWorksLink };
 export { SoldProducts };
-export { BecomingAMemberInstructionsLink }
-export { RegistrationRedirection }
+export { BecomingAMemberInstructionsLink };
+export { RegistrationRedirection };
