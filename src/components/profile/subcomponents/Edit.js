@@ -19,6 +19,7 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="text"
             name="First_Name"
             onChange={changed}
+            required
           />
         </label>
         <label> Last Name:
@@ -26,6 +27,7 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="text"
             name="Last_Name"
             onChange={changed}
+            required
           />
         </label>
         <label>Email:
@@ -33,6 +35,7 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="email"
             name="Email"
             onChange={changed}
+            type="email"
           />
         </label>
         <label>New Password:
@@ -40,6 +43,8 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="password"
             name="New_Password"
             onChange={changed}
+            type="password"
+            
           />
         </label>
         <label>Confirm New Password:
@@ -47,7 +52,10 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             type="password"
             name="Confirm_Password"
             onChange={changed}
+            type="password"
+            
           />
+          
         </label>
         <label>Company: 
           <input 

@@ -52,6 +52,7 @@ class ProfileContainer extends Component {
     deletingUser(profileData.Moltin_User_Id, profileData.id, history)
   }
 
+
   render() {
     console.log('PROFILE CONTAINER RENDERED',this.props)
     const { rest } = this.props
