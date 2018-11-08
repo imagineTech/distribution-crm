@@ -11,6 +11,7 @@ import { dataToLoginWith, loginWithEmailAndPassword } from '../../../../actions/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ErrorComponent from'./subcomponents/Error';
 import * as routes from '../../../../constants/routes';
+import PropTypes from 'prop-types';
 
 class Login extends Component {
 
@@ -31,7 +32,7 @@ class Login extends Component {
     const { loginError } = this.props;
     return (
       <div>
-				<FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
+	      <FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
 
         <p className='modal-title' id='login'>Login</p>
 
@@ -48,6 +49,7 @@ class Login extends Component {
             <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
           </label>
           <br/>
+
           <button>Login</button>
 
         </form>
@@ -71,6 +73,15 @@ const mapDispatchToProps = dispatch => {
     emailAndPasswordChange: (name, value) => dispatch(dataToLoginWith(name, value)),
     emailAndPasswordLogin: (email, password, history, reloadWindow) => dispatch(loginWithEmailAndPassword(email, password, history, reloadWindow))
   }
+}
+
+Login.propTypes = {
+  emailAndPasswordChange: PropTypes.func.isRequired,
+  emailAndPassword: PropTypes.object.isRequired,
+  emailAndPasswordLogin: PropTypes.func.isRequired,
+  loginError: PropTypes.object.isRequired,
+  closeLoginModal: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

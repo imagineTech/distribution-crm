@@ -6,7 +6,7 @@ import ProductInfoWrapper from './partials/ProductInfoWrapper'
 // CSS
 import './partials/ProductPage.css'
 
-class productPage extends React.Component {
+class productPage extends Component {
 constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ constructor(props) {
 			<div>
 				<Background>
 					<Container>
-						<img className='productImage'></img>
+						<img className='productImage' alt="" />
 						<ProductInfoWrapper>
 							<div className='title'>product.title</div>
 							<div className='description'>product.description</div>

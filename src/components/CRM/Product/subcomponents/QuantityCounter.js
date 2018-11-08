@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 // CSS
 import './ProductPage/partials/ProductPage.css'
+import PropTypes from 'prop-types';
 
 class QuantityCounter extends Component {
 
   handleChange = e => {
     let { quantity, onQuantityChange } = this.props;
     quantity = e.target.value;
-    onQuantityChange(quantity);
+    onQuantityChange(parseInt(quantity));
   };
 
   handleAddition = e => {
     let { quantity, onQuantityChange } = this.props;
     quantity = ++e.target.value;
-    onQuantityChange(quantity);
+    onQuantityChange(parseInt(quantity));
   };
 
   handleSubtraction = e => {
@@ -21,10 +22,10 @@ class QuantityCounter extends Component {
     if (quantity <= 0) {
       alert("Can't go below 0");
       quantity = ++e.target.value;
-      onQuantityChange(quantity);
+      onQuantityChange(parseInt(quantity));
     }
     quantity = --e.target.value;
-    onQuantityChange(quantity);
+    onQuantityChange(parseInt(quantity));
   };
 
   render() {
@@ -48,6 +49,11 @@ class QuantityCounter extends Component {
       </div>
     );
   }
+}
+
+QuantityCounter.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  onQuantityChange: PropTypes.func.isRequired
 }
 
 export default QuantityCounter;

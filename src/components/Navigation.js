@@ -24,13 +24,13 @@ const BecomingAMemberInstructionsLink = () =>
   <div><Link to={routes.BECOMING_A_MEMBER}><h2>Find out how to become a memeber!</h2></Link></div>
 
 const BecomingAMemberLink = () =>
-    <div><Link to={routes.BECOMING_A_MEMBER}><LandingButton>BECOME A MEMBER</LandingButton></Link></div>
+    <div className='bottom-image-container'><Link to={routes.BECOMING_A_MEMBER} style={{textDecoration: 'none'}}><LandingButton style={{backgroundImage: "url('https://images.unsplash.com/photo-1536141248755-a88ad9a2dcab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=490c41bd30d514b86d1639f96b7d66f3&auto=format&fit=crop&w=750&q=80')"}}>BECOMING A MEMBER</LandingButton></Link></div>
 
 const HowItWorksLink = () =>
-    <div><Link to={routes.HOW_IT_WORKS}><LandingButton>HOW IT WORKS</LandingButton></Link></div>
+    <div className='bottom-image-container'><Link to={routes.HOW_IT_WORKS} style={{textDecoration: 'none'}}><LandingButton style={{backgroundImage: "url('https://images.unsplash.com/photo-1526045405698-cf8b8acc4aaf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=de7f7c5a341e5e6a2056f26dcba73687&auto=format&fit=crop&w=500&q=60')"}}>HOW IT WORKS</LandingButton></Link></div>
 
 const SoldProducts = () =>
-    <div><Link to={routes.SOLD_PRODUCTS}><LandingButton>SOLD PRODUCTS</LandingButton></Link></div>
+    <div className='bottom-image-container'><Link to={routes.SOLD_PRODUCTS} style={{textDecoration: 'none'}}><LandingButton style={{backgroundImage: "url('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b8871553433235948b9931cf8513295&auto=format&fit=crop&w=695&q=80')"}}>SOLD PRODUCTS</LandingButton></Link></div>
 
 
 

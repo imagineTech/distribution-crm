@@ -1,9 +1,5 @@
 import React from 'react';
 
-// Header/footer
-import TempHeader from '../../TempHeader';
-import TempFooter from '../../TempFooter';
-
 //partials
 import HowItWorksWrapper from './partials/HowItWorksWrapper';
 import ContentContainer from './partials/ContentContainer';

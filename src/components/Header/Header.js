@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { Link, Route, NavLink } from 'react-router-dom';
 import LinksNav from '../findoutmore/partials/LinksNav';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Contact from './../Contact/Contact.js';
 import Login from './../findoutmore/subcomponents/login/login.js';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
 
@@ -16,7 +16,6 @@ class Header extends Component {
 	closeContactModal = () => {
 		document.getElementById('myContactModal').style.display = 'none';
 	}
-
 	openLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'block';
 
@@ -31,18 +30,27 @@ class Header extends Component {
 		
 		<div className="header">
 
-		
-			
 			<div className='contact-sign-in'>
-				<div id='contact'>
-						<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginRight: '5px'}}/>
-				</div>
-				<Link to={routes.SIGN_IN}>
-					<div id='sign-in'>
-							<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{ height: '20px', width: '20px', marginLeft: '5px' }} />
 
+						<div className="navLinksContainer">
+				<NavLink exact={true} to={routes.HOME} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">HOME</NavLink>
+				<NavLink to={routes.ABOUT} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">ABOUT</NavLink>
+				<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>	
+				{auth && <NavLink to={routes.MEMBER_PORTAL} activeStyle={{ color: 'black', borderBottom: '#C02932 2px solid' }} className="navLink">PORTAL</NavLink>}
+
+			</div>
+      <Link to={routes.CONTACT}>
+			  	<div id='contact'>
+					  	<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
+			  	</div>
+      </Link>
+			{auth ? null : 
+			<Link to={routes.SIGN_IN}>
+					<div id='sign-in'>
+						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
 					</div>
 				</Link>
+			}
 			</div>
 
 			<Link to={routes.HOME} className="navLink">
@@ -51,24 +59,22 @@ class Header extends Component {
 
 			{/* <img src="https://dummyimage.com/200x100/000/fff" className="logo"></img> */}
 
-			<div className="navLinksContainer">
-				<Link to={routes.HOME} className="navLink">HOME</Link>
-				<Link to={routes.ABOUT} className="navLink">ABOUT</Link>
- 
-				<Link to={routes.SIGN_UP} className="navLink">REGISTER</Link>	
-				{/* <Link to={routes.SIGN_IN} className="navLink">LOGIN</Link> */}
 
-				{auth && <Link to={routes.MEMBER_PORTAL} className="navLink">PORTAL</Link>}
-
-			</div>
 
 {/* ========== Contact Modal ========== */}
 				
 				<div id="myContactModal" style={{display: 'none'}}>
 					<div className='contact-modal-content'>
-						<Contact
-							closeContactModal={this.closeContactModal} 
-						/>
+					<Route 
+						exact 
+						path={routes.CONTACT} 
+						render={rest => {
+							return <Contact
+								{...rest}
+								closeContactModal={this.closeContactModal} 
+							/>
+						}} 
+					/>
 					</div>	
 				</div>
 
@@ -77,8 +83,7 @@ class Header extends Component {
 				<div id="myLoginModal" style={{display: 'none'}}>
 					<div className='login-modal-content'>
 						<Route 
-							exact
-							path={routes.SIGN_IN} 
+							exact path={routes.SIGN_IN} 
 							render={rest => {
 								return <Login 
 									{...rest} 
@@ -92,5 +97,9 @@ class Header extends Component {
 	);
 }
 };
+
+Header.propTypes = {
+	auth: PropTypes.bool
+}
 
 export default Header;

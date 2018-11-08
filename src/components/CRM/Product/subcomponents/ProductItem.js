@@ -6,6 +6,7 @@ import Container from './ProductPage/partials/Container';
 import ProductInfoWrapper from './ProductPage/partials/ProductInfoWrapper';
 // CSS
 import './ProductPage/partials/ProductPage.css';
+import PropTypes from 'prop-types';
 
 class ProductItem extends Component {
 
@@ -57,5 +58,14 @@ class ProductItem extends Component {
       )
     }
 };
+
+ProductItem.propTypes = {
+  productData: PropTypes.array.isRequired,
+  imageProductData: PropTypes.objectOf(PropTypes.array.isRequired).isRequired,
+  addProducts: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  profileData: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+}
 
 export default ProductItem;

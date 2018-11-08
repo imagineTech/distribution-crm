@@ -1,29 +1,18 @@
 .footer {
-    background-color: #222;
-    height: 200px;
-    width: 100%;
-    margin: 0;
-    position: relative;
-    bottom: 0;
+	background-color: #555;
+	height: 200px;
+	width: 100%;
+	margin: 0;
+	position: relative;
+	bottom: 0;
 }
-
-.navLinksContainer{
-	color: white;
-	margin: 15px auto;
-}
-
-.navLink{
-	color: white;
-}
-
-.socialLinksContainer{
+.socialLinksContainer {
+	margin: 0;
+	/* position: absolute;
+	bottom: 0; */
 	text-align: center;
 	margin: 30px;
 }
-
-.fab{
-	margin: 10px 15px;
-	font-size: 50px;
-	text-align: center;
-	color: white;
+.socialLink {
+	/* background: blue; */
 }
