@@ -7,7 +7,6 @@ import './landing.css';
 import LandingWrapper from './partials/LandingWrapper';
 import TopBanner from './partials/TopBanner';
 import BottomContent from './partials/BottomContent';
-import BottomComponentsWrapper from './partials/bottomComponents/BottomComponentsWrapper';
 import { BecomingAMemberLink } from '../Navigation';
 import { HowItWorksLink } from '../Navigation';
 import { SoldProducts } from '../Navigation';
