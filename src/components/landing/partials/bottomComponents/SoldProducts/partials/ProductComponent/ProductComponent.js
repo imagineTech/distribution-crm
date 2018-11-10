@@ -4,14 +4,22 @@ import React from 'react';
 import ContentWrapper from './ContentWrapper';
 import ImageWrapper from './ImageWrapper';
 import TextWrapper from './TextWrapper';
-import Text from './Text';
+
+import '../../SoldProducts.css';
+
 
 const ProductComponent = (props) => {
   return(
-    <ContentWrapper>
+    <ContentWrapper className="details">
       <ImageWrapper />
       <TextWrapper>
-        <Text />
+        <h3 className="details">Brand: {props.brandName}</h3>
+        <h3 className="details">Product Name: {props.productDescription}</h3>
+        <h3 className="details">Retails at: {props.retailPrice}</h3>
+        <h3 className="details">Unit Price: {props.unitPrice}</h3>
+        <h3 className="details">Quantity: {props.quantity}</h3>
+        <h3 className="details">Total: {props.total}</h3>
+        <h3 className="details">{props.details}</h3>
       </TextWrapper>
     </ContentWrapper>
   )

@@ -1,5 +1,5 @@
 .footer {
-	background-color: #555;
+	background-color: #333;
 	height: 200px;
 	width: 100%;
 	margin: 0;
@@ -11,7 +11,20 @@
 	/* position: absolute;
 	bottom: 0; */
 	text-align: center;
+	margin: 30px;
 }
 .socialLink {
 	/* background: blue; */
+}
+
+.fab{
+
+	color: #ccc;
+	font-size: 75px;
+	margin: 25px;
+}
+
+.fab:hover{
+	transition: all .7s;
+	color: white;
 }
