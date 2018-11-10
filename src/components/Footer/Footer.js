@@ -3,8 +3,7 @@ import '../Header/Header.css';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import * as routes from '../../constants/routes';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BottomIcons } from '../Navigation';
+
 
 const footer = () => {
     return (
