@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BottomIcons } from '../Navigation';
 
 const footer = () => {
-<<<<<<< HEAD
-
     return (
         <div className="footer">
 
@@ -27,8 +25,7 @@ const footer = () => {
             </div>
         </div>
     );
-=======
-	
+
 	return (
 		<div className="footer">
 
@@ -51,7 +48,6 @@ const footer = () => {
 
 		</div>
 	);
->>>>>>> 7e8ea54e4cafbb87c12e3d186da7dc78fba068a4
 };
 
 
