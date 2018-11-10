@@ -12,7 +12,7 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
 //Custom components
-import { Route } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import LoadingComponent from '../components/LoadingComponent';
 import Landing from '../components/landing/Landing';
@@ -24,6 +24,7 @@ import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
+import Login from '../components/findoutmore/subcomponents/login/login.js';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
 import Header from '../components/Header/Header';
@@ -79,23 +80,52 @@ class App extends Component {
     })
 
   }
+  //We have tos et previousLocation as a global var for easy
+  //of access
+  previousLocation = this.props.location;
+
+  componentWillUpdate(nextProps) {
+    let { location } = this.props;
+    //This is helping with keeping the background current and not blank
+    //when a modal is open
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
 
 
   render() {
-    const { authUser, authenticated } = this.state;
+    let { authUser, authenticated } = this.state;
+    let { location } = this.props;
+    // This is to test our componentWillUpdate along 
+    // with locaiton's hidden state feature
+    let isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location
+    );
+
     return (
       <div id="main-container">
         <Header auth={authenticated}/>
-        <Route exact path={routes.HOME} component={Landing}  />
-        <Route path={routes.CONTACT} component={Contact} />
-        <Route path={routes.FIND_OUT_MORE} component={FindoutLanding} />
-        <Route path={routes.ABOUT} component={About}  />
-        <Route path={routes.OUR_POLICY} component={OurPolicy} />
-        <Route path={routes.SIGN_UP} component={SignUp} />
-        <Route path={routes.FORGOT_PASS} component={ForgotPassword} />
-        <Route path={routes.SOLD_PRODUCTS} component={SoldProducts} />
-        <Route path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
-        <Route path={routes.HOW_IT_WORKS} component={HowItWorks} />
+        {/* We are giving Switch either url location via location or previousLocation */ }
+        <Switch location={isModal ? this.previousLocation : location}>
+          <Route exact path={routes.HOME} component={Landing}  />
+          <Route path={routes.FIND_OUT_MORE} component={FindoutLanding} />
+          <Route path={routes.ABOUT} component={About}  />
+          <Route path={routes.OUR_POLICY} component={OurPolicy} />
+          <Route path={routes.SIGN_UP} component={SignUp} />
+          <Route path={routes.FORGOT_PASS} component={ForgotPassword} />
+          <Route path={routes.SOLD_PRODUCTS} component={SoldProducts} />
+          <Route path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
+          <Route path={routes.HOW_IT_WORKS} component={HowItWorks} />
+        </Switch>
+        {/* And once more for the modal to appear */}
+        {isModal ? <Route path={routes.CONTACT} component={Contact} /> : null }
+        {isModal ? <Route path={routes.SIGN_IN}component={Login} />	: null }
         <Footer />
         {/*
           This section below had to be setup because we have different
@@ -104,18 +134,18 @@ class App extends Component {
           */}
           {
             authenticated &&
-            <div>
-              <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />
-              <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
-              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} auth={{ authUser, authenticated }} /> } />
-              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
-              <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} auth={{ authUser, authenticated }} />} />
-              <Route exact path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
-            </div>
+              <Switch>
+                <Route path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />
+                <Route path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
+                <Route path={routes.CART} render={rest => <LoadCart {...rest} auth={{ authUser, authenticated }} /> } />
+                <Route path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+                <Route path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} auth={{ authUser, authenticated }} />} />
+                <Route path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
+              </Switch>
           }
         </div>
       );
     }
   }
 
-  export default App;
+  export default withRouter(App);

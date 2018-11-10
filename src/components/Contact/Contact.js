@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { db } from '../../firebase/config_firebase';
@@ -13,7 +11,6 @@ library.add(faCheckCircle)
 class Contact extends Component {
 
 	state = {
-		customerName: "",
 		message:""
 	}
 
@@ -36,6 +33,12 @@ class Contact extends Component {
 		});
 	}
 
+	close = e => {
+		const { history } = this.props;
+		e.stopPropagation();
+		history.goBack()
+	}
+
 	render() {
 		let { location } = this.props;
 		let { message } = this.state;
@@ -43,9 +46,7 @@ class Contact extends Component {
 			<div id={ location.state.modal ? "myContactModal" : undefined }>
 				<div className='contact-modal-content'>
 					<div className='contact'>
-						<Link to={routes.HOME}>
-							<FontAwesomeIcon id="close-contact-modal" icon='window-close' style={{height: 25, width: 25}}/>
-						</Link>
+						<FontAwesomeIcon id="close-contact-modal" onClick={this.close} icon='window-close' style={{height: 25, width: 25}}/>
 						{
 						message===''?
 							<div>
@@ -55,25 +56,25 @@ class Contact extends Component {
 
 									<label>Name
 									<br/>
-										<input name="customerName" type="text" value={this.props.customerName} onChange={this.handleChange} />
+										<input name="customerName" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Phone Number
 									<br/>
-										<input name="customerNumber" type="text" value={this.props.customerNumber} onChange={this.handleChange} />
+										<input name="customerNumber" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Email
 									<br/>
-										<input name="customerEmail" type="text" value={this.props.customerEmail} onChange={this.handleChange} />
+										<input name="customerEmail" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Comment or Question
 									<br/>
-										<textarea name="contactContent" type="text" value={this.props.contactContent} onChange={this.handleChange} />
+										<textarea name="contactContent" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
@@ -99,7 +100,6 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-	closeContactModal: PropTypes.func.isRequired,
 	customerName: PropTypes.string.isRequired,
 	customerNumber: PropTypes.string.isRequired,
 	customerEmail: PropTypes.string.isRequired,
