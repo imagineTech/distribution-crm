@@ -32,6 +32,8 @@ const HowItWorksLink = () =>
 const SoldProducts = () =>
     <div className='bottom-image-container'><Link to={routes.SOLD_PRODUCTS} style={{textDecoration: 'none'}}><LandingButton style={{backgroundImage: "url('https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b8871553433235948b9931cf8513295&auto=format&fit=crop&w=695&q=80')"}}>SOLD PRODUCTS</LandingButton></Link></div>
 
+
+
 //links for the find out page
 const FindoutLinks = () =>
   <LinksNav>
@@ -47,5 +49,5 @@ export { FindoutLinks };
 export { BecomingAMemberLink };
 export { HowItWorksLink };
 export { SoldProducts };
-export { BecomingAMemberInstructionsLink }
-export { RegistrationRedirection }
+export { BecomingAMemberInstructionsLink };
+export { RegistrationRedirection };

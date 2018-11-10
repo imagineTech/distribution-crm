@@ -10,7 +10,7 @@ export const createAMoltinUser = (name, email) => {
 
 export const updateMoltinUser = (id, first_name, last_name, email) => {
   const moltinUser = {
-    name: `${first_name} ${last_name}`, 
+    name: `${first_name} ${last_name}`,
     email
   };
   return Moltin.Customers.Update(id, moltinUser);
