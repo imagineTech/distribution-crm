@@ -72,7 +72,7 @@ class Header extends Component {
 			</div> 
 		);
 	}
-
+}
 
 Header.propTypes = {
 	auth: PropTypes.bool
