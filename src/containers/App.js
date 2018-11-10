@@ -23,6 +23,7 @@ import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
+import Contact from '../components/Contact/Contact';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
 import Header from '../components/Header/Header';
@@ -86,14 +87,15 @@ class App extends Component {
       <div id="main-container">
         <Header auth={authenticated}/>
         <Route exact path={routes.HOME} component={Landing}  />
-        <Route exact path={routes.FIND_OUT_MORE} component={FindoutLanding} />
-        <Route exact path={routes.ABOUT} component={About}  />
-        <Route exact path={routes.OUR_POLICY} component={OurPolicy} />
-        <Route exact path={routes.SIGN_UP} component={SignUp} />
-        <Route exact path={routes.FORGOT_PASS} component={ForgotPassword} />
-        <Route exact path={routes.SOLD_PRODUCTS} component={SoldProducts} />
-        <Route exact path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
-        <Route exact path={routes.HOW_IT_WORKS} component={HowItWorks} />
+        <Route path={routes.CONTACT} component={Contact} />
+        <Route path={routes.FIND_OUT_MORE} component={FindoutLanding} />
+        <Route path={routes.ABOUT} component={About}  />
+        <Route path={routes.OUR_POLICY} component={OurPolicy} />
+        <Route path={routes.SIGN_UP} component={SignUp} />
+        <Route path={routes.FORGOT_PASS} component={ForgotPassword} />
+        <Route path={routes.SOLD_PRODUCTS} component={SoldProducts} />
+        <Route path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
+        <Route path={routes.HOW_IT_WORKS} component={HowItWorks} />
         <Footer />
         {/*
           This section below had to be setup because we have different
@@ -105,13 +107,9 @@ class App extends Component {
             <div>
               <Route exact path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />
               <Route exact path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
-              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} /> } />
-              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />
-              <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} />} />
-
-            <Route exact path={routes.CART} render={rest => <LoadCart {...rest} auth={{ authUser, authenticated }} /> } />
-              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />
-            <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} auth={{ authUser, authenticated }} />} />
+              <Route exact path={routes.CART} render={rest => <LoadCart {...rest} auth={{ authUser, authenticated }} /> } />
+              <Route exact path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+              <Route exact path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} auth={{ authUser, authenticated }} />} />
               <Route exact path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
             </div>
           }
