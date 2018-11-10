@@ -26,15 +26,15 @@ class Header extends Component {
 	render() {
 		const { auth } = this.props;
 		return (
-		
+
 		<div className="header">
 
 			<div className='contact-sign-in'>
 
-						<div className="navLinksContainer">
+			<div className="navLinksContainer">
 				<NavLink exact={true} to={routes.HOME} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">HOME</NavLink>
 				<NavLink to={routes.ABOUT} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">ABOUT</NavLink>
-				<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>	
+				<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>
 				{auth && <NavLink to={routes.MEMBER_PORTAL} activeStyle={{ color: 'black', borderBottom: '#C02932 2px solid' }} className="navLink">PORTAL</NavLink>}
 
 			</div>
@@ -43,7 +43,7 @@ class Header extends Component {
 					  	<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
 			  	</div>
       </Link>
-			{auth ? null : 
+			{auth ? null :
 			<Link to={routes.SIGN_IN}>
 					<div id='sign-in'>
 						<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
@@ -61,36 +61,36 @@ class Header extends Component {
 
 
 {/* ========== Contact Modal ========== */}
-				
+
 				<div id="myContactModal" style={{display: 'none'}}>
 					<div className='contact-modal-content'>
-					<Route 
-						exact 
-						path={routes.CONTACT} 
+					<Route
+						exact
+						path={routes.CONTACT}
 						render={rest => {
 							return <Contact
 								{...rest}
-								closeContactModal={this.closeContactModal} 
+								closeContactModal={this.closeContactModal}
 							/>
-						}} 
+						}}
 					/>
-					</div>	
+					</div>
 				</div>
 
 {/* ========== Login Modal ========== */}
 
 				<div id="myLoginModal" style={{display: 'none'}}>
 					<div className='login-modal-content'>
-						<Route 
-							exact path={routes.SIGN_IN} 
+						<Route
+							exact path={routes.SIGN_IN}
 							render={rest => {
-								return <Login 
-									{...rest} 
+								return <Login
+									{...rest}
 									closeLoginModal={this.closeLoginModal} />
-							}} />	
-					</div>	
+							}} />
+					</div>
 				</div>
-				
+
 
 		</div>
 	);

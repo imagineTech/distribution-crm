@@ -10,12 +10,12 @@ const footer = () => {
     return (
         <div className="footer">
 
-            <div className="navLinksContainer">
-                <Link to={routes.HOME} className="navLink">Home</Link>
-                <Link to={routes.ABOUT} className="navLink">About</Link>
-                <Link to={routes.OUR_POLICY} className="navLink">Policy</Link>
-                <Link to={routes.CONTACT} className="navLink">Contact</Link>
-                <Link to={routes.SIGN_UP} className="navLink">Register</Link>
+            <div className="nav-links-container">
+                <Link to={routes.HOME} className="navLink bottom-nav">Home</Link>
+                <Link to={routes.ABOUT} className="navLink bottom-nav">About</Link>
+                <Link to={routes.OUR_POLICY} className="navLink bottom-nav">Policy</Link>
+                <Link to={routes.CONTACT} className="navLink bottom-nav">Contact</Link>
+                <Link to={routes.SIGN_UP} className="navLink bottom-nav">Register</Link>
             </div>
 
             <div className="socialLinksContainer">
@@ -25,22 +25,6 @@ const footer = () => {
             </div>
         </div>
     );
-
-	return (
-		<div className="footer">
-
-			<div className="navLinksContainer">
-				<Link to={routes.HOME} className="navLink">Home</Link>
-				<Link to={routes.ABOUT} className="navLink">About</Link>
-				<Link to={routes.OUR_POLICY} className="navLink">Policy</Link>
-				<Link to={routes.CONTACT} className="navLink">Contact</Link>
-				<Link to={routes.SIGN_UP} className="navLink">Register</Link>
-			</div>
-
-
-
-		</div>
-	);
 };
 
 
