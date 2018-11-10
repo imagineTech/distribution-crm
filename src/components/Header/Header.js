@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { Link, Route, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Login from './../findoutmore/subcomponents/login/login.js';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
 
-	openLoginModal = () => {
-		document.getElementById('myLoginModal').style.display = 'block';
-	}
-	closeLoginModal = () => {
-		document.getElementById('myLoginModal').style.display = 'none';
-	}
-
 	render() {
-		const { auth, location } = this.props;
+		const { auth } = this.props;
 		return (
 
 			<div className="header">
@@ -39,7 +31,10 @@ class Header extends Component {
 						</div>
 					</Link>
 					{auth ? null : 
-						<Link to={routes.SIGN_IN}>
+						<Link to={{
+							pathname: routes.SIGN_IN,
+							state: { modal: true }
+						}}>
 							<div id='sign-in'>
 								<FontAwesomeIcon onClick={this.openLoginModal} icon="user" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px' }} />
 							</div>
@@ -54,19 +49,7 @@ class Header extends Component {
 				</Link>
 
 				{/* <img src="https://dummyimage.com/200x100/000/fff" className="logo"></img> */}
-
-				{/* ========== Contact Modal ========== */}
 				
-				{/* ========== Login Modal ========== */}
-				<Route 
-					exact 
-					path={routes.SIGN_IN} 
-					render={rest => {
-						return <Login 
-						{...rest} 
-						closeLoginModal={this.closeLoginModal} />
-					}} 
-				/>	
 				{/* End of className="header" */}
 			</div> 
 		);

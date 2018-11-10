@@ -24,6 +24,7 @@ import About from '../components/findoutmore/subcomponents/about/About';
 import OurPolicy from '../components/findoutmore/subcomponents/ourpolicy/OurPolicy';
 // import Contact from '../components/findoutmore/subcomponents/contact/Contact';
 import Contact from '../components/Contact/Contact';
+import Login from '../components/findoutmore/subcomponents/login/login.js';
 import SignUp from '../components/findoutmore/subcomponents/signup/signup.js';
 import ForgotPassword from '../components/findoutmore/subcomponents/login/subcomponents/ForgotPassword';
 import Header from '../components/Header/Header';
@@ -124,6 +125,7 @@ class App extends Component {
         </Switch>
         {/* And once more for the modal to appear */}
         {isModal ? <Route path={routes.CONTACT} component={Contact} /> : null }
+        {isModal ? <Route path={routes.SIGN_IN}component={Login} />	: null }
         <Footer />
         {/*
           This section below had to be setup because we have different

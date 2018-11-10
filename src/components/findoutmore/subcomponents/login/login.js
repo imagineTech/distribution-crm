@@ -1,7 +1,7 @@
 /*
-  The Login component, uses redux for state management
-  on email and password, and action calls for sending it
-  to firebase
+The Login component, uses redux for state management
+on email and password, and action calls for sending it
+to firebase
 */
 
 import React, { Component } from 'react';
@@ -28,37 +28,46 @@ class Login extends Component {
     emailAndPasswordLogin(login_email, login_password, history, window);
   }
 
-  render() {
-    const { loginError } = this.props;
+  close = e => {
+    const { history } = this.props;
+    e.stopPropagation();
+    history.goBack()
+  }
+
+render() {
+    const { loginError, location } = this.props;
     return (
-      <div>
-	      <FontAwesomeIcon id="close-login-modal" onClick={this.props.closeLoginModal} icon='window-close' style={{height: 25, width: 25}}/>
+      <div id={ location.state.modal ? "myLoginModal" : undefined } >
+        <div className='login-modal-content'>  
+          <div>
+            <FontAwesomeIcon id="close-login-modal" onClick={this.close} icon='window-close' style={{height: 25, width: 25}}/>
 
-        <p className='modal-title' id='login'>Login</p>
+            <p className='modal-title' id='login'>Login</p>
 
-        <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="login_email">Email
+              <br/>
+                <input type="text" name="login_email" id="login_email" onChange={this.handleChange}/>
+              </label>
+              <br/>
 
-          <label htmlFor="login_email">Email
-          <br/>
-            <input type="text" name="login_email" id="login_email" onChange={this.handleChange}/>
-          </label>
-          <br/>
-
-          <label htmlFor="login_password">Password
-          <br/>
-            <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
-          </label>
-          <br/>
-
-          <button>Login</button>
-
-        </form>
-        <ErrorComponent error={loginError} />
-        <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link> <br />
-        <Link to={routes.FORGOT_PASS}>Forgot password?</Link>
+              <label htmlFor="login_password">Password
+              <br/>
+                <input type="password" id="login_password" name="login_password" onChange={this.handleChange} />
+              </label>
+              <br/>
+              <button>Login</button>
+            </form>
+            <ErrorComponent error={loginError} />
+            <Link to={routes.SIGN_UP}>Don't have an account? Signup</Link> <br />
+            <Link to={routes.FORGOT_PASS}>Forgot password?</Link>
+          </div>
+          {/* End of className='login-modal-content' */}
+        </div>
+        {/* End of id="myLoginModal" */}
       </div>
     )
-  }
+  }         
 };
 
 const mapStateToProps = state => {
