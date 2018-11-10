@@ -6,7 +6,7 @@ const OurPolicyContainer = Styled.div`
   max-width: 1000px;
   margin: auto;
   font-size: 15px;
-  margin-top: 50px;
+  margin-top: 100px;
   margin-bottom: 50px;
 `
 
