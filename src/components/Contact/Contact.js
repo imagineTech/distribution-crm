@@ -36,6 +36,12 @@ class Contact extends Component {
 		});
 	}
 
+	close = e => {
+		const { history } = this.props;
+		e.stopPropagation();
+		history.goBack()
+	}
+
 	render() {
 		let { location } = this.props;
 		let { message } = this.state;
@@ -43,9 +49,7 @@ class Contact extends Component {
 			<div id={ location.state.modal ? "myContactModal" : undefined }>
 				<div className='contact-modal-content'>
 					<div className='contact'>
-						<Link to={routes.HOME}>
-							<FontAwesomeIcon id="close-contact-modal" icon='window-close' style={{height: 25, width: 25}}/>
-						</Link>
+						<FontAwesomeIcon id="close-contact-modal" onClick={this.close} icon='window-close' style={{height: 25, width: 25}}/>
 						{
 						message===''?
 							<div>
