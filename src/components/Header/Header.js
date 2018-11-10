@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { Link, Route, NavLink } from 'react-router-dom';
+import { Link, Route, NavLink, withRouter } from 'react-router-dom';
 import * as routes from '../../constants/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Contact from './../Contact/Contact.js';
 import Login from './../findoutmore/subcomponents/login/login.js';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
 
-	openContactModal = () => {
-		document.getElementById('myContactModal').style.display = 'block';
-	}
-	closeContactModal = () => {
-		document.getElementById('myContactModal').style.display = 'none';
-	}
 	openLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'block';
-
 	}
 	closeLoginModal = () => {
 		document.getElementById('myLoginModal').style.display = 'none';
 	}
 
 	render() {
-		const { auth } = this.props;
+		const { auth, location } = this.props;
 		return (
 
 			<div className="header">
@@ -38,9 +30,12 @@ class Header extends Component {
 						{auth && <NavLink to={routes.MEMBER_PORTAL} activeStyle={{ color: 'black', borderBottom: '#C02932 2px solid' }} className="navLink">PORTAL</NavLink>}
 
 					</div>
-					<Link to={routes.CONTACT}>
+					<Link to={{
+						pathname: routes.CONTACT,
+						state: { modal: true }
+					}}>
 						<div id='contact'>
-							<FontAwesomeIcon onClick={this.openContactModal} icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
+							<FontAwesomeIcon icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
 						</div>
 					</Link>
 					{auth ? null : 
@@ -63,42 +58,19 @@ class Header extends Component {
 
 
 				{/* ========== Contact Modal ========== */}
-
-				<div id="myContactModal" style={{display: 'none'}}>
-					<div className='contact-modal-content'>
-						<Route 
-							exact 
-							path={routes.CONTACT} 
-							render={rest => {
-								return <Contact
-								{...rest}
-								closeContactModal={this.closeContactModal} 
-								/>
-							}} 
-						/>
-						{ /* End of className='contact-modal-content' */}
-					</div>	
-					{/* End of id="myContactModal" */}
-				</div>
-
+				
 				{/* ========== Login Modal ========== */}
-
-				<div id="myLoginModal" style={{display: 'none'}}>
-					<div className='login-modal-content'>
-						<Route 
-							exact 
-							path={routes.SIGN_IN} 
-							render={rest => {
-								return <Login 
-								{...rest} 
-								closeLoginModal={this.closeLoginModal} />
-							}} 
-						/>	
-						{ /* End of className='login-modal-content' */ }
-					</div>	
-					{/* End of id="myLoginModal" */}
-				</div>
+				<Route 
+					exact 
+					path={routes.SIGN_IN} 
+					render={rest => {
+						return <Login 
+						{...rest} 
+						closeLoginModal={this.closeLoginModal} />
+					}} 
+				/>	
 				{/* End of className="header" */}
+				{console.log(location)}
 			</div> 
 		);
 	}
@@ -108,4 +80,4 @@ Header.propTypes = {
 	auth: PropTypes.bool
 }
 
-export default Header;
+export default withRouter(Header);
