@@ -5,6 +5,6 @@ const Heading = styled.div`
   text-align: center;
   height: 40px;
   line-height: 40px;
-  margin: 30px;
+  margin: 80px auto 30px;
 `
 export default Heading;
