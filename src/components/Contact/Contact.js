@@ -11,7 +11,6 @@ library.add(faCheckCircle)
 class Contact extends Component {
 
 	state = {
-		customerName: "",
 		message:""
 	}
 
@@ -57,25 +56,25 @@ class Contact extends Component {
 
 									<label>Name
 									<br/>
-										<input name="customerName" type="text" value={this.props.customerName} onChange={this.handleChange} />
+										<input name="customerName" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Phone Number
 									<br/>
-										<input name="customerNumber" type="text" value={this.props.customerNumber} onChange={this.handleChange} />
+										<input name="customerNumber" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Email
 									<br/>
-										<input name="customerEmail" type="text" value={this.props.customerEmail} onChange={this.handleChange} />
+										<input name="customerEmail" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
 									<label>Comment or Question
 									<br/>
-										<textarea name="contactContent" type="text" value={this.props.contactContent} onChange={this.handleChange} />
+										<textarea name="contactContent" type="text" onChange={this.handleChange} />
 									</label>
 									<br/>
 
@@ -101,7 +100,6 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-	closeContactModal: PropTypes.func.isRequired,
 	customerName: PropTypes.string.isRequired,
 	customerNumber: PropTypes.string.isRequired,
 	customerEmail: PropTypes.string.isRequired,
