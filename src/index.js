@@ -7,7 +7,8 @@ import { Router } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { _stripeKey } from './stripe/config_stripe';
 import App from './containers/App';
-import '../node_modules/nprogress/nprogress.css';	
+import 'font-awesome/css/font-awesome.min.css'
+import '../node_modules/nprogress/nprogress.css';
 
 const store = creatingTheStore().store;
 const persistor = creatingTheStore().persistor;
