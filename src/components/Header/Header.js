@@ -55,8 +55,6 @@ class Header extends Component {
 
 				{/* <img src="https://dummyimage.com/200x100/000/fff" className="logo"></img> */}
 
-
-
 				{/* ========== Contact Modal ========== */}
 				
 				{/* ========== Login Modal ========== */}
@@ -74,7 +72,7 @@ class Header extends Component {
 			</div> 
 		);
 	}
-};
+
 
 Header.propTypes = {
 	auth: PropTypes.bool
