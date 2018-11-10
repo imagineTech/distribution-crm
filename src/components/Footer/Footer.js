@@ -3,8 +3,7 @@ import '../Header/Header.css';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import * as routes from '../../constants/routes';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BottomIcons } from '../Navigation';
+
 
 const footer = () => {
     return (
@@ -19,9 +18,9 @@ const footer = () => {
             </div>
 
             <div className="socialLinksContainer">
-              <a target="_blank" href="https://www.facebook.com/kupidowholesalers/"><i className="fab fa-facebook" /></a>
-							<a target="_blank" href="#"><i className="fab fa-youtube-square" /></a>
-							<a target="_blank" href="#"><i className="fab fa-linkedin" /></a>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/kupidowholesalers/"><i className="fab fa-facebook" /></a>
+							<a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/"><i className="fab fa-youtube-square" /></a>
+							<a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/"><i className="fab fa-linkedin" /></a>
             </div>
         </div>
     );
