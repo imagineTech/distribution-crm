@@ -37,14 +37,7 @@ const footer = () => {
 				<Link to={routes.SIGN_UP} className="navLink">Register</Link>
 			</div>
 
-			<div className="lowerLinksContainer">
-				<div className="socialLinksContainer">
-					<FontAwesomeIcon icon="stroopwafel" />
-					<FontAwesomeIcon icon="stroopwafel" />
-					<FontAwesomeIcon icon="stroopwafel" />
-					<FontAwesomeIcon icon="stroopwafel" />
-				</div>
-			</div>
+
 
 		</div>
 	);
