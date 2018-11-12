@@ -14,4 +14,10 @@ const LandingButton = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+const ButtonTwo = styled.div`
+  color: rgba(210 0 26);
+  background: rgba(50 50 50)
+`
+
 export default LandingButton;
