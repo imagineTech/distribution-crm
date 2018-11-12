@@ -8,6 +8,9 @@ import LandingButton from './landing/partials/bottomComponents/LandingButton';
 //All routes
 import * as routes from '../constants/routes';
 
+//CSS
+import './index.css';
+
 //Links for the landing page
 const LandingLinks = () =>
   <div>
@@ -17,11 +20,11 @@ const LandingLinks = () =>
 
 const RegistrationRedirection = () =>
   <div>
-    <Link to={routes.SIGN_UP}><LandingButton primary>Apply Now!</LandingButton></Link>
+    <Link to={routes.SIGN_UP}><button className="button">Apply Now!</button></Link>
   </div>
 
 const BecomingAMemberInstructionsLink = () =>
-  <div><Link to={routes.BECOMING_A_MEMBER}><h2>Find out how to become a memeber!</h2></Link></div>
+  <div><Link to={routes.BECOMING_A_MEMBER} className="link" ><h2>Find out how to become a memeber!</h2></Link></div>
 
 const BecomingAMemberLink = () =>
     <div className='bottom-image-container'><Link to={routes.BECOMING_A_MEMBER} style={{textDecoration: 'none'}}><LandingButton style={{backgroundImage: "url('https://images.unsplash.com/photo-1536141248755-a88ad9a2dcab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=490c41bd30d514b86d1639f96b7d66f3&auto=format&fit=crop&w=750&q=80')"}}>BECOMING A MEMBER</LandingButton></Link></div>

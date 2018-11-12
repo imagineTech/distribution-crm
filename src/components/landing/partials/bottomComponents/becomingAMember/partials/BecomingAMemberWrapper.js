@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const BecomingAMemberWrapper = styled.div`
-  border: 2px solid black;
   padding: 20px;
-  margin: 100px auto 50px;
+  margin: 50px auto 70px;
   text-align: none;
   overflow: hidden;
+  max-width: 800px;
 `
 
 export default BecomingAMemberWrapper;

@@ -1,6 +1,6 @@
 .container {
       width: 600px;
-      margin: 50px auto; 
+      margin: 50px auto;
       padding-left:100px;
   }
   .progressbar {
@@ -51,3 +51,16 @@
   .progressbar li.active + li:after {
       background-color: #55b776;
   }
+
+
+.becomingAMemberBanner{
+  background: url('https://images.unsplash.com/photo-1534008757030-27299c4371b6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a3bf79bd430059dd64c06f4dc70e9b16&auto=format&fit=crop&w=1500&q=80') no-repeat top center;
+  background-size: cover;
+  height: 360px;
+  filter: grayscale(100%);
+  margin-top: 60px;
+}
+
+.trial{
+  width: 100%;
+}
