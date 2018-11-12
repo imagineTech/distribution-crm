@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cart from './subcomponents/Cart';
+import { loadProfileData } from '../../../actions/profileData';
 import { decrementStock } from '../../../actions/productData';
 import { loadCart, updateCartItemQty, checkOutCart,removingCartItem, deleteCart } from '../../../actions/cartData';
 import { addOrderDataToStore } from '../../../actions/orderData';
@@ -9,8 +10,15 @@ import PropTypes from 'prop-types';
 class CartContainer extends Component {
 
   componentDidMount() {
-    const { profileData, getCartData } = this.props;
-    getCartData(profileData.id);
+    const { getCartData, auth } = this.props;
+    getCartData(auth.authUser.uid);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { getProfileData, auth } = nextProps;
+    if (nextProps.profileData === this.props.profileData) {
+      getProfileData(auth.authUser.uid);
+    }
   }
 
   render() {
@@ -29,6 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    getProfileData: userId => dispatch(loadProfileData(userId)),
     getCartData: (crtId) => dispatch(loadCart(crtId)),
     updateQty: (cartId, itemId, newQty) => dispatch(updateCartItemQty(cartId, itemId, newQty)),
     removeItm: (cartId, itemId, qty) => dispatch(removingCartItem(cartId, itemId, qty)),
@@ -40,11 +49,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 CartContainer.propTypes = {
-  profileData: PropTypes.shape({
-    id: PropTypes.string.isRequired
-  }).isRequired,
+  auth: PropTypes.object.isRequired,
   getCartData: PropTypes.func.isRequired,
-  rest: PropTypes.object.isRequired
+  getProfileData: PropTypes.func.isRequired,
+  updateQty: PropTypes.func.isRequired,
+  removeItm: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

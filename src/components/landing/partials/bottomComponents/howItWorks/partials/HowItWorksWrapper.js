@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const HowItWorksWrapper  = styled.div`
-  margin: 30px;
+  margin: 50px auto 30px;
   text-align: center;
-  
+
 `
 
 export default HowItWorksWrapper;

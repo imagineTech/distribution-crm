@@ -55,22 +55,16 @@ class CheckoutButton extends Component{
 
     render() {
         return <button onClick={this.handleClick}>Checkout</button>
-
     }
 }
 
 CheckoutButton.propTypes = {
-    profileData: PropTypes.shape({
-        First_Name: PropTypes.string.isRequired,
-        Last_Name: PropTypes.string.isRequired,
-        Moltin_User_Id: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-    }).isRequired,
+    profileData: PropTypes.object.isRequired,
     stripe: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     addingOrdDataToStore: PropTypes.func.isRequired,
-    loadingCrrntOrder: PropTypes.func.isRequired,
+    decreaseStock: PropTypes.func.isRequired,
     checkOut: PropTypes.func.isRequired,
     deleteCrt: PropTypes.func.isRequired,
     addressValues: PropTypes.object.isRequired

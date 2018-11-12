@@ -5,6 +5,7 @@ background: url('https://images.unsplash.com/photo-1534008757030-27299c4371b6?ix
 background-size: cover;
 height: 360px;
 filter: grayscale(100%);
+margin-top: 60px;
 `
 // Alternate model: https://cdn.pixabay.com/photo/2015/12/08/00/57/model-woman-1082219_960_720.jpg
 // Too big gorgeous: https://cdn.pixabay.com/photo/2017/07/25/10/36/beauty-2537562_960_720.jpg
