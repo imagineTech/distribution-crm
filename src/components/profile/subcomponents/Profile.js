@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css'
+import { Route } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SignOutButton from '../../SignOut';
+// import SignOutButton from '../../SignOut';
 import * as routes from '../../../constants/routes';
 import PropTypes from 'prop-types';
 
@@ -28,7 +32,7 @@ class Profile extends Component {
     return(
       <div>
         <figure>
-          {url !== undefined ? 
+          {url !== undefined ?
           <img src={url} alt={"profile_image_" + profileData.id} /> : <img src="" alt="no_profile_image" />
           }
         </figure>

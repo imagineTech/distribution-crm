@@ -1,14 +1,27 @@
-.profilepicture {
-	margin: 8px;
+.profileContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  background: #e8e8e8;
+	padding: 10px;
 }
 
-.displayinline {
-	display: inline;
+.firstandlast {
+	position: relative;
+	margin: 5px;
 }
 
-.greeting {
-	display: inline;
-  bottom: 10px;
-  position: relative;
-  margin-left: 10px;
+.navLinksProfile {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navLinkProfile {
+	color: #555;
+	margin-right: 10px;
+}
+
+.navLinkProfile:hover {
+	color: black;
+	transition: .5s ease;
 }
