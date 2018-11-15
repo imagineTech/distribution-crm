@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProductItem from './subcomponents/ProductItem';
-import { Route } from 'react-router-dom';
 import { loadProducts, loadProductImage } from '../../../actions/productData';
 import { addProductsToCart } from '../../../actions/cartData';
 import { connect } from 'react-redux';
@@ -16,8 +15,7 @@ class Products extends Component {
   }
 
   render() {
-    const { rest } = this.props;
-    return <ProductItem {...this.props} {...rest} /> 
+    return <ProductItem {...this.props}  /> 
   }
 }
 
@@ -41,7 +39,6 @@ export const mapDispatchToProps = dispatch => {
 Products.propTypes = {
   getProductData: PropTypes.func.isRequired,
   getProductImage: PropTypes.func.isRequired,
-  rest: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
