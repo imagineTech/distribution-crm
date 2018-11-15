@@ -1,17 +1,21 @@
-.line{
-  /* height: 1px;
-  background: black;
-  margin: 0; */
-}
-.bottom-image-container {
-  width: 26vw;
-  height: 26vw;
-  margin: 2vw;
-  overflow: hidden;
-  /* box-shadow: 1px 1px 5px rgba(0, 0, 0, .6); */
+.bottom-content {
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin: 100px 0 200px 0;
 }
-.bottom-images {
-  height: 26vw;
+
+.bottom-image-container {
+  background: white;
+  height: 25vw;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 2vw 0 2vw;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+  filter: brightness(90%);
+}
+.bottom-image-container:hover {
+  filter: brightness(100%);
+  transition: filter .5s ease;
 }

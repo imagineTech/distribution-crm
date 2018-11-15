@@ -19,6 +19,7 @@ export const SOLD_PRODUCTS = '/soldproducts';
 export const HOW_IT_WORKS = '/howitworks';
 export const BECOMING_A_MEMBER = '/becomingamemeber';
 
+
 //MEMBER PORTAL
 export const SIGN_IN = '/signin';
 export const FORGOT_PASS = '/forgot_password';

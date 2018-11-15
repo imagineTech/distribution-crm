@@ -10,7 +10,7 @@ export const createAMoltinUser = (name, email) => {
 
 export const updateMoltinUser = (id, first_name, last_name, email) => {
   const moltinUser = {
-    name: `${first_name} ${last_name}`, 
+    name: `${first_name} ${last_name}`,
     email
   };
   return Moltin.Customers.Update(id, moltinUser);
@@ -24,12 +24,16 @@ export const getAllProducts = () => {
   return Moltin.Products.All();
 }
 
+export const getProductImage = () => {
+  return Moltin.Products.With('main_image').All();
+}
+
 export const addProductsToCart = (refId, productId, productQuantity) => {
   return Moltin.Cart(refId).AddProduct(productId, productQuantity);
 }
 
-export const getProductImage = () => {
-  return Moltin.Products.With('main_image').All();
+export const decreaseProductStock = (productId, quantity) => {
+  return Moltin.Inventories.DecrementStock(productId, quantity);
 }
 
 export const getACart = (refId) => {

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { emailAndPasswordSuccess, restOfFormSuccess, emailPasswordFormAuth } from '../../../../actions/signUpData';
 import * as routes from '../../../../constants/routes';
+import './signup.css';
 import PropTypes from 'prop-types';
 
 class SignUp extends Component {
@@ -34,40 +35,39 @@ class SignUp extends Component {
 
   render() {
     return (
-          <div>
-            <h1>Register</h1>
+          <div className='register'>
+            <p>Sign up for Kupido to see our prices and shop our products. It's easy to register!</p>
+
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="first_name">First Name<br/>
-              <input type="text" id="first_name" name="First_Name" onChange={this.handleChange}/>
-              </label><br/>
+              
+                <label htmlFor="first_name"><input placeholder="First name" type="text" id="first_name" name="First_Name" onChange={this.handleChange}/>
+                </label>
 
-              <label htmlFor="name">Last Name<br/>
-              <input type="text" id="last_name" name="Last_Name" onChange={this.handleChange}/>
-              </label><br/>
+                <label htmlFor="name"><input placeholder="Last name" type="text" id="last_name" name="Last_Name" onChange={this.handleChange}/>
+                </label>
+              
+              <label htmlFor="email"><input placeholder="Email" type="email" id="signup_email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
+              </label>
 
-              <label htmlFor="email">Email<br/>
-              <input type="email" id="signup_email" name="Email" onChange={this.handleEmailAndPasswordChange}/>
-              </label><br/>
+              <label htmlFor="signup_password">
+              <input placeholder="Password" type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
+              </label>
 
-              <label htmlFor="signup_password">Password<br/>
-              <input type="password" id="signup_password" name="Password" onChange={this.handleEmailAndPasswordChange}/>
-              </label><br/>
+              <label htmlFor="company">
+              <input placeholder="Company" type="text" id="company" name="Company" onChange={this.handleChange}/>
+              </label>
 
-              <label htmlFor="company">Company<br/>
-              <input type="text" id="company" name="Company" onChange={this.handleChange}/>
-              </label><br/>
+              <label>
+              <input placeholder="Department" type="text" id="department" name="Department" onChange={this.handleChange}/>
+              </label>
 
-              <label>Department<br/>
-              <input type="text" id="department" name="Department" onChange={this.handleChange}/>
-              </label><br/>
-
-              <label>Country<br/>
-              <input type="text" id="country" name="Country" onChange={this.handleChange} />
-              </label><br/>
+              <label>
+              <input placeholder="Country" type="text" id="country" name="Country" onChange={this.handleChange} />
+              </label>
 
               <button>Sign up</button>
             </form>
-            <Link to={routes.SIGN_IN}>Already have an account? Login </Link>
+            <Link style={{color: '#C02932'}} to={routes.SIGN_IN}>Already have an account? Log in! </Link>
           </div>
     );
   }
