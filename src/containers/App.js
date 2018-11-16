@@ -100,7 +100,7 @@ class App extends Component {
   render() {
     let { authUser, authenticated } = this.state;
     let { location } = this.props;
-    // This is to test our componentWillUpdate along 
+    // This is to test our componentWillUpdate along
     // with locaiton's hidden state feature
     let isModal = !!(
       location.state &&
@@ -126,7 +126,7 @@ class App extends Component {
         {/* And once more for the modal to appear */}
         {isModal ? <Route path={routes.CONTACT} component={Contact} /> : null }
         {isModal ? <Route path={routes.SIGN_IN}component={Login} />	: null }
-        <Footer />
+
         {/*
           This section below had to be setup because we have different
           components that need to be protected. Using local state right now,
@@ -138,11 +138,12 @@ class App extends Component {
                 <Route path={`${routes.PROFILE}/${routes.EDIT_PROFILE}`} render={rest => <LoadEditPro {...rest} auth={{ authUser, authenticated }} />} />
                 <Route path={routes.MEMBER_PORTAL} render={rest => <LoadCRM {...rest} auth={{authUser, authenticated}} />}/>
                 <Route path={routes.CART} render={rest => <LoadCart {...rest} auth={{ authUser, authenticated }} /> } />
-                <Route path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />  
+                <Route path={`${routes.PRODUCTS}/:productId`} render={rest => <LoadProducts {...rest} />} />
                 <Route path={`${routes.ORDER_REVIEW}/:orderId`} render={rest => <LoadOrdRvw {...rest} auth={{ authUser, authenticated }} />} />
                 <Route path={routes.RECENT_ORDERS} render={rest => <LoadRecentOrders {...rest} /> } />
               </Switch>
           }
+          <Footer />
         </div>
       );
     }

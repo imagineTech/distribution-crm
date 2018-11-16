@@ -29,7 +29,7 @@ class OrderRvwContainer extends Component {
 
   render() {
     const { rest } = this.props;
-    return <OrderReview {...this.props} {...rest} /> 
+    return <OrderReview {...this.props} {...rest} />
   }
 }
 

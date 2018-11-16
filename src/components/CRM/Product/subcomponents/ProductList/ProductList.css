@@ -1,0 +1,37 @@
+.productCardContainer {
+  box-shadow: 0px 0px 9px grey;
+  border-radius: 3px;
+  max-width: 400px;
+  margin: 20px;
+  height: 615px;
+}
+.productName {
+  padding: 5px;
+}
+.productListImage {
+  width: 100%;
+  min-width: 400px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+.productPrice {
+  padding: 5px;
+  font-weight: bold;
+}
+.productStock {
+  padding: 5px;
+  font-weight: bold;
+}
+.productPageButton {
+  border: 1px solid maroon;
+  background-color: #c70000;
+  color: white;
+  height: 35px;
+  width: auto;
+  margin: 5px;
+}
+
+.productPageLink {
+  color: inherit;
+  background-color: inherit;
+}
