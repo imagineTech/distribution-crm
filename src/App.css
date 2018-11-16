@@ -20,3 +20,7 @@
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 } */
+
+#authRequiredComponents {
+  width: 100%;
+}
