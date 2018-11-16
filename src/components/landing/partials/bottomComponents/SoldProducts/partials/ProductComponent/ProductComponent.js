@@ -13,13 +13,13 @@ const ProductComponent = (props) => {
     <ContentWrapper className="details">
       <ImageWrapper />
       <TextWrapper>
-        <h3 className="details">Brand: {props.brandName}</h3>
-        <h3 className="details">Product Name: {props.productDescription}</h3>
-        <h3 className="details">Retails at: {props.retailPrice}</h3>
-        <h3 className="details">Unit Price: {props.unitPrice}</h3>
-        <h3 className="details">Quantity: {props.quantity}</h3>
-        <h3 className="details">Total: {props.total}</h3>
-        <h3 className="details">{props.details}</h3>
+        <h3 className="details">{props.productDescription}</h3>
+        <h4 className="details">{props.brandName}</h4>
+        <p className="details">Retails at: {props.retailPrice}</p>
+        <p className="details">Unit Price: {props.unitPrice}</p>
+        <p className="details">Quantity: {props.quantity}</p>
+        <p className="details">Total: {props.total}</p>
+        <p className="details">{props.details}</p>
       </TextWrapper>
     </ContentWrapper>
   )

@@ -13,7 +13,7 @@ const SoldProducts = () => {
 
   return(
     <div>
-      <Heading>Products we have sold</Heading><hr />
+      <Heading>Hi, this is an explanation of past SOLD PRODUCTS yo</Heading>
       <ProductWrapper>
         <ProductComponent brandName="Maybeline" productDescription="Nailpolish" details="New in box" retailPrice="$5.99" unitPrice="$0.28" quantity="67,265pcs" total="$18,834.20" />
         <ProductComponent brandName="Stila" productDescription="All day matte lipstick" details="New in box, The following colors: Coquille, Bonbon, Soire, Palais, Framboise, Jolie" retailPrice="$18.00" unitPrice="$6" quantity="6000pcs" total="$36,000" />

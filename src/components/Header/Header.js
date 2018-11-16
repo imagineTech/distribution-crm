@@ -18,16 +18,16 @@ class Header extends Component {
 					<div className="navLinksContainer">
 						<NavLink exact={true} to={routes.HOME} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">HOME</NavLink>
 						<NavLink to={routes.ABOUT} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">ABOUT</NavLink>
+						<NavLink to={routes.SOLD_PRODUCTS} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">PRODUCTS</NavLink>
 						<NavLink to={routes.SIGN_UP} activeStyle={{color: 'black', borderBottom: '#C02932 2px solid'}} className="navLink">REGISTER</NavLink>	
 						{auth && <NavLink to={routes.MEMBER_PORTAL} activeStyle={{ color: 'black', borderBottom: '#C02932 2px solid' }} className="navLink">PORTAL</NavLink>}
-
 					</div>
 					<Link to={{
 						pathname: routes.CONTACT,
 						state: { modal: true }
 					}}>
 						<div id='contact'>
-							<FontAwesomeIcon icon="envelope" style={{height: '20px', width: '20px', marginLeft: '20px'}}/>
+							<FontAwesomeIcon icon="envelope" style={{color: 'rgba(0, 0, 0, .7)', height: '20px', width: '20px', marginLeft: '20px'}}/>
 						</div>
 					</Link>
 					{auth ? null : 

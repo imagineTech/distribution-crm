@@ -7,18 +7,25 @@ import './landing.css';
 import LandingWrapper from './partials/LandingWrapper';
 import TopBanner from './partials/TopBanner';
 import BottomContent from './partials/BottomContent';
-import { BecomingAMemberLink } from '../Navigation';
-import { HowItWorksLink } from '../Navigation';
+// import { BecomingAMemberLink } from '../Navigation';
+// import { HowItWorksLink } from '../Navigation';
 import { SoldProducts } from '../Navigation';
+import BecomingAMember from './../landing/partials/bottomComponents/becomingAMember/BecomingAMember';
+import HowItWorks from './../landing/partials/bottomComponents/howItWorks/HowItWorks';
+import Content from './../landing/partials/bottomComponents/becomingAMember/partials/Content';
 
 const Landing = () => {
   return(
     <LandingWrapper>
       <TopBanner />
       <div className='bottom-content'>
-        <BottomContent bottomLinks={<SoldProducts />} images="https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b8871553433235948b9931cf8513295&auto=format&fit=crop&w=695&q=80" />
-        <BottomContent bottomLinks={<HowItWorksLink />} images="https://images.unsplash.com/photo-1526045405698-cf8b8acc4aaf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=de7f7c5a341e5e6a2056f26dcba73687&auto=format&fit=crop&w=500&q=60" />
-        <BottomContent bottomLinks={<BecomingAMemberLink />} images="https://images.unsplash.com/photo-1536141248755-a88ad9a2dcab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=490c41bd30d514b86d1639f96b7d66f3&auto=format&fit=crop&w=750&q=80" />
+        {/* <BottomContent bottomLinks={<SoldProducts />}/> */}
+        {/* <BottomContent bottomLinks={<HowItWorksLink />}/>
+        <BottomContent bottomLinks={<BecomingAMemberLink />}/> */}
+        <BecomingAMember/>
+        <hr/>
+        <HowItWorks/>
+        <Content/>
       </div>
     </LandingWrapper>
   );

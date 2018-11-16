@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px 4px #aaa;
-  width: 300px;
-  height: 500px;
-  display: inline-block;
-  margin: 10px;
+  // background: yellow;
+  border: 1px solid #ccc;
+  width: 22vw;
+  min-width: 180px;
+  max-width: 250px;
+  height: 40vw;
+  min-height: 460px;
+  max-height: 500px;
 `
 
 export default ContentWrapper;

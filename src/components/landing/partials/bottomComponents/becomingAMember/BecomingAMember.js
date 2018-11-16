@@ -8,7 +8,7 @@ import TopBanner from './partials/TopBanner';
 const BecomingAMember = (props) => {
   return(
     <div className="trial">
-      <TopBanner />
+      {/* <TopBanner /> */}
       <BecomingAMemberWrapper>
         <h1>BECOMING A MEMBER</h1>
         <p>Candidates must have a registered business. To become a member, just follow the simple 3 step process below</p>

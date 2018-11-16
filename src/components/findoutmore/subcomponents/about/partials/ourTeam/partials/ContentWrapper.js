@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
-  // background: pink;
+  background: pink;
   height: 800px;
   width: 22vw;
   line-height: 30px;
