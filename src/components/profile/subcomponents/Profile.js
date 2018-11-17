@@ -7,12 +7,14 @@ import SignOutButton from '../../SignOut';
 // import SignOutButton from '../../SignOut';
 import * as routes from '../../../constants/routes';
 import PropTypes from 'prop-types';
+import './Profile.css';
 
 
 class Profile extends Component {
 
   state = {
-    imageFile: {}
+    imageFile: {},
+    isNewUpload: false
   }
 
   files = e => {
@@ -26,23 +28,36 @@ class Profile extends Component {
     uploadProfileImage(profileData.id, imageFile, window);
   }
 
+  newUpload = () => {
+    this.setState({isNewUpload: true})
+  }
+  
   render(){
     let { profileData, path } = this.props;
     let url = profileData.Profile_Image_URL;
+    let {isNewUpload} = this.state;
     return(
       <div>
+      <div className="card">
+        {isNewUpload && <div>
+          <form onSubmit={this.sendUpload}>
+            <input type="file" onChange={this.files}/>
+            <button >Upload</button>
+          </form>
+        </div>}
         <figure>
           {url !== undefined ?
-          <img src={url} alt={"profile_image_" + profileData.id} /> : <img src="" alt="no_profile_image" />
+          <img src={url} alt={"profile_image_" + profileData.id} width="50px" style={{borderRadius:'50%'}}/> : <img src="" alt="no_profile_image" width="300px"/>
           }
         </figure>
-        <h1 className="displayinline">{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
-        <p>Email: {profileData.Email}</p>
+        <h1>{`${profileData.First_Name} ${profileData.Last_Name}`}</h1>
+        {/*<p>{profileData.Email}</p>*/}
+      </div>
+      <div className="profile">
         <button><Link to={`${path}/${routes.EDIT_PROFILE}`}>Edit Profile</Link></button>
-        <form onSubmit={this.sendUpload}>
-          <input type="file" onChange={this.files}/>
-          <button >Upload</button>
-        </form>
+        <button onClick={this.newUpload}>Update Photo</button>
+      </div>
+      
       </div>
     )
   }
