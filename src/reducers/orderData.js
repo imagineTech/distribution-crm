@@ -6,7 +6,7 @@ export const loadingCurrentOrderData = (state = {}, action) => {
         data: {
           ...state.data,
           info: { ...state.data.info, ...action.orderInfo}, 
-          items: [ ...state.data.items, {...action.orderItems[0]}]
+          items: [ ...state.data.items, [...action.orderItems]]
         }
       };
     default:
