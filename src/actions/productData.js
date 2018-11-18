@@ -44,6 +44,7 @@ export const decrementStock = cart => {
       return Moltin.decreaseProductStock(item.product_id, item.quantity).then(inventory => {
         if (inventory) {
           dispatch(decrementSuccess())
+          console.log(inventory)
         }
       })
     })

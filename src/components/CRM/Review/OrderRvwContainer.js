@@ -13,14 +13,13 @@ class OrderRvwContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { profileData, loadingCrrntOrder } = nextProps;
-    const { Orders } = profileData;
+    const { loadingCrrntOrder } = nextProps;
     if (
       (nextProps.profileData.Orders[nextProps.profileData.Orders.length - 1].id) !== 
       (this.props.profileData.Orders[this.props.profileData.Orders.length - 1].id)
     ) {
       if (this.props.orderData.items.length < 1) {
-        loadingCrrntOrder(Orders[Orders.length - 1].id)
+        loadingCrrntOrder(nextProps.match.params.orderId)
       } else {
         window.location.reload();
       }
