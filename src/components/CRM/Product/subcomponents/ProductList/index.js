@@ -8,6 +8,8 @@ const ProductList = ({ productData, imageProductData, path }) => {
 
   let styles = {
     display: 'flex',
+    justifyContent:'space-between',
+    flexWrap:'wrap'
   }
 
   return (
@@ -18,7 +20,7 @@ const ProductList = ({ productData, imageProductData, path }) => {
           <p className="productName">{product.name}</p>
             {imageProductData.main_images.map(image => {
               return image.id === product.relationships.main_image.data.id ? (
-                <img className="productListImage" key={image.id} src={image.link.href} alt={image.file_name} />
+                <img className="productListImage" key={image.id} src={image.link.href} alt={image.file_name} height="400px"/>
               ) : ( null )
             })}
             <p className="productPrice">Price per product: {product.meta.display_price.with_tax.formatted}</p>

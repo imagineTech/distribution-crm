@@ -1,0 +1,35 @@
+section {
+    display:flex;
+    margin: 5em 0 2em 0;
+    justify-content:center;
+}
+input[type=text],input[type=password],input[type=email]{
+    height: 1.5em;
+    background-color: tomato;
+    border-radius: 5px;
+    color: white;
+    padding-left:15px;
+    transition: background-color 1s;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus{
+    background-color: red;
+    outline:none;
+}
+.form-group {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:1em;
+}
+
+.form-group label,.form-group button {
+    margin-right: 1em;
+}
+.form-group button {
+    padding: 0.5em;
+    background-color:tomato;
+    color:white;
+    
+}
