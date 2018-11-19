@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
-import { CardElement, injectStripe } from 'react-stripe-elements';
-import Address from './Address';
-import CartList from './List';
-import CheckoutButton from './CheckoutBtn';
-import DeleteButton from './Delete';
+import React, { Component } from "react";
+import { CardElement, injectStripe } from "react-stripe-elements";
+import Address from "./Address";
+import CartList from "./List";
+import CheckoutButton from "./CheckoutBtn";
+import DeleteButton from "./Delete";
 
 class Cart extends Component {
-
   state = {
     addressValues: {},
     billingIsDifferent: false
-  }
+  };
 
   hanldeBooleanChange = () => {
     let { billingIsDifferent } = this.state;
     this.setState({
       billingIsDifferent: !billingIsDifferent
-    })
-  }
+    });
+  };
 
   render() {
-    return(
+    return (
       <div>
         <CartList {...this.props} />
         <CardElement />
-        <Address 
+        <Address
           {...this.state}
-          formDataToSend={values => (
+          formDataToSend={values =>
             this.setState({
-              addressValues: {...values}
+              addressValues: { ...values }
             })
-          )} 
-          booleanChange={this.hanldeBooleanChange}/>
+          }
+          booleanChange={this.hanldeBooleanChange}
+        />
         <CheckoutButton {...this.props} {...this.state} />
         <DeleteButton {...this.props} />
       </div>
-    )
+    );
   }
 }
 
