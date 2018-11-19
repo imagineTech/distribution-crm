@@ -25,19 +25,20 @@ class MemberPortalContainer extends Component {
   }
 
   render() {
-    return <MemberPortal {...this.props}/>
+    return <MemberPortal {...this.props} />
   }
 }
 
 const mapStateToProps = state => {
   const { data, included, imagesExist } = state.loadingProductData;
+  const { new_amount } = state.decrementProductStock;
   const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
-    productData: data.length !==0 ? data : data,
+    productData: data.length !== 0 ? data : data,
     imageProductData: imagesExist ? included : included,
-    recentOrders: orderData.length !== 0 ? orderData : orderData
-
+    recentOrders: orderData.length !== 0 ? orderData : orderData,
+    newStock: new_amount.length !== 0 ? new_amount : new_amount
   }
 };
 
