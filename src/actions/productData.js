@@ -41,12 +41,12 @@ export const loadProductImage = productId => {
 export const decrementStock = cart => {
   return dispatch => {
     cart.map(item => {
-      return Moltin.decreaseProductStock(item.product_id, item.quantity).then(inventory => {
-        if (inventory) {
-          dispatch(decrementSuccess())
-          console.log(inventory)
-        }
-      })
+      // return Moltin.decreaseProductStock(item.product_id, item.quantity).then(inventory => {
+      //   if (inventory) {
+      //     dispatch(decrementSuccess())
+      //   }
+      // })
+      console.log(item)
     })
   }
 }
