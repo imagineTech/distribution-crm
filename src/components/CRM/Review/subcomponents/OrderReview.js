@@ -1,14 +1,13 @@
 import React from 'react';
 
 const OrderReview = props =>  {
-    const { profileData, orderData, match } = props;
+    const { profileData, order, match } = props;
     return (
       <div>
-        <h2>Thank you for your purchase, {profileData.First_Name} {profileData.Last_Name}!  Your Order#: {orderData.info.id === match.params.orderId ? orderData.info.id : match.params.orderId}</h2>
+        <h2>Thank you for your purchase, {profileData.First_Name} {profileData.Last_Name}!  Your Order#: {order.info.id === match.params.orderId ? order.info.id : match.params.orderId}</h2>
         <section>
           <h3>Your Order Review: </h3>
-          {orderData.items.map(i => {
-            return i.map(item => {
+          {order.items.map(item => {
               return (
                 <div key={item.id}>
                   <p>Product Name: {item.name}</p>
@@ -16,7 +15,6 @@ const OrderReview = props =>  {
                   <p>Total: {item.meta.display_price.with_tax.value.formatted} ({item.meta.display_price.with_tax.unit.formatted} x {item.quantity} )</p>
                 </div>
               )
-            })
           })}
         </section>
       </div>

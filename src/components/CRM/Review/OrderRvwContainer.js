@@ -7,28 +7,38 @@ import PropTypes from 'prop-types';
 
 class OrderRvwContainer extends Component {
 
+  state = { 
+    actualOrder: []
+  }
+
   componentDidMount() {
     const { getProfileData, auth } = this.props;
     getProfileData(auth.authUser.uid);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { loadingCrrntOrder } = nextProps;
-    if (
-      (nextProps.profileData.Orders[nextProps.profileData.Orders.length - 1].id) !== 
-      (this.props.profileData.Orders[this.props.profileData.Orders.length - 1].id)
-    ) {
-      if (this.props.orderData.items.length < 1) {
-        loadingCrrntOrder(nextProps.match.params.orderId)
-      } else {
-        window.location.reload();
-      }
+    const { loadingCrrntOrder } = this.props;
+    if (nextProps.orderData.info.id === this.props.orderData.info.id) {
+      loadingCrrntOrder(nextProps.match.params.orderId)
+    } else {
+      this.setState({ 
+        actualOrder: [...nextProps.orderData]
+      })
     }
   }
 
   render() {
     const { rest } = this.props;
-    return <OrderReview {...this.props} {...rest} />
+    return (
+      <div>
+        {
+        this.state.actualOrder.length === 0 ? 
+          <OrderReview order={{...this.props.orderData}} {...this.props} {...rest} /> 
+          : 
+          <OrderReview order={{...this.state.actualOrder}} {...this.props} {...rest} />
+        }
+      </div>
+    )
   }
 }
 
