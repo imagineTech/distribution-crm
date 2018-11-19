@@ -1,33 +1,34 @@
- const loadingProductData = {
+const loadingProductData = {
     data: [
         {
-        id: 0,
-        name: "Default Product",
-        meta: {
-            display_price: {
-                with_tax: {
-                    formatted: "$00.00"
-            }},
-            stock: {
-                level: 0
-            }
-        },
-        relationships: {
-            main_image: {
-                data: {
-                    id: 0
+            id: 0,
+            name: "Default Product",
+            meta: {
+                display_price: {
+                    with_tax: {
+                        formatted: "$00.00"
+                    }
+                },
+                stock: {
+                    level: 0
                 }
-            }
-        },
+            },
+            relationships: {
+                main_image: {
+                    data: {
+                        id: 0
+                    }
+                }
+            },
         }
     ],
     included:
     {
         main_images: [
             {
-                id: 0, 
+                id: 0,
                 file_name: "noFile",
-                link:{
+                link: {
                     href: ""
                 }
             }
@@ -36,9 +37,9 @@
     imagesExist: false
 };
 
-const loadingCurrentOrderData = { 
+const loadingCurrentOrderData = {
     data: {
-        info: {}, 
+        info: {},
         items: []
     }
 };
@@ -52,18 +53,23 @@ const loadingCartData = {
 }
 
 const storeProfileData = {
-    Orders: [{ id: 0}]
+    Orders: [{ id: 0 }]
 }
 
 const passwordResetSuccess = {
     display: false
 }
 
-  export const initialState = {
-      loadingProductData,
-      loadingCurrentOrderData,
-      loadingCartData,
-      storeProfileData,
-      passwordResetSuccess,
-      loadStoredOrderData
-  }
+const decrementProductStock = {
+    new_amount: []
+}
+
+export const initialState = {
+    loadingProductData,
+    loadingCurrentOrderData,
+    loadingCartData,
+    storeProfileData,
+    passwordResetSuccess,
+    loadStoredOrderData,
+    decrementProductStock
+}

@@ -16,30 +16,30 @@ export const creatingTheStore = () => {
     loadingCartData: initialState.loadingCartData,
     storeProfileData: initialState.storeProfileData,
     passwordResetSuccess: initialState.passwordResetSuccess,
-    loadStoredOrderData: initialState.loadStoredOrderData
+    loadStoredOrderData: initialState.loadStoredOrderData,
+    decrementProductStock: initialState.decrementProductStock
   }
   const persistConfig = {
     key: 'root',
     storage,
     stateReconciler: autoMergeLevel2,
     blacklist: [
-      'storeNewProfileData', 
+      'storeNewProfileData',
       'storeProfileData',
-      'signUpFormData', 
+      'signUpFormData',
       'emailAndPasswordData',
       'emailAndPasswordToState',
       'handleErrorForLogin',
       'passwordResetSuccess',
       'loadingCurrentOrderData',
       'loadingProductData',
-      'decrementProductStock'
     ]
   };
   const store = createStore(
     //for my redux data to stay, had to bring in redux-persist
     //and combine it with my connect-react-router. This one line
     //is still consider the rootReducer argument.
-    persistReducer(persistConfig,rootReducer),
+    persistReducer(persistConfig, rootReducer),
     initial,
     compose(
       applyMiddleware(
@@ -50,7 +50,7 @@ export const creatingTheStore = () => {
   );
   const persistor = persistStore(store);
   return {
-    store, 
+    store,
     persistor
   };
 }
