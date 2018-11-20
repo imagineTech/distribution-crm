@@ -21,6 +21,7 @@ class Cart extends Component {
   render() {
     return (
       <div>
+      <div className="cart-main">
         <CartList {...this.props} />
         <CardElement />
         <Address
@@ -32,8 +33,11 @@ class Cart extends Component {
           }
           booleanChange={this.hanldeBooleanChange}
         />
+      </div>
+      <div className="cart-button">
         <CheckoutButton {...this.props} {...this.state} />
         <DeleteButton {...this.props} />
+      </div>
       </div>
     );
   }

@@ -43,7 +43,7 @@ class Address extends Component {
             {...this.state} 
         />) : null;
         return (
-            <div>
+            <div className="cart-form">
                 <Shipping formChange={this.handleShippingChange}/>
                 <label>
                     Check if billing is different from shipping:
