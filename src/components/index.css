@@ -1,0 +1,18 @@
+.button{
+  height: 40px;
+  width: 80%;
+  border: none;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, .7);
+  color: white;
+}
+
+.button:hover{
+  cursor: pointer;
+  background: black;
+}
+
+.link{
+  color: red;
+  text-decoration-style: none;
+}

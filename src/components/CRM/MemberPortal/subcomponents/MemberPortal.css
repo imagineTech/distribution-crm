@@ -1,0 +1,20 @@
+.portal_menu {
+    display: flex;
+    justify-content:flex-end;
+    padding: 0 1em;
+}
+
+.portal_menu button, .portal_menu a{
+	margin-right:3px;
+	background: tomato;
+	padding: 0.5em;
+	color: white;
+	font-size:0.8em;
+	border-radius: 3px;
+	text-decoration:none;
+	transition: background 1s;
+	box-shadow: 0 8px 6px -6px black;
+}
+.portal_menu button:hover,.portal_menu a:hover {
+	background: green;
+}

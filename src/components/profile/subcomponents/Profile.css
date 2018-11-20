@@ -1,14 +1,66 @@
-.profilepicture {
-	margin: 8px;
+/*.profileContainer {*/
+/*	display: flex;*/
+/*	justify-content: space-between;*/
+/*	align-items: center;*/
+/*  background: #e8e8e8;*/
+/*	padding: 10px;*/
+/*}*/
+
+/*.firstandlast {*/
+/*	position: relative;*/
+/*	margin: 5px;*/
+/*}*/
+
+/*.navLinksProfile {*/
+/*	display: flex;*/
+/*	justify-content: space-between;*/
+/*}*/
+
+/*.navLinkProfile {*/
+/*	color: #555;*/
+/*	margin-right: 10px;*/
+/*}*/
+
+/*.navLinkProfile:hover {*/
+/*	color: black;*/
+/*	transition: .5s ease;*/
+/*}*/
+
+.card {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 3.5em;
+}
+.card h1 {
+	padding: 0 0.5em;
 }
 
-.displayinline {
-	display: inline;
+.profile {
+	display:flex;
+	justify-content:flex-end;
+	padding: 0 1em;
+}
+.profile button {
+	margin-right:3px;
+	background: tomato;
+	padding: 0.5em;
+	color: white;
+	font-size:0.8em;
+	border-radius: 3px;
+	transition: background 1s;
+	box-shadow: 0 8px 6px -6px black;
+}
+.profile button:hover {
+	background: green;
+}
+.profile button a { 
+	text-decoration: none;
+	color: white;
 }
 
-.greeting {
-	display: inline;
-  bottom: 10px;
-  position: relative;
-  margin-left: 10px;
+.profile button a:hover { 
+	text-decoration: none;
+	color: white;
+	
 }

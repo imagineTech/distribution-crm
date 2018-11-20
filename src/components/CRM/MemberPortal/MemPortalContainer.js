@@ -22,7 +22,7 @@ class MemberPortalContainer extends Component {
     // const { profileData } = nextProps;
     // const { Orders } = profileData;
     // getRecentOrders(Orders[Orders.length - 1].id);
-  } 
+  }
 
   render() {
     return <MemberPortal {...this.props}/>

@@ -1,17 +1,46 @@
+*{
+	border: 0;
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
 .footer {
-	background-color: #555;
-	height: 200px;
+	background-color: #333;
+	height: 170px;
 	width: 100%;
 	margin: 0;
 	position: relative;
 	bottom: 0;
 }
+
+.bottom-nav{
+	color: white;
+	font-size: 17px;
+}
+
+.bottom-nav:hover{
+	color: #ccc;
+	transition: .7s;
+}
+
 .socialLinksContainer {
-	margin: 0;
-	/* position: absolute;
-	bottom: 0; */
 	text-align: center;
 }
-.socialLink {
-	/* background: blue; */
+
+
+.fab{
+	color: white;
+	font-size: 75px;
+	margin: 25px;
+}
+
+.fab:hover{
+	transition: all .7s;
+	color: #ccc;
+}
+
+.nav-links-container{
+	padding-top: 20px;
+	text-align: center;
 }

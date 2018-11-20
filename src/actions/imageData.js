@@ -45,7 +45,7 @@ export const downloadImage = userId => {
     return dispatch => {
         storage.downloadImage(userId).then(url => {
             if(url) {
-                db.addingProfileImageURL(userId, url).then(() => dispatch(downloadImageSucces()));   
+                db.addingProfileImageURL(userId, url).then(() => dispatch(downloadImageSucces()));
             }
         }).catch(err => dispatch(downloadImageError(err)))
     }
