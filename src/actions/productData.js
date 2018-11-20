@@ -15,15 +15,10 @@ export const loadProductImageData = imageProductData => {
   };
 };
 
-export const decrementSuccess = inventory => {
+export const decrementSuccess = () => {
   return {
     type: "INVENTORY_DECREMENT_SUCCESS",
-    new_amount: {
-      message: "decrement of product inventory was successfull :)",
-      productId: inventory.product_id,
-      quantity: inventory.quantity,
-      type: inventory.action
-    }
+    message: "decrement of product inventory was successfull :)"
   };
 };
 
@@ -49,7 +44,7 @@ export const decrementStock = cart => {
       return Moltin.decreaseProductStock(item.product_id, item.quantity).then(
         inventory => {
           if (inventory) {
-            dispatch(decrementSuccess(inventory.data));
+            dispatch(decrementSuccess());
           }
         }
       );

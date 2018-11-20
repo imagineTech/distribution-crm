@@ -33,6 +33,7 @@ export const creatingTheStore = () => {
       'passwordResetSuccess',
       'loadingCurrentOrderData',
       'loadingProductData',
+      'decrementProductStock'
     ]
   };
   const store = createStore(

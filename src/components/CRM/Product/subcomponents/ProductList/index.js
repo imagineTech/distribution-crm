@@ -3,7 +3,7 @@ import './ProductList.css';
 import { SecondButton } from '../../../../CSS/Button';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ productData, newStock, imageProductData, path, }) => {
+const ProductList = ({ productData, imageProductData, path, }) => {
 
   let styles = {
     display: 'flex',
@@ -23,12 +23,7 @@ const ProductList = ({ productData, newStock, imageProductData, path, }) => {
               ) : (null)
             })}
             <p className="productPrice">Price per product: {product.meta.display_price.with_tax.formatted}</p>
-            {newStock.map(stock => {
-              return (
-                product.id === stock.productId &&
-                <p className="productStock">Bulk: {product.meta.stock.level - stock.quantity}</p>
-              )
-            })}
+            <p className="productStock">Bulk: {product.meta.stock.level}</p>
             <button className="productPageButton"><Link className="productPageLink" to={`${path}/${product.id}`}>More Info</Link></button><br />
           </div>
         )

@@ -60,10 +60,6 @@ const passwordResetSuccess = {
     display: false
 }
 
-const decrementProductStock = {
-    new_amount: []
-}
-
 export const initialState = {
     loadingProductData,
     loadingCurrentOrderData,
@@ -71,5 +67,4 @@ export const initialState = {
     storeProfileData,
     passwordResetSuccess,
     loadStoredOrderData,
-    decrementProductStock
 }
