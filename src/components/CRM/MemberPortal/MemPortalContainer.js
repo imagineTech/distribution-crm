@@ -40,12 +40,10 @@ class MemberPortalContainer extends Component {
 
 const mapStateToProps = state => {
   const { data, included, imagesExist } = state.loadingProductData;
-  const orderData = state.loadStoredOrderData.data;
   return {
     profileData: state.storeProfileData,
     productData: data.length !== 0 ? data : data,
     imageProductData: imagesExist ? included : included,
-    recentOrders: orderData.length !== 0 ? orderData : orderData
   }
 };
 
