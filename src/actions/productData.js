@@ -15,6 +15,13 @@ export const loadProductImageData = imageProductData => {
   };
 };
 
+export const loadProductInventorySuccess = inventory => {
+  return {
+    type: "LOAD_PRODUCT_INVENTORY",
+    inventory
+  };
+};
+
 export const decrementSuccess = () => {
   return {
     type: "INVENTORY_DECREMENT_SUCCESS",
@@ -37,6 +44,14 @@ export const loadProductImage = productId => {
     });
   };
 };
+
+export const loadProductInventory = productId => {
+  return dispatch => {
+    Moltin.getProductStock(productId).then(inventory => {
+      dispatch(loadProductInventorySuccess(inventory))
+    })
+  }
+}
 
 export const decrementStock = cart => {
   return dispatch => {

@@ -34,6 +34,7 @@ const loadingProductData = {
             }
         ]
     },
+    inventory: {},
     imagesExist: false
 };
 

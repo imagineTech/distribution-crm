@@ -11,6 +11,11 @@ export const loadingProductData = (state = {}, action) => {
         ...action.payload,
         imagesExist: !action.imagesExist
       }
+    case "LOAD_PRODUCT_INVENTORY": 
+      return {
+        ...state,
+        inventory: {...action.inventory}
+      }
     default:
       return state;
   }
