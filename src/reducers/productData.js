@@ -14,7 +14,7 @@ export const loadingProductData = (state = {}, action) => {
     case "LOAD_PRODUCT_INVENTORY": 
       return {
         ...state,
-        inventory: {...action.inventory}
+        inventory: [...action.inventory]
       }
     default:
       return state;

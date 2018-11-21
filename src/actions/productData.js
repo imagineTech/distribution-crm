@@ -45,10 +45,14 @@ export const loadProductImage = productId => {
   };
 };
 
-export const loadProductInventory = productId => {
+export const loadProductInventory = products => {
+  let inventoryToSend = [];
   return dispatch => {
-    Moltin.getProductStock(productId).then(inventory => {
-      dispatch(loadProductInventorySuccess(inventory))
+    products.map(product => {
+      return Moltin.getProductStock(product.id).then(inventory => {
+        inventoryToSend.push(inventory.data)
+        dispatch(loadProductInventorySuccess(inventoryToSend))
+      })
     })
   }
 }
