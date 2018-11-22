@@ -5,7 +5,7 @@ const DeleteCart = ({ deleteCrt, profileData }) => {
         <button onClick={() => {
             deleteCrt(profileData.id)
             window.location.reload();
-        }}>Delete Cart</button>
+        }} className="btn">Delete Cart</button>
     )
 }
 

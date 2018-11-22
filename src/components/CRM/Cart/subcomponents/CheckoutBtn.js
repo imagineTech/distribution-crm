@@ -54,7 +54,7 @@ class CheckoutButton extends Component{
     }
 
     render() {
-        return <button onClick={this.handleClick}>Checkout</button>
+        return <button onClick={this.handleClick} className="btn">Checkout</button>
     }
 }
 

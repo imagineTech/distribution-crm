@@ -1,0 +1,6 @@
+.order_review {
+    display:flex;
+    justify-content:center;
+    margin-top:65px;
+    flex-wrap:wrap;
+}

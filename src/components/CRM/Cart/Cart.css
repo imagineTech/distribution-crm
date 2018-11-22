@@ -16,10 +16,10 @@ input[type=email],input[type=text] {
 td {
     text-align:right;
 }
-button:hover {
+.btn:hover {
     background:green;
 }
-button {
+.btn {
     padding:1em;
     background:tomato;
     margin-right:5px;

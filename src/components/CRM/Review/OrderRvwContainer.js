@@ -4,6 +4,7 @@ import { loadProfileData } from "../../../actions/profileData";
 import { loadCurrentOrder } from "../../../actions/orderData";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import './OrderReview.css';
 
 class OrderRvwContainer extends Component {
   componentDidMount() {
