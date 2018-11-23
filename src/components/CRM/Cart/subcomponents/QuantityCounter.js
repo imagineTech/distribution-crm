@@ -39,6 +39,7 @@ class QuantityCounter extends Component {
             value={quantity}
             onChange={this.handleChange}
             placeholder={quantity}
+            style={{width:"2em"}}
           />
           <button value={quantity} onClick={this.handleAddition}>
             +
