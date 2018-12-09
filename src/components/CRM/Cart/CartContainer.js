@@ -32,7 +32,6 @@ class CartContainer extends Component {
     return (
       <div>
         <Cart {...this.props} {...rest} />
-        {console.log(this.props)}
       </div>
     );
   }

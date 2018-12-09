@@ -7,7 +7,7 @@
 import { combineReducers } from 'redux';
 import { emailAndPasswordData, signUpFormData } from './signUpData';
 import { emailAndPasswordToState, handleErrorForLogin } from './loginAuth';
-import { storeProfileData, storeNewProfileData ,passwordResetSuccess } from './profileData';
+import { storeProfileData, storeNewProfileData, passwordResetSuccess } from './profileData';
 import { loadingProductData, decrementProductStock } from './productData';
 import { loadingCartData } from './cartData';
 import { loadingCurrentOrderData, loadStoredOrderData } from './orderData';

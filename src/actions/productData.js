@@ -15,6 +15,13 @@ export const loadProductImageData = imageProductData => {
   };
 };
 
+export const loadProductInventorySuccess = inventory => {
+  return {
+    type: "LOAD_PRODUCT_INVENTORY",
+    inventory
+  };
+};
+
 export const decrementSuccess = () => {
   return {
     type: "INVENTORY_DECREMENT_SUCCESS",
@@ -37,6 +44,18 @@ export const loadProductImage = productId => {
     });
   };
 };
+
+export const loadProductInventory = products => {
+  let inventoryToSend = [];
+  return dispatch => {
+    products.map(product => {
+      return Moltin.getProductStock(product.id).then(inventory => {
+        inventoryToSend.push(inventory.data)
+        dispatch(loadProductInventorySuccess(inventoryToSend))
+      })
+    })
+  }
+}
 
 export const decrementStock = cart => {
   return dispatch => {
