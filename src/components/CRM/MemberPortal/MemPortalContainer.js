@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MemberPortal from './subcomponents/MemberPortal';
 import { loadProfileData } from '../../../actions/profileData';
 import { imageUpload, downloadImage } from '../../../actions/imageData';
-import { loadProducts, loadProductImage } from '../../../actions/productData';
+import { loadProducts, loadProductImage, loadProductInventory } from '../../../actions/productData';
 import { loadRecentOrderData } from '../../../actions/orderData';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -28,6 +28,10 @@ class MemberPortalContainer extends Component {
     // const { profileData } = nextProps;
     // const { Orders } = profileData;
     // getRecentOrders(Orders[Orders.length - 1].id);
+    const { getProductInventory } = this.props;
+    if (nextProps.productData !== this.props.productData) {
+      getProductInventory(nextProps.productData);
+    }
   }
 
   render() {
@@ -36,11 +40,12 @@ class MemberPortalContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { data, included, imagesExist } = state.loadingProductData;
+  const { data, included, imagesExist, inventory } = state.loadingProductData;
   return {
     profileData: state.storeProfileData,
     productData: data.length !== 0 ? data : data,
     imageProductData: imagesExist ? included : included,
+    inventoryData: inventory,
   }
 };
 
@@ -49,6 +54,7 @@ const mapDispatchToProps = dispatch => {
     getRecentOrders: orderId => dispatch(loadRecentOrderData(orderId)),
     getProfileData: userId => dispatch(loadProfileData(userId)),
     getProductData: () => dispatch(loadProducts()),
+    getProductInventory: products => dispatch(loadProductInventory(products)),
     getProductImage: () => dispatch(loadProductImage()),
     uploadProfileImage: (userId, imageFile, reloadWindow) => dispatch(imageUpload(userId, imageFile, reloadWindow)),
     downloadProfileImage: userId => dispatch(downloadImage(userId))
