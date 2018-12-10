@@ -1,5 +1,5 @@
 export const loadingProductData = (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case "LOAD_PRODUCTS":
       return {
         ...state,
@@ -11,16 +11,21 @@ export const loadingProductData = (state = {}, action) => {
         ...action.payload,
         imagesExist: !action.imagesExist
       }
+    case "LOAD_PRODUCT_INVENTORY": 
+      return {
+        ...state,
+        inventory: [...action.inventory]
+      }
     default:
       return state;
   }
 }
 
 export const decrementProductStock = (state = "", action) => {
-  switch(action.type) {
+  switch (action.type) {
     case "INVENTORY_DECREMENT_SUCCESS":
       return action.message;
-    default: 
+    default:
       return state;
   }
 }
