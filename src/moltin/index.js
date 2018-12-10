@@ -28,6 +28,10 @@ export const getProductImage = () => {
   return Moltin.Products.With('main_image').All();
 }
 
+export const getProductStock = productId => {
+  return Moltin.Inventories.Get(productId)
+}
+
 export const addProductsToCart = (refId, productId, productQuantity) => {
   return Moltin.Cart(refId).AddProduct(productId, productQuantity);
 }

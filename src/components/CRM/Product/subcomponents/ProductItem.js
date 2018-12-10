@@ -19,7 +19,7 @@ class ProductItem extends Component {
     }
 
     render() {
-      const { productData, imageProductData, addProducts, match, profileData, history } = this.props;
+      const { productData, imageProductData, inventoryData, addProducts, match, profileData, history } = this.props;
       const { inputValue } = this.state;
       return (
         <div>
@@ -39,7 +39,11 @@ class ProductItem extends Component {
                       <ProductInfoWrapper>
                         <div className='title'>{product.name}</div>
                         <div className='description'>{product.description}</div>
-                        <div className='quantityAvailable'>{product.meta.stock.level}</div>
+                        {Object.keys(inventoryData).map(item => {
+                          if(product.id === inventoryData[item].id) {
+                            return <div className='quantityAvailable'>{inventoryData[item].available}</div>
+                          }
+                        })}
                         <QuantityCounter quantity={inputValue} onQuantityChange={this.handleQuantityChange}/>
                         <form onSubmit={e => {
                           e.preventDefault();

@@ -1,6 +1,7 @@
 import React from 'react';
 import DeleteProfile from './Delete';
 import PropTypes from 'prop-types';
+import './Edit.css';
 
 const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, deleteAcct }) => {
   return (
@@ -14,38 +15,46 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
           newPassword(e);
         }
       }}>
-        <label>First Name:
+        <div className="form-group">
+        <label>First Name:</label>
           <input
             type="text"
             name="First_Name"
             onChange={changed}
             required
           />
-        </label>
-        <label> Last Name:
+        </div>
+        <div className="form-group">
+        <label> Last Name:</label>
           <input
             type="text"
             name="Last_Name"
             onChange={changed}
             required
           />
-        </label>
-        <label>Email:
+        
+        </div>
+        <div className="form-group">
+        <label>Email:</label>
           <input
             type="email"
             name="Email"
             onChange={changed}
           />
-        </label>
-        <label>New Password:
+        
+        </div>
+        <div className="form-group">
+        <label>New Password:</label>
           <input
             type="password"
             name="New_Password"
             onChange={changed}
             
           />
-        </label>
-        <label>Confirm New Password:
+        
+        </div>
+        <div className="form-group">
+        <label>Confirm New Password:</label>
           <input
             type="password"
             name="Confirm_Password"
@@ -53,24 +62,32 @@ const EditPofile = ({ newProfileData, changed, newEmail, newPassword, submit, de
             
           />
           
-        </label>
-        <label>Company: 
+        
+        </div>
+        <div className="form-group">
+        <label>Company: </label>
           <input 
             type="text"
             name="Company"
             onChange={changed}
           />
-        </label>
-        <label>Department:
+        
+        </div>
+        <div className="form-group">
+        <label>Department:</label>
           <input
             type="text"
             name="Company"
             onChange={changed}
           />
-        </label>
-        <button>Save</button>
+        
+        </div>
+        <div className="form-group">
+          <button>Save</button>
+          <DeleteProfile clicked={deleteAcct} />
+        </div>
       </form>
-      <DeleteProfile clicked={deleteAcct} />
+      
     </section>
   )
 } 
