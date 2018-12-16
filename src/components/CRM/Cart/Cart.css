@@ -1,0 +1,47 @@
+.cart {
+    margin-top: 65px;
+}
+
+.input_box {
+    background: tomato;
+    color: white;
+    margin: 0.5em;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+/*.cart-main {*/
+
+/* display:flex;   */
+
+/* justify-content:center;*/
+
+/*}*/
+
+td {
+    text-align: right;
+}
+
+.btn:hover {
+    background: green;
+}
+
+.btn {
+    padding: 1em;
+    background: tomato;
+    margin-right: 5px;
+    color: white;
+    border-radius: 3px;
+    transition: background 1s;
+}
+
+/*.cart-button {
+    */
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    margin: 1em 0;*/
+    /*}*/
+
+.address {
+    display: flex;
+}

@@ -12,6 +12,7 @@ import {
   removingCartItem,
   deleteCart
 } from "../../../actions/cartData";
+import './Cart.css';
 
 class CartContainer extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ class CartContainer extends Component {
   render() {
     const { rest } = this.props;
     return (
-      <div>
+      <div className="cart">
         <Cart {...this.props} {...rest} />
       </div>
     );

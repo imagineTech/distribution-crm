@@ -3,7 +3,7 @@ import React from "react";
 const OrderReview = props => {
   const { profileData, orderData, match } = props;
   return (
-    <div>
+    <div className="order_review">
       <h2>
         Thank you for your purchase, {profileData.First_Name}{" "}
         {profileData.Last_Name}! Your Order#:{" "}
