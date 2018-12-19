@@ -25,8 +25,8 @@ const BecomingAMember = (props) => {
         </ul>
       
         <p>Interested? Click below to view the registration </p>
-
-        <Link to={routes.SIGN_UP} style={{border: 'none', background: '#C02932', color: 'white', height: '40px', width: '150px', fontSize: '20px', borderRadius: '3px'}}>REGISTER</Link>
+        
+        <Link to={routes.SIGN_UP} style={{textDecoration: 'none', color: 'white'}}><div style={{border: 'none', background: '#C02932', height: '40px', width: '150px', fontSize: '22px', borderRadius: '3px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>REGISTER</div></Link>          
         
       </BecomingAMemberWrapper>
     </div>
