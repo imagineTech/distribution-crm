@@ -1,8 +1,8 @@
 .header {
-  background: rgba(230, 230, 230, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   height: 60px;
 	width: 100%;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+  /* box-shadow: 1px 1px 5px rgba(0, 0, 0, .4); */
   margin: 0;
   display: flex;
   justify-content: flex-start;
@@ -26,26 +26,19 @@
   right: 0;
 }
 #contact:hover, #sign-in:hover {
-  /* color: #eee; */
   color: rgba(0, 0, 0, 1);
   transition: color .5s ease;
   cursor: pointer;
 }
 
-/* KUPIDO */
+/* Global Trade Deals */
 
 .header h1 {
-  font-size: 30px;
-  /* color: #eee; */
+  font-size: 25px;
   color: #111;
   margin: 0;
   margin-left: 20px;
 }
-/* .logo {
-  position: relative;
-  display: block;
-  margin: auto;
-} */
 
 /* MENU */
 

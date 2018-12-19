@@ -1,5 +1,4 @@
 .register {
-    /* background: yellow; */
     margin: 0;
     margin-top: 50px;
     margin-bottom: 100px;
@@ -11,7 +10,6 @@
 }
 
 .register form {
-    /* background: blue; */
     width: 528px;
     display: flex;
     flex-direction: column;

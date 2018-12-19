@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 const TopBanner = styled.div`
-background: url('https://images.unsplash.com/photo-1534008757030-27299c4371b6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a3bf79bd430059dd64c06f4dc70e9b16&auto=format&fit=crop&w=1500&q=80') no-repeat center center;
+background: url('https://images.unsplash.com/photo-1493689485253-f07fcbfc731b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1466&q=80') no-repeat top;
 background-size: cover;
-height: 400px;
-filter: grayscale(100%);
+height: 500px;
+filter: grayscale(100%) brightness(40%);
+margin: 0;
 `
-// Alternate model: https://cdn.pixabay.com/photo/2015/12/08/00/57/model-woman-1082219_960_720.jpg
-// Too big gorgeous: https://cdn.pixabay.com/photo/2017/07/25/10/36/beauty-2537562_960_720.jpg
-// Too big gorgeous2: https://cdn.pixabay.com/photo/2017/06/02/14/11/girl-2366438_960_720.jpg
-// Original: background: url('https://media.trilabshop.com/media/wysiwyg/Banner_Carita_Paris.png') no-repeat center top;
-
 export default TopBanner;

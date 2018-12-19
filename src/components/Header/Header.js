@@ -45,7 +45,7 @@ class Header extends Component {
 				
 
 				<Link to={routes.HOME} className="navLink">
-					<h1 style={{textAlign: 'center', margin: 0}}>KUPIDO</h1>
+					<h1 style={{textAlign: 'center', margin: 0}}>GTD</h1>
 				</Link>
 
 				{/* <img src="https://dummyimage.com/200x100/000/fff" className="logo"></img> */}

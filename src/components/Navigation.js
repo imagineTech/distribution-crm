@@ -24,7 +24,9 @@ const RegistrationRedirection = () =>
   </div>
 
 const BecomingAMemberInstructionsLink = () =>
-  <div><Link to={routes.BECOMING_A_MEMBER} className="link"><h2>Find out how to become a memeber!</h2></Link></div>
+  <div><Link to={routes.BECOMING_A_MEMBER} className="link">
+  {/* <h2>Find out how to become a member!</h2> */}
+    </Link></div>
 
 const BecomingAMemberLink = () =>
     <div className='bottom-image-container'><Link to={routes.BECOMING_A_MEMBER} style={{textDecoration: 'none'}}><LandingButton >BECOMING A MEMBER</LandingButton></Link></div>
