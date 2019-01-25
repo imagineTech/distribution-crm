@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const TextWrapper = styled.div`
-  width: 250px;
-  margin: auto;
+  // background: pink;
+  margin: 0;
   text-align: left;
-  padding: 0 10px;
+  font-size: 18px;
+  min-height: 220px;
 `
 
 export default TextWrapper;

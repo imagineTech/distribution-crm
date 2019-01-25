@@ -16,8 +16,8 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import LoadingComponent from '../components/LoadingComponent';
 import Landing from '../components/landing/Landing';
-import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
-import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
+// import BecomingAMember from '../components/landing/partials/bottomComponents/becomingAMember/BecomingAMember';
+// import HowItWorks from '../components/landing/partials/bottomComponents/howItWorks/HowItWorks';
 import SoldProducts from '../components/landing/partials/bottomComponents/SoldProducts/SoldProducts';
 import FindoutLanding from '../components/findoutmore/FindoutLanding';
 import About from '../components/findoutmore/subcomponents/about/About';
@@ -120,8 +120,8 @@ class App extends Component {
           <Route path={routes.SIGN_UP} component={SignUp} />
           <Route path={routes.FORGOT_PASS} component={ForgotPassword} />
           <Route path={routes.SOLD_PRODUCTS} component={SoldProducts} />
-          <Route path={routes.BECOMING_A_MEMBER} component={BecomingAMember} />
-          <Route path={routes.HOW_IT_WORKS} component={HowItWorks} />
+          {/* <Route path={routes.BECOMING_A_MEMBER} component={BecomingAMember} /> */}
+          {/* <Route path={routes.HOW_IT_WORKS} component={HowItWorks} /> */}
         </Switch>
         {/* And once more for the modal to appear */}
         {isModal ? <Route path={routes.CONTACT} component={Contact} /> : null }

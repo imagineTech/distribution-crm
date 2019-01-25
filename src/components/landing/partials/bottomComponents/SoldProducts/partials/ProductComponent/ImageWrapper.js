@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 const ImageWrapper = styled.div`
-  width: 250px;
-  height: 200px;
-  border: 1px solid black;
-  margin: 20px auto;
+  background: white;
+  background-size: cover;
+  width: 100%;
+  height: 20vw;
+  min-height: 180px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 `
 export default ImageWrapper;

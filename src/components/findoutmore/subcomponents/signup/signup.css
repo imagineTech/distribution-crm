@@ -1,5 +1,4 @@
 .register {
-    /* background: yellow; */
     margin: 0;
     margin-top: 50px;
     margin-bottom: 100px;
@@ -8,10 +7,14 @@
     align-items: center;
     margin-top: 150px;
     font-size: 18px;
+    padding: 0 10vw;
 }
-
+.register h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
 .register form {
-    /* background: blue; */
     width: 528px;
     display: flex;
     flex-direction: column;
@@ -19,11 +22,10 @@
     font-size: 18px;
     margin: 50px 0 50px 0;
 }
-
 .register p {
     margin: 0;
+    line-height: 26px;
 }
-
 .register input {
     color: rgba(0, 0, 0, .5) 1px solid;
     caret-color: #C02932;

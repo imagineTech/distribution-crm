@@ -7,8 +7,8 @@ import ContentWrapper from './ContentWrapper';
 const Content = (props) => {
   return(
     <ContentWrapper>
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
+      <p style={{fontSize: '22px', margin: 0}}>{props.title}</p>
+      <p style={{margin: "15px 0 30px 0"}}>{props.description}</p>
     </ContentWrapper>
   )
 }

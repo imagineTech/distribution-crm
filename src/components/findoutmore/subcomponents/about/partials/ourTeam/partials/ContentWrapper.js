@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
   // background: pink;
-  height: 800px;
+  height: 700px;
   width: 22vw;
-  line-height: 30px;
+  min-width: 180px;
   font-size: 18px;
   margin: 2vw;
   display: flex;

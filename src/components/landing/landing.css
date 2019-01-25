@@ -1,11 +1,40 @@
-.bottom-content {
+@import url('https://fonts.googleapis.com/css?family=Lato:300');
+
+.landing {
+  width: 100%;
+  background: white;
+  margin: 0;
+}
+.splash-title {
+  width: 100%;
+  margin-top: 230px;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-size: 60px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+.splash-heading {
+  width: 100%;
+  margin-top: 320px;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-weight: 300;
+  font-size: 26px;
+}
+.landing .main {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 100px 0 200px 0;
+  align-items: center;
+  /* margin: 100px 0 200px 0; */
 }
-
-.bottom-image-container {
+/* .bottom-image-container {
   background: white;
   height: 25vw;
   width: 25vw;
@@ -18,4 +47,4 @@
 .bottom-image-container:hover {
   filter: brightness(100%);
   transition: filter .5s ease;
-}
+} */
