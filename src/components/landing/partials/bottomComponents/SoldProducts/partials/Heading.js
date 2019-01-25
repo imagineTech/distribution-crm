@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 const Heading = styled.div`
-  font-size: 25px;
   text-align: center;
-  height: 40px;
-  line-height: 40px;
-  margin: 80px auto 30px;
+  margin: 0;
+  margin-top: 150px;
 `
 export default Heading;

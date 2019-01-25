@@ -14,9 +14,8 @@ const BecomingAMember = (props) => {
       <BecomingAMemberWrapper>
         <h1>Welcome to Global Trade Deals!</h1>
 
-        <p>
-          Global Trade Deals considers its clients as business partners and does not favor any clients above the others. Registered clients enjoy exclusive rights such as:
-        </p>
+        <p>Global Trade Deals considers its clients as business partners and does not favor any clients above the others. Registered clients enjoy exclusive rights such as:</p>
+        
         <ul>
           <li>Direct communication with GTD specialists</li>
           <li>Text notifications about profitable new products</li>

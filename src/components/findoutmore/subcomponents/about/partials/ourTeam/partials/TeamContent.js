@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 
 //partials
 import ContentWrapper from './ContentWrapper';
+import noImage from './../../../../../../../components/landing/partials/bottomComponents/SoldProducts/partials/ProductComponent/no_image.png';
 
 //CSS
 import '../OurTeam.css';
 
-
 const TeamContent = (props) => {
   return(
     <ContentWrapper>
-      <img className="main-pics" src={props.myPics} alt="team_pics" />
-      <h2>{props.name}</h2>
-      <h4>{props.title}</h4>
+      {/* <img className="main-pics" src={props.myPics} alt="team_pics" /> */}
+      <img className="main-pics" style={{background: "#eee"}} src={noImage} alt="picture of team member" />
+      <h3>{props.name}</h3>
+      <h4 style={{margin: 0}}>{props.title}</h4>
       <div className="main-description">
-        <p style={{margin: 0}}>{props.description}</p>
+        <p style={{margin: '20px 0'}}>{props.description}</p>
       </div>
       {/* 
       Leaving this here for now, will look into best ways for emailing 

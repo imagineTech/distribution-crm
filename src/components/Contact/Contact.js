@@ -57,7 +57,7 @@ class Contact extends Component {
 							<div>
 								<p className='modal-title'>What can we help you with?</p>
 								<Formik
-									initialValues={{customerName:"",customerNumber:0,customerEmail:"",contactContent:""}}
+									initialValues={{customerName:"",customerNumber:"",customerEmail:"",contactContent:""}}
 									onSubmit={() => {
 							        let query = { ...this.state };
 										console.log({...this.state});

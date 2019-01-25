@@ -6,7 +6,7 @@ const ContentWrapper = styled.div`
   width: 22vw;
   min-width: 180px;
   max-width: 250px;
-  height: 40vw;
+  height: 38vw;
   min-height: 460px;
   max-height: 500px;
 `
